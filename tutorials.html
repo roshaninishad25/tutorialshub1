@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free programming tutorials — HTML, CSS, JavaScript, Python, DSA, React and more. Learn with examples.">
+  <title>Tutorials | TutorialsHub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-layout { display: grid; grid-template-columns: 260px 1fr; min-height: calc(100vh - 62px); }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      background: var(--bg2); border-right: 1px solid var(--border);
+      padding: 24px 0; position: sticky; top: 62px; height: calc(100vh - 62px);
+      overflow-y: auto;
+    }
+    .sidebar-search {
+      display: flex; align-items: center; gap: 8px;
+      margin: 0 16px 20px; padding: 9px 14px;
+      background: var(--surface); border: 1px solid var(--border2); border-radius: var(--radius-sm);
+    }
+    .sidebar-search input { background: none; border: none; outline: none; color: var(--text); font-size: 0.83rem; width: 100%; }
+    .sidebar-search input::placeholder { color: var(--text-subtle); }
+
+    .sidebar-section { margin-bottom: 8px; }
+    .sidebar-section-title {
+      padding: 8px 20px; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-subtle);
+    }
+    .sidebar-link {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 20px; color: var(--text-muted); font-size: 0.87rem;
+      font-weight: 500; transition: all var(--transition); cursor: pointer; border: none;
+      background: none; width: 100%; text-align: left;
+    }
+    .sidebar-link .sidebar-icon { font-size: 1rem; flex-shrink: 0; }
+    .sidebar-link:hover { background: var(--surface); color: var(--text); }
+    .sidebar-link.active { background: rgba(4,170,109,0.12); color: var(--primary); border-right: 3px solid var(--primary); }
+    .sidebar-badge { margin-left: auto; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; }
+    .sb-free { background: rgba(4,170,109,0.15); color: var(--primary); }
+    .sb-pro  { background: rgba(245,158,11,0.15); color: var(--gold); }
+
+    /* ── MAIN CONTENT ── */
+    .tut-main { padding: 40px 60px; overflow-y: auto; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px; }
+    .breadcrumb a { color: var(--primary); transition: opacity var(--transition); }
+    .breadcrumb a:hover { opacity: 0.7; }
+    .breadcrumb span { color: var(--text-subtle); }
+
+    /* ── TUTORIAL CONTENT ── */
+    .tut-content { display: none; animation: fadeUp 0.35s ease; }
+    .tut-content.active { display: block; }
+
+    .content-header { margin-bottom: 36px; }
+    .content-header h1 { font-size: 2.2rem; font-weight: 900; margin-bottom: 10px; }
+    .content-header-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .meta-pill { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--text-muted); }
+    .content-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 760px; }
+
+    .content-divider { height: 1px; background: var(--border); margin: 32px 0; }
+
+    .content-body h2 { font-size: 1.4rem; font-weight: 800; margin: 36px 0 14px; color: var(--text); }
+    .content-body h3 { font-size: 1.1rem; font-weight: 700; margin: 24px 0 10px; color: var(--text); }
+    .content-body p  { color: var(--text-muted); line-height: 1.8; margin-bottom: 14px; font-size: 0.95rem; }
+    .content-body ul, .content-body ol { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; padding-left: 24px; margin-bottom: 16px; }
+    .content-body li { margin-bottom: 6px; }
+    .content-body strong { color: var(--text); font-weight: 600; }
+
+    /* ── CODE BLOCK ── */
+    .code-container {
+      background: #0d1117; border: 1px solid var(--border2); border-radius: var(--radius);
+      overflow: hidden; margin: 20px 0;
+    }
+    .code-header {
+      background: var(--surface2); padding: 10px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+    .code-lang { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); }
+    .copy-btn {
+      padding: 4px 12px; background: var(--surface); border: 1px solid var(--border2);
+      border-radius: var(--radius-sm); color: var(--text-muted); font-size: 0.75rem;
+      font-weight: 600; cursor: pointer; transition: all var(--transition);
+    }
+    .copy-btn:hover { border-color: var(--primary); color: var(--primary); }
+    pre { padding: 20px; overflow-x: auto; }
+    code { font-family: 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.7; color: var(--text); }
+    .kw  { color: #ff79c6; }
+    .str { color: #f1fa8c; }
+    .fn  { color: #50fa7b; }
+    .cm  { color: #6272a4; }
+    .vr  { color: #8be9fd; }
+    .nm  { color: #bd93f9; }
+    .tg  { color: #ff79c6; }
+    .at  { color: #50fa7b; }
+    .val { color: #f1fa8c; }
+
+    /* ── OUTPUT BOX ── */
+    .output-box {
+      background: var(--surface2); border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 16px 20px; margin: 16px 0;
+    }
+    .output-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); margin-bottom: 8px; }
+    .output-text { font-family: 'Fira Code', monospace; font-size: 0.88rem; color: var(--text-muted); }
+
+    /* ── CALLOUT ── */
+    .callout { border-radius: var(--radius-sm); padding: 16px 20px; margin: 20px 0; display: flex; gap: 12px; align-items: flex-start; font-size: 0.88rem; line-height: 1.6; }
+    .callout-info  { background: rgba(33,150,243,0.08); border-left: 3px solid var(--blue); }
+    .callout-warn  { background: rgba(245,158,11,0.08); border-left: 3px solid var(--gold); }
+    .callout-tip   { background: rgba(4,170,109,0.08); border-left: 3px solid var(--primary); }
+    .callout-icon  { font-size: 1.1rem; flex-shrink: 0; }
+    .callout-text  { color: var(--text-muted); }
+    .callout-text strong { color: var(--text); }
+
+    /* ── CHAPTER NAVIGATION ── */
+    .chapter-nav {
+      display: flex; justify-content: space-between; margin-top: 48px;
+      padding-top: 24px; border-top: 1px solid var(--border);
+    }
+    .chapter-nav-btn {
+      display: flex; align-items: center; gap: 10px; padding: 14px 20px;
+      background: var(--surface); border: 1px solid var(--border2); border-radius: var(--radius);
+      transition: all var(--transition); max-width: 45%;
+    }
+    .chapter-nav-btn:hover { border-color: var(--primary); }
+    .chapter-nav-btn.disabled { opacity: 0.3; pointer-events: none; }
+    .chapter-nav-btn .nav-direction { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; color: var(--text-subtle); }
+    .chapter-nav-btn .nav-title { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+
+    /* ── PROGRESS ── */
+    .progress-bar-container { background: var(--surface2); border-radius: 30px; height: 5px; margin-bottom: 28px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), #00e5cc); border-radius: 30px; transition: width 0.4s ease; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .page-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; height: auto; }
+      .tut-main { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html" class="active">Tutorials</a>
+    <a href="blogs.html">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search tutorials..." id="globalSearch" oninput="sidebarSearch(this.value)">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ PAGE LAYOUT ══ -->
+<div class="page-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-search">
+      <span>🔍</span>
+      <input type="text" placeholder="Filter topics..." id="sidebarInput" oninput="sidebarSearch(this.value)">
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">🌐 Web Development</div>
+      <button class="sidebar-link active" onclick="showContent('html')"><span class="sidebar-icon">🏷️</span> HTML5 Tutorial <span class="sidebar-badge sb-free">FREE</span></button>
+      <button class="sidebar-link" onclick="showContent('css')"><span class="sidebar-icon">🎨</span> CSS3 Tutorial <span class="sidebar-badge sb-free">FREE</span></button>
+      <button class="sidebar-link" onclick="showContent('js')"><span class="sidebar-icon">⚡</span> JavaScript <span class="sidebar-badge sb-free">FREE</span></button>
+      <button class="sidebar-link" onclick="showContent('react')"><span class="sidebar-icon">⚛️</span> React.js <span class="sidebar-badge sb-pro">PRO</span></button>
+      <button class="sidebar-link" onclick="showContent('ts')"><span class="sidebar-icon">📘</span> TypeScript <span class="sidebar-badge sb-pro">PRO</span></button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">🐍 Python</div>
+      <button class="sidebar-link" onclick="showContent('python')"><span class="sidebar-icon">🐍</span> Python Basics <span class="sidebar-badge sb-free">FREE</span></button>
+      <button class="sidebar-link" onclick="showContent('oop')"><span class="sidebar-icon">🧱</span> Python OOP <span class="sidebar-badge sb-free">FREE</span></button>
+      <button class="sidebar-link" onclick="showContent('django')"><span class="sidebar-icon">🌿</span> Django Framework <span class="sidebar-badge sb-pro">PRO</span></button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">🔢 DSA</div>
+      <button class="sidebar-link" onclick="showContent('dsa')"><span class="sidebar-icon">📊</span> Data Structures <span class="sidebar-badge sb-free">FREE</span></button>
+      <button class="sidebar-link" onclick="showContent('algo')"><span class="sidebar-icon">⚙️</span> Algorithms <span class="sidebar-badge sb-pro">PRO</span></button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">🗄️ Databases</div>
+      <button class="sidebar-link" onclick="showContent('sql')"><span class="sidebar-icon">🗃️</span> SQL Tutorial <span class="sidebar-badge sb-free">FREE</span></button>
+      <button class="sidebar-link" onclick="showContent('mongo')"><span class="sidebar-icon">🍃</span> MongoDB <span class="sidebar-badge sb-pro">PRO</span></button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">☁️ DevOps</div>
+      <button class="sidebar-link" onclick="showContent('git')"><span class="sidebar-icon">🔀</span> Git & GitHub <span class="sidebar-badge sb-free">FREE</span></button>
+      <button class="sidebar-link" onclick="showContent('docker')"><span class="sidebar-icon">🐳</span> Docker <span class="sidebar-badge sb-pro">PRO</span></button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="tut-main">
+    <div class="progress-bar-container"><div class="progress-bar-fill" id="progressBar" style="width:20%"></div></div>
+
+    <!-- ══ HTML CONTENT ══ -->
+    <div class="tut-content active" id="content-html">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Web Dev</span><span>›</span><span style="color:var(--text)">HTML5</span></div>
+      <div class="content-header">
+        <div class="content-header-meta">
+          <span class="tag tag-free">FREE</span>
+          <span class="tag tag-hot">🔥 Popular</span>
+        </div>
+        <h1>HTML5 Tutorial</h1>
+        <div class="content-header-meta">
+          <span class="meta-pill">📖 42 Chapters</span>
+          <span class="meta-pill">⏱ 6 hours</span>
+          <span class="meta-pill">⭐ 4.9 (12K reviews)</span>
+          <span class="meta-pill">👨‍🎓 18K students</span>
+        </div>
+        <p class="content-desc">HTML stands for HyperText Markup Language. It is the standard language for creating web pages. Every web page you see is built using HTML. This tutorial covers everything from the absolute basics to advanced HTML5 features like Canvas, SVG, Web Storage, and Semantic Elements.</p>
+      </div>
+      <div class="content-divider"></div>
+      <div class="content-body">
+        <h2>What is HTML?</h2>
+        <p>HTML (HyperText Markup Language) is the backbone of every website. It defines the <strong>structure and content</strong> of web pages using a system of tags and attributes. Browsers like Chrome, Firefox, and Edge read HTML files and render them as visual web pages.</p>
+        <p>HTML works alongside <strong>CSS</strong> (for styling) and <strong>JavaScript</strong> (for interactivity) to create the complete web experience you see today.</p>
+
+        <div class="callout callout-info">
+          <span class="callout-icon">ℹ️</span>
+          <span class="callout-text"><strong>Did You Know?</strong> HTML was first created by Tim Berners-Lee in 1991. The latest version, HTML5, was standardized in 2014 and introduced powerful new features like audio/video support, canvas drawing, and offline storage.</span>
+        </div>
+
+        <h2>Your First HTML Page</h2>
+        <p>Every HTML document starts with a DOCTYPE declaration followed by the <code>&lt;html&gt;</code> root element. Here's the minimum structure:</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-lang">HTML</span>
+            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+          </div>
+          <pre><code><span class="tg">&lt;!DOCTYPE html&gt;</span>
+<span class="tg">&lt;html</span> <span class="at">lang</span>=<span class="val">"en"</span><span class="tg">&gt;</span>
+<span class="tg">&lt;head&gt;</span>
+  <span class="tg">&lt;meta</span> <span class="at">charset</span>=<span class="val">"UTF-8"</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;title&gt;</span>My First Page<span class="tg">&lt;/title&gt;</span>
+<span class="tg">&lt;/head&gt;</span>
+<span class="tg">&lt;body&gt;</span>
+  <span class="tg">&lt;h1&gt;</span>Hello, World! 👋<span class="tg">&lt;/h1&gt;</span>
+  <span class="tg">&lt;p&gt;</span>Welcome to my first web page.<span class="tg">&lt;/p&gt;</span>
+<span class="tg">&lt;/body&gt;</span>
+<span class="tg">&lt;/html&gt;</span></code></pre>
+        </div>
+
+        <div class="output-box">
+          <div class="output-label">🖥️ Browser Output</div>
+          <div class="output-text"><strong style="font-size:1.2rem;color:var(--text)">Hello, World! 👋</strong><br>Welcome to my first web page.</div>
+        </div>
+
+        <h2>HTML Elements & Tags</h2>
+        <p>An HTML element consists of a <strong>start tag</strong>, <strong>content</strong>, and an <strong>end tag</strong>:</p>
+
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">HTML</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code><span class="cm">&lt;!-- Headings (h1 is largest, h6 is smallest) --&gt;</span>
+<span class="tg">&lt;h1&gt;</span>Heading 1<span class="tg">&lt;/h1&gt;</span>
+<span class="tg">&lt;h2&gt;</span>Heading 2<span class="tg">&lt;/h2&gt;</span>
+<span class="tg">&lt;h3&gt;</span>Heading 3<span class="tg">&lt;/h3&gt;</span>
+
+<span class="cm">&lt;!-- Paragraph --&gt;</span>
+<span class="tg">&lt;p&gt;</span>This is a paragraph of text.<span class="tg">&lt;/p&gt;</span>
+
+<span class="cm">&lt;!-- Links --&gt;</span>
+<span class="tg">&lt;a</span> <span class="at">href</span>=<span class="val">"https://example.com"</span><span class="tg">&gt;</span>Click Here<span class="tg">&lt;/a&gt;</span>
+
+<span class="cm">&lt;!-- Images --&gt;</span>
+<span class="tg">&lt;img</span> <span class="at">src</span>=<span class="val">"photo.jpg"</span> <span class="at">alt</span>=<span class="val">"Description"</span><span class="tg">&gt;</span>
+
+<span class="cm">&lt;!-- Lists --&gt;</span>
+<span class="tg">&lt;ul&gt;</span>
+  <span class="tg">&lt;li&gt;</span>Item One<span class="tg">&lt;/li&gt;</span>
+  <span class="tg">&lt;li&gt;</span>Item Two<span class="tg">&lt;/li&gt;</span>
+<span class="tg">&lt;/ul&gt;</span></code></pre>
+        </div>
+
+        <h2>Semantic HTML5 Elements</h2>
+        <p>HTML5 introduced semantic elements that clearly describe their meaning to both the browser and developer:</p>
+        <ul>
+          <li><strong>&lt;header&gt;</strong> – Page or section header</li>
+          <li><strong>&lt;nav&gt;</strong> – Navigation links</li>
+          <li><strong>&lt;main&gt;</strong> – Main content area</li>
+          <li><strong>&lt;article&gt;</strong> – Independent content</li>
+          <li><strong>&lt;section&gt;</strong> – Thematic grouping of content</li>
+          <li><strong>&lt;aside&gt;</strong> – Sidebar content</li>
+          <li><strong>&lt;footer&gt;</strong> – Page or section footer</li>
+        </ul>
+
+        <div class="callout callout-tip">
+          <span class="callout-icon">💡</span>
+          <span class="callout-text"><strong>Pro Tip:</strong> Using semantic HTML improves SEO, accessibility, and makes your code more maintainable. Search engines like Google give higher rankings to pages with proper semantic structure!</span>
+        </div>
+
+        <h2>HTML Forms</h2>
+        <p>Forms are used to collect user input. They're essential for login pages, registration, search, and more:</p>
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">HTML</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code><span class="tg">&lt;form</span> <span class="at">action</span>=<span class="val">"/submit"</span> <span class="at">method</span>=<span class="val">"POST"</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;label</span> <span class="at">for</span>=<span class="val">"name"</span><span class="tg">&gt;</span>Full Name:<span class="tg">&lt;/label&gt;</span>
+  <span class="tg">&lt;input</span> <span class="at">type</span>=<span class="val">"text"</span> <span class="at">id</span>=<span class="val">"name"</span> <span class="at">name</span>=<span class="val">"name"</span> <span class="at">required</span><span class="tg">&gt;</span>
+
+  <span class="tg">&lt;label</span> <span class="at">for</span>=<span class="val">"email"</span><span class="tg">&gt;</span>Email:<span class="tg">&lt;/label&gt;</span>
+  <span class="tg">&lt;input</span> <span class="at">type</span>=<span class="val">"email"</span> <span class="at">id</span>=<span class="val">"email"</span> <span class="at">name</span>=<span class="val">"email"</span> <span class="at">required</span><span class="tg">&gt;</span>
+
+  <span class="tg">&lt;button</span> <span class="at">type</span>=<span class="val">"submit"</span><span class="tg">&gt;</span>Submit<span class="tg">&lt;/button&gt;</span>
+<span class="tg">&lt;/form&gt;</span></code></pre>
+        </div>
+
+        <h2>What's Next?</h2>
+        <p>Now that you understand HTML basics, the next step is to learn <strong>CSS</strong> to style your pages and make them look professional. Click the "Next Chapter" button below to continue your learning journey!</p>
+      </div>
+
+      <div class="chapter-nav">
+        <div class="chapter-nav-btn disabled">
+          <span>←</span><div><div class="nav-direction">Previous</div><div class="nav-title">Introduction</div></div>
+        </div>
+        <button class="chapter-nav-btn" style="margin-left:auto" onclick="showContent('css')">
+          <div style="text-align:right"><div class="nav-direction">Next Chapter</div><div class="nav-title">CSS3 Tutorial</div></div><span>→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ══ CSS CONTENT ══ -->
+    <div class="tut-content" id="content-css">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Web Dev</span><span>›</span><span style="color:var(--text)">CSS3</span></div>
+      <div class="content-header">
+        <div class="content-header-meta"><span class="tag tag-free">FREE</span></div>
+        <h1>CSS3 Tutorial</h1>
+        <div class="content-header-meta">
+          <span class="meta-pill">📖 38 Chapters</span><span class="meta-pill">⏱ 5h 45m</span><span class="meta-pill">⭐ 4.8</span>
+        </div>
+        <p class="content-desc">CSS (Cascading Style Sheets) controls the presentation of HTML elements. Learn selectors, box model, flexbox, grid, animations and responsive design.</p>
+      </div>
+      <div class="content-divider"></div>
+      <div class="content-body">
+        <h2>CSS Syntax</h2>
+        <p>A CSS rule consists of a <strong>selector</strong> and a <strong>declaration block</strong> containing property-value pairs:</p>
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code><span class="cm">/* Basic CSS Syntax */</span>
+<span class="vr">selector</span> {
+  <span class="at">property</span>: <span class="val">value</span>;
+  <span class="at">another-property</span>: <span class="val">value</span>;
+}
+
+<span class="cm">/* Example */</span>
+<span class="fn">h1</span> {
+  <span class="at">color</span>: <span class="val">#04AA6D</span>;
+  <span class="at">font-size</span>: <span class="val">2rem</span>;
+  <span class="at">font-weight</span>: <span class="val">bold</span>;
+}
+
+<span class="fn">.my-class</span> {
+  <span class="at">background-color</span>: <span class="val">#1c2130</span>;
+  <span class="at">padding</span>: <span class="val">20px</span>;
+  <span class="at">border-radius</span>: <span class="val">12px</span>;
+}</code></pre>
+        </div>
+
+        <h2>Flexbox Layout</h2>
+        <p>Flexbox is a powerful CSS layout module that makes it easy to align and distribute elements:</p>
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code><span class="fn">.container</span> {
+  <span class="at">display</span>: <span class="val">flex</span>;
+  <span class="at">justify-content</span>: <span class="val">center</span>;   <span class="cm">/* horizontal alignment */</span>
+  <span class="at">align-items</span>: <span class="val">center</span>;      <span class="cm">/* vertical alignment */</span>
+  <span class="at">gap</span>: <span class="val">16px</span>;                 <span class="cm">/* space between items */</span>
+  <span class="at">flex-wrap</span>: <span class="val">wrap</span>;           <span class="cm">/* allow wrapping */</span>
+}</code></pre>
+        </div>
+
+        <h2>CSS Grid</h2>
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code><span class="fn">.grid-container</span> {
+  <span class="at">display</span>: <span class="val">grid</span>;
+  <span class="at">grid-template-columns</span>: <span class="val">repeat(3, 1fr)</span>;
+  <span class="at">gap</span>: <span class="val">24px</span>;
+}
+
+<span class="cm">/* Responsive grid */</span>
+<span class="fn">.responsive-grid</span> {
+  <span class="at">grid-template-columns</span>: <span class="val">repeat(auto-fill, minmax(280px, 1fr))</span>;
+}</code></pre>
+        </div>
+
+        <div class="callout callout-tip">
+          <span class="callout-icon">💡</span>
+          <span class="callout-text"><strong>CSS Custom Properties (Variables)</strong> make your styles reusable. Define once, use everywhere: <code>:root { --primary: #04AA6D; }</code> then use <code>color: var(--primary)</code>.</span>
+        </div>
+      </div>
+      <div class="chapter-nav">
+        <button class="chapter-nav-btn" onclick="showContent('html')"><span>←</span><div><div class="nav-direction">Previous</div><div class="nav-title">HTML5 Tutorial</div></div></button>
+        <button class="chapter-nav-btn" style="margin-left:auto" onclick="showContent('js')"><div style="text-align:right"><div class="nav-direction">Next</div><div class="nav-title">JavaScript</div></div><span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ══ JS CONTENT ══ -->
+    <div class="tut-content" id="content-js">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Web Dev</span><span>›</span><span style="color:var(--text)">JavaScript</span></div>
+      <div class="content-header">
+        <div class="content-header-meta"><span class="tag tag-hot">🔥 HOT</span></div>
+        <h1>JavaScript Tutorial</h1>
+        <div class="content-header-meta"><span class="meta-pill">📖 65 Chapters</span><span class="meta-pill">⏱ 14h</span><span class="meta-pill">⭐ 4.9</span></div>
+        <p class="content-desc">JavaScript is the programming language of the web. Learn variables, functions, DOM manipulation, async/await, and ES2024 features.</p>
+      </div>
+      <div class="content-divider"></div>
+      <div class="content-body">
+        <h2>Variables & Data Types</h2>
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">JavaScript</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code><span class="cm">// Variable declarations</span>
+<span class="kw">const</span> <span class="vr">name</span> = <span class="str">"Alice"</span>;      <span class="cm">// cannot be reassigned</span>
+<span class="kw">let</span> <span class="vr">age</span> = <span class="nm">25</span>;             <span class="cm">// can be reassigned</span>
+
+<span class="cm">// Data Types</span>
+<span class="kw">const</span> <span class="vr">str</span>  = <span class="str">"Hello"</span>;      <span class="cm">// string</span>
+<span class="kw">const</span> <span class="vr">num</span>  = <span class="nm">42</span>;           <span class="cm">// number</span>
+<span class="kw">const</span> <span class="vr">bool</span> = <span class="kw">true</span>;         <span class="cm">// boolean</span>
+<span class="kw">const</span> <span class="vr">arr</span>  = [<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>];  <span class="cm">// array</span>
+<span class="kw">const</span> <span class="vr">obj</span>  = { <span class="vr">x</span>: <span class="nm">10</span> };   <span class="cm">// object</span>
+
+<span class="cm">// Template literals</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Hi, I'm ${name} and I'm ${age} years old!`</span>);</code></pre>
+        </div>
+
+        <h2>Functions</h2>
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">JavaScript</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code><span class="cm">// Arrow functions (modern syntax)</span>
+<span class="kw">const</span> <span class="fn">add</span> = (<span class="vr">a</span>, <span class="vr">b</span>) => <span class="vr">a</span> + <span class="vr">b</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">add</span>(<span class="nm">5</span>, <span class="nm">3</span>));  <span class="cm">// → 8</span>
+
+<span class="cm">// Async/Await</span>
+<span class="kw">const</span> <span class="fn">fetchData</span> = <span class="kw">async</span> () => {
+  <span class="kw">const</span> <span class="vr">response</span> = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'https://api.example.com/data'</span>);
+  <span class="kw">const</span> <span class="vr">data</span> = <span class="kw">await</span> <span class="vr">response</span>.<span class="fn">json</span>();
+  <span class="kw">return</span> <span class="vr">data</span>;
+};</code></pre>
+        </div>
+        <div class="callout callout-info">
+          <span class="callout-icon">ℹ️</span>
+          <span class="callout-text"><strong>Next Steps:</strong> After mastering JavaScript basics, explore <strong>React.js</strong> to build modern UI components or <strong>Node.js</strong> for server-side development.</span>
+        </div>
+      </div>
+      <div class="chapter-nav">
+        <button class="chapter-nav-btn" onclick="showContent('css')"><span>←</span><div><div class="nav-direction">Previous</div><div class="nav-title">CSS3</div></div></button>
+        <button class="chapter-nav-btn" style="margin-left:auto" onclick="showContent('react')"><div style="text-align:right"><div class="nav-direction">Next</div><div class="nav-title">React.js</div></div><span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ══ PYTHON CONTENT ══ -->
+    <div class="tut-content" id="content-python">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Python</span><span>›</span><span style="color:var(--text)">Basics</span></div>
+      <div class="content-header">
+        <div class="content-header-meta"><span class="tag tag-free">FREE</span><span class="tag tag-new">NEW</span></div>
+        <h1>Python Tutorial</h1>
+        <div class="content-header-meta"><span class="meta-pill">📖 55 Chapters</span><span class="meta-pill">⏱ 10h 15m</span><span class="meta-pill">⭐ 4.8</span></div>
+        <p class="content-desc">Python is a beginner-friendly, versatile programming language used in web development, data science, AI and automation. Learn from scratch!</p>
+      </div>
+      <div class="content-divider"></div>
+      <div class="content-body">
+        <h2>Python Basics</h2>
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">Python</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code><span class="cm"># Variables & Data Types</span>
+<span class="vr">name</span> = <span class="str">"Alice"</span>
+<span class="vr">age</span> = <span class="nm">25</span>
+<span class="vr">height</span> = <span class="nm">5.6</span>
+<span class="vr">is_student</span> = <span class="kw">True</span>
+
+<span class="cm"># Print</span>
+<span class="fn">print</span>(<span class="str">f"Hello, {name}! You are {age} years old."</span>)
+
+<span class="cm"># Lists</span>
+<span class="vr">fruits</span> = [<span class="str">"apple"</span>, <span class="str">"banana"</span>, <span class="str">"cherry"</span>]
+<span class="kw">for</span> <span class="vr">fruit</span> <span class="kw">in</span> <span class="vr">fruits</span>:
+    <span class="fn">print</span>(<span class="vr">fruit</span>)
+
+<span class="cm"># Functions</span>
+<span class="kw">def</span> <span class="fn">greet</span>(<span class="vr">name</span>):
+    <span class="kw">return</span> <span class="str">f"Hello, {name}!"</span>
+
+<span class="fn">print</span>(<span class="fn">greet</span>(<span class="str">"World"</span>))</code></pre>
+        </div>
+      </div>
+      <div class="chapter-nav">
+        <div class="chapter-nav-btn disabled"><span>←</span><div><div class="nav-direction">Previous</div><div class="nav-title">Introduction</div></div></div>
+        <button class="chapter-nav-btn" style="margin-left:auto" onclick="showContent('oop')"><div style="text-align:right"><div class="nav-direction">Next</div><div class="nav-title">Python OOP</div></div><span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ══ DSA CONTENT ══ -->
+    <div class="tut-content" id="content-dsa">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>DSA</span><span>›</span><span style="color:var(--text)">Data Structures</span></div>
+      <div class="content-header">
+        <div class="content-header-meta"><span class="tag tag-free">FREE</span></div>
+        <h1>Data Structures & Algorithms</h1>
+        <div class="content-header-meta"><span class="meta-pill">📖 90 Chapters</span><span class="meta-pill">⏱ 22h</span><span class="meta-pill">⭐ 4.9</span></div>
+        <p class="content-desc">Master Data Structures and Algorithms — the foundation of coding interviews at top tech companies. Arrays, Linked Lists, Trees, Graphs and more.</p>
+      </div>
+      <div class="content-divider"></div>
+      <div class="content-body">
+        <h2>Arrays</h2>
+        <p>An array is a collection of elements stored at contiguous memory locations. It's the most fundamental data structure.</p>
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">JavaScript</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code><span class="cm">// Create an array</span>
+<span class="kw">const</span> <span class="vr">arr</span> = [<span class="nm">10</span>, <span class="nm">20</span>, <span class="nm">30</span>, <span class="nm">40</span>, <span class="nm">50</span>];
+
+<span class="cm">// Access elements - O(1)</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">arr</span>[<span class="nm">0</span>]);  <span class="cm">// → 10</span>
+
+<span class="cm">// Binary Search - O(log n)</span>
+<span class="kw">function</span> <span class="fn">binarySearch</span>(<span class="vr">arr</span>, <span class="vr">target</span>) {
+  <span class="kw">let</span> <span class="vr">left</span> = <span class="nm">0</span>, <span class="vr">right</span> = <span class="vr">arr</span>.length - <span class="nm">1</span>;
+  <span class="kw">while</span> (<span class="vr">left</span> <= <span class="vr">right</span>) {
+    <span class="kw">const</span> <span class="vr">mid</span> = <span class="fn">Math</span>.<span class="fn">floor</span>((<span class="vr">left</span> + <span class="vr">right</span>) / <span class="nm">2</span>);
+    <span class="kw">if</span> (<span class="vr">arr</span>[<span class="vr">mid</span>] === <span class="vr">target</span>) <span class="kw">return</span> <span class="vr">mid</span>;
+    <span class="vr">arr</span>[<span class="vr">mid</span>] < <span class="vr">target</span> ? <span class="vr">left</span> = <span class="vr">mid</span> + <span class="nm">1</span> : <span class="vr">right</span> = <span class="vr">mid</span> - <span class="nm">1</span>;
+  }
+  <span class="kw">return</span> -<span class="nm">1</span>;
+}</code></pre>
+        </div>
+        <div class="callout callout-warn">
+          <span class="callout-icon">⚠️</span>
+          <span class="callout-text"><strong>Time Complexity:</strong> Always analyze your algorithm's time and space complexity. Use Big-O notation: O(1) constant, O(log n) logarithmic, O(n) linear, O(n²) quadratic.</span>
+        </div>
+      </div>
+      <div class="chapter-nav">
+        <div class="chapter-nav-btn disabled"><span>←</span><div><div class="nav-direction">Previous</div><div class="nav-title">-</div></div></div>
+        <button class="chapter-nav-btn" style="margin-left:auto" onclick="showContent('algo')"><div style="text-align:right"><div class="nav-direction">Next</div><div class="nav-title">Algorithms</div></div><span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ══ SQL CONTENT ══ -->
+    <div class="tut-content" id="content-sql">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Databases</span><span>›</span><span style="color:var(--text)">SQL</span></div>
+      <div class="content-header">
+        <div class="content-header-meta"><span class="tag tag-free">FREE</span></div>
+        <h1>SQL Tutorial</h1>
+        <div class="content-header-meta"><span class="meta-pill">📖 40 Chapters</span><span class="meta-pill">⏱ 8h 30m</span><span class="meta-pill">⭐ 4.7</span></div>
+        <p class="content-desc">Learn SQL from scratch — SELECT, INSERT, UPDATE, DELETE, JOINs, subqueries, indexes and database design principles.</p>
+      </div>
+      <div class="content-divider"></div>
+      <div class="content-body">
+        <h2>Basic SQL Queries</h2>
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">SQL</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code><span class="cm">-- Select all records</span>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> students;
+
+<span class="cm">-- Select specific columns with condition</span>
+<span class="kw">SELECT</span> name, age, grade
+<span class="kw">FROM</span> students
+<span class="kw">WHERE</span> age > <span class="nm">18</span>
+<span class="kw">ORDER BY</span> grade <span class="kw">DESC</span>;
+
+<span class="cm">-- JOIN two tables</span>
+<span class="kw">SELECT</span> s.name, c.course_name
+<span class="kw">FROM</span> students s
+<span class="kw">INNER JOIN</span> enrollments e <span class="kw">ON</span> s.id = e.student_id
+<span class="kw">INNER JOIN</span> courses c <span class="kw">ON</span> e.course_id = c.id;</code></pre>
+        </div>
+      </div>
+      <div class="chapter-nav">
+        <div class="chapter-nav-btn disabled"><span>←</span><div><div class="nav-direction">Previous</div><div class="nav-title">-</div></div></div>
+        <button class="chapter-nav-btn" style="margin-left:auto" onclick="showContent('mongo')"><div style="text-align:right"><div class="nav-direction">Next</div><div class="nav-title">MongoDB</div></div><span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ══ GIT CONTENT ══ -->
+    <div class="tut-content" id="content-git">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>DevOps</span><span>›</span><span style="color:var(--text)">Git</span></div>
+      <div class="content-header">
+        <div class="content-header-meta"><span class="tag tag-free">FREE</span></div>
+        <h1>Git & GitHub Tutorial</h1>
+        <div class="content-header-meta"><span class="meta-pill">📖 25 Chapters</span><span class="meta-pill">⏱ 4h</span><span class="meta-pill">⭐ 4.8</span></div>
+        <p class="content-desc">Learn version control with Git and collaboration with GitHub. Branching, merging, pull requests, and professional workflow.</p>
+      </div>
+      <div class="content-divider"></div>
+      <div class="content-body">
+        <h2>Essential Git Commands</h2>
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">Bash</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code><span class="cm"># Initialize a repository</span>
+<span class="fn">git init</span>
+
+<span class="cm"># Stage and commit changes</span>
+<span class="fn">git add</span> .
+<span class="fn">git commit</span> -m <span class="str">"Initial commit"</span>
+
+<span class="cm"># Create and switch branch</span>
+<span class="fn">git checkout</span> -b feature/my-feature
+
+<span class="cm"># Push to GitHub</span>
+<span class="fn">git push</span> origin feature/my-feature
+
+<span class="cm"># Merge a branch</span>
+<span class="fn">git checkout</span> main
+<span class="fn">git merge</span> feature/my-feature</code></pre>
+        </div>
+      </div>
+      <div class="chapter-nav">
+        <div class="chapter-nav-btn disabled"><span>←</span><div><div class="nav-direction">Previous</div><div class="nav-title">-</div></div></div>
+        <button class="chapter-nav-btn" style="margin-left:auto" onclick="showContent('docker')"><div style="text-align:right"><div class="nav-direction">Next</div><div class="nav-title">Docker</div></div><span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ══ GENERIC CONTENT for other topics ══ -->
+    <div class="tut-content" id="content-react">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Web Dev</span><span>›</span><span style="color:var(--text)">React.js</span></div>
+      <div class="content-header">
+        <div class="content-header-meta"><span class="tag tag-pro">PRO</span><span class="tag tag-hot">🔥 Popular</span></div>
+        <h1>React.js Tutorial</h1>
+        <div class="content-header-meta"><span class="meta-pill">📖 52 Chapters</span><span class="meta-pill">⏱ 13h</span><span class="meta-pill">⭐ 4.9</span></div>
+        <p class="content-desc">Build modern, interactive UIs with React. Components, hooks, state management, context API, and building production apps.</p>
+      </div>
+      <div class="content-divider"></div>
+      <div class="content-body">
+        <h2>React Components</h2>
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">JSX</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><code><span class="kw">import</span> React, { useState } <span class="kw">from</span> <span class="str">'react'</span>;
+
+<span class="kw">function</span> <span class="fn">Counter</span>() {
+  <span class="kw">const</span> [<span class="vr">count</span>, <span class="vr">setCount</span>] = <span class="fn">useState</span>(<span class="nm">0</span>);
+
+  <span class="kw">return</span> (
+    <span class="tg">&lt;div</span> <span class="at">className</span>=<span class="val">"counter"</span><span class="tg">&gt;</span>
+      <span class="tg">&lt;h2&gt;</span>Count: {count}<span class="tg">&lt;/h2&gt;</span>
+      <span class="tg">&lt;button</span> <span class="at">onClick</span>={() => <span class="fn">setCount</span>(count + <span class="nm">1</span>)}<span class="tg">&gt;</span>
+        Increment
+      <span class="tg">&lt;/button&gt;</span>
+    <span class="tg">&lt;/div&gt;</span>
+  );
+}
+
+<span class="kw">export default</span> Counter;</code></pre>
+        </div>
+        <div class="callout callout-tip">
+          <span class="callout-icon">💡</span>
+          <span class="callout-text">This is a <strong>PRO</strong> tutorial. <a href="login.html#signup" style="color:var(--primary)">Sign up for free</a> or <a href="blogs.html" style="color:var(--accent)">buy the React course</a> to unlock all 52 chapters!</span>
+        </div>
+      </div>
+      <div class="chapter-nav">
+        <button class="chapter-nav-btn" onclick="showContent('js')"><span>←</span><div><div class="nav-direction">Previous</div><div class="nav-title">JavaScript</div></div></button>
+        <button class="chapter-nav-btn" style="margin-left:auto" onclick="showContent('ts')"><div style="text-align:right"><div class="nav-direction">Next</div><div class="nav-title">TypeScript</div></div><span>→</span></button>
+      </div>
+    </div>
+
+    <!-- Other pages (oop, django, algo, mongo, ts, docker) -->
+    <div class="tut-content" id="content-oop"><div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Python</span><span>›</span><span style="color:var(--text)">OOP</span></div><div class="content-header"><h1>Python OOP</h1><p class="content-desc">Object-Oriented Programming in Python — classes, inheritance, polymorphism, encapsulation, and design patterns.</p></div><div class="content-body"><h2>Classes & Objects</h2><div class="code-container"><div class="code-header"><span class="code-lang">Python</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div><pre><code><span class="kw">class</span> <span class="fn">Animal</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="vr">self</span>, <span class="vr">name</span>):
+        <span class="vr">self</span>.name = <span class="vr">name</span>
+
+    <span class="kw">def</span> <span class="fn">speak</span>(<span class="vr">self</span>):
+        <span class="kw">return</span> <span class="str">f"{self.name} makes a sound"</span>
+
+<span class="kw">class</span> <span class="fn">Dog</span>(<span class="fn">Animal</span>):
+    <span class="kw">def</span> <span class="fn">speak</span>(<span class="vr">self</span>):
+        <span class="kw">return</span> <span class="str">f"{self.name} says Woof!"</span>
+
+<span class="vr">dog</span> = <span class="fn">Dog</span>(<span class="str">"Rex"</span>)
+<span class="fn">print</span>(<span class="vr">dog</span>.<span class="fn">speak</span>())  <span class="cm"># Rex says Woof!</span></code></pre></div></div></div><div class="chapter-nav"><button class="chapter-nav-btn" onclick="showContent('python')"><span>←</span><div><div class="nav-direction">Previous</div><div class="nav-title">Python Basics</div></div></button><button class="chapter-nav-btn" style="margin-left:auto" onclick="showContent('django')"><div style="text-align:right"><div class="nav-direction">Next</div><div class="nav-title">Django</div></div><span>→</span></button></div></div>
+
+    <div class="tut-content" id="content-django"><div class="content-header"><div class="content-header-meta"><span class="tag tag-pro">PRO</span></div><h1>Django Framework</h1><p class="content-desc">Build full-stack web apps with Python's most popular framework — models, views, templates, ORM, REST APIs.</p></div><div class="callout callout-tip"><span class="callout-icon">🔒</span><span class="callout-text">Premium content. <a href="blogs.html" style="color:var(--primary)">Enroll or buy this course</a> to access all chapters.</span></div></div>
+    <div class="tut-content" id="content-ts"><div class="content-header"><div class="content-header-meta"><span class="tag tag-pro">PRO</span></div><h1>TypeScript Tutorial</h1><p class="content-desc">Add strong typing to JavaScript — interfaces, generics, decorators, and building type-safe applications.</p></div><div class="callout callout-tip"><span class="callout-icon">🔒</span><span class="callout-text">Premium content. <a href="blogs.html" style="color:var(--primary)">Enroll or buy this course</a> to access all chapters.</span></div></div>
+    <div class="tut-content" id="content-algo"><div class="content-header"><div class="content-header-meta"><span class="tag tag-pro">PRO</span></div><h1>Algorithms</h1><p class="content-desc">Sorting, searching, dynamic programming, greedy algorithms and graph traversal — everything for coding interviews.</p></div><div class="callout callout-tip"><span class="callout-icon">🔒</span><span class="callout-text">Premium content. <a href="blogs.html" style="color:var(--primary)">Enroll or buy this course</a> to access all chapters.</span></div></div>
+    <div class="tut-content" id="content-mongo"><div class="content-header"><div class="content-header-meta"><span class="tag tag-pro">PRO</span></div><h1>MongoDB Tutorial</h1><p class="content-desc">NoSQL document database — CRUD operations, aggregation pipeline, indexing, and integration with Node.js.</p></div><div class="callout callout-tip"><span class="callout-icon">🔒</span><span class="callout-text">Premium content. <a href="blogs.html" style="color:var(--primary)">Enroll or buy this course</a> to access all chapters.</span></div></div>
+    <div class="tut-content" id="content-docker"><div class="content-header"><div class="content-header-meta"><span class="tag tag-pro">PRO</span></div><h1>Docker Tutorial</h1><p class="content-desc">Containerize your applications — Dockerfile, Docker Compose, volumes, networking, and deploying to the cloud.</p></div><div class="callout callout-tip"><span class="callout-icon">🔒</span><span class="callout-text">Premium content. <a href="blogs.html" style="color:var(--primary)">Enroll or buy this course</a> to access all chapters.</span></div></div>
+  </main>
+</div>
+<div id="toast"></div>
+<script>
+  const progressMap = { html:20,css:35,js:50,react:65,ts:70,python:25,oop:40,django:55,dsa:30,algo:60,sql:45,mongo:75,git:80,docker:90 };
+
+  function showContent(id) {
+    document.querySelectorAll('.tut-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.sidebar-link').forEach(el => el.classList.remove('active'));
+
+    const content = document.getElementById('content-' + id);
+    if (content) { content.classList.add('active'); content.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+
+    document.querySelectorAll('.sidebar-link').forEach(btn => {
+      if (btn.getAttribute('onclick')?.includes(`'${id}'`)) btn.classList.add('active');
+    });
+
+    document.getElementById('progressBar').style.width = (progressMap[id] || 20) + '%';
+  }
+
+  function copyCode(btn) {
+    const code = btn.closest('.code-container').querySelector('code').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '📋 Copy', 2000);
+    });
+  }
+
+  function sidebarSearch(q) {
+    const query = q.toLowerCase();
+    document.querySelectorAll('.sidebar-link').forEach(btn => {
+      btn.style.display = btn.textContent.toLowerCase().includes(query) ? '' : 'none';
+    });
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Handle URL query
+  const urlParams = new URLSearchParams(window.location.search);
+  const q = urlParams.get('q');
+  if (q) { document.getElementById('sidebarInput').value = q; sidebarSearch(q); }
+</script>
+</body>
+</html>

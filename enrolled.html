@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrolled! | TutorialsHub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      min-height: 100vh;
+    }
+
+    .enrolled-page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* ── SUCCESS BANNER ── */
+    .success-banner {
+      background: linear-gradient(135deg, #0a2e22, #0d1f1a);
+      border: 1px solid rgba(4, 170, 109, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 56px 48px;
+      text-align: center;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .success-banner::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(4, 170, 109, 0.18), transparent 70%);
+    }
+
+    .confetti {
+      font-size: 4.5rem;
+      margin-bottom: 20px;
+      animation: pulse 1.2s ease infinite alternate;
+    }
+
+    .success-banner h1 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .success-banner h1 span {
+      color: #04AA6D;
+    }
+
+    .success-banner p {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      max-width: 500px;
+      margin: 0 auto 24px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    .enrolled-course-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(4, 170, 109, 0.12);
+      border: 1.5px solid rgba(4, 170, 109, 0.3);
+      border-radius: 12px;
+      padding: 12px 22px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .enrollment-id {
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .success-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── BENEFITS GRID ── */
+    .benefits-section {
+      margin-bottom: 48px;
+    }
+
+    .benefits-section h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .benefit-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform var(--transition);
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .benefit-icon {
+      font-size: 1.8rem;
+    }
+
+    .benefit-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .benefit-desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── COURSE OVERVIEW ── */
+    .course-overview {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+
+    .course-overview h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .overview-header {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .overview-icon {
+      font-size: 2.8rem;
+      width: 72px;
+      height: 72px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), #00bcd4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .overview-info h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .overview-info p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 12px;
+    }
+
+    .overview-meta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .overview-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .curriculum-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .curriculum-week {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .curriculum-week-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: var(--surface2);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .curriculum-week-header:hover {
+      background: var(--surface);
+    }
+
+    .curriculum-items {
+      padding: 0 18px 14px;
+      display: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .curriculum-items.open {
+      display: block;
+    }
+
+    .curriculum-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .curriculum-item:last-child {
+      border-bottom: none;
+    }
+
+    .curriculum-item .item-icon {
+      font-size: 0.9rem;
+    }
+
+    .curriculum-item .item-duration {
+      margin-left: auto;
+      font-size: 0.75rem;
+    }
+
+    /* ── ALL ENROLLMENTS ── */
+    .all-enrollments {
+      margin-bottom: 48px;
+    }
+
+    .all-enrollments h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .enrollment-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .enrollment-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      transition: all var(--transition);
+    }
+
+    .enrollment-card:hover {
+      border-color: var(--primary);
+    }
+
+    .enrollment-card-icon {
+      font-size: 1.8rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .enrollment-card-title {
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+
+    .enrollment-card-date {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .enrollment-card-badge {
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    /* ── PROGRESS ── */
+    .progress-section {
+      margin-bottom: 48px;
+    }
+
+    .progress-section h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .progress-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .progress-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .progress-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .progress-item-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+    }
+
+    .progress-item-header span:last-child {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .progress-bar-bg {
+      background: var(--surface2);
+      border-radius: 30px;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fg {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), #00e5cc);
+      border-radius: 30px;
+      transition: width 0.8s ease;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, #0a2e22, #0d1117);
+      border: 1px solid rgba(4, 170, 109, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .cta-section p {
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .success-banner {
+        padding: 36px 20px;
+      }
+
+      .success-banner h1 {
+        font-size: 1.8rem;
+      }
+
+      .enrolled-page {
+        padding: 32px 16px 60px;
+      }
+
+      .overview-header {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="blogs.html">Blogs</a>
+    </div>
+    <div class="nav-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Search...">
+    </div>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-outline">Login</a>
+      <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- ══ MAIN PAGE ══ -->
+  <div class="enrolled-page">
+
+    <!-- ── SUCCESS BANNER ── -->
+    <div class="success-banner">
+      <div class="confetti" id="confettiIcon">🎉</div>
+      <h1>You're <span>Enrolled!</span></h1>
+      <p>Congratulations! Your free enrollment is confirmed. You now have access to all lessons, video content, and
+        community support for this course.</p>
+      <div class="enrolled-course-badge" id="courseBadge">
+        <span id="courseIconEl">🎓</span>
+        <span id="courseTitleEl">Loading...</span>
+      </div>
+      <div class="enrollment-id" id="enrollmentId">Enrollment ID: TH-FREE-...</div>
+      <div class="success-actions">
+        <a href="tutorials.html" class="btn btn-primary btn-xl">📚 Start Learning Now →</a>
+        <a href="blogs.html" class="btn btn-outline btn-xl">Explore More Courses</a>
+      </div>
+    </div>
+
+    <!-- ── BENEFITS ── -->
+    <div class="benefits-section">
+      <h2>✨ What You Get with Free Enrollment</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">📖</div>
+          <div class="benefit-title">Full Course Access</div>
+          <div class="benefit-desc">Access to all video lessons, reading materials, and code examples in this course,
+            forever.</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💻</div>
+          <div class="benefit-title">Interactive Code Editor</div>
+          <div class="benefit-desc">Practice with our built-in code editor. Run code in your browser instantly — no
+            setup needed.</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🌍</div>
+          <div class="benefit-title">Community Forum</div>
+          <div class="benefit-desc">Join our active Discord community of 10M+ learners. Ask questions and get help 24/7.
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📱</div>
+          <div class="benefit-title">Mobile Access</div>
+          <div class="benefit-desc">Learn anywhere, anytime. Access all courses on your phone, tablet, or laptop.</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🔄</div>
+          <div class="benefit-title">Regular Updates</div>
+          <div class="benefit-desc">Course content is updated regularly to stay current with the latest industry
+            standards.</div>
+        </div>
+        <div class="benefit-card" style="border:1px solid rgba(245,158,11,0.3);background:rgba(245,158,11,0.04)">
+          <div class="benefit-icon">🏆</div>
+          <div class="benefit-title">Upgrade for Certificate</div>
+          <div class="benefit-desc">Buy the premium course to unlock a <strong style="color:var(--gold)">verifiable
+              certificate</strong> and premium projects.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COURSE OVERVIEW ── -->
+    <div class="course-overview">
+      <h2>📋 Course Overview</h2>
+      <div class="overview-header">
+        <div class="overview-icon" id="overviewIcon">🎓</div>
+        <div class="overview-info">
+          <h3 id="overviewTitle">Loading...</h3>
+          <p id="overviewDesc">A comprehensive, beginner-friendly course designed to take you from zero to proficient.
+            Real-world projects and hands-on exercises included.</p>
+          <div class="overview-meta">
+            <span>📖 <span id="ovLessons">—</span> lessons</span>
+            <span>⏱ <span id="ovDuration">—</span></span>
+            <span>⭐ 4.9 rated</span>
+            <span>🎯 Beginner friendly</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="curriculum-preview">
+        <div class="curriculum-week">
+          <div class="curriculum-week-header" onclick="toggleWeek(this)">
+            <span>📘 Week 1: Foundations & Setup</span>
+            <span>▼ 8 lessons</span>
+          </div>
+          <div class="curriculum-items open">
+            <div class="curriculum-item"><span class="item-icon">▶️</span>Introduction & Course Overview<span
+                class="item-duration">05:30</span></div>
+            <div class="curriculum-item"><span class="item-icon">▶️</span>Setting Up Your Environment<span
+                class="item-duration">08:15</span></div>
+            <div class="curriculum-item"><span class="item-icon">📄</span>Core Concepts Explained<span
+                class="item-duration">12:00</span></div>
+            <div class="curriculum-item"><span class="item-icon">▶️</span>Your First Project<span
+                class="item-duration">15:45</span></div>
+            <div class="curriculum-item"><span class="item-icon">❓</span>Week 1 Quiz<span class="item-duration">10
+                questions</span></div>
+          </div>
+        </div>
+        <div class="curriculum-week">
+          <div class="curriculum-week-header" onclick="toggleWeek(this)">
+            <span>📗 Week 2: Core Development</span>
+            <span>▼ 10 lessons</span>
+          </div>
+          <div class="curriculum-items">
+            <div class="curriculum-item"><span class="item-icon">▶️</span>Deep Dive into Core Concepts<span
+                class="item-duration">20:00</span></div>
+            <div class="curriculum-item"><span class="item-icon">▶️</span>Advanced Patterns & Best Practices<span
+                class="item-duration">18:30</span></div>
+            <div class="curriculum-item"><span class="item-icon">💻</span>Hands-On Practice Project<span
+                class="item-duration">30:00</span></div>
+            <div class="curriculum-item"><span class="item-icon">▶️</span>Debugging & Troubleshooting<span
+                class="item-duration">14:00</span></div>
+          </div>
+        </div>
+        <div class="curriculum-week">
+          <div class="curriculum-week-header" onclick="toggleWeek(this)">
+            <span>📕 Week 3: Real-World Projects</span>
+            <span>▼ 12 lessons</span>
+          </div>
+          <div class="curriculum-items">
+            <div class="curriculum-item"><span class="item-icon">🚀</span>Project 1: Portfolio Website<span
+                class="item-duration">45:00</span></div>
+            <div class="curriculum-item"><span class="item-icon">🚀</span>Project 2: Interactive UI<span
+                class="item-duration">50:00</span></div>
+            <div class="curriculum-item"><span class="item-icon">🚀</span>Final Capstone Project<span
+                class="item-duration">60:00</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ALL MY ENROLLMENTS ── -->
+    <div class="all-enrollments">
+      <h2>📚 All My Enrollments</h2>
+      <div class="enrollment-cards" id="enrollmentCards">
+        <p style="color:var(--text-muted);font-size:0.88rem">No other enrollments yet. <a href="blogs.html"
+            style="color:var(--primary)">Browse more courses →</a></p>
+      </div>
+    </div>
+
+    <!-- ── LEARNING PROGRESS ── -->
+    <div class="progress-section">
+      <h2>📊 Your Learning Dashboard</h2>
+      <div class="progress-card">
+        <div class="progress-item">
+          <div class="progress-item-header"><span>🌐 HTML5 Complete Guide</span><span id="prog1">0%</span></div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fg" id="bar1" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-item-header"><span>🎨 CSS3 & Flexbox Mastery</span><span id="prog2">0%</span></div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fg" id="bar2" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-item-header"><span>⚡ JavaScript Zero to Hero</span><span id="prog3">0%</span></div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fg" id="bar3" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CTA ── -->
+    <div class="cta-section">
+      <h2>Ready to Go Premium? 🚀</h2>
+      <p>Upgrade to get a verifiable certificate, premium projects, mentor Q&A sessions, and lifetime access recorded
+        sessions.</p>
+      <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap">
+        <a href="blogs.html" class="btn btn-primary btn-xl">👑 View Premium Courses</a>
+        <a href="tutorials.html" class="btn btn-outline btn-xl">📖 Continue Learning Free</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+        <p>Simple and easy-to-follow tutorials and courses for everyone. Learn programming for free.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">𝕏</a>
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">▶</a>
+          <a href="#" class="social-btn">📘</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="tutorials.html">HTML5</a></li>
+          <li><a href="tutorials.html">CSS3</a></li>
+          <li><a href="tutorials.html">JavaScript</a></li>
+          <li><a href="tutorials.html">Python</a></li>
+          <li><a href="tutorials.html">SQL</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Courses</h4>
+        <ul>
+          <li><a href="blogs.html">Frontend Courses</a></li>
+          <li><a href="blogs.html">Free Courses</a></li>
+          <li><a href="blogs.html">Premium Courses</a></li>
+          <li><a href="blogs.html">All Courses</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 TutorialsHub. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Sitemap</a></div>
+    </div>
+  </footer>
+
+  <div id="toast"></div>
+
+  <script>
+    // ─── COURSE DATA (matching blogs.html) ──────────────────────
+    const allCourses = [
+      { id: 1, title: "HTML5 Complete Guide", icon: "🌐", lessons: 42, dur: "6h 20m" },
+      { id: 2, title: "CSS3 & Flexbox Mastery", icon: "🎨", lessons: 35, dur: "5h 45m" },
+      { id: 3, title: "JavaScript Zero to Hero", icon: "⚡", lessons: 65, dur: "14h 40m" },
+      { id: 4, title: "React.js Fundamentals", icon: "⚛️", lessons: 52, dur: "13h" },
+      { id: 5, title: "Vue.js 3 Complete Guide", icon: "💚", lessons: 44, dur: "11h 20m" },
+      { id: 6, title: "Angular 17 Masterclass", icon: "🔺", lessons: 58, dur: "16h" },
+      { id: 7, title: "TypeScript Deep Dive", icon: "📘", lessons: 38, dur: "9h" },
+      { id: 8, title: "Next.js 14 Full Course", icon: "▲", lessons: 60, dur: "17h" },
+      { id: 9, title: "Tailwind CSS Mastery", icon: "🌊", lessons: 28, dur: "4h 30m" },
+      { id: 10, title: "SASS & SCSS Complete", icon: "💅", lessons: 20, dur: "3h" },
+      { id: 11, title: "Responsive Web Design", icon: "📱", lessons: 22, dur: "3h 45m" },
+      { id: 12, title: "Web Accessibility (A11y)", icon: "♿", lessons: 25, dur: "5h" },
+      { id: 13, title: "Web Performance Optimization", icon: "⚡", lessons: 30, dur: "6h" },
+      { id: 14, title: "Progressive Web Apps (PWA)", icon: "📲", lessons: 32, dur: "7h" },
+      { id: 15, title: "Git & GitHub for Developers", icon: "🔀", lessons: 18, dur: "3h 30m" },
+      { id: 16, title: "Webpack & Build Tools", icon: "📦", lessons: 24, dur: "5h" },
+      { id: 17, title: "GraphQL for Frontend Devs", icon: "🔷", lessons: 28, dur: "6h 30m" },
+      { id: 18, title: "Testing with Jest & RTL", icon: "🧪", lessons: 34, dur: "8h" },
+      { id: 19, title: "Svelte & SvelteKit", icon: "🟠", lessons: 36, dur: "9h" },
+      { id: 20, title: "Three.js & WebGL Basics", icon: "🌌", lessons: 40, dur: "10h" },
+    ];
+
+    // ─── PARSE URL ───────────────────────────────────────────────
+    const params = new URLSearchParams(window.location.search);
+    const enrolledId = parseInt(params.get('id')) || 1;
+    const enrolledTitle = decodeURIComponent(params.get('title') || 'Course');
+    const isFree = params.get('free') === 'true';
+
+    // ─── FIND COURSE ─────────────────────────────────────────────
+    const thisCourse = allCourses.find(c => c.id === enrolledId) || allCourses[0];
+
+    // ─── POPULATE PAGE ───────────────────────────────────────────
+    document.getElementById('courseIconEl').textContent = thisCourse.icon;
+    document.getElementById('courseTitleEl').textContent = enrolledTitle;
+    document.getElementById('overviewIcon').textContent = thisCourse.icon;
+    document.getElementById('overviewTitle').textContent = enrolledTitle;
+    document.getElementById('ovLessons').textContent = thisCourse.lessons;
+    document.getElementById('ovDuration').textContent = thisCourse.dur;
+
+    const enrollId = 'TH-FREE-' + Date.now().toString(36).toUpperCase().slice(-8);
+    document.getElementById('enrollmentId').textContent = 'Enrollment ID: ' + enrollId;
+
+    // ─── LOAD ALL ENROLLMENTS ────────────────────────────────────
+    const enrolled = JSON.parse(localStorage.getItem('th_enrolled') || '[]');
+    if (!enrolled.includes(enrolledId)) { enrolled.push(enrolledId); localStorage.setItem('th_enrolled', JSON.stringify(enrolled)); }
+
+    const container = document.getElementById('enrollmentCards');
+    if (enrolled.length > 0) {
+      container.innerHTML = '';
+      enrolled.forEach(id => {
+        const c = allCourses.find(x => x.id === id);
+        if (!c) return;
+        const card = document.createElement('div');
+        card.className = 'enrollment-card';
+        const date = new Date(); date.setDate(date.getDate() - Math.floor(Math.random() * 10));
+        card.innerHTML = `
+      <div class="enrollment-card-icon">${c.icon}</div>
+      <div>
+        <div class="enrollment-card-title">${c.title}</div>
+        <div class="enrollment-card-date">Enrolled: ${date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</div>
+      </div>
+      <div class="enrollment-card-badge"><span class="tag tag-free">✅ ENROLLED</span></div>`;
+        container.appendChild(card);
+      });
+    }
+
+    // ─── ANIMATE PROGRESS BARS ────────────────────────────────────
+    setTimeout(() => {
+      const bars = [{ bar: 'bar1', prog: 'prog1', val: enrolled.includes(1) ? Math.floor(Math.random() * 30) + 10 : 5 }, { bar: 'bar2', prog: 'prog2', val: enrolled.includes(2) ? Math.floor(Math.random() * 20) + 5 : 0 }, { bar: 'bar3', prog: 'prog3', val: enrolled.includes(3) ? Math.floor(Math.random() * 15) + 3 : 0 }];
+      bars.forEach(b => { document.getElementById(b.bar).style.width = b.val + '%'; document.getElementById(b.prog).textContent = b.val + '%'; });
+    }, 600);
+
+    // ─── TOGGLE CURRICULUM ────────────────────────────────────────
+    function toggleWeek(header) {
+      const items = header.nextElementSibling;
+      const isOpen = items.classList.contains('open');
+      items.classList.toggle('open', !isOpen);
+      const arrow = header.querySelector('span:last-child');
+      arrow.textContent = isOpen ? arrow.textContent.replace('▲', '▼') : arrow.textContent.replace('▼', '▲');
+    }
+
+    // ─── TOAST ────────────────────────────────────────────────────
+    function showToast(msg) {
+      const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ─── SHOW SUCCESS TOAST ───────────────────────────────────────
+    setTimeout(() => showToast('🎉 Successfully enrolled in "' + enrolledTitle + '"!'), 500);
+  </script>
+</body>
+
+</html>

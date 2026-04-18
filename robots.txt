@@ -1,0 +1,39 @@
+# ============================================================
+# robots.txt — TutorialsHub
+# Tells search engine crawlers which pages to index
+# ============================================================
+
+# Allow all well-behaved crawlers to crawl the site
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /tutorials.html
+Allow: /blogs.html
+Allow: /login.html
+
+# Block private/transactional pages from being indexed
+Disallow: /payment.html
+Disallow: /enrolled.html
+
+# Block common non-content paths
+Disallow: /cgi-bin/
+Disallow: /*.json$
+
+# Crawl-delay (optional) — 1 second between requests
+Crawl-delay: 1
+
+# ── Google-specific settings ──
+User-agent: Googlebot
+Allow: /
+Disallow: /payment.html
+Disallow: /enrolled.html
+
+# ── Bing-specific settings ──
+User-agent: Bingbot
+Allow: /
+Disallow: /payment.html
+Disallow: /enrolled.html
+
+# ── Sitemap location ──
+# Update this URL once you deploy to a real domain
+Sitemap: https://tutorialshub.com/sitemap.xml

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your course purchase securely on TutorialsHub.">
+  <title>Checkout | TutorialsHub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── HEADER ── */
+    .checkout-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 62px;
+      background: rgba(13,17,23,0.97); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100;
+    }
+    .secure-badge { display:flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--primary);border:1px solid rgba(4,170,109,0.4);padding:6px 14px;border-radius:20px; }
+
+    /* ── PAGE LAYOUT ── */
+    .checkout-page { display: grid; grid-template-columns: 1fr 400px; gap: 28px; max-width: 1080px; margin: 40px auto; padding: 0 24px; }
+
+    /* ── STEPS ── */
+    .steps-bar { display: flex; align-items: center; margin-bottom: 28px; }
+    .step { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
+    .step-num { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+    .step.done .step-num  { background: var(--primary); border-color: var(--primary); color: white; }
+    .step.active .step-num { border-color: var(--primary); color: var(--primary); }
+    .step.active { color: var(--text); }
+    .step-line { flex: 1; height: 2px; background: var(--border); margin: 0 10px; }
+    .step-line.done { background: var(--primary); }
+
+    /* ── PAYMENT PANEL ── */
+    .payment-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
+    .panel-title { font-size: 1.5rem; font-weight: 900; margin-bottom: 6px; }
+    .panel-sub { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 28px; }
+
+    /* ── METHOD TABS ── */
+    .method-tabs { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 28px; }
+    .method-tab {
+      padding: 14px 8px; background: var(--surface2); border: 2px solid var(--border);
+      border-radius: var(--radius-sm); cursor: pointer; text-align: center;
+      font-size: 0.78rem; font-weight: 600; color: var(--text-muted); transition: all var(--transition);
+    }
+    .method-tab .tab-icon { font-size: 1.4rem; display: block; margin-bottom: 5px; }
+    .method-tab:hover { border-color: var(--primary); color: var(--text); }
+    .method-tab.active { border-color: var(--primary); background: rgba(4,170,109,0.08); color: var(--primary); }
+
+    /* ── PAYMENT FORMS ── */
+    .payment-form { display: none; animation: fadeUp 0.3s ease; }
+    .payment-form.active { display: block; }
+
+    /* Card Visual */
+    .card-visual {
+      background: linear-gradient(135deg, #1b2838, #0f3460); border-radius: 14px;
+      padding: 22px 24px; margin-bottom: 22px; position: relative; overflow: hidden;
+      height: 140px; border: 1px solid rgba(255,255,255,0.1);
+    }
+    .card-visual::before { content:''; position:absolute; top:-50px; right:-50px; width:160px; height:160px; background: rgba(4,170,109,0.15); border-radius:50%; }
+    .card-visual::after  { content:''; position:absolute; bottom:-40px; left:-40px; width:120px; height:120px; background: rgba(33,150,243,0.1); border-radius:50%; }
+    .card-chip { font-size:1.8rem; margin-bottom:12px; position:relative;z-index:1; }
+    .card-display-num { font-family:'Fira Code',monospace; font-size:1.15rem; letter-spacing:4px; color:rgba(255,255,255,0.75); margin-bottom:8px; position:relative;z-index:1; }
+    .card-display-meta { display:flex;justify-content:space-between;position:relative;z-index:1; }
+    .card-display-name,.card-display-expiry { font-size:0.78rem; color:rgba(255,255,255,0.5); text-transform:uppercase; }
+
+    /* Form fields */
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display:block;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-muted);margin-bottom:8px; }
+    .form-input {
+      width:100%;padding:12px 14px;background:var(--surface2);border:1.5px solid var(--border);
+      border-radius:var(--radius-sm);color:var(--text);font-size:0.9rem;
+      font-family:'Inter',sans-serif;outline:none;transition:border-color var(--transition),box-shadow var(--transition);
+    }
+    .form-input:focus { border-color:var(--primary);box-shadow:0 0 0 3px rgba(4,170,109,0.1); }
+    .form-row { display:grid;grid-template-columns:1fr 1fr;gap:14px; }
+
+    /* UPI */
+    .upi-apps-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px; }
+    .upi-app-btn {
+      background:var(--surface2);border:2px solid var(--border);border-radius:10px;
+      padding:14px 6px;text-align:center;cursor:pointer;transition:all var(--transition);
+    }
+    .upi-app-btn:hover,.upi-app-btn.sel { border-color:var(--primary);background:rgba(4,170,109,0.08); }
+    .upi-app-btn span:first-child { font-size:1.8rem;display:block;margin-bottom:5px; }
+    .upi-app-btn span:last-child { font-size:0.7rem;font-weight:600;color:var(--text-muted); }
+
+    /* Net Banking */
+    .banks-grid { display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px; }
+    .bank-btn {
+      display:flex;align-items:center;gap:10px;background:var(--surface2);
+      border:2px solid var(--border);border-radius:10px;padding:13px;
+      cursor:pointer;transition:all var(--transition);font-size:0.85rem;font-weight:600;
+    }
+    .bank-btn:hover,.bank-btn.sel { border-color:var(--primary);background:rgba(4,170,109,0.08); }
+    .bank-btn span:first-child { font-size:1.4rem; }
+
+    /* EMI */
+    .emi-list { display:flex;flex-direction:column;gap:10px;margin-bottom:18px; }
+    .emi-row {
+      display:flex;align-items:center;justify-content:space-between;
+      background:var(--surface2);border:2px solid var(--border);border-radius:10px;
+      padding:14px 16px;cursor:pointer;transition:all var(--transition);
+    }
+    .emi-row:hover,.emi-row.sel { border-color:var(--primary);background:rgba(4,170,109,0.08); }
+    .emi-bank { font-size:0.88rem;font-weight:700; }
+    .emi-detail { font-size:0.75rem;color:var(--text-muted);margin-top:3px; }
+    .emi-per-month { font-size:0.95rem;font-weight:800;color:var(--primary);text-align:right; }
+    .emi-months { font-size:0.72rem;color:var(--text-muted);text-align:right; }
+
+    /* Pay Button */
+    .btn-pay {
+      width:100%;padding:16px;background:linear-gradient(135deg,var(--primary),#00bcd4);
+      color:white;border:none;border-radius:var(--radius-sm);font-size:1rem;font-weight:700;
+      cursor:pointer;transition:all var(--transition);position:relative;overflow:hidden;margin-top:20px;
+    }
+    .btn-pay::before { content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s; }
+    .btn-pay:hover::before { left:100%; }
+    .btn-pay:hover { transform:translateY(-2px);box-shadow:0 8px 28px rgba(4,170,109,0.4); }
+
+    .pay-note { text-align:center;font-size:0.78rem;color:var(--text-subtle);margin-top:12px; display:flex;align-items:center;justify-content:center;gap:5px; }
+
+    /* ── ORDER SUMMARY ── */
+    .order-summary {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 28px; position: sticky; top: 90px; height: fit-content;
+    }
+    .summary-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .course-preview { display:flex;gap:14px;margin-bottom:22px;align-items:flex-start; }
+    .course-preview-icon { font-size:2.5rem;width:60px;height:60px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+    .course-preview-info h3 { font-size:0.95rem;font-weight:700;margin-bottom:4px; }
+    .course-preview-info p  { font-size:0.78rem;color:var(--text-muted);line-height:1.5; }
+
+    .price-breakdown { background:var(--surface2);border-radius:10px;padding:16px;margin-bottom:20px; }
+    .price-row { display:flex;justify-content:space-between;font-size:0.88rem;color:var(--text-muted);margin-bottom:10px; }
+    .price-row:last-child { margin-bottom:0; }
+    .price-row.total { font-size:1.05rem;font-weight:800;color:var(--text);border-top:1px solid var(--border);padding-top:12px;margin-top:8px; }
+    .price-discount-line { color:var(--primary); }
+
+    .trust-list { display:flex;flex-direction:column;gap:10px; }
+    .trust-item { display:flex;align-items:center;gap:10px;font-size:0.82rem;color:var(--text-muted); }
+    .trust-item span:first-child { font-size:1.1rem; }
+
+    /* ── COUPON ── */
+    .coupon-row { display:flex;gap:10px;margin-bottom:20px; }
+    .coupon-input { flex:1;padding:10px 14px;background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.88rem;outline:none;font-family:'Inter',sans-serif;transition:border-color var(--transition); }
+    .coupon-input:focus { border-color:var(--primary); }
+    .coupon-btn { padding:10px 16px;background:var(--primary);color:white;border:none;border-radius:8px;font-size:0.82rem;font-weight:700;cursor:pointer;transition:background var(--transition);white-space:nowrap; }
+    .coupon-btn:hover { background:var(--primary-dark); }
+    .coupon-success { font-size:0.78rem;color:var(--primary);margin-bottom:12px;display:none; }
+
+    /* ── SUCCESS OVERLAY ── */
+    .success-overlay {
+      display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);
+      backdrop-filter:blur(10px);z-index:9999;justify-content:center;align-items:center;
+    }
+    .success-overlay.show { display:flex; }
+    .success-card {
+      background:var(--surface);border:1px solid rgba(4,170,109,0.4);
+      border-radius:var(--radius-lg);padding:56px 48px;text-align:center;
+      max-width:440px;width:90%;animation:slideUp 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .success-icon-big { font-size:5rem;margin-bottom:20px;animation:pulse 1s ease infinite alternate; }
+    .success-card h2 { font-size:1.8rem;font-weight:900;color:var(--primary);margin-bottom:10px; }
+    .success-card p { color:var(--text-muted);font-size:0.9rem;margin-bottom:18px;line-height:1.6; }
+    .success-course-tag { background:var(--surface2);border-radius:10px;padding:14px 18px;margin-bottom:22px;font-weight:700;font-size:0.95rem; }
+    .success-order-id { font-size:0.78rem;color:var(--text-subtle);margin-bottom:24px; }
+
+    /* Processing animation */
+    .processing-anim { display:none;flex-direction:column;align-items:center;gap:14px; }
+    .processing-anim.show { display:flex; }
+    .spinner { width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin 0.8s linear infinite; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) { .checkout-page { grid-template-columns: 1fr; } .order-summary { position: static; } }
+    @media (max-width: 520px) { .method-tabs { grid-template-columns: repeat(2,1fr); } .checkout-header { padding: 0 16px; } .checkout-page { padding: 0 12px; margin: 20px auto; } }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header class="checkout-header">
+  <a href="blogs.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="secure-badge">🔒 Secure Checkout</div>
+</header>
+
+<!-- ══ CHECKOUT PAGE ══ -->
+<div class="checkout-page">
+
+  <!-- ══ LEFT – PAYMENT PANEL ══ -->
+  <div class="payment-panel">
+
+    <!-- Steps -->
+    <div class="steps-bar">
+      <div class="step done"><div class="step-num">✓</div><span>Cart</span></div>
+      <div class="step-line done"></div>
+      <div class="step active"><div class="step-num">2</div><span>Payment</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num">3</div><span>Confirm</span></div>
+    </div>
+
+    <h1 class="panel-title">Complete Payment</h1>
+    <p class="panel-sub">Your information is protected by 256-bit SSL encryption.</p>
+
+    <!-- Method Tabs -->
+    <div class="method-tabs">
+      <div class="method-tab active" onclick="switchMethod('card',this)">
+        <span class="tab-icon">💳</span>Card
+      </div>
+      <div class="method-tab" onclick="switchMethod('upi',this)">
+        <span class="tab-icon">📲</span>UPI
+      </div>
+      <div class="method-tab" onclick="switchMethod('netbanking',this)">
+        <span class="tab-icon">🏦</span>Net Banking
+      </div>
+      <div class="method-tab" onclick="switchMethod('emi',this)">
+        <span class="tab-icon">📅</span>No-Cost EMI
+      </div>
+    </div>
+
+    <!-- ══ CARD FORM ══ -->
+    <div class="payment-form active" id="form-card">
+      <div class="card-visual">
+        <div class="card-chip">💳</div>
+        <div class="card-display-num" id="cardDisplayNum">•••• •••• •••• ••••</div>
+        <div class="card-display-meta">
+          <div class="card-display-name" id="cardDisplayName">YOUR NAME</div>
+          <div class="card-display-expiry" id="cardDisplayExpiry">MM/YY</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Cardholder Name</label>
+        <input type="text" class="form-input" id="cardName" placeholder="John Doe" oninput="document.getElementById('cardDisplayName').textContent = this.value.toUpperCase() || 'YOUR NAME'">
+      </div>
+      <div class="form-group">
+        <label>Card Number</label>
+        <input type="text" class="form-input" id="cardNum" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCardNum(this)">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Expiry Date</label>
+          <input type="text" class="form-input" id="cardExpiry" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)">
+        </div>
+        <div class="form-group">
+          <label>CVV</label>
+          <input type="password" class="form-input" id="cardCvv" placeholder="•••" maxlength="3">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Billing Name (as on card)</label>
+        <input type="text" class="form-input" placeholder="Your full legal name">
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:0.83rem;color:var(--text-muted)">
+        <input type="checkbox" id="saveCard" style="accent-color:var(--primary)">
+        <label for="saveCard">Save this card for future purchases</label>
+      </div>
+      <button class="btn-pay" onclick="processPayment('card')">
+        🔒 Pay <span id="cardPayAmt"></span> Securely
+      </button>
+      <p class="pay-note">🔒 Your card details are encrypted and never stored.</p>
+    </div>
+
+    <!-- ══ UPI FORM ══ -->
+    <div class="payment-form" id="form-upi">
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px">Select your preferred UPI app:</p>
+      <div class="upi-apps-grid">
+        <div class="upi-app-btn" onclick="selectUpiApp(this)"><span>🟣</span><span>PhonePe</span></div>
+        <div class="upi-app-btn" onclick="selectUpiApp(this)"><span>🔵</span><span>Google Pay</span></div>
+        <div class="upi-app-btn" onclick="selectUpiApp(this)"><span>🟠</span><span>Paytm</span></div>
+        <div class="upi-app-btn" onclick="selectUpiApp(this)"><span>🔴</span><span>BHIM UPI</span></div>
+      </div>
+      <div class="form-group">
+        <label>Or Enter UPI ID Manually</label>
+        <input type="text" class="form-input" id="upiId" placeholder="yourname@paytm / yourname@okicici">
+      </div>
+      <div style="background:rgba(4,170,109,0.06);border:1px solid rgba(4,170,109,0.2);border-radius:8px;padding:12px 14px;font-size:0.82rem;color:var(--text-muted)">
+        📱 After clicking Pay, open your UPI app and approve the payment request within <strong style="color:var(--text)">10 minutes</strong>.
+      </div>
+      <button class="btn-pay" onclick="processPayment('upi')">
+        📲 Pay <span id="upiPayAmt"></span> via UPI
+      </button>
+    </div>
+
+    <!-- ══ NET BANKING FORM ══ -->
+    <div class="payment-form" id="form-netbanking">
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px">Select your bank:</p>
+      <div class="banks-grid">
+        <div class="bank-btn" onclick="selectBank(this)"><span>🏦</span>State Bank of India</div>
+        <div class="bank-btn" onclick="selectBank(this)"><span>🏛️</span>HDFC Bank</div>
+        <div class="bank-btn" onclick="selectBank(this)"><span>💼</span>ICICI Bank</div>
+        <div class="bank-btn" onclick="selectBank(this)"><span>🏢</span>Axis Bank</div>
+        <div class="bank-btn" onclick="selectBank(this)"><span>🏗️</span>Kotak Mahindra</div>
+        <div class="bank-btn" onclick="selectBank(this)"><span>🌐</span>Punjab National Bank</div>
+        <div class="bank-btn" onclick="selectBank(this)"><span>🏦</span>Bank of Baroda</div>
+        <div class="bank-btn" onclick="selectBank(this)"><span>🌍</span>Other Banks</div>
+      </div>
+      <div style="background:rgba(33,150,243,0.06);border:1px solid rgba(33,150,243,0.2);border-radius:8px;padding:12px 14px;font-size:0.82rem;color:var(--text-muted)">
+        ℹ️ You will be redirected to your bank's secure portal to complete the payment.
+      </div>
+      <button class="btn-pay" onclick="processPayment('netbanking')">
+        🏦 Pay <span id="nbPayAmt"></span> via Net Banking
+      </button>
+    </div>
+
+    <!-- ══ EMI FORM ══ -->
+    <div class="payment-form" id="form-emi">
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px">Choose your EMI plan — No-Cost EMI available on select cards:</p>
+      <div class="emi-list" id="emiList">
+        <!-- Populated by JS -->
+      </div>
+      <div style="font-size:0.78rem;color:var(--text-subtle);margin-bottom:10px">* No-Cost EMI: Interest charged is refunded as discount. Subject to bank approval.</div>
+      <button class="btn-pay" onclick="processPayment('emi')">
+        📅 Confirm EMI & Pay
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ══ RIGHT – ORDER SUMMARY ══ -->
+  <div class="order-summary">
+    <div class="summary-title">🛒 Order Summary</div>
+
+    <div class="course-preview">
+      <div class="course-preview-icon" id="summaryIcon" style="background:linear-gradient(135deg,#04AA6D,#00bcd4)">🎓</div>
+      <div class="course-preview-info">
+        <h3 id="summaryTitle">Loading...</h3>
+        <p>✅ Full Lifetime Access &nbsp;•&nbsp; 📜 Certificate Included &nbsp;•&nbsp; ♾️ All Future Updates</p>
+      </div>
+    </div>
+
+    <!-- Coupon -->
+    <div class="coupon-row">
+      <input type="text" class="coupon-input" id="couponInput" placeholder="Enter coupon code" oninput="this.value=this.value.toUpperCase()">
+      <button class="coupon-btn" onclick="applyCoupon()">Apply</button>
+    </div>
+    <div class="coupon-success" id="couponSuccess">🎉 Coupon TUTHUB20 applied — 20% extra off!</div>
+
+    <div class="price-breakdown">
+      <div class="price-row"><span>Original Price</span><span id="origPrice">—</span></div>
+      <div class="price-row price-discount-line"><span>🏷 Discount</span><span id="discountLine">—</span></div>
+      <div class="price-row"><span id="gstLabel">GST (18%)</span><span id="gstLine">—</span></div>
+      <div class="price-row total"><span>💰 Total Payable</span><span id="totalLine">—</span></div>
+    </div>
+
+    <div class="trust-list">
+      <div class="trust-item"><span>🔒</span><span>256-bit SSL — Bank-grade security</span></div>
+      <div class="trust-item"><span>↩️</span><span>30-day money-back guarantee</span></div>
+      <div class="trust-item"><span>♾️</span><span>Lifetime access after purchase</span></div>
+      <div class="trust-item"><span>📜</span><span>Verifiable completion certificate</span></div>
+      <div class="trust-item"><span>📱</span><span>Access on all devices, anytime</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUCCESS OVERLAY ══ -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-card">
+    <div class="processing-anim" id="processingAnim">
+      <div class="spinner"></div>
+      <p style="color:var(--text-muted);font-size:0.9rem">Processing payment…</p>
+    </div>
+    <div id="successContent" style="display:none">
+      <div class="success-icon-big">🎉</div>
+      <h2>Payment Successful!</h2>
+      <p>Congratulations! You now have <strong>lifetime access</strong> to your course. Happy learning! 🚀</p>
+      <div class="success-course-tag" id="successCourseTag">—</div>
+      <div class="success-order-id" id="successOrderId">Order ID: —</div>
+      <p style="font-size:0.78rem;color:var(--text-subtle);margin-bottom:24px">📧 A confirmation & invoice has been sent to your email.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="blogs.html" class="btn btn-outline btn-lg">← Browse More</a>
+        <a href="blogs.html" class="btn btn-primary btn-lg">Go to My Course →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ─── PARSE URL PARAMS ───────────────────────────────────────
+const params = new URLSearchParams(window.location.search);
+const courseTitle = decodeURIComponent(params.get('title') || 'Course');
+const courseIcon  = decodeURIComponent(params.get('icon')  || '🎓');
+const coursePrice = parseInt(params.get('price')) || 799;
+const courseOrig  = parseInt(params.get('orig'))  || 2999;
+const courseId    = parseInt(params.get('id'))    || 1;
+
+const GST   = 0.18;
+let discount = courseOrig - coursePrice;
+let gstAmt  = Math.round(coursePrice * GST);
+let total   = coursePrice + gstAmt;
+let couponApplied = false;
+
+// ─── POPULATE SUMMARY ────────────────────────────────────────
+document.getElementById('summaryTitle').textContent = courseTitle;
+document.getElementById('summaryIcon').textContent  = courseIcon;
+updatePriceBreakdown();
+
+function updatePriceBreakdown() {
+  document.getElementById('origPrice').textContent   = '₹' + courseOrig;
+  document.getElementById('discountLine').textContent= '−₹' + discount;
+  document.getElementById('gstLine').textContent     = '+₹' + gstAmt;
+  document.getElementById('totalLine').textContent   = '₹' + total;
+  document.querySelectorAll('[id$="PayAmt"]').forEach(el => el.textContent = '₹' + total);
+  // card btn
+  const cardBtn = document.querySelector('#form-card .btn-pay');
+  if (cardBtn) cardBtn.querySelector('span').textContent = '₹' + total;
+}
+
+// ─── COUPON ──────────────────────────────────────────────────
+function applyCoupon() {
+  const code = document.getElementById('couponInput').value.trim().toUpperCase();
+  const validCodes = { 'TUTHUB20': 0.20, 'FIRST50': 0.50, 'SAVE10': 0.10 };
+  if (couponApplied) { showToast('Coupon already applied!'); return; }
+  if (validCodes[code]) {
+    const extra = Math.round(coursePrice * validCodes[code]);
+    discount += extra;
+    gstAmt = Math.round((coursePrice - extra) * GST);
+    total = (coursePrice - extra) + gstAmt;
+    couponApplied = true;
+    updatePriceBreakdown();
+    document.getElementById('couponSuccess').textContent = `🎉 Coupon ${code} applied — ${Math.round(validCodes[code]*100)}% extra off!`;
+    document.getElementById('couponSuccess').style.display = 'block';
+    document.getElementById('couponInput').disabled = true;
+    showToast('🎉 Coupon applied successfully!');
+  } else { showToast('❌ Invalid coupon code. Try TUTHUB20'); }
+}
+
+// ─── EMI OPTIONS ─────────────────────────────────────────────
+const emiPlans = [
+  { bank:'HDFC Bank',   months:3,  rate:0,   label:'No-Cost EMI' },
+  { bank:'SBI Card',    months:6,  rate:1.5, label:'' },
+  { bank:'ICICI Bank',  months:9,  rate:1.5, label:'' },
+  { bank:'Axis Bank',   months:12, rate:2.0, label:'' },
+];
+
+const emiList = document.getElementById('emiList');
+emiPlans.forEach((p, i) => {
+  const interest = p.rate === 0 ? 0 : Math.round(total * (p.rate/100) * p.months/12);
+  const totalWithInterest = total + interest;
+  const perMonth = Math.round(totalWithInterest / p.months);
+  const div = document.createElement('div');
+  div.className = 'emi-row' + (i === 0 ? ' sel' : '');
+  div.onclick = () => { document.querySelectorAll('.emi-row').forEach(r => r.classList.remove('sel')); div.classList.add('sel'); };
+  div.innerHTML = `
+    <div>
+      <div class="emi-bank">${p.bank}</div>
+      <div class="emi-detail">${p.rate === 0 ? '✅ No-Cost EMI (no extra charge)' : `Interest: ${p.rate}% p.a.`}</div>
+    </div>
+    <div>
+      <div class="emi-per-month">₹${perMonth}/mo</div>
+      <div class="emi-months">for ${p.months} months</div>
+    </div>`;
+  emiList.appendChild(div);
+});
+
+// ─── METHOD SWITCH ────────────────────────────────────────────
+function switchMethod(method, tabEl) {
+  document.querySelectorAll('.method-tab').forEach(t => t.classList.remove('active'));
+  tabEl.classList.add('active');
+  document.querySelectorAll('.payment-form').forEach(f => f.classList.remove('active'));
+  document.getElementById('form-' + method).classList.add('active');
+}
+
+// ─── CARD FORMATTING ─────────────────────────────────────────
+function formatCardNum(input) {
+  let val = input.value.replace(/\D/g, '').substring(0, 16);
+  val = val.match(/.{1,4}/g)?.join(' ') || val;
+  input.value = val;
+  document.getElementById('cardDisplayNum').textContent = val || '•••• •••• •••• ••••';
+}
+function formatExpiry(input) {
+  let val = input.value.replace(/\D/g, '').substring(0, 4);
+  if (val.length > 2) val = val.slice(0,2) + ' / ' + val.slice(2);
+  input.value = val;
+  document.getElementById('cardDisplayExpiry').textContent = input.value || 'MM/YY';
+}
+
+// ─── UPI & BANK SELECT ────────────────────────────────────────
+function selectUpiApp(el) {
+  document.querySelectorAll('.upi-app-btn').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+}
+function selectBank(el) {
+  document.querySelectorAll('.bank-btn').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+// ─── PROCESS PAYMENT ─────────────────────────────────────────
+function processPayment(method) {
+  // Basic validation for card
+  if (method === 'card') {
+    const name = document.getElementById('cardName').value.trim();
+    const num  = document.getElementById('cardNum').value.replace(/\s/g,'');
+    const exp  = document.getElementById('cardExpiry').value;
+    const cvv  = document.getElementById('cardCvv').value;
+    if (!name || num.length < 16 || exp.length < 5 || cvv.length < 3) {
+      showToast('⚠️ Please fill all card details correctly.');
+      return;
+    }
+  }
+  if (method === 'upi') {
+    const selectedApp = document.querySelector('.upi-app-btn.sel');
+    const upiId = document.getElementById('upiId').value.trim();
+    if (!selectedApp && !upiId) { showToast('⚠️ Please select a UPI app or enter your UPI ID.'); return; }
+  }
+
+  // Show processing
+  const overlay = document.getElementById('successOverlay');
+  overlay.classList.add('show');
+  document.getElementById('processingAnim').classList.add('show');
+  document.getElementById('successContent').style.display = 'none';
+
+  setTimeout(() => {
+    document.getElementById('processingAnim').classList.remove('show');
+    document.getElementById('successContent').style.display = 'block';
+    document.getElementById('successCourseTag').textContent = courseIcon + ' ' + courseTitle;
+    const orderId = 'TH' + Date.now().toString().slice(-8).toUpperCase();
+    document.getElementById('successOrderId').textContent = 'Order ID: ' + orderId;
+
+    // Save to localStorage
+    const purchased = JSON.parse(localStorage.getItem('th_purchased') || '[]');
+    if (!purchased.includes(courseId)) { purchased.push(courseId); localStorage.setItem('th_purchased', JSON.stringify(purchased)); }
+  }, 2500);
+}
+
+// ─── TOAST ───────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>

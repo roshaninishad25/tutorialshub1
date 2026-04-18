@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================
+     XML Sitemap — TutorialsHub
+     Submit this file to Google Search Console and Bing Webmaster
+     Tools to get your pages discovered and indexed faster.
+     Update <loc> URLs once deployed to a real domain.
+  ============================================================ -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+          http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- ── HOME PAGE ── highest priority -->
+  <url>
+    <loc>https://tutorialshub.com/</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ── TUTORIALS PAGE ── -->
+  <url>
+    <loc>https://tutorialshub.com/tutorials.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ── BLOGS / COURSES PAGE ── -->
+  <url>
+    <loc>https://tutorialshub.com/blogs.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ── LOGIN / SIGNUP PAGE ── -->
+  <url>
+    <loc>https://tutorialshub.com/login.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login or create your free TutorialsHub account. Start learning today.">
+  <title>Login & Sign Up | TutorialsHub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { min-height: 100vh; }
+
+    .auth-page {
+      min-height: calc(100vh - 62px);
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--bg);
+    }
+
+    /* ── LEFT PANEL ── */
+    .auth-left {
+      background: linear-gradient(155deg, #0d1f1a 0%, #0a2e22 50%, #0d1117 100%);
+      padding: 60px 64px; display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .auth-left::before {
+      content: ''; position: absolute; bottom: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(4,170,109,0.12), transparent 70%);
+    }
+    .auth-left::after {
+      content: ''; position: absolute; top: -60px; left: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(33,150,243,0.06), transparent 70%);
+    }
+
+    .auth-brand { margin-bottom: 48px; }
+    .auth-brand .nav-logo { font-size: 1.8rem; display: inline-flex; margin-bottom: 10px; color: #ffffff; }
+    .auth-brand p { color: var(--text-muted); font-size: 1rem; }
+
+    .auth-features { display: flex; flex-direction: column; gap: 24px; position: relative; z-index: 1; }
+    .auth-feature { display: flex; align-items: flex-start; gap: 16px; }
+    .auth-feature-icon {
+      width: 44px; height: 44px; flex-shrink: 0; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+    }
+    .auth-feature-text h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+    .auth-feature-text p  { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
+
+    .auth-testimonial {
+      margin-top: 48px; padding: 24px; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); position: relative; z-index: 1;
+    }
+    .auth-testimonial p { font-size: 0.9rem; font-style: italic; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px; }
+    .auth-testimonial-author { display: flex; align-items: center; gap: 10px; }
+    .at-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg,#667eea,#764ba2); display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:white; }
+    .at-name { font-size: 0.85rem; font-weight: 600; }
+    .at-role { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* ── RIGHT PANEL ── */
+    .auth-right {
+      padding: 60px 64px; display: flex; flex-direction: column; justify-content: center;
+      overflow-y: auto;
+    }
+
+    /* ── TABS ── */
+    .auth-tabs { display: flex; background: var(--surface); border-radius: var(--radius); padding: 4px; margin-bottom: 36px; }
+    .auth-tab {
+      flex: 1; text-align: center; padding: 12px;
+      border-radius: 9px; font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; transition: all var(--transition); border: none; background: none; color: var(--text-muted);
+    }
+    .auth-tab.active { background: var(--primary); color: white; }
+
+    /* ── FORM ── */
+    .auth-form { display: none; }
+    .auth-form.active { display: block; animation: fadeUp 0.3s ease; }
+
+    .form-title { font-size: 1.8rem; font-weight: 900; margin-bottom: 6px; }
+    .form-subtitle { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 32px; }
+
+    /* Social Login */
+    .social-login { display: flex; gap: 12px; margin-bottom: 28px; }
+    .social-login-btn {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px; border: 1.5px solid var(--border2); border-radius: var(--radius-sm);
+      background: var(--surface); color: var(--text); font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: all var(--transition);
+    }
+    .social-login-btn:hover { border-color: var(--primary); background: var(--surface2); }
+
+    .divider {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+    }
+    .divider-line { flex: 1; height: 1px; background: var(--border); }
+    .divider-text { color: var(--text-subtle); font-size: 0.8rem; }
+
+    /* Form Groups */
+    .form-group { margin-bottom: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group label {
+      display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
+    }
+    .input-wrapper { position: relative; }
+    .input-icon {
+      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+      color: var(--text-muted); font-size: 1rem; pointer-events: none;
+    }
+    .form-input {
+      width: 100%; padding: 13px 14px 13px 42px;
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); color: var(--text); font-size: 0.9rem;
+      font-family: 'Inter', sans-serif; outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(4,170,109,0.12); }
+    .form-input.error { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.1); }
+    .form-input.success { border-color: var(--primary); }
+    .form-input::placeholder { color: var(--text-subtle); }
+    .form-input.no-icon { padding-left: 14px; }
+    select.form-input { padding-left: 14px; cursor: pointer; }
+    select.form-input option { background: var(--surface2); }
+
+    .toggle-password {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      cursor: pointer; color: var(--text-muted); font-size: 1rem;
+      background: none; border: none; padding: 0;
+      transition: color var(--transition);
+    }
+    .toggle-password:hover { color: var(--text); }
+
+    .field-error { color: #ef4444; font-size: 0.75rem; margin-top: 5px; display: none; }
+    .field-error.show { display: block; }
+
+    /* Password Strength */
+    .password-strength { margin-top: 8px; }
+    .strength-bar { display: flex; gap: 4px; margin-bottom: 5px; }
+    .strength-seg { flex: 1; height: 3px; border-radius: 10px; background: var(--surface2); transition: background 0.3s; }
+    .strength-label { font-size: 0.73rem; color: var(--text-muted); }
+
+    /* Checkbox */
+    .checkbox-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; }
+    .checkbox-row input[type="checkbox"] { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; }
+    .checkbox-row label { font-size: 0.83rem; color: var(--text-muted); cursor: pointer; line-height: 1.5; }
+    .checkbox-row label a { color: var(--primary); }
+
+    /* Form Options */
+    .form-options { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .forgot-link { font-size: 0.83rem; color: var(--primary); transition: opacity var(--transition); }
+    .forgot-link:hover { opacity: 0.7; }
+
+    /* Submit Btn */
+    .btn-submit {
+      width: 100%; padding: 14px; background: linear-gradient(135deg, var(--primary), #00bcd4);
+      color: white; border: none; border-radius: var(--radius-sm); font-size: 1rem;
+      font-weight: 700; cursor: pointer; transition: all var(--transition);
+      letter-spacing: 0.3px; position: relative; overflow: hidden; margin-bottom: 20px;
+    }
+    .btn-submit::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s;
+    }
+    .btn-submit:hover::before { left: 100%; }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(4,170,109,0.4); }
+
+    .switch-form-text { text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+    .switch-form-text a { color: var(--primary); font-weight: 600; cursor: pointer; }
+
+    /* ── SUCCESS STATE ── */
+    .success-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+      z-index: 9999; justify-content: center; align-items: center;
+    }
+    .success-overlay.show { display: flex; }
+    .success-card {
+      background: var(--surface); border: 1px solid rgba(4,170,109,0.4);
+      border-radius: var(--radius-lg); padding: 56px 48px; text-align: center;
+      max-width: 420px; width: 90%; animation: slideUp 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .success-icon { font-size: 4.5rem; margin-bottom: 20px; animation: pulse 1s ease infinite alternate; }
+    .success-card h2 { font-size: 1.8rem; font-weight: 900; color: var(--primary); margin-bottom: 10px; }
+    .success-card p { color: var(--text-muted); margin-bottom: 28px; font-size: 0.95rem; line-height: 1.6; }
+    .success-username { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .auth-page { grid-template-columns: 1fr; }
+      .auth-left { display: none; }
+      .auth-right { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search...">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline active-btn">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ AUTH PAGE ══ -->
+<div class="auth-page">
+
+  <!-- LEFT PANEL -->
+  <div class="auth-left">
+    <div class="auth-brand">
+      <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>The #1 platform for learning to code for free.</p>
+    </div>
+    <div class="auth-features">
+      <div class="auth-feature">
+        <div class="auth-feature-icon" style="background:rgba(4,170,109,0.15)">📚</div>
+        <div class="auth-feature-text">
+          <h4>500+ Free Tutorials</h4>
+          <p>Access a massive library of tutorials — HTML, CSS, JavaScript, Python, DSA and more, all completely free.</p>
+        </div>
+      </div>
+      <div class="auth-feature">
+        <div class="auth-feature-icon" style="background:rgba(33,150,243,0.15)">🏆</div>
+        <div class="auth-feature-text">
+          <h4>Earn Certificates</h4>
+          <p>Complete courses and earn shareable certificates to boost your LinkedIn profile and portfolio.</p>
+        </div>
+      </div>
+      <div class="auth-feature">
+        <div class="auth-feature-icon" style="background:rgba(255,107,53,0.15)">💻</div>
+        <div class="auth-feature-text">
+          <h4>Practice as You Learn</h4>
+          <p>Built-in code editor lets you run examples instantly — no configuration, no setup required.</p>
+        </div>
+      </div>
+      <div class="auth-feature">
+        <div class="auth-feature-icon" style="background:rgba(124,58,237,0.15)">🌍</div>
+        <div class="auth-feature-text">
+          <h4>10M+ Global Community</h4>
+          <p>Learn alongside millions of students worldwide. Ask questions, share projects, grow together.</p>
+        </div>
+      </div>
+    </div>
+    <div class="auth-testimonial">
+      <p>"Joined TutorialsHub with zero coding knowledge. 8 months later, I landed a frontend developer role at Infosys. This platform changed my life!"</p>
+      <div class="auth-testimonial-author">
+        <div class="at-avatar">PK</div>
+        <div><div class="at-name">Priya Kapoor</div><div class="at-role">Frontend Developer @ Infosys</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="auth-right">
+
+    <!-- ── TABS ── -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="loginTab" onclick="switchTab('login')">🔑 Login</button>
+      <button class="auth-tab" id="signupTab" onclick="switchTab('signup')">✨ Sign Up</button>
+    </div>
+
+    <!-- ══ LOGIN FORM ══ -->
+    <div class="auth-form active" id="loginForm">
+      <h2 class="form-title">Welcome Back! 👋</h2>
+      <p class="form-subtitle">Don't have an account? <a onclick="switchTab('signup')" style="cursor:pointer;color:var(--primary)">Sign up for free →</a></p>
+
+      <div class="social-login">
+        <button class="social-login-btn" onclick="socialLogin('Google')">
+          <span>🔵</span> Continue with Google
+        </button>
+        <button class="social-login-btn" onclick="socialLogin('GitHub')">
+          <span>🐙</span> GitHub
+        </button>
+      </div>
+      <div class="divider"><div class="divider-line"></div><span class="divider-text">or login with email</span><div class="divider-line"></div></div>
+
+      <form id="loginFormEl" novalidate>
+        <div class="form-group">
+          <label for="loginEmail">Email Address</label>
+          <div class="input-wrapper">
+            <span class="input-icon">✉️</span>
+            <input type="email" id="loginEmail" class="form-input" placeholder="you@example.com" required>
+          </div>
+          <div class="field-error" id="loginEmailErr">Please enter a valid email address.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required>
+            <button type="button" class="toggle-password" onclick="togglePwd('loginPassword', this)">👁️</button>
+          </div>
+          <div class="field-error" id="loginPwdErr">Password must be at least 6 characters.</div>
+        </div>
+
+        <div class="form-options">
+          <div class="checkbox-row" style="margin-bottom:0">
+            <input type="checkbox" id="rememberMe">
+            <label for="rememberMe">Remember me for 30 days</label>
+          </div>
+          <a href="#" class="forgot-link" onclick="forgotPassword()">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn-submit" id="loginSubmit">🔑 Login to My Account</button>
+      </form>
+
+      <p class="switch-form-text">New here? <a onclick="switchTab('signup')">Create a free account →</a></p>
+    </div>
+
+    <!-- ══ SIGNUP FORM ══ -->
+    <div class="auth-form" id="signupForm">
+      <h2 class="form-title">Join for Free! 🚀</h2>
+      <p class="form-subtitle">Already have an account? <a onclick="switchTab('login')" style="cursor:pointer;color:var(--primary)">Login →</a></p>
+
+      <div class="social-login">
+        <button class="social-login-btn" onclick="socialLogin('Google')">
+          <span>🔵</span> Continue with Google
+        </button>
+        <button class="social-login-btn" onclick="socialLogin('GitHub')">
+          <span>🐙</span> GitHub
+        </button>
+      </div>
+      <div class="divider"><div class="divider-line"></div><span class="divider-text">or sign up with email</span><div class="divider-line"></div></div>
+
+      <form id="signupFormEl" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <div class="input-wrapper">
+              <span class="input-icon">👤</span>
+              <input type="text" id="firstName" class="form-input" placeholder="First name" required>
+            </div>
+            <div class="field-error" id="firstNameErr">First name is required.</div>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <div class="input-wrapper">
+              <span class="input-icon">👤</span>
+              <input type="text" id="lastName" class="form-input" placeholder="Last name" required>
+            </div>
+            <div class="field-error" id="lastNameErr">Last name is required.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="signupEmail">Email Address</label>
+          <div class="input-wrapper">
+            <span class="input-icon">✉️</span>
+            <input type="email" id="signupEmail" class="form-input" placeholder="you@example.com" required>
+          </div>
+          <div class="field-error" id="signupEmailErr">Please enter a valid email address.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number (Optional)</label>
+          <div class="input-wrapper">
+            <span class="input-icon">📞</span>
+            <input type="tel" id="phone" class="form-input" placeholder="+91 98765 43210">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="profession">Profession / Role</label>
+          <select id="profession" class="form-input" style="padding-left:14px">
+            <option value="">Select your profession...</option>
+            <option value="student">🎓 Student</option>
+            <option value="fresher">👨‍💼 Fresher / Job Seeker</option>
+            <option value="developer">💻 Software Developer</option>
+            <option value="designer">🎨 UI/UX Designer</option>
+            <option value="data">📊 Data Scientist / Analyst</option>
+            <option value="manager">📋 Project Manager</option>
+            <option value="other">🌐 Other</option>
+          </select>
+          <div class="field-error" id="professionErr">Please select your profession.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="signupPassword">Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="signupPassword" class="form-input" placeholder="Create a strong password" required oninput="checkStrength(this.value)">
+            <button type="button" class="toggle-password" onclick="togglePwd('signupPassword', this)">👁️</button>
+          </div>
+          <div class="password-strength">
+            <div class="strength-bar">
+              <div class="strength-seg" id="seg1"></div>
+              <div class="strength-seg" id="seg2"></div>
+              <div class="strength-seg" id="seg3"></div>
+              <div class="strength-seg" id="seg4"></div>
+            </div>
+            <div class="strength-label" id="strengthLabel">Enter at least 8 characters</div>
+          </div>
+          <div class="field-error" id="signupPwdErr">Password must be at least 8 characters.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="confirmPassword" class="form-input" placeholder="Re-enter your password" required>
+            <button type="button" class="toggle-password" onclick="togglePwd('confirmPassword', this)">👁️</button>
+          </div>
+          <div class="field-error" id="confirmPwdErr">Passwords do not match.</div>
+        </div>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="termsCheck" required>
+          <label for="termsCheck">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I consent to receive emails about my account and learning progress.</label>
+        </div>
+        <div class="field-error" id="termsErr">You must agree to the terms to continue.</div>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="newsletterCheck" checked>
+          <label for="newsletterCheck">Send me weekly learning tips, new tutorial alerts, and exclusive offers. (You can unsubscribe anytime)</label>
+        </div>
+
+        <button type="submit" class="btn-submit" id="signupSubmit">🚀 Create Free Account</button>
+      </form>
+
+      <p class="switch-form-text">Already a member? <a onclick="switchTab('login')">Login to your account →</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUCCESS OVERLAY ══ -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-card">
+    <div class="success-icon" id="successIcon">🎉</div>
+    <div class="success-username" id="successName">Welcome!</div>
+    <h2 id="successTitle">You're In!</h2>
+    <p id="successMsg">Login successful! Redirecting you to your learning dashboard…</p>
+    <a href="blogs.html" class="btn btn-primary btn-lg" style="margin-top:4px">🚀 Start Learning →</a>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+  // ── TAB SWITCHING ──────────────────────────────────────────
+  function switchTab(tab) {
+    document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+    document.getElementById(tab + 'Tab').classList.add('active');
+    document.getElementById(tab + 'Form').classList.add('active');
+  }
+
+  // Check hash for direct signup link
+  if (window.location.hash === '#signup') switchTab('signup');
+
+  // ── PASSWORD TOGGLE ────────────────────────────────────────
+  function togglePwd(fieldId, btn) {
+    const input = document.getElementById(fieldId);
+    if (input.type === 'password') { input.type = 'text'; btn.textContent = '🙈'; }
+    else { input.type = 'password'; btn.textContent = '👁️'; }
+  }
+
+  // ── PASSWORD STRENGTH ──────────────────────────────────────
+  function checkStrength(val) {
+    const segs = [1,2,3,4].map(i => document.getElementById('seg' + i));
+    const label = document.getElementById('strengthLabel');
+    let score = 0;
+    if (val.length >= 8) score++;
+    if (/[A-Z]/.test(val)) score++;
+    if (/[0-9]/.test(val)) score++;
+    if (/[^A-Za-z0-9]/.test(val)) score++;
+
+    const colors = ['#ef4444','#f59e0b','#3b82f6','#04AA6D'];
+    const labels = ['Weak','Fair','Good','Strong'];
+    segs.forEach((s, i) => s.style.background = i < score ? colors[score-1] : 'var(--surface2)');
+    label.textContent = score === 0 ? 'Enter at least 8 characters' : labels[score-1] + ' password';
+    label.style.color = score === 0 ? 'var(--text-subtle)' : colors[score-1];
+  }
+
+  // ── SOCIAL LOGIN ───────────────────────────────────────────
+  function socialLogin(provider) {
+    showToast(`Connecting to ${provider}... (Demo only)`);
+    setTimeout(() => { showSuccess('Demo User', `${provider} login successful!`); }, 1500);
+  }
+
+  // ── FORGOT PASSWORD ────────────────────────────────────────
+  function forgotPassword() {
+    const email = document.getElementById('loginEmail').value.trim();
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+      showToast('Please enter your email first, then click Forgot password.');
+      return;
+    }
+    showToast(`📧 Reset link sent to ${email}`);
+  }
+
+  // ── FIELD VALIDATION ───────────────────────────────────────
+  function setError(inputId, errId, msg, show) {
+    const input = document.getElementById(inputId);
+    const err = document.getElementById(errId);
+    if (show) { input.classList.add('error'); input.classList.remove('success'); err.textContent = msg; err.classList.add('show'); }
+    else { input.classList.remove('error'); input.classList.add('success'); err.classList.remove('show'); }
+    return !show;
+  }
+
+  // ── LOGIN SUBMIT ───────────────────────────────────────────
+  document.getElementById('loginFormEl').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value.trim();
+    const pwd   = document.getElementById('loginPassword').value;
+    let valid = true;
+
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) valid = setError('loginEmail','loginEmailErr','Please enter a valid email address.',true) && valid;
+    else setError('loginEmail','loginEmailErr','',false);
+
+    if (pwd.length < 6) valid = setError('loginPassword','loginPwdErr','Password must be at least 6 characters.',true) && valid;
+    else setError('loginPassword','loginPwdErr','',false);
+
+    if (!valid) { showToast('⚠️ Please fix the errors above.'); return; }
+
+    const btn = document.getElementById('loginSubmit');
+    btn.textContent = '⏳ Logging in…'; btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = '🔑 Login to My Account'; btn.disabled = false;
+      const name = email.split('@')[0];
+      showSuccess(name, 'Login successful! Welcome back!');
+      localStorage.setItem('th_user', JSON.stringify({ name, email, loggedIn: true }));
+    }, 1800);
+  });
+
+  // ── SIGNUP SUBMIT ──────────────────────────────────────────
+  document.getElementById('signupFormEl').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const first   = document.getElementById('firstName').value.trim();
+    const last    = document.getElementById('lastName').value.trim();
+    const email   = document.getElementById('signupEmail').value.trim();
+    const prof    = document.getElementById('profession').value;
+    const pwd     = document.getElementById('signupPassword').value;
+    const conf    = document.getElementById('confirmPassword').value;
+    const terms   = document.getElementById('termsCheck').checked;
+    let valid = true;
+
+    if (!first)                              valid = setError('firstName','firstNameErr','First name is required.',true) && valid; else setError('firstName','firstNameErr','',false);
+    if (!last)                               valid = setError('lastName','lastNameErr','Last name is required.',true) && valid;   else setError('lastName','lastNameErr','',false);
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) valid = setError('signupEmail','signupEmailErr','Please enter a valid email address.',true) && valid; else setError('signupEmail','signupEmailErr','',false);
+    if (!prof)                               valid = setError('profession','professionErr','Please select your profession.',true) && valid; else setError('profession','professionErr','',false);
+    if (pwd.length < 8)                      valid = setError('signupPassword','signupPwdErr','Password must be at least 8 characters.',true) && valid; else setError('signupPassword','signupPwdErr','',false);
+    if (conf !== pwd)                        valid = setError('confirmPassword','confirmPwdErr','Passwords do not match.',true) && valid; else setError('confirmPassword','confirmPwdErr','',false);
+    if (!terms) { document.getElementById('termsErr').classList.add('show'); valid = false; }
+    else document.getElementById('termsErr').classList.remove('show');
+
+    if (!valid) { showToast('⚠️ Please fix the errors above.'); return; }
+
+    const btn = document.getElementById('signupSubmit');
+    btn.textContent = '⏳ Creating account…'; btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = '🚀 Create Free Account'; btn.disabled = false;
+      const name = first + ' ' + last;
+      showSuccess(name, 'Account created successfully! Welcome to TutorialsHub! 🎉');
+      localStorage.setItem('th_user', JSON.stringify({ name, email, loggedIn: true }));
+    }, 2000);
+  });
+
+  // ── SUCCESS ────────────────────────────────────────────────
+  function showSuccess(name, msg) {
+    document.getElementById('successName').textContent = '👋 Hello, ' + name + '!';
+    document.getElementById('successMsg').textContent = msg;
+    document.getElementById('successOverlay').classList.add('show');
+  }
+
+  // ── TOAST ──────────────────────────────────────────────────
+  function showToast(msg) {
+    const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  // ── REAL-TIME VALIDATION ────────────────────────────────────
+  document.getElementById('loginEmail').addEventListener('blur', function() {
+    const v = this.value.trim();
+    if (v && !/^\S+@\S+\.\S+$/.test(v)) setError('loginEmail','loginEmailErr','Invalid email format.',true);
+    else if (v) setError('loginEmail','loginEmailErr','',false);
+  });
+  document.getElementById('confirmPassword').addEventListener('input', function() {
+    const pwd = document.getElementById('signupPassword').value;
+    if (this.value && this.value !== pwd) setError('confirmPassword','confirmPwdErr','Passwords do not match.',true);
+    else if (this.value) setError('confirmPassword','confirmPwdErr','',false);
+  });
+</script>
+</body>
+</html>

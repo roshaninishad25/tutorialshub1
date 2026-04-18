@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore 20 expert-led frontend development courses. Enroll free or buy premium access with lifetime learning.">
+  <title>Frontend Courses & Blogs | TutorialsHub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── HERO ── */
+    .blogs-hero {
+      background: linear-gradient(135deg, #0d1117, #0d1f1a);
+      padding: 60px 80px 48px; text-align: center; position: relative; overflow: hidden;
+    }
+    .blogs-hero::before { content:''; position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:700px; height:400px; background:radial-gradient(ellipse,rgba(4,170,109,0.12),transparent 70%); }
+    .blogs-hero h1 { font-size: 2.6rem; font-weight: 900; margin-bottom: 12px; }
+    .blogs-hero p { color: var(--text-muted); font-size: 1.02rem; max-width: 560px; margin: 0 auto 32px; }
+    .hero-stats-row { display: flex; justify-content: center; gap: 40px; margin-top: 20px; }
+    .hero-stat strong { display: block; font-size: 1.8rem; font-weight: 900; color: var(--primary); }
+    .hero-stat span { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* ── FILTERS ── */
+    .blogs-controls {
+      padding: 24px 80px; display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px; border-bottom: 1px solid var(--border);
+    }
+    .filter-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-tag {
+      padding: 7px 16px; border-radius: 30px; font-size: 0.82rem; font-weight: 600;
+      border: 1.5px solid var(--border2); background: var(--surface); color: var(--text-muted);
+      cursor: pointer; transition: all var(--transition);
+    }
+    .filter-tag:hover, .filter-tag.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .search-blogs {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--surface); border: 1.5px solid var(--border2); border-radius: 30px; padding: 9px 16px; width: 260px;
+    }
+    .search-blogs:focus-within { border-color: var(--primary); }
+    .search-blogs input { background: none; border: none; outline: none; color: var(--text); font-size: 0.85rem; width: 100%; }
+
+    /* ── COURSES GRID ── */
+    .blogs-section { padding: 36px 80px 80px; }
+    .course-count { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 24px; }
+    .course-count strong { color: var(--text); font-weight: 700; }
+
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+
+    /* ── COURSE CARD ── */
+    .course-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex; flex-direction: column;
+    }
+    .course-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+
+    .card-banner {
+      height: 120px; display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; position: relative;
+    }
+    .card-banner-badge {
+      position: absolute; top: 12px; right: 12px;
+      padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700;
+    }
+    .card-banner-rank {
+      position: absolute; top: 12px; left: 12px;
+      background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 3px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.8);
+    }
+
+    .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .card-cat { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); margin-bottom: 6px; }
+    .card-title { font-size: 1.02rem; font-weight: 700; margin-bottom: 8px; line-height: 1.35; }
+    .card-desc { color: var(--text-muted); font-size: 0.83rem; line-height: 1.55; flex: 1; margin-bottom: 14px; }
+    .card-instructor { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .instructor-avatar { width: 26px; height: 26px; border-radius: 50%; display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:700; }
+    .instructor-name { font-size: 0.8rem; color: var(--text-muted); }
+    .card-meta { display: flex; gap: 12px; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; flex-wrap: wrap; }
+    .card-meta span { display: flex; align-items: center; gap: 4px; }
+    .rating-stars { color: var(--gold); }
+
+    .card-price { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .price-amount { font-size: 1.3rem; font-weight: 900; color: var(--text); }
+    .price-original { font-size: 0.85rem; text-decoration: line-through; color: var(--text-subtle); }
+    .price-discount { font-size: 0.75rem; font-weight: 700; color: var(--primary); background: rgba(4,170,109,0.1); padding: 2px 8px; border-radius: 10px; }
+    .price-free { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+
+    .card-actions { display: flex; gap: 10px; }
+    .btn-enroll {
+      flex: 1; padding: 11px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 700;
+      background: rgba(4,170,109,0.1); color: var(--primary); border: 1.5px solid var(--primary);
+      transition: all var(--transition); cursor: pointer;
+    }
+    .btn-enroll:hover { background: var(--primary); color: white; }
+    .btn-enroll.enrolled-state { background: var(--primary); color: white; cursor: default; }
+    .btn-buy {
+      flex: 1; padding: 11px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), #ff9a62); color: white; border: none;
+      transition: all var(--transition); cursor: pointer;
+    }
+    .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,53,0.4); }
+    .btn-buy:active { transform: translateY(0); }
+
+    /* ── ENROLLED BANNER ── */
+    .enrolled-banner {
+      display: none; background: rgba(4,170,109,0.08); border: 1px solid rgba(4,170,109,0.25);
+      border-radius: var(--radius); padding: 16px 80px; margin: 0 80px;
+    }
+    .enrolled-banner.show { display: block; }
+    .enrolled-title { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+    .enrolled-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .enrolled-chip {
+      background: rgba(4,170,109,0.1); border: 1px solid rgba(4,170,109,0.3);
+      color: var(--primary); padding: 5px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;
+      animation: popIn 0.3s ease;
+    }
+    @keyframes popIn { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    /* ── NO RESULTS ── */
+    .no-results { display: none; text-align: center; padding: 80px 20px; grid-column: 1/-1; }
+    .no-results.show { display: block; }
+    .no-results h3 { font-size: 1.4rem; margin-bottom: 8px; }
+    .no-results p { color: var(--text-muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+      .blogs-hero, .blogs-controls, .blogs-section, .enrolled-banner { padding-left: 32px; padding-right: 32px; }
+      .enrolled-banner { margin: 0 32px; }
+    }
+    @media (max-width: 700px) {
+      .blogs-hero { padding: 48px 16px 32px; }
+      .blogs-controls, .blogs-section { padding-left: 16px; padding-right: 16px; }
+      .blogs-hero h1 { font-size: 1.9rem; }
+      .hero-stats-row { gap: 24px; }
+      .enrolled-banner { margin: 0 16px; padding: 14px 16px; }
+      .courses-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search courses..." id="globalSearch" oninput="filterCourses(this.value,'all')">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="blogs-hero">
+  <p class="section-label">Frontend Development Courses</p>
+  <h1>Master Frontend Development 🚀</h1>
+  <p>20 expert-crafted courses — from HTML basics to advanced React & Next.js. Enroll free or unlock premium projects & certificates.</p>
+  <div class="hero-stats-row">
+    <div class="hero-stat"><strong>20</strong><span>Courses</span></div>
+    <div class="hero-stat"><strong>50K+</strong><span>Students</span></div>
+    <div class="hero-stat"><strong>4.8★</strong><span>Avg Rating</span></div>
+    <div class="hero-stat"><strong>8</strong><span>Free Courses</span></div>
+  </div>
+</section>
+
+<!-- ══ ENROLLMENT TRACKER ══ -->
+<div class="enrolled-banner" id="enrolledBanner">
+  <div class="enrolled-title">✅ My Enrollments</div>
+  <div class="enrolled-chips" id="enrolledChips"></div>
+</div>
+
+<!-- ══ FILTERS ══ -->
+<div class="blogs-controls">
+  <div class="filter-tags">
+    <button class="filter-tag active" onclick="filterByTag('all',this)">All Courses</button>
+    <button class="filter-tag" onclick="filterByTag('free',this)">🆓 Free</button>
+    <button class="filter-tag" onclick="filterByTag('premium',this)">👑 Premium</button>
+    <button class="filter-tag" onclick="filterByTag('beginner',this)">🌱 Beginner</button>
+    <button class="filter-tag" onclick="filterByTag('advanced',this)">🔥 Advanced</button>
+    <button class="filter-tag" onclick="filterByTag('framework',this)">⚛️ Frameworks</button>
+  </div>
+  <div class="search-blogs">
+    <span>🔍</span>
+    <input type="text" placeholder="Search courses..." id="courseSearch" oninput="filterCourses(this.value,currentTag)">
+  </div>
+</div>
+
+<!-- ══ COURSES SECTION ══ -->
+<section class="blogs-section">
+  <p class="course-count" id="courseCount">Showing <strong>20</strong> courses</p>
+  <div class="courses-grid" id="coursesGrid">
+    <!-- Cards generated by JS -->
+    <div class="no-results" id="noResults">
+      <h3>😕 No courses found</h3>
+      <p>Try a different search keyword or filter.</p>
+    </div>
+  </div>
+</section>
+
+<div id="toast"></div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials and courses for everyone. Learn programming for free or unlock premium content.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="blogs.html">All Courses</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="login.html#signup">Sign Up</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="#">HTML5 Guide</a></li>
+        <li><a href="#">CSS3 Mastery</a></li>
+        <li><a href="#">JavaScript</a></li>
+        <li><a href="#">React.js</a></li>
+        <li><a href="#">Next.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved.</p>
+    <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Sitemap</a></div>
+  </div>
+</footer>
+
+<script>
+// ─── COURSE DATA ───────────────────────────────────────────────
+const courses = [
+  { id:1,  title:"HTML5 Complete Guide",          cat:"web",       level:"beginner",  tags:["free","beginner"],      icon:"🌐", color:"linear-gradient(135deg,#e65100,#ff8f00)",  inst:"Riya Sharma",   av:"bg1",  lessons:42, dur:"6h 20m", rating:"4.9", students:"18K", type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Master every HTML5 element — semantic tags, forms, multimedia, canvas SVG and SEO-friendly structure." },
+  { id:2,  title:"CSS3 & Flexbox Mastery",        cat:"web",       level:"beginner",  tags:["premium","beginner"],  icon:"🎨", color:"linear-gradient(135deg,#1565c0,#42a5f5)",  inst:"Arjun Mehta",   av:"bg2",  lessons:35, dur:"5h 45m", rating:"4.8", students:"14K", type:"premium", price:499,   orig:1499,   badge:"PRO",  desc:"CSS Grid, Flexbox, animations, custom properties, responsive design and modern glassmorphism techniques." },
+  { id:3,  title:"JavaScript Zero to Hero",       cat:"web",       level:"beginner",  tags:["premium","beginner","advanced"], icon:"⚡", color:"linear-gradient(135deg,#f9a825,#fdd835)", inst:"Kapil Dev",     av:"bg3",  lessons:65, dur:"14h 40m",rating:"4.9", students:"25K", type:"premium", price:799,   orig:2999,   badge:"HOT",  desc:"From variables to async/await — closures, prototypes, DOM manipulation, ES2024 and real-world projects." },
+  { id:4,  title:"React.js Fundamentals",         cat:"framework", level:"advanced",  tags:["premium","advanced","framework"], icon:"⚛️", color:"linear-gradient(135deg,#00838f,#00bcd4)", inst:"Priya Kapoor",  av:"bg4",  lessons:52, dur:"13h",    rating:"4.9", students:"20K", type:"premium", price:899,   orig:2999,   badge:"HOT",  desc:"JSX, components, hooks (useState, useEffect, useContext), Redux Toolkit, and building a complete app." },
+  { id:5,  title:"Vue.js 3 Complete Guide",       cat:"framework", level:"advanced",  tags:["premium","advanced","framework"], icon:"💚", color:"linear-gradient(135deg,#1b5e20,#66bb6a)", inst:"Ananya Mishra", av:"bg5",  lessons:44, dur:"11h 20m",rating:"4.7", students:"8K",  type:"premium", price:699,   orig:2499,   badge:"PRO",  desc:"Composition API, computed properties, Pinia state management, Vue Router and building real-world apps." },
+  { id:6,  title:"Angular 17 Masterclass",        cat:"framework", level:"advanced",  tags:["premium","advanced","framework"], icon:"🔺", color:"linear-gradient(135deg,#b71c1c,#ef5350)", inst:"Rohit Verma",   av:"bg6",  lessons:58, dur:"16h",    rating:"4.6", students:"6K",  type:"premium", price:799,   orig:2999,   badge:"PRO",  desc:"Components, directives, services, dependency injection, RxJS, Angular Material and enterprise patterns." },
+  { id:7,  title:"TypeScript Deep Dive",          cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"📘", color:"linear-gradient(135deg,#0d47a1,#42a5f5)",  inst:"Sneha Patel",   av:"bg7",  lessons:38, dur:"9h",     rating:"4.8", students:"10K", type:"premium", price:549,   orig:1999,   badge:"PRO",  desc:"Interfaces, generics, decorators, utility types, type narrowing and TypeScript in React & Node projects." },
+  { id:8,  title:"Next.js 14 Full Course",        cat:"framework", level:"advanced",  tags:["premium","advanced","framework"], icon:"▲",  color:"linear-gradient(135deg,#212121,#616161)", inst:"Arjun Mehta",   av:"bg2",  lessons:60, dur:"17h",    rating:"4.9", students:"15K", type:"premium", price:999,   orig:3499,   badge:"HOT",  desc:"App Router, Server Components, SSR, SSG, ISR, API routes, authentication and deploying to Vercel." },
+  { id:9,  title:"Tailwind CSS Mastery",          cat:"web",       level:"beginner",  tags:["free","beginner"],      icon:"🌊", color:"linear-gradient(135deg,#0277bd,#29b6f6)",  inst:"Riya Sharma",   av:"bg1",  lessons:28, dur:"4h 30m", rating:"4.7", students:"12K", type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Utility-first CSS framework — custom themes, responsive design, dark mode, and building UI components." },
+  { id:10, title:"SASS & SCSS Complete",          cat:"web",       level:"beginner",  tags:["free","beginner"],      icon:"💅", color:"linear-gradient(135deg,#880e4f,#f48fb1)",  inst:"Priya Kapoor",  av:"bg4",  lessons:20, dur:"3h",     rating:"4.6", students:"7K",  type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Variables, mixins, nesting, partials, functions and building organized, maintainable stylesheets." },
+  { id:11, title:"Responsive Web Design",         cat:"web",       level:"beginner",  tags:["free","beginner"],      icon:"📱", color:"linear-gradient(135deg,#4a148c,#ab47bc)",  inst:"Kapil Dev",     av:"bg3",  lessons:22, dur:"3h 45m", rating:"4.7", students:"9K",  type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Mobile-first design, media queries, fluid grids, flexible images and cross-device compatibility." },
+  { id:12, title:"Web Accessibility (A11y)",      cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"♿", color:"linear-gradient(135deg,#006064,#00bcd4)",  inst:"Sneha Patel",   av:"bg7",  lessons:25, dur:"5h",     rating:"4.8", students:"4K",  type:"premium", price:349,   orig:1299,   badge:"PRO",  desc:"WCAG 2.1 guidelines, ARIA attributes, keyboard navigation, screen reader support and inclusive design." },
+  { id:13, title:"Web Performance Optimization",  cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"⚡", color:"linear-gradient(135deg,#e65100,#ff8f00)",  inst:"Rohit Verma",   av:"bg6",  lessons:30, dur:"6h",     rating:"4.7", students:"5K",  type:"premium", price:449,   orig:1699,   badge:"PRO",  desc:"Core Web Vitals, lazy loading, code splitting, caching strategies, image optimization and Lighthouse." },
+  { id:14, title:"Progressive Web Apps (PWA)",    cat:"framework", level:"advanced",  tags:["premium","advanced","framework"], icon:"📲", color:"linear-gradient(135deg,#1a237e,#3949ab)", inst:"Ananya Mishra", av:"bg5",  lessons:32, dur:"7h",     rating:"4.8", students:"6K",  type:"premium", price:499,   orig:1799,   badge:"PRO",  desc:"Service workers, Web App Manifest, offline-first strategies, push notifications and background sync." },
+  { id:15, title:"Git & GitHub for Developers",   cat:"web",       level:"beginner",  tags:["free","beginner"],      icon:"🔀", color:"linear-gradient(135deg,#212121,#616161)",  inst:"Arjun Mehta",   av:"bg2",  lessons:18, dur:"3h 30m", rating:"4.8", students:"15K", type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Version control fundamentals, branching strategies, GitHub workflows, PRs and CI/CD integration." },
+  { id:16, title:"Webpack & Build Tools",         cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"📦", color:"linear-gradient(135deg,#00695c,#00bcd4)",  inst:"Kapil Dev",     av:"bg3",  lessons:24, dur:"5h",     rating:"4.5", students:"3K",  type:"premium", price:349,   orig:1299,   badge:"PRO",  desc:"Webpack 5, Vite, Parcel, code splitting, loaders, plugins, tree shaking and production optimization." },
+  { id:17, title:"GraphQL for Frontend Devs",     cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"🔷", color:"linear-gradient(135deg,#e91e8c,#ff4081)",  inst:"Sneha Patel",   av:"bg7",  lessons:28, dur:"6h 30m", rating:"4.7", students:"4K",  type:"premium", price:549,   orig:1999,   badge:"PRO",  desc:"GraphQL schema, queries, mutations, subscriptions, Apollo Client with React and client-side caching." },
+  { id:18, title:"Testing with Jest & RTL",       cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"🧪", color:"linear-gradient(135deg,#bf360c,#ff7043)",  inst:"Rohit Verma",   av:"bg6",  lessons:34, dur:"8h",     rating:"4.8", students:"5K",  type:"premium", price:499,   orig:1799,   badge:"PRO",  desc:"Unit testing, integration testing, mocking, React Testing Library, code coverage and CI integration." },
+  { id:19, title:"Svelte & SvelteKit",            cat:"framework", level:"advanced",  tags:["premium","advanced","framework"], icon:"🟠", color:"linear-gradient(135deg,#bf360c,#ff8f00)", inst:"Priya Kapoor",  av:"bg4",  lessons:36, dur:"9h",     rating:"4.7", students:"3K",  type:"premium", price:599,   orig:1999,   badge:"NEW",  desc:"Build lightning-fast UIs with Svelte — reactivity, stores, transitions, SvelteKit routing and deployment." },
+  { id:20, title:"Three.js & WebGL Basics",       cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"🌌", color:"linear-gradient(135deg,#1a1a2e,#16213e)",  inst:"Kapil Dev",     av:"bg3",  lessons:40, dur:"10h",    rating:"4.8", students:"4K",  type:"premium", price:699,   orig:2499,   badge:"NEW",  desc:"3D graphics on the web — Three.js scene setup, geometries, materials, lighting, animations and WebGL shaders." }
+];
+
+const avatarColors = { bg1:'#e65100', bg2:'#1565c0', bg3:'#f9a825', bg4:'#00838f', bg5:'#1b5e20', bg6:'#b71c1c', bg7:'#4a148c' };
+const instructorInitials = { 'Riya Sharma':'RS', 'Arjun Mehta':'AM', 'Kapil Dev':'KD', 'Priya Kapoor':'PK', 'Ananya Mishra':'AM', 'Rohit Verma':'RV', 'Sneha Patel':'SP' };
+
+let enrolledCourses = JSON.parse(localStorage.getItem('th_enrolled') || '[]');
+let currentTag = 'all';
+let currentSearch = '';
+
+// ─── BADGE STYLING ───
+function getBadgeClass(badge) {
+  if (badge === 'FREE') return 'tag-free';
+  if (badge === 'HOT')  return 'tag-hot';
+  if (badge === 'NEW')  return 'tag-new';
+  return 'tag-pro';
+}
+
+// ─── RENDER ───────────────────────────────────────────────────
+function renderCourses(list) {
+  const grid = document.getElementById('coursesGrid');
+  const noResults = document.getElementById('noResults');
+  const countEl = document.getElementById('courseCount');
+  grid.querySelectorAll('.course-card').forEach(c => c.remove());
+
+  if (list.length === 0) {
+    noResults.classList.add('show'); countEl.innerHTML = 'Showing <strong>0</strong> courses';
+    return;
+  }
+  noResults.classList.remove('show');
+  countEl.innerHTML = `Showing <strong>${list.length}</strong> course${list.length !== 1 ? 's' : ''}`;
+
+  list.forEach((c, i) => {
+    const isEnrolled = enrolledCourses.includes(c.id);
+    const gst = c.type === 'premium' ? Math.round(c.price * 0.18) : 0;
+    const total = c.type === 'premium' ? c.price + gst : 0;
+
+    const priceHTML = c.type === 'free'
+      ? `<div class="card-price"><span class="price-free">✨ Free</span></div>`
+      : `<div class="card-price"><span class="price-amount">₹${c.price}</span><span class="price-original">₹${c.orig}</span><span class="price-discount">${Math.round((1 - c.price/c.orig)*100)}% off</span></div>`;
+
+    const enrollBtn = isEnrolled
+      ? `<button class="btn-enroll enrolled-state" id="enroll-${c.id}">✅ Enrolled</button>`
+      : `<button class="btn-enroll" id="enroll-${c.id}" onclick="enrollCourse(${c.id}, '${c.title.replace(/'/g,"\\'")}', this)">📚 Enroll Free</button>`;
+
+    const buyBtn = c.type === 'free' ? '' : `<button class="btn-buy" onclick="buyCourse(${c.id},'${encodeURIComponent(c.title)}',${c.price},${c.orig},'${c.icon}')">🛒 Buy ₹${c.price}</button>`;
+
+    const card = document.createElement('article');
+    card.className = 'course-card';
+    card.dataset.tags = c.tags.join(',');
+    card.dataset.title = c.title.toLowerCase();
+    card.style.animationDelay = (i * 0.04) + 's';
+    card.innerHTML = `
+      <div class="card-banner" style="background:${c.color}">
+        <span class="card-banner-rank">#${i + 1}</span>
+        <span style="font-size:3rem">${c.icon}</span>
+        <span class="card-banner-badge ${getBadgeClass(c.badge)}">${c.badge}</span>
+      </div>
+      <div class="card-body">
+        <div class="card-cat">${c.cat === 'framework' ? '⚛️ Framework' : '🌐 Web Dev'}</div>
+        <div class="card-title">${c.title}</div>
+        <div class="card-desc">${c.desc}</div>
+        <div class="card-instructor">
+          <div class="instructor-avatar" style="background:${avatarColors[c.av]};color:white">${instructorInitials[c.inst]}</div>
+          <span class="instructor-name">${c.inst}</span>
+        </div>
+        <div class="card-meta">
+          <span><span class="rating-stars">★</span> ${c.rating}</span>
+          <span>👨‍🎓 ${c.students}</span>
+          <span>📖 ${c.lessons} lessons</span>
+          <span>⏱ ${c.dur}</span>
+        </div>
+        ${priceHTML}
+        <div class="card-actions">${enrollBtn}${buyBtn}</div>
+      </div>`;
+    grid.insertBefore(card, document.getElementById('noResults'));
+  });
+  updateEnrolledBanner();
+}
+
+// ─── FILTER ───────────────────────────────────────────────────
+function filterCourses(search, tag) {
+  currentSearch = search.toLowerCase();
+  const filtered = courses.filter(c => {
+    const matchSearch = !currentSearch || c.title.toLowerCase().includes(currentSearch) || c.desc.toLowerCase().includes(currentSearch);
+    const matchTag = tag === 'all' || c.tags.includes(tag) || (tag === 'beginner' && c.level === 'beginner') || (tag === 'advanced' && c.level === 'advanced');
+    return matchSearch && matchTag;
+  });
+  renderCourses(filtered);
+}
+
+function filterByTag(tag, btn) {
+  currentTag = tag;
+  document.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterCourses(currentSearch, tag);
+}
+
+// ─── ENROLL ───────────────────────────────────────────────────
+function enrollCourse(id, title, btn) {
+  if (enrolledCourses.includes(id)) return;
+  enrolledCourses.push(id);
+  localStorage.setItem('th_enrolled', JSON.stringify(enrolledCourses));
+
+  btn.textContent = '✅ Enrolled';
+  btn.classList.add('enrolled-state');
+  btn.onclick = null;
+
+  updateEnrolledBanner();
+  showToast(`🎉 Enrolled in "${title}" successfully!`);
+
+  // Redirect to enrolled page after short delay
+  setTimeout(() => {
+    window.location.href = `enrolled.html?id=${id}&title=${encodeURIComponent(title)}&free=true`;
+  }, 1200);
+}
+
+// ─── BUY ──────────────────────────────────────────────────────
+function buyCourse(id, title, price, orig, icon) {
+  window.location.href = `payment.html?id=${id}&title=${title}&price=${price}&orig=${orig}&icon=${encodeURIComponent(icon)}`;
+}
+
+// ─── ENROLLED BANNER ──────────────────────────────────────────
+function updateEnrolledBanner() {
+  const banner = document.getElementById('enrolledBanner');
+  const chips = document.getElementById('enrolledChips');
+  if (enrolledCourses.length === 0) { banner.classList.remove('show'); return; }
+  banner.classList.add('show');
+  chips.innerHTML = '';
+  enrolledCourses.forEach(id => {
+    const c = courses.find(x => x.id === id);
+    if (c) { const ch = document.createElement('span'); ch.className='enrolled-chip'; ch.textContent = c.icon + ' ' + c.title; chips.appendChild(ch); }
+  });
+}
+
+// ─── TOAST ────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ─── INIT ─────────────────────────────────────────────────────
+renderCourses(courses);
+
+// Sync globalSearch with courseSearch
+document.getElementById('globalSearch').addEventListener('input', function() {
+  document.getElementById('courseSearch').value = this.value;
+  filterCourses(this.value, currentTag);
+});
+</script>
+</body>
+</html>

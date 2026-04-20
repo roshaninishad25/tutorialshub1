@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Performance Optimization with comprehensive guide. Learn frontend performance, backend optimization, caching strategies, monitoring and build lightning-fast applications. Premium course.">
+  <meta name="keywords" content="Performance optimization tutorial, frontend performance, backend optimization, caching, monitoring, web performance, learn performance optimization">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Performance Optimization - Build Lightning-Fast Applications">
+  <meta property="og:description" content="Premium Performance Optimization course covering frontend performance, backend optimization, caching strategies, monitoring and building lightning-fast applications.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-33-performance-optimization.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/performance-optimization-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Performance Optimization - Build Lightning-Fast Applications">
+  <meta name="twitter:description" content="Premium Performance Optimization course covering frontend performance, backend optimization, caching strategies, monitoring and building lightning-fast applications.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/performance-optimization-course.jpg">
+  <title>Performance Optimization - Build Lightning-Fast Applications | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-33-performance-optimization.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Performance Optimization",
+    "description": "Frontend performance, backend optimization, caching strategies, monitoring and building lightning-fast applications.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "Performance Optimization",
+    "teaches": ["Performance Optimization", "Frontend Performance", "Backend Optimization", "Caching Strategies", "Monitoring", "Web Performance", "Application Speed"],
+    "timeRequired": "PT14H",
+    "coursePrerequisites": "Web development experience and understanding of application architecture",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "David Chen"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "12000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "899",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #f59e0b, #dc2626);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #f59e0b;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .performance-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Performance Optimization</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Performance Optimization with frontend performance, backend optimization, caching strategies, monitoring and build lightning-fast applications.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 62 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 14h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.9 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 12K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">DC</div>
+        <div>
+          <div style="font-weight: 700;">David Chen</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Performance Expert & Optimization Specialist</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹899</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Performance Optimization</a></li>
+        <li><a href="#frontend-performance">2. Frontend Performance</a></li>
+        <li><a href="#backend-optimization">3. Backend Optimization</a></li>
+        <li><a href="#caching-strategies">4. Caching Strategies</a></li>
+        <li><a href="#database-optimization">5. Database Optimization</a></li>
+        <li><a href="#monitoring">6. Performance Monitoring</a></li>
+        <li><a href="#web-vitals">7. Core Web Vitals</a></li>
+        <li><a href="#optimization-tools">8. Performance Tools</a></li>
+        <li><a href="#advanced-techniques">9. Advanced Optimization Techniques</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>⚡ Introduction to Performance Optimization</h2>
+      <p>Performance optimization is crucial for creating fast, responsive, and user-friendly applications. It involves identifying bottlenecks, implementing optimization strategies, and continuously monitoring performance metrics.</p>
+      
+      <p>This comprehensive course teaches you to master performance optimization from frontend to backend. Learn to build lightning-fast applications that provide exceptional user experiences.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h4>Frontend Speed</h4>
+          <p>Optimize frontend performance for faster load times</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h4>Backend Efficiency</h4>
+          <p>Improve server performance and response times</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💾</div>
+          <h4>Smart Caching</h4>
+          <p>Implement effective caching strategies</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h4>Performance Monitoring</h4>
+          <p>Track and analyze performance metrics</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frontend Performance -->
+    <section class="blog-section" id="frontend-performance">
+      <h2>🎨 Frontend Performance</h2>
+      <p>Master frontend performance optimization techniques. Learn to optimize loading times, reduce bundle sizes, implement lazy loading, and improve rendering performance.</p>
+
+      <h3>Frontend Optimization Techniques</h3>
+      <div class="code-block">
+// Performance monitoring utilities
+class PerformanceMonitor {
+  constructor() {
+    this.metrics = {};
+    this.observers = new Map();
+  }
+
+  // Measure page load performance
+  measurePageLoad() {
+    if ('performance' in window) {
+      const navigation = performance.getEntriesByType('navigation')[0];
+      const paint = performance.getEntriesByType('paint');
+      
+      this.metrics = {
+        // Navigation timing
+        dns: navigation.domainLookupEnd - navigation.domainLookupStart,
+        tcp: navigation.connectEnd - navigation.connectStart,
+        request: navigation.responseStart - navigation.requestStart,
+        response: navigation.responseEnd - navigation.responseStart,
+        domProcessing: navigation.domContentLoadedEventStart - navigation.responseEnd,
+        domComplete: navigation.domComplete - navigation.domContentLoadedEventStart,
+        loadComplete: navigation.loadEventEnd - navigation.loadEventStart,
+        
+        // Paint timing
+        firstPaint: paint.find(p => p.name === 'first-paint')?.startTime || 0,
+        firstContentfulPaint: paint.find(p => p.name === 'first-contentful-paint')?.startTime || 0,
+        
+        // Core Web Vitals
+        ttfb: navigation.responseStart - navigation.requestStart,
+        domInteractive: navigation.domInteractive - navigation.navigationStart,
+        loadEventEnd: navigation.loadEventEnd - navigation.navigationStart
+      };
+    }
+    return this.metrics;
+  }
+
+  // Measure component render time
+  measureComponentRender(componentName, renderFunction) {
+    const startTime = performance.now();
+    const result = renderFunction();
+    const endTime = performance.now();
+    
+    console.log(`${componentName} render time: ${endTime - startTime}ms`);
+    return result;
+  }
+
+  // Monitor long tasks
+  observeLongTasks() {
+    if ('PerformanceObserver' in window) {
+      const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          console.warn('Long task detected:', {
+            duration: entry.duration,
+            startTime: entry.startTime,
+            name: entry.name
+          });
+        }
+      });
+      
+      observer.observe({ entryTypes: ['longtask'] });
+      this.observers.set('longtask', observer);
+    }
+  }
+
+  // Monitor layout shifts
+  observeLayoutShifts() {
+    if ('PerformanceObserver' in window) {
+      let clsValue = 0;
+      
+      const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (!entry.hadRecentInput) {
+            clsValue += entry.value;
+          }
+        }
+        console.log('Cumulative Layout Shift:', clsValue);
+      });
+      
+      observer.observe({ entryTypes: ['layout-shift'] });
+      this.observers.set('layout-shift', observer);
+    }
+  }
+
+  // Monitor largest contentful paint
+  observeLCP() {
+    if ('PerformanceObserver' in window) {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        const lastEntry = entries[entries.length - 1];
+        console.log('Largest Contentful Paint:', lastEntry.startTime);
+      });
+      
+      observer.observe({ entryTypes: ['largest-contentful-paint'] });
+      this.observers.set('lcp', observer);
+    }
+  }
+
+  // Cleanup observers
+  cleanup() {
+    this.observers.forEach(observer => observer.disconnect());
+    this.observers.clear();
+  }
+}
+
+// Lazy loading utility
+class LazyLoader {
+  constructor(options = {}) {
+    this.options = {
+      rootMargin: '50px',
+      threshold: 0.1,
+      ...options
+    };
+    this.observer = null;
+    this.elements = new Map();
+  }
+
+  // Lazy load images
+  lazyLoadImages() {
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          const src = img.dataset.src;
+          
+          if (src) {
+            img.src = src;
+            img.onload = () => {
+              img.classList.add('loaded');
+            };
+            this.observer.unobserve(img);
+            this.elements.delete(img);
+          }
+        }
+      });
+    }, this.options);
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      this.observer.observe(img);
+      this.elements.set(img, false);
+    });
+  }
+
+  // Lazy load components
+  lazyLoadComponent(selector, loadCallback) {
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          loadCallback(element);
+          this.observer.unobserve(element);
+          this.elements.delete(element);
+        }
+      });
+    }, this.options);
+
+    document.querySelectorAll(selector).forEach(element => {
+      this.observer.observe(element);
+      this.elements.set(element, false);
+    });
+  }
+
+  // Cleanup
+  cleanup() {
+    if (this.observer) {
+      this.observer.disconnect();
+      this.elements.clear();
+    }
+  }
+}
+
+// Bundle optimization utilities
+class BundleOptimizer {
+  // Code splitting utility
+  static async loadComponent(componentName) {
+    try {
+      const module = await import(`./components/${componentName}.js`);
+      return module.default;
+    } catch (error) {
+      console.error(`Failed to load component ${componentName}:`, error);
+      return null;
+    }
+  }
+
+  // Dynamic import with fallback
+  static async loadWithFallback(primaryImport, fallbackImport) {
+    try {
+      return await primaryImport();
+    } catch (error) {
+      console.warn('Primary import failed, loading fallback:', error);
+      return await fallbackImport();
+    }
+  }
+
+  // Preload critical resources
+  static preloadResources(resources) {
+    resources.forEach(resource => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.href = resource.url;
+      link.as = resource.type;
+      
+      if (resource.crossorigin) {
+        link.crossOrigin = 'anonymous';
+      }
+      
+      document.head.appendChild(link);
+    });
+  }
+
+  // Prefetch next pages
+  static prefetchPages(urls) {
+    urls.forEach(url => {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = url;
+      document.head.appendChild(link);
+    });
+  }
+}
+
+// Resource optimization utilities
+class ResourceOptimizer {
+  // Compress images using WebP format
+  static async optimizeImage(imgUrl, quality = 0.8) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = img.width;
+        canvas.height = img.height;
+        
+        ctx.drawImage(img, 0, 0);
+        
+        canvas.toBlob(resolve, 'image/webp', quality);
+      };
+      
+      img.onerror = () => resolve(imgUrl);
+      img.src = imgUrl;
+    });
+  }
+
+  // Minify CSS
+  static minifyCSS(css) {
+    return css
+      .replace(/\/\*[\s\S]*?\*\//g, '') // Remove comments
+      .replace(/\s+/g, ' ') // Collapse whitespace
+      .replace(/;\s*}/g, '}') // Remove semicolons before closing braces
+      .replace(/\s*{\s*/g, '{') // Remove spaces around braces
+      .replace(/\s*}\s*/g, '}')
+      .replace(/\s*;\s*/g, ';') // Remove spaces around semicolons
+      .replace(/\s*:\s*/g, ':') // Remove spaces around colons
+      .trim();
+  }
+
+  // Minify JavaScript (basic)
+  static minifyJS(js) {
+    return js
+      .replace(/\/\*[\s\S]*?\*\//g, '') // Remove block comments
+      .replace(/\/\/.*$/gm, '') // Remove line comments
+      .replace(/\s+/g, ' ') // Collapse whitespace
+      .replace(/;\s*}/g, '}') // Remove semicolons before closing braces
+      .trim();
+  }
+}
+
+// Usage examples
+const performanceMonitor = new PerformanceMonitor();
+const lazyLoader = new LazyLoader();
+
+// Initialize performance monitoring
+document.addEventListener('DOMContentLoaded', () => {
+  // Measure page load performance
+  const metrics = performanceMonitor.measurePageLoad();
+  console.log('Page performance metrics:', metrics);
+  
+  // Start observing performance metrics
+  performanceMonitor.observeLongTasks();
+  performanceMonitor.observeLayoutShifts();
+  performanceMonitor.observeLCP();
+  
+  // Initialize lazy loading
+  lazyLoader.lazyLoadImages();
+  
+  // Preload critical resources
+  BundleOptimizer.preloadResources([
+    { url: '/css/critical.css', type: 'style' },
+    { url: '/js/critical.js', type: 'script' }
+  ]);
+});
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+  performanceMonitor.cleanup();
+  lazyLoader.cleanup();
+});
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your performance optimization knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🚀 High-Performance E-commerce</h4>
+          <p>Optimize e-commerce site for sub-second load times</p>
+        </div>
+        <div class="feature-card">
+          <h4>📱 Mobile App Performance</h4>
+          <p>Optimize mobile applications for better user experience</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎮 Gaming Performance</h4>
+          <p>Optimize web games for smooth 60fps gameplay</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Analytics Dashboard</h4>
+          <p>Build fast, responsive data visualization dashboard</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Monitor Core Web Vitals regularly</li>
+        <li>✅ Implement lazy loading for non-critical resources</li>
+        <li>✅ Optimize images and use modern formats</li>
+        <li>✅ Minimize and compress assets</li>
+        <li>✅ Use CDNs for static content delivery</li>
+        <li>✅ Implement effective caching strategies</li>
+        <li>✅ Optimize database queries and indexing</li>
+        <li>✅ Continuously measure and improve performance</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Performance Optimization and are ready to build lightning-fast applications. You now understand frontend and backend optimization, caching strategies, monitoring, and performance best practices.</p>
+      
+      <p>Performance optimization is an ongoing process that requires continuous monitoring and improvement. Keep exploring new optimization techniques, stay current with performance tools, and continue creating exceptional user experiences.</p>
+
+      <div style="background: linear-gradient(135deg, #f59e0b, #dc2626); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become a Performance Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering advanced optimization techniques and performance tools!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-14-react-hooks-deep-dive.html" class="btn btn-outline" style="background: white; color: #f59e0b;">React Hooks →</a>
+          <a href="blog-31-database-design-mastery.html" class="btn btn-outline" style="background: white; color: #f59e0b;">Database Design →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #f59e0b;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

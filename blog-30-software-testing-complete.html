@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Software Testing with comprehensive guide. Learn unit testing, integration testing, E2E testing, test automation frameworks and ensure software quality. Premium course.">
+  <meta name="keywords" content="Software testing tutorial, unit testing, integration testing, E2E testing, test automation, quality assurance, learn software testing">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Software Testing Complete - Ensure Software Quality">
+  <meta property="og:description" content="Premium Software Testing course covering unit testing, integration testing, E2E testing, test automation frameworks and ensuring software quality.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-30-software-testing-complete.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/software-testing-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Software Testing Complete - Ensure Software Quality">
+  <meta name="twitter:description" content="Premium Software Testing course covering unit testing, integration testing, E2E testing, test automation frameworks and ensuring software quality.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/software-testing-course.jpg">
+  <title>Software Testing Complete - Ensure Software Quality | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-30-software-testing-complete.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Software Testing Complete",
+    "description": "Unit testing, integration testing, E2E testing, test automation frameworks and ensuring software quality.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "Software Testing",
+    "teaches": ["Software Testing", "Unit Testing", "Integration Testing", "E2E Testing", "Test Automation", "Quality Assurance", "Testing Frameworks"],
+    "timeRequired": "PT16H",
+    "coursePrerequisites": "Basic programming knowledge and understanding of software development",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Dr. Lisa Thompson"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "9500"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "999",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #10b981, #059669);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #10b981;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .testing-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Software Testing Complete</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Software Testing with unit testing, integration testing, E2E testing, test automation frameworks and ensure software quality.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 65 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 16h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.8 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 9.5K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">LT</div>
+        <div>
+          <div style="font-weight: 700;">Dr. Lisa Thompson</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Testing Expert & QA Lead</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹999</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Software Testing</a></li>
+        <li><a href="#testing-types">2. Types of Software Testing</a></li>
+        <li><a href="#unit-testing">3. Unit Testing Fundamentals</a></li>
+        <li><a href="#integration-testing">4. Integration Testing</a></li>
+        <li><a href="#e2e-testing">5. End-to-End Testing</a></li>
+        <li><a href="#test-automation">6. Test Automation Frameworks</a></li>
+        <li><a href="#performance-testing">7. Performance & Load Testing</a></li>
+        <li><a href="#security-testing">8. Security Testing</a></li>
+        <li><a href="#test-strategy">9. Test Strategy & Planning</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>🧪 Introduction to Software Testing</h2>
+      <p>Software testing is a critical process that ensures software quality, reliability, and performance. It involves evaluating software components to find defects and verify that they meet requirements.</p>
+      
+      <p>This comprehensive course teaches you to master software testing from fundamentals to advanced automation. Learn to implement various testing strategies, build robust test suites, and ensure high-quality software delivery.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🧪</div>
+          <h4>Test Strategies</h4>
+          <p>Learn comprehensive testing methodologies and approaches</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h4>Test Automation</h4>
+          <p>Master automated testing frameworks and tools</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h4>Quality Assurance</h4>
+          <p>Implement quality control and assurance processes</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h4>CI/CD Testing</h4>
+          <p>Integrate testing into continuous integration pipelines</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unit Testing -->
+    <section class="blog-section" id="unit-testing">
+      <h2>🔬 Unit Testing Fundamentals</h2>
+      <p>Master unit testing principles and practices. Learn to write effective unit tests, use mocking frameworks, and ensure code quality at the component level.</p>
+
+      <h3>JavaScript Unit Testing with Jest</h3>
+      <div class="code-block">
+// Install Jest
+// npm install --save-dev jest
+
+// Basic test example
+// math.js
+export function add(a, b) {
+  return a + b;
+}
+
+export function subtract(a, b) {
+  return a - b;
+}
+
+export function multiply(a, b) {
+  return a * b;
+}
+
+export function divide(a, b) {
+  if (b === 0) {
+    throw new Error('Division by zero');
+  }
+  return a / b;
+}
+
+// math.test.js
+import { add, subtract, multiply, divide } from './math';
+
+describe('Math functions', () => {
+  describe('add', () => {
+    test('should add two positive numbers', () => {
+      expect(add(2, 3)).toBe(5);
+    });
+
+    test('should add negative numbers', () => {
+      expect(add(-2, -3)).toBe(-5);
+    });
+
+    test('should handle zero', () => {
+      expect(add(0, 5)).toBe(5);
+      expect(add(5, 0)).toBe(5);
+    });
+  });
+
+  describe('subtract', () => {
+    test('should subtract two positive numbers', () => {
+      expect(subtract(5, 3)).toBe(2);
+    });
+
+    test('should handle negative results', () => {
+      expect(subtract(3, 5)).toBe(-2);
+    });
+  });
+
+  describe('multiply', () => {
+    test('should multiply two positive numbers', () => {
+      expect(multiply(3, 4)).toBe(12);
+    });
+
+    test('should multiply by zero', () => {
+      expect(multiply(5, 0)).toBe(0);
+    });
+  });
+
+  describe('divide', () => {
+    test('should divide two positive numbers', () => {
+      expect(divide(10, 2)).toBe(5);
+    });
+
+    test('should handle decimal results', () => {
+      expect(divide(5, 2)).toBe(2.5);
+    });
+
+    test('should throw error when dividing by zero', () => {
+      expect(() => divide(5, 0)).toThrow('Division by zero');
+    });
+  });
+});
+
+// Advanced testing with mocking
+// user.service.js
+import { fetchUser } from './api';
+
+export class UserService {
+  async getUserById(id) {
+    const user = await fetchUser(id);
+    return user;
+  }
+
+  async getUserFullName(id) {
+    const user = await this.getUserById(id);
+    return `${user.firstName} ${user.lastName}`;
+  }
+}
+
+// user.service.test.js
+import { UserService } from './user.service';
+import { fetchUser } from './api';
+
+// Mock the API module
+jest.mock('./api');
+
+describe('UserService', () => {
+  let userService;
+
+  beforeEach(() => {
+    userService = new UserService();
+    // Clear all mocks before each test
+    jest.clearAllMocks();
+  });
+
+  describe('getUserById', () => {
+    test('should return user data', async () => {
+      // Mock the fetchUser function
+      const mockUser = { id: 1, firstName: 'John', lastName: 'Doe' };
+      fetchUser.mockResolvedValue(mockUser);
+
+      const result = await userService.getUserById(1);
+
+      expect(fetchUser).toHaveBeenCalledWith(1);
+      expect(result).toEqual(mockUser);
+    });
+
+    test('should handle API errors', async () => {
+      const errorMessage = 'User not found';
+      fetchUser.mockRejectedValue(new Error(errorMessage));
+
+      await expect(userService.getUserById(999))
+        .rejects.toThrow(errorMessage);
+    });
+  });
+
+  describe('getUserFullName', () => {
+    test('should return full name', async () => {
+      const mockUser = { id: 1, firstName: 'John', lastName: 'Doe' };
+      fetchUser.mockResolvedValue(mockUser);
+
+      const fullName = await userService.getUserFullName(1);
+
+      expect(fullName).toBe('John Doe');
+    });
+
+    test('should handle missing last name', async () => {
+      const mockUser = { id: 1, firstName: 'John', lastName: '' };
+      fetchUser.mockResolvedValue(mockUser);
+
+      const fullName = await userService.getUserFullName(1);
+
+      expect(fullName).toBe('John ');
+    });
+  });
+});
+
+// Testing React components
+// Button.jsx
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const Button = ({ children, onClick, disabled = false, variant = 'primary' }) => {
+  const buttonClass = `btn btn-${variant}`;
+  
+  return (
+    <button
+      className={buttonClass}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {children}
+    </button>
+  );
+};
+
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  variant: PropTypes.oneOf(['primary', 'secondary', 'danger'])
+};
+
+Button.defaultProps = {
+  onClick: () => {},
+  disabled: false,
+  variant: 'primary'
+};
+
+export default Button;
+
+// Button.test.jsx
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import Button from './Button';
+
+describe('Button component', () => {
+  test('renders with children', () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole('button', { name: 'Click me' })).toBeInTheDocument();
+  });
+
+  test('calls onClick when clicked', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick}>Click me</Button>);
+    
+    fireEvent.click(screen.getByRole('button'));
+    
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  test('does not call onClick when disabled', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} disabled>Click me</Button>);
+    
+    fireEvent.click(screen.getByRole('button'));
+    
+    expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  test('applies correct variant class', () => {
+    render(<Button variant="secondary">Click me</Button>);
+    expect(screen.getByRole('button')).toHaveClass('btn-secondary');
+  });
+
+  test('is disabled when disabled prop is true', () => {
+    render(<Button disabled>Click me</Button>);
+    expect(screen.getByRole('button')).toBeDisabled();
+  });
+});
+      </div>
+
+      <h3>Python Unit Testing with pytest</h3>
+      <div class="code-block">
+# Install pytest
+# pip install pytest pytest-mock
+
+# calculator.py
+class Calculator:
+    def add(self, a, b):
+        return a + b
+    
+    def subtract(self, a, b):
+        return a - b
+    
+    def multiply(self, a, b):
+        return a * b
+    
+    def divide(self, a, b):
+        if b == 0:
+            raise ValueError("Cannot divide by zero")
+        return a / b
+
+# test_calculator.py
+import pytest
+from calculator import Calculator
+
+class TestCalculator:
+    def setup_method(self):
+        """Setup method called before each test"""
+        self.calculator = Calculator()
+    
+    def test_add_positive_numbers(self):
+        result = self.calculator.add(2, 3)
+        assert result == 5
+    
+    def test_add_negative_numbers(self):
+        result = self.calculator.add(-2, -3)
+        assert result == -5
+    
+    def test_add_with_zero(self):
+        assert self.calculator.add(0, 5) == 5
+        assert self.calculator.add(5, 0) == 5
+    
+    def test_subtract_positive_numbers(self):
+        result = self.calculator.subtract(5, 3)
+        assert result == 2
+    
+    def test_subtract_negative_result(self):
+        result = self.calculator.subtract(3, 5)
+        assert result == -2
+    
+    def test_multiply_positive_numbers(self):
+        result = self.calculator.multiply(3, 4)
+        assert result == 12
+    
+    def test_multiply_by_zero(self):
+        result = self.calculator.multiply(5, 0)
+        assert result == 0
+    
+    def test_divide_positive_numbers(self):
+        result = self.calculator.divide(10, 2)
+        assert result == 5
+    
+    def test_divide_decimal_result(self):
+        result = self.calculator.divide(5, 2)
+        assert result == 2.5
+    
+    def test_divide_by_zero_raises_error(self):
+        with pytest.raises(ValueError, match="Cannot divide by zero"):
+            self.calculator.divide(5, 0)
+
+# Using parametrized tests
+@pytest.mark.parametrize("a,b,expected", [
+    (2, 3, 5),
+    (-2, -3, -5),
+    (0, 5, 5),
+    (5, 0, 5),
+])
+def test_add_parametrized(a, b, expected):
+    calculator = Calculator()
+    assert calculator.add(a, b) == expected
+
+# Testing with fixtures
+# conftest.py
+@pytest.fixture
+def calculator():
+    """Fixture that provides a Calculator instance"""
+    return Calculator()
+
+@pytest.fixture
+def sample_data():
+    """Fixture that provides sample test data"""
+    return {
+        'users': [
+            {'id': 1, 'name': 'Alice'},
+            {'id': 2, 'name': 'Bob'}
+        ],
+        'products': [
+            {'id': 1, 'name': 'Laptop', 'price': 999.99},
+            {'id': 2, 'name': 'Mouse', 'price': 29.99}
+        ]
+    }
+
+# test_with_fixtures.py
+def test_calculator_with_fixture(calculator):
+    """Test using calculator fixture"""
+    assert calculator.add(2, 3) == 5
+
+def test_sample_data_fixture(sample_data):
+    """Test using sample_data fixture"""
+    assert len(sample_data['users']) == 2
+    assert sample_data['users'][0]['name'] == 'Alice'
+    assert sample_data['products'][1]['price'] == 29.99
+
+# Mocking with pytest-mock
+# user_service.py
+import requests
+
+class UserService:
+    def __init__(self, api_url):
+        self.api_url = api_url
+    
+    def get_user(self, user_id):
+        response = requests.get(f"{self.api_url}/users/{user_id}")
+        response.raise_for_status()
+        return response.json()
+    
+    def get_user_full_name(self, user_id):
+        user = self.get_user(user_id)
+        return f"{user['first_name']} {user['last_name']}"
+
+# test_user_service.py
+import pytest
+from unittest.mock import Mock, patch
+from user_service import UserService
+
+class TestUserService:
+    def setup_method(self):
+        self.service = UserService("https://api.example.com")
+    
+    @patch('user_service.requests.get')
+    def test_get_user_success(self, mock_get):
+        # Mock the response
+        mock_response = Mock()
+        mock_response.json.return_value = {
+            'id': 1,
+            'first_name': 'John',
+            'last_name': 'Doe'
+        }
+        mock_response.raise_for_status.return_value = None
+        mock_get.return_value = mock_response
+        
+        result = self.service.get_user(1)
+        
+        mock_get.assert_called_once_with("https://api.example.com/users/1")
+        assert result['first_name'] == 'John'
+        assert result['last_name'] == 'Doe'
+    
+    @patch('user_service.requests.get')
+    def test_get_user_api_error(self, mock_get):
+        mock_get.side_effect = requests.exceptions.HTTPError("User not found")
+        
+        with pytest.raises(requests.exceptions.HTTPError):
+            self.service.get_user(999)
+    
+    @patch.object(UserService, 'get_user')
+    def test_get_user_full_name(self, mock_get_user):
+        mock_get_user.return_value = {
+            'id': 1,
+            'first_name': 'Jane',
+            'last_name': 'Smith'
+        }
+        
+        full_name = self.service.get_user_full_name(1)
+        
+        mock_get_user.assert_called_once_with(1)
+        assert full_name == "Jane Smith"
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your software testing knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🧪 Test Automation Framework</h4>
+          <p>Build a comprehensive test automation framework from scratch</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Performance Testing Suite</h4>
+          <p>Create performance testing tools and load testing scenarios</p>
+        </div>
+        <div class="feature-card">
+          <h4>🔒 Security Testing Tools</h4>
+          <p>Develop security testing utilities and vulnerability scanners</p>
+        </div>
+        <div class="feature-card">
+          <h4>🚀 CI/CD Testing Pipeline</h4>
+          <p>Integrate comprehensive testing into CI/CD pipelines</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Write tests that are independent and isolated</li>
+        <li>✅ Use descriptive test names that explain what is being tested</li>
+        <li>✅ Follow the AAA pattern: Arrange, Act, Assert</li>
+        <li>✅ Mock external dependencies to isolate units under test</li>
+        <li>✅ Maintain high test coverage while focusing on critical paths</li>
+        <li>✅ Use parameterized tests for multiple scenarios</li>
+        <li>✅ Regularly review and refactor test code</li>
+        <li>✅ Integrate testing into the development workflow</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Software Testing and are ready to ensure high-quality software delivery. You now understand various testing types, automation frameworks, and quality assurance practices.</p>
+      
+      <p>Software testing is an essential discipline that continues to evolve with new tools and methodologies. Keep exploring emerging testing technologies, stay current with best practices, and continue improving your testing skills.</p>
+
+      <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become a Testing Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering advanced testing technologies and quality assurance!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-29-devops-complete-guide.html" class="btn btn-outline" style="background: white; color: #10b981;">DevOps →</a>
+          <a href="blog-13-nodejs-express-api.html" class="btn btn-outline" style="background: white; color: #10b981;">Node.js API →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #10b981;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

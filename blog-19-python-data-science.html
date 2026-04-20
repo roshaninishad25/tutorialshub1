@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Python for Data Science with comprehensive guide. Learn NumPy, Pandas, Matplotlib, Scikit-learn, data analysis, machine learning and build data-driven applications. Premium course.">
+  <meta name="keywords" content="Python data science tutorial, NumPy, Pandas, Matplotlib, Scikit-learn, data analysis, machine learning, learn Python data science">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Python for Data Science - Complete Data Analysis Course">
+  <meta property="og:description" content="Premium Python data science course covering NumPy, Pandas, Matplotlib, Scikit-learn, data analysis, machine learning and building data-driven applications.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-19-python-data-science.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/python-data-science-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Python for Data Science - Complete Data Analysis Course">
+  <meta name="twitter:description" content="Premium Python data science course covering NumPy, Pandas, Matplotlib, Scikit-learn, data analysis, machine learning and building data-driven applications.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/python-data-science-course.jpg">
+  <title>Python for Data Science - Complete Data Analysis Course | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-19-python-data-science.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Python for Data Science",
+    "description": "NumPy, Pandas, Matplotlib, Scikit-learn, data analysis, machine learning and building data-driven applications.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "Python Data Science",
+    "teaches": ["Python", "NumPy", "Pandas", "Matplotlib", "Scikit-learn", "Data Analysis", "Machine Learning", "Data Visualization"],
+    "timeRequired": "PT18H",
+    "coursePrerequisites": "Basic Python programming and statistics knowledge",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Dr. Anjali Sharma"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "18000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "1099",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #3776ab, #ffd43b);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #3776ab;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .python-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Python for Data Science</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Python for Data Science with NumPy, Pandas, Matplotlib, Scikit-learn, data analysis, machine learning and build data-driven applications.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 65 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 18h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.9 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 18K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">AS</div>
+        <div>
+          <div style="font-weight: 700;">Dr. Anjali Sharma</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Data Scientist & AI Researcher</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹1099</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Data Science</a></li>
+        <li><a href="#python-basics">2. Python for Data Science</a></li>
+        <li><a href="#numpy">3. NumPy Mastery</a></li>
+        <li><a href="#pandas">4. Pandas Data Analysis</a></li>
+        <li><a href="#visualization">5. Data Visualization</a></li>
+        <li><a href="#statistics">6. Statistical Analysis</a></li>
+        <li><a href="#machine-learning">7. Machine Learning with Scikit-learn</a></li>
+        <li><a href="#advanced-topics">8. Advanced Data Science Topics</a></li>
+        <li><a href="#real-projects">9. Real-World Projects</a></li>
+        <li><a href="#career">10. Career Development</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>📊 Introduction to Data Science</h2>
+      <p>Data Science is the art of extracting insights and knowledge from data using scientific methods, processes, algorithms, and systems. Python has become the dominant language for data science due to its simplicity and powerful ecosystem.</p>
+      
+      <p>This comprehensive course teaches you to master Python for data science, from basic data manipulation to advanced machine learning techniques. Learn to analyze, visualize, and model data to solve real-world problems.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🐍</div>
+          <h4>Python Ecosystem</h4>
+          <p>Master the complete Python data science stack</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h4>Data Analysis</h4>
+          <p>Analyze and manipulate complex datasets</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h4>Visualization</h4>
+          <p>Create compelling data visualizations</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h4>Machine Learning</h4>
+          <p>Build predictive models and algorithms</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Python Basics -->
+    <section class="blog-section" id="python-basics">
+      <h2>🐍 Python for Data Science</h2>
+      <p>Master Python fundamentals specifically for data science, including data structures, functions, and essential libraries for data manipulation.</p>
+
+      <h3>Python Data Structures for Data Science</h3>
+      <div class="code-block">
+# Essential Python data structures for data science
+
+# Lists - Ordered, mutable collections
+numbers = [1, 2, 3, 4, 5]
+mixed_data = [1, "hello", 3.14, True, [1, 2, 3]]
+
+# List comprehensions - Efficient data transformation
+squares = [x**2 for x in range(10)]
+even_numbers = [x for x in range(20) if x % 2 == 0]
+
+# Nested list operations
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+flattened = [num for row in matrix for num in row]
+
+# Dictionaries - Key-value pairs
+student = {
+    "name": "John Doe",
+    "age": 20,
+    "grades": [85, 90, 78, 92],
+    "courses": ["Math", "Physics", "Chemistry"]
+}
+
+# Dictionary comprehensions
+squared_dict = {x: x**2 for x in range(5)}
+grade_mapping = {course: grade for course, grade in zip(student["courses"], student["grades"])}
+
+# Sets - Unique elements
+unique_numbers = {1, 2, 3, 2, 1, 4, 5}  # {1, 2, 3, 4, 5}
+set_operations = {1, 2, 3} & {2, 3, 4}  # Intersection: {2, 3}
+
+# Tuples - Immutable sequences
+coordinates = (40.7128, -74.0060)  # NYC coordinates
+point_3d = (1, 2, 3)
+x, y, z = point_3d  # Tuple unpacking
+
+# Working with data structures
+def analyze_data(data):
+    """Analyze a list of numbers and return statistics."""
+    if not data:
+        return None
+    
+    return {
+        "count": len(data),
+        "sum": sum(data),
+        "mean": sum(data) / len(data),
+        "min": min(data),
+        "max": max(data),
+        "sorted": sorted(data)
+    }
+
+# Example usage
+data = [23, 45, 67, 12, 89, 34, 56, 78, 90, 45]
+stats = analyze_data(data)
+print(f"Data Statistics: {stats}")
+      </div>
+
+      <h3>Functions and Lambda Expressions</h3>
+      <div class="code-block">
+# Functions for data processing
+def clean_text(text):
+    """Clean and normalize text data."""
+    if not isinstance(text, str):
+        return ""
+    
+    # Convert to lowercase and remove extra whitespace
+    text = text.lower().strip()
+    
+    # Remove special characters (keep letters, numbers, spaces)
+    import re
+    text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
+    
+    # Remove extra spaces
+    text = re.sub(r'\s+', ' ', text)
+    
+    return text
+
+def calculate_statistics(numbers):
+    """Calculate comprehensive statistics for a list of numbers."""
+    if not numbers:
+        return {}
+    
+    n = len(numbers)
+    sorted_nums = sorted(numbers)
+    
+    return {
+        "count": n,
+        "mean": sum(numbers) / n,
+        "median": sorted_nums[n//2] if n % 2 == 1 else (sorted_nums[n//2-1] + sorted_nums[n//2]) / 2,
+        "mode": max(set(numbers), key=numbers.count),
+        "std_dev": (sum((x - sum(numbers)/n)**2 for x in numbers) / n) ** 0.5,
+        "min": min(numbers),
+        "max": max(numbers),
+        "range": max(numbers) - min(numbers)
+    }
+
+# Lambda functions for quick operations
+square = lambda x: x**2
+add_two = lambda x: x + 2
+is_even = lambda x: x % 2 == 0
+
+# Lambda with built-in functions
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+squared = list(map(lambda x: x**2, numbers))
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+
+# Lambda in sorting
+students = [
+    {"name": "Alice", "grade": 85},
+    {"name": "Bob", "grade": 92},
+    {"name": "Charlie", "grade": 78}
+]
+
+# Sort by grade
+students_by_grade = sorted(students, key=lambda x: x["grade"])
+# Sort by name
+students_by_name = sorted(students, key=lambda x: x["name"])
+
+# Higher-order functions
+def apply_operation(data, operation):
+    """Apply an operation to each element in data."""
+    return [operation(x) for x in data]
+
+# Usage
+doubled = apply_operation(numbers, lambda x: x * 2)
+cubed = apply_operation(numbers, lambda x: x ** 3)
+      </div>
+
+      <h3>File I/O and Data Handling</h3>
+      <div class="code-block">
+# Working with files for data science
+import json
+import csv
+import pickle
+
+# Reading and writing JSON files
+def save_json(data, filename):
+    """Save data to JSON file."""
+    with open(filename, 'w') as f:
+        json.dump(data, f, indent=2)
+
+def load_json(filename):
+    """Load data from JSON file."""
+    with open(filename, 'r') as f:
+        return json.load(f)
+
+# Working with CSV files
+def read_csv(filename):
+    """Read CSV file and return list of dictionaries."""
+    data = []
+    with open(filename, 'r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            data.append(row)
+    return data
+
+def write_csv(data, filename):
+    """Write list of dictionaries to CSV file."""
+    if not data:
+        return
+    
+    with open(filename, 'w', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=data[0].keys())
+        writer.writeheader()
+        writer.writerows(data)
+
+# Text file processing
+def process_text_file(filename):
+    """Process text file and return word statistics."""
+    with open(filename, 'r') as f:
+        text = f.read()
+    
+    words = text.lower().split()
+    word_count = len(words)
+    unique_words = len(set(words))
+    
+    # Word frequency
+    word_freq = {}
+    for word in words:
+        word = word.strip('.,!?;:"()[]')
+        word_freq[word] = word_freq.get(word, 0) + 1
+    
+    return {
+        "total_words": word_count,
+        "unique_words": unique_words,
+        "word_frequency": word_freq,
+        "most_common": max(word_freq.items(), key=lambda x: x[1]) if word_freq else None
+    }
+
+# Example usage
+sample_data = {
+    "students": [
+        {"name": "Alice", "age": 20, "grade": 85},
+        {"name": "Bob", "age": 21, "grade": 92},
+        {"name": "Charlie", "age": 19, "grade": 78}
+    ],
+    "course": "Data Science 101",
+    "semester": "Fall 2024"
+}
+
+# Save and load data
+save_json(sample_data, "students_data.json")
+loaded_data = load_json("students_data.json")
+print(f"Loaded data: {loaded_data}")
+      </div>
+    </section>
+
+    <!-- NumPy -->
+    <section class="blog-section" id="numpy">
+      <h2>🔢 NumPy Mastery</h2>
+      <p>Master NumPy, the fundamental package for scientific computing in Python. Learn array operations, mathematical functions, and efficient data manipulation.</p>
+
+      <h3>NumPy Arrays and Operations</h3>
+      <div class="code-block">
+import numpy as np
+
+# Creating NumPy arrays
+# From Python lists
+arr1 = np.array([1, 2, 3, 4, 5])
+arr2 = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# Special arrays
+zeros = np.zeros((3, 4))  # 3x4 array of zeros
+ones = np.ones((2, 3))    # 2x3 array of ones
+identity = np.eye(3)      # 3x3 identity matrix
+random_arr = np.random.rand(3, 3)  # 3x3 random array
+
+# Arrays with specific ranges
+arange_arr = np.arange(0, 10, 2)  # [0, 2, 4, 6, 8]
+linspace_arr = np.linspace(0, 10, 5)  # [0, 2.5, 5, 7.5, 10]
+
+# Array properties
+print(f"Shape: {arr2.shape}")
+print(f"Dimensions: {arr2.ndim}")
+print(f"Size: {arr2.size}")
+print(f"Data type: {arr2.dtype}")
+
+# Array indexing and slicing
+arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+
+# Single element
+element = arr[1, 2]  # 7
+
+# Row and column slicing
+row = arr[1, :]     # [5, 6, 7, 8]
+col = arr[:, 2]     # [3, 7, 11]
+
+# Subarray
+subarray = arr[0:2, 1:3]  # [[2, 3], [6, 7]]
+
+# Boolean indexing
+bool_arr = arr > 5
+filtered = arr[arr > 5]  # [6, 7, 8, 9, 10, 11, 12]
+
+# Array operations
+a = np.array([1, 2, 3, 4])
+b = np.array([5, 6, 7, 8])
+
+# Arithmetic operations
+sum_arr = a + b          # [6, 8, 10, 12]
+diff_arr = a - b         # [-4, -4, -4, -4]
+product_arr = a * b      # [5, 12, 21, 32]
+quotient_arr = a / b     # [0.2, 0.333, 0.428, 0.5]
+
+# Mathematical functions
+sqrt_arr = np.sqrt(a)    # [1, 1.414, 1.732, 2]
+exp_arr = np.exp(a)      # [2.718, 7.389, 20.085, 54.598]
+log_arr = np.log(a)      # [0, 0.693, 1.098, 1.386]
+
+# Statistical functions
+data = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+mean_val = np.mean(data)    # 5.5
+median_val = np.median(data)  # 5.5
+std_val = np.std(data)      # 2.872
+var_val = np.var(data)      # 8.25
+min_val = np.min(data)      # 1
+max_val = np.max(data)      # 10
+sum_val = np.sum(data)      # 55
+      </div>
+
+      <h3>Advanced NumPy Operations</h3>
+      <div class="code-block">
+# Matrix operations
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+
+# Matrix multiplication
+matrix_product = np.dot(A, B)  # [[19, 22], [43, 50]]
+element_product = A * B        # [[5, 12], [21, 32]]
+
+# Transpose
+transpose_A = A.T  # [[1, 3], [2, 4]]
+
+# Inverse (for square matrices)
+try:
+    inverse_A = np.linalg.inv(A)
+except np.linalg.LinAlgError:
+    print("Matrix is not invertible")
+
+# Determinant
+det_A = np.linalg.det(A)  # -2.0
+
+# Eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(A)
+
+# Reshaping arrays
+arr = np.arange(12)
+reshaped = arr.reshape(3, 4)
+flattened = reshaped.flatten()
+
+# Stacking arrays
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+
+# Vertical stacking
+vstacked = np.vstack((arr1, arr2))
+# Horizontal stacking
+hstacked = np.hstack((arr1, arr2))
+
+# Broadcasting
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+row_vector = np.array([10, 20, 30])
+col_vector = np.array([[10], [20]])
+
+# Broadcasting with row vector
+result = arr + row_vector
+# [[11, 22, 33], [14, 25, 36]]
+
+# Broadcasting with column vector
+result = arr + col_vector
+# [[11, 12, 13], [24, 25, 26]]
+
+# Advanced indexing
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# Fancy indexing
+rows = np.array([0, 2])
+cols = np.array([1, 2])
+selected = arr[rows, cols]  # [2, 9]
+
+# Boolean indexing with multiple conditions
+mask = (arr > 3) & (arr < 8)
+filtered = arr[mask]  # [4, 5, 6, 7]
+
+# Working with missing data
+data = np.array([1, 2, np.nan, 4, 5, np.nan])
+mask = ~np.isnan(data)
+clean_data = data[mask]  # [1, 2, 4, 5]
+
+# Performance comparison with Python lists
+import time
+
+# Large arrays
+size = 1000000
+list_data = list(range(size))
+numpy_data = np.arange(size)
+
+# Timing operations
+start_time = time.time()
+list_squared = [x**2 for x in list_data]
+list_time = time.time() - start_time
+
+start_time = time.time()
+numpy_squared = numpy_data ** 2
+numpy_time = time.time() - start_time
+
+print(f"Python list time: {list_time:.4f} seconds")
+print(f"NumPy array time: {numpy_time:.4f} seconds")
+print(f"Speedup: {list_time/numpy_time:.2f}x")
+      </div>
+    </section>
+
+    <!-- Pandas -->
+    <section class="blog-section" id="pandas">
+      <h2>🐼 Pandas Data Analysis</h2>
+      <p>Master Pandas, the powerful data manipulation and analysis library. Learn to work with DataFrames, handle missing data, and perform complex data operations.</p>
+
+      <h3>DataFrames and Basic Operations</h3>
+      <div class="code-block">
+import pandas as pd
+import numpy as np
+
+# Creating DataFrames
+# From dictionary
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Eva'],
+    'Age': [25, 30, 35, 28, 32],
+    'City': ['New York', 'London', 'Paris', 'Tokyo', 'Sydney'],
+    'Salary': [70000, 80000, 90000, 75000, 85000]
+}
+df = pd.DataFrame(data)
+
+# From list of dictionaries
+records = [
+    {'Name': 'Alice', 'Subject': 'Math', 'Grade': 85},
+    {'Name': 'Alice', 'Subject': 'Physics', 'Grade': 90},
+    {'Name': 'Bob', 'Subject': 'Math', 'Grade': 78},
+    {'Name': 'Bob', 'Subject': 'Physics', 'Grade': 82}
+]
+df_records = pd.DataFrame(records)
+
+# From NumPy array
+dates = pd.date_range('20240101', periods=6)
+df_numeric = pd.DataFrame(np.random.randn(6, 4), 
+                         index=dates, 
+                         columns=['A', 'B', 'C', 'D'])
+
+# DataFrame exploration
+print(f"Shape: {df.shape}")
+print(f"Columns: {df.columns.tolist()}")
+print(f"Index: {df.index.tolist()}")
+print(f"Data types:\n{df.dtypes}")
+print(f"Info:\n{df.info()}")
+print(f"Description:\n{df.describe()}")
+
+# Selecting data
+# Select columns
+names = df['Name']  # Series
+subset = df[['Name', 'Age']]  # DataFrame
+
+# Select rows by label
+row = df.loc[0]  # First row
+rows = df.loc[0:2]  # First 3 rows
+
+# Select rows by position
+row = df.iloc[0]  # First row
+rows = df.iloc[0:2]  # First 3 rows
+
+# Conditional selection
+high_salary = df[df['Salary'] > 75000]
+specific_cities = df[df['City'].isin(['New York', 'London'])]
+
+# Multiple conditions
+condition = (df['Age'] > 30) & (df['Salary'] < 90000)
+filtered = df[condition]
+
+# Adding and modifying columns
+df['Experience'] = [2, 5, 8, 3, 6]
+df['Salary_per_Year'] = df['Salary'] / df['Experience']
+
+# Apply functions
+df['Age_Category'] = df['Age'].apply(lambda x: 'Young' if x < 30 else 'Adult')
+
+# Mathematical operations
+df['Salary_Increased'] = df['Salary'] * 1.1
+df['Age_Squared'] = df['Age'] ** 2
+
+# Removing columns and rows
+df_cleaned = df.drop('Experience', axis=1)  # Remove column
+df_cleaned = df.drop(0, axis=0)  # Remove row
+      </div>
+
+      <h3>Data Cleaning and Preprocessing</h3>
+      <div class="code-block">
+# Handling missing data
+data_with_missing = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Eva'],
+    'Age': [25, np.nan, 35, 28, 32],
+    'City': ['New York', 'London', None, 'Tokyo', 'Sydney'],
+    'Salary': [70000, 80000, np.nan, 75000, 85000]
+}
+df_missing = pd.DataFrame(data_with_missing)
+
+# Check for missing values
+print(f"Missing values:\n{df_missing.isnull().sum()}")
+print(f"Missing values count:\n{df_missing.isnull().sum().sum()}")
+
+# Handling missing values
+# Drop rows with missing values
+df_dropped = df_missing.dropna()
+
+# Drop columns with missing values
+df_dropped_cols = df_missing.dropna(axis=1)
+
+# Fill missing values
+df_filled = df_missing.fillna({
+    'Age': df_missing['Age'].mean(),
+    'City': 'Unknown',
+    'Salary': df_missing['Salary'].median()
+})
+
+# Forward fill and backward fill
+df_forward_fill = df_missing.fillna(method='ffill')
+df_backward_fill = df_missing.fillna(method='bfill')
+
+# Interpolation for numeric columns
+df_interpolated = df_missing.copy()
+df_interpolated['Age'] = df_interpolated['Age'].interpolate()
+df_interpolated['Salary'] = df_interpolated['Salary'].interpolate()
+
+# Data type conversion
+df['Age'] = df['Age'].astype(int)
+df['Salary'] = df['Salary'].astype(float)
+df['Name'] = df['Name'].astype('category')
+
+# Handling duplicates
+df_duplicates = pd.concat([df, df.iloc[0:2]])  # Create duplicates
+
+# Check for duplicates
+print(f"Duplicate rows: {df_duplicates.duplicated().sum()}")
+
+# Remove duplicates
+df_no_duplicates = df_duplicates.drop_duplicates()
+
+# Remove duplicates based on specific columns
+df_unique_names = df_duplicates.drop_duplicates(subset=['Name'])
+
+# String operations
+df['Name_Upper'] = df['Name'].str.upper()
+df['Name_Length'] = df['Name'].str.len()
+df['City_First_Letter'] = df['City'].str[0]
+
+# Filter by string conditions
+df_a_names = df[df['Name'].str.startswith('A')]
+df_cities_with_o = df[df['City'].str.contains('o')]
+
+# Date/time operations
+df['Date'] = pd.date_range('2024-01-01', periods=len(df), freq='D')
+df['Year'] = df['Date'].dt.year
+df['Month'] = df['Date'].dt.month
+df['Day_of_Week'] = df['Date'].dt.day_name()
+
+# Group by operations
+grouped = df.groupby('City')
+avg_salary_by_city = grouped['Salary'].mean()
+count_by_city = grouped.size()
+
+# Multiple aggregations
+agg_results = grouped.agg({
+    'Salary': ['mean', 'median', 'std'],
+    'Age': ['min', 'max']
+})
+
+# Pivot tables
+pivot_table = pd.pivot_table(df, 
+                           values='Salary', 
+                           index='City', 
+                           columns='Age_Category', 
+                           aggfunc='mean')
+
+# Merging and joining DataFrames
+df1 = pd.DataFrame({'ID': [1, 2, 3], 'Name': ['Alice', 'Bob', 'Charlie']})
+df2 = pd.DataFrame({'ID': [1, 2, 4], 'Score': [85, 90, 78]})
+
+# Inner join (default)
+inner_join = pd.merge(df1, df2, on='ID')
+
+# Left join
+left_join = pd.merge(df1, df2, on='ID', how='left')
+
+# Right join
+right_join = pd.merge(df1, df2, on='ID', how='right')
+
+# Outer join
+outer_join = pd.merge(df1, df2, on='ID', how='outer')
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="real-projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your Python data science knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>📊 Sales Analytics Dashboard</h4>
+          <p>Build a comprehensive sales analytics dashboard with data visualization and predictive modeling</p>
+        </div>
+        <div class="feature-card">
+          <h4>🏥 Medical Data Analysis</h4>
+          <p>Analyze patient data to predict disease outcomes and identify risk factors</p>
+        </div>
+        <div class="feature-card">
+          <h4>💰 Financial Risk Assessment</h4>
+          <p>Develop machine learning models for credit risk assessment and fraud detection</p>
+        </div>
+        <div class="feature-card">
+          <h4>🌍 Climate Data Analysis</h4>
+          <p>Analyze climate data trends and build predictive models for weather patterns</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Always explore and understand your data before modeling</li>
+        <li>✅ Handle missing data appropriately based on context</li>
+        <li>✅ Use vectorized operations with NumPy for better performance</li>
+        <li>✅ Create meaningful visualizations to communicate insights</li>
+        <li>✅ Validate machine learning models properly</li>
+        <li>✅ Document your data analysis process</li>
+        <li>✅ Use version control for your code and notebooks</li>
+        <li>✅ Consider ethical implications of your analysis</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Python for Data Science and are ready to tackle real-world data analysis challenges. You now understand NumPy, Pandas, data visualization, statistical analysis, and machine learning fundamentals.</p>
+      
+      <p>Data science is a rapidly evolving field with endless opportunities. Keep practicing with real datasets, stay current with new tools and techniques, and continue building your analytical skills.</p>
+
+      <div style="background: linear-gradient(135deg, #3776ab, #ffd43b); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become a Data Science Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering advanced machine learning and AI technologies!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-20-machine-learning-complete.html" class="btn btn-outline" style="background: white; color: #3776ab;">Machine Learning →</a>
+          <a href="blog-21-deep-learning-neural-networks.html" class="btn btn-outline" style="background: white; color: #3776ab;">Deep Learning →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #3776ab;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

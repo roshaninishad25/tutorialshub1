@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master web performance optimization with comprehensive guide. Learn lazy loading, code splitting, caching strategies, image optimization, Core Web Vitals and build lightning-fast websites. Premium course.">
+  <meta name="keywords" content="Web performance optimization, lazy loading, code splitting, caching, image optimization, Core Web Vitals, website speed, performance tuning">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Web Performance Optimization - Build Lightning-Fast Websites">
+  <meta property="og:description" content="Premium web performance course covering lazy loading, code splitting, caching strategies, image optimization, Core Web Vitals and performance tuning.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-12-web-performance-optimization.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/performance-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Web Performance Optimization - Build Lightning-Fast Websites">
+  <meta name="twitter:description" content="Premium web performance course covering lazy loading, code splitting, caching strategies, image optimization, Core Web Vitals and performance tuning.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/performance-course.jpg">
+  <title>Web Performance Optimization - Build Lightning-Fast Websites | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-12-web-performance-optimization.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Web Performance Optimization",
+    "description": "Lazy loading, code splitting, caching strategies, image optimization, Core Web Vitals and lightning-fast websites.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "Web Performance",
+    "teaches": ["Performance Optimization", "Lazy Loading", "Code Splitting", "Caching Strategies", "Image Optimization", "Core Web Vitals", "Performance Monitoring"],
+    "timeRequired": "PT11H",
+    "coursePrerequisites": "HTML, CSS, JavaScript, and basic web development",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Vikram Singh"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "13000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "799",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #ff6b6b, #feca57);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #ff6b6b;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .performance-metric {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 15px;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .metric-icon {
+      font-size: 2rem;
+      width: 50px;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Web Performance Optimization</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master web performance optimization with lazy loading, code splitting, caching strategies, image optimization, Core Web Vitals and build lightning-fast websites.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 48 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 11h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.9 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 13K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">VS</div>
+        <div>
+          <div style="font-weight: 700;">Vikram Singh</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Performance Expert & Web Engineer</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹799</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Web Performance</a></li>
+        <li><a href="#metrics">2. Core Web Vitals & Metrics</a></li>
+        <li><a href="#loading">3. Loading Performance Optimization</a></li>
+        <li><a href="#images">4. Image Optimization</a></li>
+        <li><a href="#lazy">5. Lazy Loading Strategies</a></li>
+        <li><a href="#splitting">6. Code Splitting & Bundling</a></li>
+        <li><a href="#caching">7. Advanced Caching Strategies</a></li>
+        <li><a href="#network">8. Network Optimization</a></li>
+        <li><a href="#monitoring">9. Performance Monitoring</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>⚡ Introduction to Web Performance</h2>
+      <p>Web performance is crucial for user experience, SEO, and conversion rates. This comprehensive course teaches you to optimize every aspect of web performance to build lightning-fast websites.</p>
+      
+      <p>Learn to measure, analyze, and improve loading speed, runtime performance, and user experience metrics. Master advanced techniques including lazy loading, code splitting, caching strategies, and modern optimization tools.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h4>Lightning Fast</h4>
+          <p>Build websites that load in under 2 seconds</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h4>Core Web Vitals</h4>
+          <p>Master Google's essential performance metrics</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h4>Advanced Tools</h4>
+          <p>Use professional performance optimization tools</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h4>Real Results</h4>
+          <p>Improve SEO, conversions, and user satisfaction</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Web Vitals -->
+    <section class="blog-section" id="metrics">
+      <h2>📊 Core Web Vitals & Metrics</h2>
+      <p>Core Web Vitals are essential metrics that measure user experience. Understanding and optimizing these metrics is crucial for modern web development.</p>
+
+      <h3>Largest Contentful Paint (LCP)</h3>
+      <div class="performance-metric">
+        <div class="metric-icon">🖼️</div>
+        <div>
+          <h4>LCP: Largest Contentful Paint</h4>
+          <p>Measures loading performance. Time from when the page starts loading to when the largest content element appears in the viewport.</p>
+          <p><strong>Target:</strong> Under 2.5 seconds</p>
+        </div>
+      </div>
+
+      <div class="code-block">
+// Measure LCP programmatically
+new PerformanceObserver((entryList) => {
+  for (const entry of entryList.getEntries()) {
+    console.log('LCP:', entry.startTime);
+  }
+}).observe({entryTypes: ['largest-contentful-paint']});
+
+// LCP Optimization Techniques
+// 1. Optimize server response time
+// 2. Optimize images and videos
+// 3. Preload important resources
+// 4. Remove render-blocking resources
+// 5. Use CDN for static assets
+
+// Preload critical resources
+&lt;link rel="preload" href="hero-image.jpg" as="image"&gt;
+&lt;link rel="preload" href="critical-font.woff2" as="font" type="font/woff2" crossorigin&gt;
+&lt;link rel="preload" href="critical.css" as="style"&gt;
+      </div>
+
+      <h3>First Input Delay (FID)</h3>
+      <div class="performance-metric">
+        <div class="metric-icon">👆</div>
+        <div>
+          <h4>FID: First Input Delay</h4>
+          <p>Measures interactivity. Time from when a user first interacts with your page to when the browser responds to that interaction.</p>
+          <p><strong>Target:</strong> Under 100 milliseconds</p>
+        </div>
+      </div>
+
+      <div class="code-block">
+// Measure FID
+new PerformanceObserver((entryList) => {
+  for (const entry of entryList.getEntries()) {
+    console.log('FID:', entry.processingStart - entry.startTime);
+  }
+}).observe({entryTypes: ['first-input']});
+
+// FID Optimization
+// 1. Break up long JavaScript tasks
+// 2. Use web workers for heavy computations
+// 3. Reduce JavaScript execution time
+// 4. Optimize third-party scripts
+// 5. Use code splitting
+
+// Break up long tasks
+function yieldToMain() {
+  return new Promise(resolve => {
+    setTimeout(resolve, 0);
+  });
+}
+
+async function processLargeArray(array) {
+  for (let i = 0; i < array.length; i++) {
+    // Process item
+    processItem(array[i]);
+    
+    // Yield to main thread every 50 items
+    if (i % 50 === 0) {
+      await yieldToMain();
+    }
+  }
+}
+      </div>
+
+      <h3>Cumulative Layout Shift (CLS)</h3>
+      <div class="performance-metric">
+        <div class="metric-icon">📐</div>
+        <div>
+          <h4>CLS: Cumulative Layout Shift</h4>
+          <p>Measures visual stability. Sum of all individual layout shift scores for every unexpected layout shift during page load.</p>
+          <p><strong>Target:</strong> Under 0.1</p>
+        </div>
+      </div>
+
+      <div class="code-block">
+// Measure CLS
+let clsValue = 0;
+new PerformanceObserver((entryList) => {
+  for (const entry of entryList.getEntries()) {
+    if (!entry.hadRecentInput) {
+      clsValue += entry.value;
+      console.log('CLS:', clsValue);
+    }
+  }
+}).observe({entryTypes: ['layout-shift']});
+
+// CLS Optimization
+// 1. Include size attributes for images and videos
+// 2. Reserve space for ads and widgets
+// 3. Avoid inserting content above existing content
+// 4. Use transform animations instead of changing properties
+
+// Reserve space for dynamic content
+.banner-ad {
+  height: 250px;
+  width: 300px;
+  background: #f0f0f0;
+}
+
+.image-container {
+  aspect-ratio: 16/9;
+  background: #f0f0f0;
+}
+      </div>
+    </section>
+
+    <!-- Loading Performance -->
+    <section class="blog-section" id="loading">
+      <h2>🚀 Loading Performance Optimization</h2>
+      <p>Optimizing loading performance is crucial for user experience. Learn techniques to reduce initial load time and improve perceived performance.</p>
+
+      <h3>Critical CSS</h3>
+      <div class="code-block">
+// Critical CSS extraction
+// 1. Identify above-the-fold content
+// 2. Extract only necessary CSS
+// 3. Inline critical CSS
+// 4. Load non-critical CSS asynchronously
+
+// Critical CSS (inlined in head)
+&lt;style&gt;
+  /* Critical CSS for above-the-fold content */
+  body { margin: 0; font-family: Arial, sans-serif; }
+  .hero { height: 100vh; background: linear-gradient(45deg, #007bff, #0056b3); }
+  .hero h1 { color: white; text-align: center; padding-top: 40vh; }
+&lt;/style&gt;
+
+// Non-critical CSS (loaded asynchronously)
+&lt;link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"&gt;
+&lt;noscript&gt;&lt;link rel="stylesheet" href="styles.css"&gt;&lt;/noscript&gt;
+
+// JavaScript for CSS loading
+function loadCSS(href) {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = href;
+  document.head.appendChild(link);
+}
+
+// Load non-critical CSS after page load
+window.addEventListener('load', () => {
+  loadCSS('non-critical.css');
+});
+      </div>
+
+      <h3>Resource Hints</h3>
+      <div class="code-block">
+// DNS Prefetch
+&lt;link rel="dns-prefetch" href="//fonts.googleapis.com"&gt;
+&lt;link rel="dns-prefetch" href="//cdn.example.com"&gt;
+
+// Preconnect
+&lt;link rel="preconnect" href="https://fonts.googleapis.com" crossorigin&gt;
+&lt;link rel="preconnect" href="https://api.example.com" crossorigin&gt;
+
+// Prefetch
+&lt;link rel="prefetch" href="/next-page.html"&gt;
+&lt;link rel="prefetch" href="/images/large-image.jpg"&gt;
+
+// Preload
+&lt;link rel="preload" href="hero-image.jpg" as="image"&gt;
+&lt;link rel="preload" href="critical-font.woff2" as="font" type="font/woff2" crossorigin&gt;
+&lt;link rel="preload" href="app.js" as="script"&gt;
+
+// Dynamic resource loading
+function preloadResource(url, as, type = null) {
+  const link = document.createElement('link');
+  link.rel = 'preload';
+  link.href = url;
+  link.as = as;
+  if (type) link.type = type;
+  if (as === 'font') link.crossOrigin = 'anonymous';
+  document.head.appendChild(link);
+}
+
+// Preload resources based on user interaction
+document.addEventListener('mouseover', (e) => {
+  if (e.target.matches('.card-link')) {
+    preloadResource(e.target.href, 'document');
+  }
+}, { once: true });
+      </div>
+
+      <h3>Compression & Minification</h3>
+      <div class="code-block">
+// Webpack configuration for optimization
+module.exports = {
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true,
+            drop_debugger: true,
+          },
+        },
+      }),
+      new CssMinimizerPlugin(),
+    ],
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
+};
+
+// Gzip/Brotli compression (server-side)
+// Nginx configuration
+gzip on;
+gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+brotli on;
+brotli_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+// Service Worker for caching
+const CACHE_NAME = 'v1';
+const urlsToCache = [
+  '/',
+  '/styles/main.css',
+  '/scripts/main.js',
+  '/images/hero.jpg'
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(urlsToCache))
+  );
+});
+      </div>
+    </section>
+
+    <!-- Image Optimization -->
+    <section class="blog-section" id="images">
+      <h2>🖼️ Image Optimization</h2>
+      <p>Images often account for the majority of page weight. Learn comprehensive image optimization techniques to reduce file size while maintaining quality.</p>
+
+      <h3>Modern Image Formats</h3>
+      <div class="code-block">
+// Picture element for responsive images
+&lt;picture&gt;
+  &lt;source srcset="hero.webp" type="image/webp"&gt;
+  &lt;source srcset="hero.avif" type="image/avif"&gt;
+  &lt;img src="hero.jpg" alt="Hero image" loading="lazy"&gt;
+&lt;/picture&gt;
+
+// Responsive image with srcset
+&lt;img src="image-small.jpg"
+     srcset="image-small.jpg 480w,
+             image-medium.jpg 768w,
+             image-large.jpg 1024w,
+             image-xlarge.jpg 1200w"
+     sizes="(max-width: 480px) 100vw,
+            (max-width: 768px) 50vw,
+            33vw"
+     alt="Responsive image"
+     loading="lazy"&gt;
+
+// Image optimization with Sharp (Node.js)
+const sharp = require('sharp');
+
+async function optimizeImage(input, output) {
+  await sharp(input)
+    .resize(800, 600, { 
+      fit: 'inside',
+      withoutEnlargement: true 
+    })
+    .webp({ quality: 80 })
+    .avif({ quality: 80 })
+    .jpeg({ quality: 85, progressive: true })
+    .toFile(output);
+}
+
+// Generate multiple formats
+const formats = ['webp', 'avif', 'jpeg'];
+const inputImage = 'original.jpg';
+
+formats.forEach(format => {
+  optimizeImage(inputImage, `optimized.${format}`);
+});
+      </div>
+
+      <h3>Lazy Loading</h3>
+      <div class="code-block">
+// Native lazy loading
+&lt;img src="placeholder.jpg" 
+     data-src="actual-image.jpg" 
+     loading="lazy" 
+     alt="Lazy loaded image"&gt;
+
+// Intersection Observer for custom lazy loading
+class LazyImage {
+  constructor(img) {
+    this.img = img;
+    this.observer = new IntersectionObserver(this.loadImage.bind(this));
+    this.observer.observe(this.img);
+  }
+
+  loadImage(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.classList.remove('lazy');
+        this.observer.unobserve(img);
+      }
+    });
+  }
+}
+
+// Initialize lazy loading
+document.addEventListener('DOMContentLoaded', () => {
+  const lazyImages = document.querySelectorAll('img[data-src]');
+  lazyImages.forEach(img => new LazyImage(img));
+});
+
+// Advanced lazy loading with blur effect
+const createPlaceholder = (width, height) => {
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext('2d');
+  
+  // Create gradient placeholder
+  const gradient = ctx.createLinearGradient(0, 0, width, height);
+  gradient.addColorStop(0, '#f0f0f0');
+  gradient.addColorStop(1, '#e0e0e0');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, width, height);
+  
+  return canvas.toDataURL();
+};
+
+// Use placeholder
+&lt;img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PC9zdmc+"
+     data-src="actual-image.jpg"
+     class="lazy blur-transition"
+     alt="Image with placeholder"&gt;
+      </div>
+
+      <h3>Image Compression Tools</h3>
+      <div class="code-block">
+// ImageMagick for batch optimization
+// Convert to WebP with quality 80
+magick input.jpg -quality 80 output.webp
+
+// Resize and optimize
+magick input.jpg -resize 800x600 -quality 85 -strip optimized.jpg
+
+// Create responsive images
+magick input.jpg -resize 400x300 small.jpg
+magick input.jpg -resize 800x600 medium.jpg
+magick input.jpg -resize 1200x900 large.jpg
+
+// Squoosh CLI for optimization
+// Install: npm install -g @squoosh/cli
+
+// Optimize single image
+squoosh-cli input.jpg --output output.webp --format webp --quality 80
+
+// Batch optimize
+squoosh-cli "*.jpg" --output-dir optimized --format webp --quality 80
+
+// Custom image optimization script
+const imagemin = require('imagemin');
+const imageminWebp = require('imagemin-webp');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminPngquant = require('imagemin-pngquant');
+
+(async () => {
+  const files = await imagemin(['images/*.{jpg,png}'], {
+    destination: 'optimized',
+    plugins: [
+      imageminMozjpeg({ quality: 85 }),
+      imageminPngquant({ quality: [0.6, 0.8] }),
+      imageminWebp({ quality: 80 })
+    ]
+  });
+  
+  console.log('Optimized images:', files);
+})();
+      </div>
+    </section>
+
+    <!-- Lazy Loading -->
+    <section class="blog-section" id="lazy">
+      <h2>⏳ Lazy Loading Strategies</h2>
+      <p>Lazy loading defers loading of non-critical resources until they're needed, significantly improving initial page load time and reducing bandwidth usage.</p>
+
+      <h3>Component Lazy Loading</h3>
+      <div class="code-block">
+// React.lazy for component lazy loading
+import React, { Suspense } from 'react';
+
+const LazyComponent = React.lazy(() => import('./LazyComponent'));
+
+function App() {
+  return (
+    &lt;div&gt;
+      &lt;Suspense fallback={&lt;div&gt;Loading...&lt;/div&gt;}&gt;
+        &lt;LazyComponent /&gt;
+      &lt;/Suspense&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Vue.js async components
+const LazyComponent = () => import('./LazyComponent.vue');
+
+new Vue({
+  components: {
+    LazyComponent
+  }
+});
+
+// Dynamic imports for JavaScript modules
+async function loadModule() {
+  const module = await import('./heavy-module.js');
+  module.doSomething();
+}
+
+// Intersection Observer for component loading
+class ComponentLoader {
+  constructor(element, loader) {
+    this.element = element;
+    this.loader = loader;
+    this.observer = new IntersectionObserver(this.handleIntersection.bind(this));
+    this.observer.observe(element);
+  }
+
+  async handleIntersection(entries) {
+    if (entries[0].isIntersecting) {
+      const component = await this.loader();
+      this.element.appendChild(component);
+      this.observer.unobserve(this.element);
+    }
+  }
+}
+      </div>
+
+      <h3>Route-Based Code Splitting</h3>
+      <div class="code-block">
+// React Router with lazy loading
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Suspense } from 'react';
+
+const Home = React.lazy(() => import('./pages/Home'));
+const About = React.lazy(() => import('./pages/About'));
+const Contact = React.lazy(() => import('./pages/Contact'));
+
+function App() {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;Suspense fallback={&lt;div&gt;Loading...&lt;/div&gt;}&gt;
+        &lt;Routes&gt;
+          &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+          &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+          &lt;Route path="/contact" element={&lt;Contact /&gt;} /&gt;
+        &lt;/Routes&gt;
+      &lt;/Suspense&gt;
+    &lt;/BrowserRouter&gt;
+  );
+}
+
+// Vue Router with lazy loading
+import { createRouter, createWebHistory } from 'vue-router';
+
+const routes = [
+  {
+    path: '/',
+    component: () => import('./views/Home.vue')
+  },
+  {
+    path: '/about',
+    component: () => import('./views/About.vue')
+  }
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+});
+
+// Angular lazy loading
+const routes: Routes = [
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
+  }
+];
+      </div>
+
+      <h3>Advanced Lazy Loading Patterns</h3>
+      <div class="code-block">
+// Predictive preloading based on user behavior
+class PredictiveLoader {
+  constructor() {
+    this.userBehavior = this.trackUserBehavior();
+    this.preloadThreshold = 0.7;
+  }
+
+  trackUserBehavior() {
+    const behavior = {
+      mouseMovements: [],
+      scrollDepth: 0,
+      timeOnPage: 0,
+      interactions: []
+    };
+
+    // Track mouse movements
+    document.addEventListener('mousemove', (e) => {
+      behavior.mouseMovements.push({ x: e.clientX, y: e.clientY, time: Date.now() });
+    });
+
+    // Track scroll depth
+    window.addEventListener('scroll', () => {
+      behavior.scrollDepth = Math.max(behavior.scrollDepth, 
+        window.scrollY / (document.body.scrollHeight - window.innerHeight));
+    });
+
+    return behavior;
+  }
+
+  shouldPreload(component) {
+    const { scrollDepth, timeOnPage } = this.userBehavior;
+    return scrollDepth > this.preloadThreshold || timeOnPage > 5000;
+  }
+
+  preloadComponent(componentUrl) {
+    if (this.shouldPreload()) {
+      import(componentUrl);
+    }
+  }
+}
+
+// Intersection Observer with root margin for early loading
+const lazyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const element = entry.target;
+      loadComponent(element);
+      lazyObserver.unobserve(element);
+    }
+  });
+}, {
+  rootMargin: '50px 0px' // Start loading 50px before element comes into view
+});
+
+// Progressive loading with priority queue
+class PriorityLoader {
+  constructor() {
+    this.queue = [];
+    this.loading = false;
+  }
+
+  addToQueue(item, priority = 0) {
+    this.queue.push({ item, priority });
+    this.queue.sort((a, b) => b.priority - a.priority);
+    this.processQueue();
+  }
+
+  async processQueue() {
+    if (this.loading || this.queue.length === 0) return;
+    
+    this.loading = true;
+    const { item } = this.queue.shift();
+    
+    try {
+      await this.loadItem(item);
+    } catch (error) {
+      console.error('Failed to load item:', error);
+    } finally {
+      this.loading = false;
+      this.processQueue();
+    }
+  }
+
+  async loadItem(item) {
+    // Implementation for loading item
+    return import(item);
+  }
+}
+      </div>
+    </section>
+
+    <!-- Code Splitting -->
+    <section class="blog-section" id="splitting">
+      <h2>📦 Code Splitting & Bundling</h2>
+      <p>Code splitting divides your JavaScript into smaller chunks that can be loaded on demand, reducing initial bundle size and improving load performance.</p>
+
+      <h3>Webpack Code Splitting</h3>
+      <div class="code-block">
+// webpack.config.js
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+          priority: 10
+        },
+        common: {
+          name: 'common',
+          minChunks: 2,
+          chunks: 'all',
+          priority: 5,
+          reuseExistingChunk: true
+        },
+        runtime: {
+          name: 'runtime',
+          minChunks: Infinity,
+          chunks: 'all'
+        }
+      }
+    }
+  },
+  
+  output: {
+    filename: '[name].[contenthash].js',
+    chunkFilename: '[name].[contenthash].chunk.js'
+  }
+};
+
+// Dynamic imports for code splitting
+function loadComponent(componentName) {
+  return import(`./components/${componentName}.js`)
+    .then(module => module.default);
+}
+
+// Usage
+loadComponent('heavy-component')
+  .then(component => {
+    // Use component
+  });
+
+// Webpack magic comments for chunk naming
+import(
+  /* webpackChunkName: "lodash" */ 
+  'lodash'
+).then((_) => {
+  // Use lodash
+});
+
+import(
+  /* webpackChunkName: "admin-panel" */
+  /* webpackPrefetch: true */
+  './admin-panel.js'
+).then(module => {
+  // Admin panel loaded
+});
+      </div>
+
+      <h3>Tree Shaking</h3>
+      <div class="code-block">
+// ES6 modules for tree shaking
+// utils.js
+export function add(a, b) {
+  return a + b;
+}
+
+export function subtract(a, b) {
+  return a - b;
+}
+
+export function multiply(a, b) {
+  return a * b;
+}
+
+// main.js - only import what you need
+import { add, multiply } from './utils';
+
+// Tree shakable imports
+import { debounce, throttle } from 'lodash-es';
+// Instead of: import _ from 'lodash';
+
+// Side-effect free modules
+// utils.js (no side effects)
+export const API_URL = 'https://api.example.com';
+
+export function fetchData() {
+  return fetch(API_URL);
+}
+
+// Configure webpack for tree shaking
+module.exports = {
+  mode: 'production',
+  optimization: {
+    usedExports: true,
+    sideEffects: false
+  }
+};
+
+// Package.json sideEffects field
+{
+  "name": "my-package",
+  "sideEffects": [
+    "./dist/style.css",
+    "*.scss"
+  ]
+}
+      </div>
+
+      <h3>Bundle Analysis</h3>
+      <div class="code-block">
+// Webpack Bundle Analyzer
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: false,
+      reportFilename: 'bundle-report.html'
+    })
+  ]
+};
+
+// Custom bundle size analyzer
+const fs = require('fs');
+const path = require('path');
+
+function analyzeBundle(bundlePath) {
+  const stats = fs.statSync(bundlePath);
+  const sizeInBytes = stats.size;
+  const sizeInKB = (sizeInBytes / 1024).toFixed(2);
+  const sizeInMB = (sizeInBytes / (1024 * 1024)).toFixed(2);
+  
+  console.log(`Bundle size: ${sizeInKB} KB (${sizeInMB} MB)`);
+  
+  // Alert if bundle is too large
+  if (sizeInKB > 250) {
+    console.warn('⚠️ Bundle is larger than recommended 250KB');
+  }
+}
+
+// Rollup configuration for smaller bundles
+// rollup.config.js
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
+import commonjs from '@rollup/plugin-commonjs';
+
+export default {
+  input: 'src/main.js',
+  output: {
+    file: 'dist/bundle.js',
+    format: 'es',
+    sourcemap: true
+  },
+  plugins: [
+    nodeResolve(),
+    commonjs(),
+    terser()
+  ]
+};
+
+// Vite build configuration
+// vite.config.js
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['vue', 'vue-router'],
+          ui: ['element-plus']
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000
+  }
+});
+      </div>
+    </section>
+
+    <!-- Caching -->
+    <section class="blog-section" id="caching">
+      <h2>💾 Advanced Caching Strategies</h2>
+      <p>Implementing effective caching strategies dramatically improves performance for returning users and reduces server load.</p>
+
+      <h3>HTTP Caching</h3>
+      <div class="code-block">
+// Cache-Control headers
+// Static assets (long-term caching)
+Cache-Control: public, max-age=31536000, immutable
+
+// HTML pages (short-term caching)
+Cache-Control: public, max-age=3600, must-revalidate
+
+// API responses (conditional caching)
+Cache-Control: public, max-age=600, stale-while-revalidate=30
+
+// No caching for sensitive data
+Cache-Control: no-store, no-cache, must-revalidate
+
+// Express.js caching middleware
+app.use(express.static('public', {
+  maxAge: '1y',
+  etag: true,
+  lastModified: true,
+  setHeaders: (res, path) => {
+    if (path.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+    }
+  }
+}));
+
+// Nginx caching configuration
+location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2)$ {
+  expires 1y;
+  add_header Cache-Control "public, immutable";
+  add_header Vary Accept-Encoding;
+}
+
+location ~* \.html$ {
+  expires 1h;
+  add_header Cache-Control "public, must-revalidate";
+}
+      </div>
+
+      <h3>Service Worker Caching</h3>
+      <div class="code-block">
+// Advanced service worker with cache strategies
+const CACHE_NAME = 'v1.0.0';
+const STATIC_CACHE = 'static-v1';
+const DYNAMIC_CACHE = 'dynamic-v1';
+const API_CACHE = 'api-v1';
+
+// Cache strategies
+const cacheStrategies = {
+  // Cache first for static assets
+  cacheFirst: (request) => {
+    return caches.match(request).then(response => {
+      return response || fetch(request).then(fetchResponse => {
+        return caches.open(STATIC_CACHE).then(cache => {
+          cache.put(request, fetchResponse.clone());
+          return fetchResponse;
+        });
+      });
+    });
+  },
+
+  // Network first for API calls
+  networkFirst: (request) => {
+    return fetch(request).then(response => {
+      const responseClone = response.clone();
+      caches.open(API_CACHE).then(cache => {
+        cache.put(request, responseClone);
+      });
+      return response;
+    }).catch(() => {
+      return caches.match(request);
+    });
+  },
+
+  // Stale while revalidate for content
+  staleWhileRevalidate: (request) => {
+    return caches.match(request).then(cachedResponse => {
+      const fetchPromise = fetch(request).then(response => {
+        caches.open(DYNAMIC_CACHE).then(cache => {
+          cache.put(request, response.clone());
+        });
+        return response;
+      });
+      
+      return cachedResponse || fetchPromise;
+    });
+  }
+};
+
+// Service worker event listeners
+self.addEventListener('fetch', event => {
+  const { request } = event;
+  const url = new URL(request.url);
+
+  // Route requests to appropriate strategy
+  if (url.origin === location.origin) {
+    if (url.pathname.includes('/api/')) {
+      event.respondWith(cacheStrategies.networkFirst(request));
+    } else if (request.destination === 'document') {
+      event.respondWith(cacheStrategies.staleWhileRevalidate(request));
+    } else {
+      event.respondWith(cacheStrategies.cacheFirst(request));
+    }
+  }
+});
+
+// Cache cleanup
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheName !== STATIC_CACHE && 
+              cacheName !== DYNAMIC_CACHE && 
+              cacheName !== API_CACHE) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+      </div>
+
+      <h3>Browser Storage Caching</h3>
+      <div class="code-block">
+// LocalStorage caching with expiration
+class LocalStorageCache {
+  set(key, value, ttl = 3600000) { // 1 hour default
+    const item = {
+      value,
+      timestamp: Date.now(),
+      ttl
+    };
+    localStorage.setItem(key, JSON.stringify(item));
+  }
+
+  get(key) {
+    const item = JSON.parse(localStorage.getItem(key));
+    if (!item) return null;
+
+    if (Date.now() - item.timestamp > item.ttl) {
+      localStorage.removeItem(key);
+      return null;
+    }
+
+    return item.value;
+  }
+
+  remove(key) {
+    localStorage.removeItem(key);
+  }
+
+  clear() {
+    localStorage.clear();
+  }
+}
+
+// IndexedDB for larger data
+class IndexedDBCache {
+  constructor(dbName = 'AppCache', version = 1) {
+    this.dbName = dbName;
+    this.version = version;
+    this.db = null;
+  }
+
+  async init() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(this.dbName, this.version);
+      
+      request.onerror = () => reject(request.error);
+      request.onsuccess = () => {
+        this.db = request.result;
+        resolve();
+      };
+      
+      request.onupgradeneeded = (event) => {
+        const db = event.target.result;
+        if (!db.objectStoreNames.contains('cache')) {
+          db.createObjectStore('cache', { keyPath: 'key' });
+        }
+      };
+    });
+  }
+
+  async set(key, value, ttl = 3600000) {
+    const transaction = this.db.transaction(['cache'], 'readwrite');
+    const store = transaction.objectStore('cache');
+    
+    const item = {
+      key,
+      value,
+      timestamp: Date.now(),
+      ttl
+    };
+    
+    return store.put(item);
+  }
+
+  async get(key) {
+    const transaction = this.db.transaction(['cache'], 'readonly');
+    const store = transaction.objectStore('cache');
+    
+    return new Promise((resolve) => {
+      const request = store.get(key);
+      request.onsuccess = () => {
+        const item = request.result;
+        if (!item) {
+          resolve(null);
+          return;
+        }
+
+        if (Date.now() - item.timestamp > item.ttl) {
+          this.remove(key);
+          resolve(null);
+          return;
+        }
+
+        resolve(item.value);
+      };
+    });
+  }
+
+  async remove(key) {
+    const transaction = this.db.transaction(['cache'], 'readwrite');
+    const store = transaction.objectStore('cache');
+    return store.delete(key);
+  }
+}
+
+// Usage example
+const cache = new LocalStorageCache();
+const apiCache = new IndexedDBCache();
+
+// Cache API response
+async function fetchWithCache(url) {
+  const cached = await apiCache.get(url);
+  if (cached) {
+    return cached;
+  }
+
+  const response = await fetch(url);
+  const data = await response.json();
+  
+  // Cache for 5 minutes
+  await apiCache.set(url, data, 300000);
+  
+  return data;
+}
+      </div>
+    </section>
+
+    <!-- Network Optimization -->
+    <section class="blog-section" id="network">
+      <h2>🌐 Network Optimization</h2>
+      <p>Optimize network requests to reduce latency, minimize data transfer, and improve overall performance.</p>
+
+      <h3>HTTP/2 and HTTP/3</h3>
+      <div class="code-block">
+// Server configuration for HTTP/2
+// Nginx
+server {
+    listen 443 ssl http2;
+    server_name example.com;
+    
+    ssl_certificate /path/to/cert.pem;
+    ssl_certificate_key /path/to/key.pem;
+    
+    # HTTP/2 push for critical resources
+    location = /index.html {
+        http2_push /css/main.css;
+        http2_push /js/main.js;
+        http2_push /images/hero.jpg;
+    }
+}
+
+// Enable HTTP/3 with Cloudflare
+// Cloudflare automatically enables HTTP/3 for eligible domains
+
+// Connection pooling and keep-alive
+// Node.js with keep-alive
+const https = require('https');
+
+const agent = new https.Agent({
+  keepAlive: true,
+  maxSockets: 50,
+  maxFreeSockets: 10,
+  timeout: 60000,
+  keepAliveMsecs: 1000
+});
+
+// Use agent for requests
+const options = {
+  hostname: 'api.example.com',
+  port: 443,
+  path: '/data',
+  method: 'GET',
+  agent: agent
+};
+
+const req = https.request(options, (res) => {
+  // Handle response
+});
+
+// Resource hints for HTTP/2 server push
+&lt;!-- Preload critical resources --&gt;
+&lt;link rel="preload" href="/css/critical.css" as="style"&gt;
+&lt;link rel="preload" href="/js/critical.js" as="script"&gt;
+&lt;link rel="preload" href="/images/hero.webp" as="image"&gt;
+
+&lt;!-- Preconnect to external domains --&gt;
+&lt;link rel="preconnect" href="https://api.example.com" crossorigin&gt;
+&lt;link rel="preconnect" href="https://cdn.example.com" crossorigin&gt;
+      </div>
+
+      <h3>Request Optimization</h3>
+      <div class="code-block">
+// Debounce API calls
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Throttle scroll events
+function throttle(func, limit) {
+  let inThrottle;
+  return function() {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  };
+}
+
+// Batch API requests
+class APIBatcher {
+  constructor(batchSize = 10, delay = 100) {
+    this.batchSize = batchSize;
+    this.delay = delay;
+    this.queue = [];
+    this.timer = null;
+  }
+
+  add(request) {
+    return new Promise((resolve, reject) => {
+      this.queue.push({ request, resolve, reject });
+      
+      if (this.queue.length >= this.batchSize) {
+        this.flush();
+      } else if (!this.timer) {
+        this.timer = setTimeout(() => this.flush(), this.delay);
+      }
+    });
+  }
+
+  async flush() {
+    if (this.queue.length === 0) return;
+    
+    const batch = this.queue.splice(0, this.batchSize);
+    clearTimeout(this.timer);
+    this.timer = null;
+
+    try {
+      const responses = await this.executeBatch(batch.map(item => item.request));
+      batch.forEach((item, index) => {
+        item.resolve(responses[index]);
+      });
+    } catch (error) {
+      batch.forEach(item => item.reject(error));
+    }
+  }
+
+  async executeBatch(requests) {
+    // Implement batch API call logic
+    const response = await fetch('/api/batch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ requests })
+    });
+    
+    return response.json();
+  }
+}
+
+// GraphQL query batching
+const batcher = new APIBatcher();
+
+// Usage
+const userData = batcher.add({ query: 'user', id: 1 });
+const postsData = batcher.add({ query: 'posts', userId: 1 });
+
+Promise.all([userData, postsData]).then(([user, posts]) => {
+  // Handle results
+});
+      </div>
+
+      <h3>CDN and Edge Computing</h3>
+      <div class="code-block">
+// Cloudflare Workers for edge computing
+// worker.js
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request));
+});
+
+async function handleRequest(request) {
+  const url = new URL(request.url);
+  
+  // Cache API responses at edge
+  if (url.pathname.startsWith('/api/')) {
+    const cacheKey = new Request(request.url, request);
+    const cache = caches.default;
+    
+    let response = await cache.match(cacheKey);
+    
+    if (!response) {
+      response = await fetch(request);
+      
+      // Cache for 5 minutes
+      response = new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: {
+          ...response.headers,
+          'Cache-Control': 'public, max-age=300'
+        }
+      });
+      
+      event.waitUntil(cache.put(cacheKey, response.clone()));
+    }
+    
+    return response;
+  }
+  
+  // Serve static assets from edge
+  return fetch(request);
+}
+
+// AWS CloudFront configuration
+// DistributionConfig for optimized caching
+{
+  "DistributionConfig": {
+    "Origins": {
+      "Quantity": 2,
+      "Items": [
+        {
+          "Id": "S3-example-com",
+          "DomainName": "my-bucket.s3.amazonaws.com",
+          "S3OriginConfig": {
+            "OriginAccessIdentity": "origin-access-identity/cloudfront/EXAMPLE123"
+          }
+        },
+        {
+          "Id": "API-example-com",
+          "DomainName": "api.example.com",
+          "CustomOriginConfig": {
+            "HTTPPort": 80,
+            "HTTPSPort": 443,
+            "OriginProtocolPolicy": "https-only"
+          }
+        }
+      ]
+    },
+    "DefaultCacheBehavior": {
+      "TargetOriginId": "S3-example-com",
+      "ViewerProtocolPolicy": "redirect-to-https",
+      "MinTTL": 0,
+      "MaxTTL": 31536000,
+      "Compress": true,
+      "ForwardedValues": {
+        "Cookies": {
+          "Forward": "none"
+        },
+        "Headers": {
+          "Quantity": 1,
+          "Items": ["Origin"]
+        },
+        "QueryString": false
+      }
+    },
+    "CacheBehaviors": {
+      "Quantity": 1,
+      "Items": [
+        {
+          "PathPattern": "/api/*",
+          "TargetOriginId": "API-example-com",
+          "ViewerProtocolPolicy": "https-only",
+          "MinTTL": 0,
+          "MaxTTL": 300,
+          "Compress": true,
+          "ForwardedValues": {
+            "Cookies": {
+              "Forward": "all"
+            },
+            "Headers": {
+              "Quantity": 2,
+              "Items": ["Authorization", "Content-Type"]
+            },
+            "QueryString": true
+          }
+        }
+      ]
+    }
+  }
+}
+
+// Edge-side includes for dynamic content
+// ESI template
+&lt;esi:include src="/api/user-header" /&gt;
+&lt;div class="content"&gt;
+  &lt;esi:include src="/api/content/${content_id}" /&gt;
+&lt;/div&gt;
+&lt;esi:include src="/api/user-footer" /&gt;
+      </div>
+    </section>
+
+    <!-- Performance Monitoring -->
+    <section class="blog-section" id="monitoring">
+      <h2>📈 Performance Monitoring</h2>
+      <p>Continuous monitoring helps identify performance issues and track improvements over time.</p>
+
+      <h3>Real User Monitoring (RUM)</h3>
+      <div class="code-block">
+// Custom RUM implementation
+class PerformanceMonitor {
+  constructor(apiEndpoint) {
+    this.apiEndpoint = apiEndpoint;
+    this.metrics = {};
+    this.init();
+  }
+
+  init() {
+    // Monitor Core Web Vitals
+    this.observeLCP();
+    this.observeFID();
+    this.observeCLS();
+    
+    // Monitor custom metrics
+    this.observeResourceTiming();
+    this.observeNavigationTiming();
+    
+    // Send data on page unload
+    window.addEventListener('beforeunload', () => {
+      this.sendMetrics();
+    });
+  }
+
+  observeLCP() {
+    new PerformanceObserver((entryList) => {
+      const entries = entryList.getEntries();
+      const lastEntry = entries[entries.length - 1];
+      this.metrics.lcp = lastEntry.startTime;
+    }).observe({ entryTypes: ['largest-contentful-paint'] });
+  }
+
+  observeFID() {
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntries()) {
+        this.metrics.fid = entry.processingStart - entry.startTime;
+      }
+    }).observe({ entryTypes: ['first-input'] });
+  }
+
+  observeCLS() {
+    let clsValue = 0;
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntries()) {
+        if (!entry.hadRecentInput) {
+          clsValue += entry.value;
+        }
+      }
+      this.metrics.cls = clsValue;
+    }).observe({ entryTypes: ['layout-shift'] });
+  }
+
+  observeResourceTiming() {
+    const resources = performance.getEntriesByType('resource');
+    this.metrics.resources = resources.map(resource => ({
+      name: resource.name,
+      duration: resource.duration,
+      size: resource.transferSize,
+      type: resource.initiatorType
+    }));
+  }
+
+  observeNavigationTiming() {
+    const navigation = performance.getEntriesByType('navigation')[0];
+    this.metrics.navigation = {
+      dns: navigation.domainLookupEnd - navigation.domainLookupStart,
+      tcp: navigation.connectEnd - navigation.connectStart,
+      ssl: navigation.secureConnectionStart > 0 ? 
+        navigation.connectEnd - navigation.secureConnectionStart : 0,
+      ttfb: navigation.responseStart - navigation.requestStart,
+      domLoad: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
+      windowLoad: navigation.loadEventEnd - navigation.loadEventStart
+    };
+  }
+
+  async sendMetrics() {
+    try {
+      await navigator.sendBeacon(this.apiEndpoint, JSON.stringify({
+        url: window.location.href,
+        userAgent: navigator.userAgent,
+        timestamp: Date.now(),
+        metrics: this.metrics
+      }));
+    } catch (error) {
+      console.error('Failed to send metrics:', error);
+    }
+  }
+}
+
+// Initialize monitoring
+const monitor = new PerformanceMonitor('/api/performance');
+
+// Google Analytics integration
+function sendToGoogleAnalytics(metrics) {
+  gtag('event', 'web_vitals', {
+    event_category: 'Web Vitals',
+    event_label: 'LCP',
+    value: Math.round(metrics.lcp),
+    non_interaction: true
+  });
+  
+  gtag('event', 'web_vitals', {
+    event_category: 'Web Vitals',
+    event_label: 'FID',
+    value: Math.round(metrics.fid),
+    non_interaction: true
+  });
+  
+  gtag('event', 'web_vitals', {
+    event_category: 'Web Vitals',
+    event_label: 'CLS',
+    value: Math.round(metrics.cls * 1000),
+    non_interaction: true
+  });
+}
+      </div>
+
+      <h3>Performance Budgets</h3>
+      <div class="code-block">
+// Webpack Bundle Analyzer with budgets
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+module.exports = {
+  performance: {
+    maxAssetSize: 244 * 1024, // 244KB
+    maxEntrypointSize: 244 * 1024,
+    hints: 'warning'
+  },
+  
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: false,
+      reportFilename: 'bundle-report.html'
+    })
+  ]
+};
+
+// Lighthouse CI configuration
+// .lighthouserc.js
+module.exports = {
+  ci: {
+    collect: {
+      url: ['http://localhost:3000'],
+      numberOfRuns: 3
+    },
+    assert: {
+      assertions: {
+        'categories:performance': ['warn', { minScore: 0.9 }],
+        'categories:accessibility': ['error', { minScore: 0.9 }],
+        'categories:best-practices': ['warn', { minScore: 0.9 }],
+        'categories:seo': ['warn', { minScore: 0.9 }],
+        'categories:pwa': 'off'
+      }
+    },
+    upload: {
+      target: 'temporary-public-storage'
+    }
+  }
+};
+
+// Custom performance budget checker
+class PerformanceBudget {
+  constructor(budgets) {
+    this.budgets = budgets;
+  }
+
+  checkBudgets() {
+    const results = {};
+    
+    // Check bundle size
+    const bundleSize = this.getBundleSize();
+    results.bundleSize = {
+      actual: bundleSize,
+      budget: this.bundles.maxBundleSize,
+      passed: bundleSize <= this.bundles.maxBundleSize
+    };
+
+    // Check image count
+    const imageCount = document.querySelectorAll('img').length;
+    results.imageCount = {
+      actual: imageCount,
+      budget: this.bundles.maxImageCount,
+      passed: imageCount <= this.bundles.maxImageCount
+    };
+
+    // Check request count
+    const requestCount = performance.getEntriesByType('resource').length;
+    results.requestCount = {
+      actual: requestCount,
+      budget: this.bundles.maxRequests,
+      passed: requestCount <= this.bundles.maxRequests
+    };
+
+    return results;
+  }
+
+  getBundleSize() {
+    // Calculate total bundle size from performance entries
+    const resources = performance.getEntriesByType('resource');
+    return resources
+      .filter(r => r.initiatorType === 'script')
+      .reduce((total, r) => total + r.transferSize, 0);
+  }
+}
+
+// Usage
+const budget = new PerformanceBudget({
+  maxBundleSize: 250 * 1024, // 250KB
+  maxImageCount: 10,
+  maxRequests: 50
+});
+
+const results = budget.checkBudgets();
+console.log('Budget results:', results);
+      </div>
+
+      <h3>Alerting and Reporting</h3>
+      <div class="code-block">
+// Performance alerting system
+class PerformanceAlerts {
+  constructor(webhookUrl) {
+    this.webhookUrl = webhookUrl;
+    this.thresholds = {
+      lcp: 2500,
+      fid: 100,
+      cls: 0.1,
+      bundleSize: 250 * 1024
+    };
+  }
+
+  checkMetrics(metrics) {
+    const alerts = [];
+
+    if (metrics.lcp > this.thresholds.lcp) {
+      alerts.push({
+        type: 'LCP',
+        value: metrics.lcp,
+        threshold: this.thresholds.lcp,
+        severity: 'high'
+      });
+    }
+
+    if (metrics.fid > this.thresholds.fid) {
+      alerts.push({
+        type: 'FID',
+        value: metrics.fid,
+        threshold: this.thresholds.fid,
+        severity: 'medium'
+      });
+    }
+
+    if (metrics.cls > this.thresholds.cls) {
+      alerts.push({
+        type: 'CLS',
+        value: metrics.cls,
+        threshold: this.thresholds.cls,
+        severity: 'high'
+      });
+    }
+
+    if (alerts.length > 0) {
+      this.sendAlert(alerts, metrics);
+    }
+  }
+
+  async sendAlert(alerts, metrics) {
+    const payload = {
+      text: '🚨 Performance Alert',
+      attachments: alerts.map(alert => ({
+        color: alert.severity === 'high' ? 'danger' : 'warning',
+        fields: [
+          {
+            title: alert.type,
+            value: `Actual: ${alert.value}ms\nThreshold: ${alert.threshold}ms`,
+            short: true
+          }
+        ]
+      }))
+    };
+
+    try {
+      await fetch(this.webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (error) {
+      console.error('Failed to send alert:', error);
+    }
+  }
+}
+
+// Performance dashboard data aggregation
+class PerformanceDashboard {
+  constructor() {
+    this.data = [];
+  }
+
+  addMetrics(metrics) {
+    this.data.push({
+      timestamp: Date.now(),
+      url: window.location.href,
+      ...metrics
+    });
+
+    // Keep only last 1000 entries
+    if (this.data.length > 1000) {
+      this.data = this.data.slice(-1000);
+    }
+  }
+
+  getAverageMetrics(timeRange = 3600000) { // 1 hour default
+    const cutoff = Date.now() - timeRange;
+    const recentData = this.data.filter(d => d.timestamp > cutoff);
+
+    return {
+      lcp: this.average(recentData.map(d => d.lcp).filter(Boolean)),
+      fid: this.average(recentData.map(d => d.fid).filter(Boolean)),
+      cls: this.average(recentData.map(d => d.cls).filter(Boolean))
+    };
+  }
+
+  average(arr) {
+    return arr.length > 0 ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
+  }
+
+  getPercentile(metric, percentile = 95) {
+    const values = this.data
+      .map(d => d[metric])
+      .filter(Boolean)
+      .sort((a, b) => a - b);
+    
+    const index = Math.ceil((percentile / 100) * values.length) - 1;
+    return values[index] || 0;
+  }
+}
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your performance optimization knowledge with these comprehensive projects that demonstrate advanced techniques and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🛒 E-commerce Performance</h4>
+          <p>Optimize an e-commerce site for sub-2 second load times with advanced caching and lazy loading</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Performance Dashboard</h4>
+          <p>Build a real-time performance monitoring dashboard with alerts and reporting</p>
+        </div>
+        <div class="feature-card">
+          <h4>📱 PWA Development</h4>
+          <p>Create a progressive web app with offline functionality and instant loading</p>
+        </div>
+        <div class="feature-card">
+          <h4>🌐 CDN Implementation</h4>
+          <p>Implement edge computing solutions with Cloudflare Workers and global caching</p>
+        </div>
+      </div>
+
+      <h3>Performance Checklist</h3>
+      <ul>
+        <li>✅ Optimize Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)</li>
+        <li>✅ Implement image optimization and lazy loading</li>
+        <li>✅ Use code splitting and dynamic imports</li>
+        <li>✅ Set up proper caching headers and service workers</li>
+        <li>✅ Minimize and compress all assets</li>
+        <li>✅ Use CDN for static content delivery</li>
+        <li>✅ Monitor performance with RUM and synthetic testing</li>
+        <li>✅ Establish and maintain performance budgets</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered web performance optimization and are ready to build lightning-fast websites. You now understand Core Web Vitals, optimization techniques, monitoring strategies, and best practices.</p>
+      
+      <p>Performance optimization is an ongoing process. Keep monitoring, testing, and improving your applications to provide the best possible user experience and achieve your business goals.</p>
+
+      <div style="background: linear-gradient(135deg, #ff6b6b, #feca57); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become a Performance Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering advanced web development and optimization techniques!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-14-nodejs-express-api.html" class="btn btn-outline" style="background: white; color: #ff6b6b;">Node.js APIs →</a>
+          <a href="blog-17-graphql-frontend-devs.html" class="btn btn-outline" style="background: white; color: #ff6b6b;">GraphQL →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #ff6b6b;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

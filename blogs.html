@@ -3,9 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore 20 expert-led frontend development courses. Enroll free or buy premium access with lifetime learning.">
-  <title>Frontend Courses & Blogs | TutorialsHub</title>
+  <meta name="description" content="Explore 34 expert-led development courses in frontend, backend, and advanced technologies. Enroll free or buy premium access with lifetime learning.">
+  <meta name="keywords" content="web development courses, frontend tutorials, backend programming, React, Vue, Angular, Node.js, Python, JavaScript, CSS, HTML, programming tutorials, coding courses">
+  <meta name="author" content="TutorialsHub">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Development Courses & Blogs | TutorialsHub">
+  <meta property="og:description" content="Explore 34 expert-led development courses in frontend, backend, and advanced technologies. Enroll free or buy premium access with lifetime learning.">
+  <meta property="og:url" content="https://tutorialshub.com/blogs.html">
+  <meta property="og:site_name" content="TutorialsHub">
+  <meta property="og:image" content="https://tutorialshub.com/images/blogs-hero.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Development Courses & Blogs | TutorialsHub">
+  <meta name="twitter:description" content="Explore 34 expert-led development courses in frontend, backend, and advanced technologies. Enroll free or buy premium access with lifetime learning.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/blogs-hero.jpg">
+  <meta name="twitter:site" content="@tutorialshub">
+  <meta name="twitter:creator" content="@tutorialshub">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://tutorialshub.com/blogs.html">
+  
+  <title>Development Courses & Blogs | TutorialsHub</title>
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Development Courses & Blogs",
+    "description": "Explore 34 expert-led development courses in frontend, backend, and advanced technologies. Enroll free or buy premium access with lifetime learning.",
+    "url": "https://tutorialshub.com/blogs.html",
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": 34,
+      "itemListElement": [
+        {
+          "@type": "Course",
+          "position": 1,
+          "name": "HTML5 Complete Guide",
+          "description": "Master every HTML5 element — semantic tags, forms, multimedia, canvas SVG and SEO-friendly structure.",
+          "provider": {
+            "@type": "Organization",
+            "name": "TutorialsHub"
+          },
+          "url": "https://tutorialshub.com/blog-1-html5-complete-guide.html"
+        },
+        {
+          "@type": "Course",
+          "position": 2,
+          "name": "CSS3 Mastery",
+          "description": "CSS Grid, Flexbox, animations, custom properties, responsive design and modern glassmorphism techniques.",
+          "provider": {
+            "@type": "Organization",
+            "name": "TutorialsHub"
+          },
+          "url": "https://tutorialshub.com/blog-2-css3-flexbox-mastery.html"
+        }
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tutorialshub.com/images/logo.png",
+        "width": 200,
+        "height": 60
+      }
+    }
+  }
+  </script>
   <style>
     /* ── HERO ── */
     .blogs-hero {
@@ -161,14 +237,14 @@
 
 <!-- ══ HERO ══ -->
 <section class="blogs-hero">
-  <p class="section-label">Frontend Development Courses</p>
-  <h1>Master Frontend Development 🚀</h1>
-  <p>20 expert-crafted courses — from HTML basics to advanced React & Next.js. Enroll free or unlock premium projects & certificates.</p>
+  <p class="section-label">Development Courses & Tutorials</p>
+  <h1>Master Web Development 🚀</h1>
+  <p>34 expert-crafted courses — from frontend basics to advanced backend & DevOps. Enroll free or unlock premium projects & certificates.</p>
   <div class="hero-stats-row">
-    <div class="hero-stat"><strong>20</strong><span>Courses</span></div>
-    <div class="hero-stat"><strong>50K+</strong><span>Students</span></div>
+    <div class="hero-stat"><strong>34</strong><span>Courses</span></div>
+    <div class="hero-stat"><strong>200K+</strong><span>Students</span></div>
     <div class="hero-stat"><strong>4.8★</strong><span>Avg Rating</span></div>
-    <div class="hero-stat"><strong>8</strong><span>Free Courses</span></div>
+    <div class="hero-stat"><strong>10</strong><span>Free Courses</span></div>
   </div>
 </section>
 
@@ -186,7 +262,8 @@
     <button class="filter-tag" onclick="filterByTag('premium',this)">👑 Premium</button>
     <button class="filter-tag" onclick="filterByTag('beginner',this)">🌱 Beginner</button>
     <button class="filter-tag" onclick="filterByTag('advanced',this)">🔥 Advanced</button>
-    <button class="filter-tag" onclick="filterByTag('framework',this)">⚛️ Frameworks</button>
+    <button class="filter-tag" onclick="filterByTag('frontend',this)">🎨 Frontend</button>
+    <button class="filter-tag" onclick="filterByTag('backend',this)">⚙️ Backend</button>
   </div>
   <div class="search-blogs">
     <span>🔍</span>
@@ -196,7 +273,7 @@
 
 <!-- ══ COURSES SECTION ══ -->
 <section class="blogs-section">
-  <p class="course-count" id="courseCount">Showing <strong>20</strong> courses</p>
+  <p class="course-count" id="courseCount">Showing <strong>34</strong> courses</p>
   <div class="courses-grid" id="coursesGrid">
     <!-- Cards generated by JS -->
     <div class="no-results" id="noResults">
@@ -260,30 +337,60 @@
 <script>
 // ─── COURSE DATA ───────────────────────────────────────────────
 const courses = [
-  { id:1,  title:"HTML5 Complete Guide",          cat:"web",       level:"beginner",  tags:["free","beginner"],      icon:"🌐", color:"linear-gradient(135deg,#e65100,#ff8f00)",  inst:"Riya Sharma",   av:"bg1",  lessons:42, dur:"6h 20m", rating:"4.9", students:"18K", type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Master every HTML5 element — semantic tags, forms, multimedia, canvas SVG and SEO-friendly structure." },
-  { id:2,  title:"CSS3 & Flexbox Mastery",        cat:"web",       level:"beginner",  tags:["premium","beginner"],  icon:"🎨", color:"linear-gradient(135deg,#1565c0,#42a5f5)",  inst:"Arjun Mehta",   av:"bg2",  lessons:35, dur:"5h 45m", rating:"4.8", students:"14K", type:"premium", price:499,   orig:1499,   badge:"PRO",  desc:"CSS Grid, Flexbox, animations, custom properties, responsive design and modern glassmorphism techniques." },
-  { id:3,  title:"JavaScript Zero to Hero",       cat:"web",       level:"beginner",  tags:["premium","beginner","advanced"], icon:"⚡", color:"linear-gradient(135deg,#f9a825,#fdd835)", inst:"Kapil Dev",     av:"bg3",  lessons:65, dur:"14h 40m",rating:"4.9", students:"25K", type:"premium", price:799,   orig:2999,   badge:"HOT",  desc:"From variables to async/await — closures, prototypes, DOM manipulation, ES2024 and real-world projects." },
-  { id:4,  title:"React.js Fundamentals",         cat:"framework", level:"advanced",  tags:["premium","advanced","framework"], icon:"⚛️", color:"linear-gradient(135deg,#00838f,#00bcd4)", inst:"Priya Kapoor",  av:"bg4",  lessons:52, dur:"13h",    rating:"4.9", students:"20K", type:"premium", price:899,   orig:2999,   badge:"HOT",  desc:"JSX, components, hooks (useState, useEffect, useContext), Redux Toolkit, and building a complete app." },
-  { id:5,  title:"Vue.js 3 Complete Guide",       cat:"framework", level:"advanced",  tags:["premium","advanced","framework"], icon:"💚", color:"linear-gradient(135deg,#1b5e20,#66bb6a)", inst:"Ananya Mishra", av:"bg5",  lessons:44, dur:"11h 20m",rating:"4.7", students:"8K",  type:"premium", price:699,   orig:2499,   badge:"PRO",  desc:"Composition API, computed properties, Pinia state management, Vue Router and building real-world apps." },
-  { id:6,  title:"Angular 17 Masterclass",        cat:"framework", level:"advanced",  tags:["premium","advanced","framework"], icon:"🔺", color:"linear-gradient(135deg,#b71c1c,#ef5350)", inst:"Rohit Verma",   av:"bg6",  lessons:58, dur:"16h",    rating:"4.6", students:"6K",  type:"premium", price:799,   orig:2999,   badge:"PRO",  desc:"Components, directives, services, dependency injection, RxJS, Angular Material and enterprise patterns." },
-  { id:7,  title:"TypeScript Deep Dive",          cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"📘", color:"linear-gradient(135deg,#0d47a1,#42a5f5)",  inst:"Sneha Patel",   av:"bg7",  lessons:38, dur:"9h",     rating:"4.8", students:"10K", type:"premium", price:549,   orig:1999,   badge:"PRO",  desc:"Interfaces, generics, decorators, utility types, type narrowing and TypeScript in React & Node projects." },
-  { id:8,  title:"Next.js 14 Full Course",        cat:"framework", level:"advanced",  tags:["premium","advanced","framework"], icon:"▲",  color:"linear-gradient(135deg,#212121,#616161)", inst:"Arjun Mehta",   av:"bg2",  lessons:60, dur:"17h",    rating:"4.9", students:"15K", type:"premium", price:999,   orig:3499,   badge:"HOT",  desc:"App Router, Server Components, SSR, SSG, ISR, API routes, authentication and deploying to Vercel." },
-  { id:9,  title:"Tailwind CSS Mastery",          cat:"web",       level:"beginner",  tags:["free","beginner"],      icon:"🌊", color:"linear-gradient(135deg,#0277bd,#29b6f6)",  inst:"Riya Sharma",   av:"bg1",  lessons:28, dur:"4h 30m", rating:"4.7", students:"12K", type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Utility-first CSS framework — custom themes, responsive design, dark mode, and building UI components." },
-  { id:10, title:"SASS & SCSS Complete",          cat:"web",       level:"beginner",  tags:["free","beginner"],      icon:"💅", color:"linear-gradient(135deg,#880e4f,#f48fb1)",  inst:"Priya Kapoor",  av:"bg4",  lessons:20, dur:"3h",     rating:"4.6", students:"7K",  type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Variables, mixins, nesting, partials, functions and building organized, maintainable stylesheets." },
-  { id:11, title:"Responsive Web Design",         cat:"web",       level:"beginner",  tags:["free","beginner"],      icon:"📱", color:"linear-gradient(135deg,#4a148c,#ab47bc)",  inst:"Kapil Dev",     av:"bg3",  lessons:22, dur:"3h 45m", rating:"4.7", students:"9K",  type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Mobile-first design, media queries, fluid grids, flexible images and cross-device compatibility." },
-  { id:12, title:"Web Accessibility (A11y)",      cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"♿", color:"linear-gradient(135deg,#006064,#00bcd4)",  inst:"Sneha Patel",   av:"bg7",  lessons:25, dur:"5h",     rating:"4.8", students:"4K",  type:"premium", price:349,   orig:1299,   badge:"PRO",  desc:"WCAG 2.1 guidelines, ARIA attributes, keyboard navigation, screen reader support and inclusive design." },
-  { id:13, title:"Web Performance Optimization",  cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"⚡", color:"linear-gradient(135deg,#e65100,#ff8f00)",  inst:"Rohit Verma",   av:"bg6",  lessons:30, dur:"6h",     rating:"4.7", students:"5K",  type:"premium", price:449,   orig:1699,   badge:"PRO",  desc:"Core Web Vitals, lazy loading, code splitting, caching strategies, image optimization and Lighthouse." },
-  { id:14, title:"Progressive Web Apps (PWA)",    cat:"framework", level:"advanced",  tags:["premium","advanced","framework"], icon:"📲", color:"linear-gradient(135deg,#1a237e,#3949ab)", inst:"Ananya Mishra", av:"bg5",  lessons:32, dur:"7h",     rating:"4.8", students:"6K",  type:"premium", price:499,   orig:1799,   badge:"PRO",  desc:"Service workers, Web App Manifest, offline-first strategies, push notifications and background sync." },
-  { id:15, title:"Git & GitHub for Developers",   cat:"web",       level:"beginner",  tags:["free","beginner"],      icon:"🔀", color:"linear-gradient(135deg,#212121,#616161)",  inst:"Arjun Mehta",   av:"bg2",  lessons:18, dur:"3h 30m", rating:"4.8", students:"15K", type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Version control fundamentals, branching strategies, GitHub workflows, PRs and CI/CD integration." },
-  { id:16, title:"Webpack & Build Tools",         cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"📦", color:"linear-gradient(135deg,#00695c,#00bcd4)",  inst:"Kapil Dev",     av:"bg3",  lessons:24, dur:"5h",     rating:"4.5", students:"3K",  type:"premium", price:349,   orig:1299,   badge:"PRO",  desc:"Webpack 5, Vite, Parcel, code splitting, loaders, plugins, tree shaking and production optimization." },
-  { id:17, title:"GraphQL for Frontend Devs",     cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"🔷", color:"linear-gradient(135deg,#e91e8c,#ff4081)",  inst:"Sneha Patel",   av:"bg7",  lessons:28, dur:"6h 30m", rating:"4.7", students:"4K",  type:"premium", price:549,   orig:1999,   badge:"PRO",  desc:"GraphQL schema, queries, mutations, subscriptions, Apollo Client with React and client-side caching." },
-  { id:18, title:"Testing with Jest & RTL",       cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"🧪", color:"linear-gradient(135deg,#bf360c,#ff7043)",  inst:"Rohit Verma",   av:"bg6",  lessons:34, dur:"8h",     rating:"4.8", students:"5K",  type:"premium", price:499,   orig:1799,   badge:"PRO",  desc:"Unit testing, integration testing, mocking, React Testing Library, code coverage and CI integration." },
-  { id:19, title:"Svelte & SvelteKit",            cat:"framework", level:"advanced",  tags:["premium","advanced","framework"], icon:"🟠", color:"linear-gradient(135deg,#bf360c,#ff8f00)", inst:"Priya Kapoor",  av:"bg4",  lessons:36, dur:"9h",     rating:"4.7", students:"3K",  type:"premium", price:599,   orig:1999,   badge:"NEW",  desc:"Build lightning-fast UIs with Svelte — reactivity, stores, transitions, SvelteKit routing and deployment." },
-  { id:20, title:"Three.js & WebGL Basics",       cat:"web",       level:"advanced",  tags:["premium","advanced"],  icon:"🌌", color:"linear-gradient(135deg,#1a1a2e,#16213e)",  inst:"Kapil Dev",     av:"bg3",  lessons:40, dur:"10h",    rating:"4.8", students:"4K",  type:"premium", price:699,   orig:2499,   badge:"NEW",  desc:"3D graphics on the web — Three.js scene setup, geometries, materials, lighting, animations and WebGL shaders." }
+  // Frontend Development
+  { id:1,  title:"HTML5 Complete Guide",          cat:"frontend",   level:"beginner",  tags:["free","beginner"],      icon:"🌐", color:"linear-gradient(135deg,#e65100,#ff8f00)",  inst:"Riya Sharma",   av:"bg1",  lessons:42, dur:"6h 20m", rating:"4.9", students:"18K", type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Master every HTML5 element — semantic tags, forms, multimedia, canvas SVG and SEO-friendly structure.", link:"blog-1-html5-complete-guide.html" },
+  { id:2,  title:"CSS3 Mastery",                 cat:"frontend",   level:"beginner",  tags:["premium","beginner"],  icon:"🎨", color:"linear-gradient(135deg,#1565c0,#42a5f5)",  inst:"Arjun Mehta",   av:"bg2",  lessons:35, dur:"5h 45m", rating:"4.8", students:"14K", type:"premium", price:499,   orig:1499,   badge:"PRO",  desc:"CSS Grid, Flexbox, animations, custom properties, responsive design and modern glassmorphism techniques.", link:"blog-2-css3-flexbox-mastery.html" },
+  { id:3,  title:"JavaScript Complete Course",    cat:"frontend",   level:"beginner",  tags:["premium","beginner","advanced"], icon:"⚡", color:"linear-gradient(135deg,#f9a825,#fdd835)", inst:"Kapil Dev",     av:"bg3",  lessons:65, dur:"14h 40m",rating:"4.9", students:"25K", type:"premium", price:799,   orig:2999,   badge:"HOT",  desc:"From variables to async/await — closures, prototypes, DOM manipulation, ES2024 and real-world projects.", link:"blog-3-javascript-zero-to-hero.html" },
+  { id:4,  title:"React.js Complete Guide",       cat:"frontend",   level:"advanced",  tags:["premium","advanced","framework"], icon:"⚛️", color:"linear-gradient(135deg,#00838f,#00bcd4)", inst:"Priya Kapoor",  av:"bg4",  lessons:52, dur:"13h",    rating:"4.9", students:"20K", type:"premium", price:899,   orig:2999,   badge:"HOT",  desc:"JSX, components, hooks (useState, useEffect, useContext), Redux Toolkit, and building a complete app.", link:"blog-4-reactjs-fundamentals.html" },
+  { id:5,  title:"Vue.js Full Course",            cat:"frontend",   level:"advanced",  tags:["premium","advanced","framework"], icon:"💚", color:"linear-gradient(135deg,#1b5e20,#66bb6a)", inst:"Ananya Mishra", av:"bg5",  lessons:44, dur:"11h 20m",rating:"4.7", students:"8K",  type:"premium", price:699,   orig:2499,   badge:"PRO",  desc:"Composition API, computed properties, Pinia state management, Vue Router and building real-world apps.", link:"blog-5-vuejs-3-complete-guide.html" },
+  { id:6,  title:"Angular Complete Guide",        cat:"frontend",   level:"advanced",  tags:["premium","advanced","framework"], icon:"🔺", color:"linear-gradient(135deg,#b71c1c,#ef5350)", inst:"Rohit Verma",   av:"bg6",  lessons:58, dur:"16h",    rating:"4.6", students:"6K",  type:"premium", price:799,   orig:2999,   badge:"PRO",  desc:"Components, directives, services, dependency injection, RxJS, Angular Material and enterprise patterns.", link:"blog-6-angular-17-masterclass.html" },
+  { id:7,  title:"Tailwind CSS Mastery",          cat:"frontend",   level:"beginner",  tags:["free","beginner"],      icon:"🌊", color:"linear-gradient(135deg,#0277bd,#29b6f6)",  inst:"Riya Sharma",   av:"bg1",  lessons:28, dur:"4h 30m", rating:"4.7", students:"12K", type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Utility-first CSS framework — custom themes, responsive design, dark mode, and building UI components.", link:"blog-7-typescript-deep-dive.html" },
+  { id:8,  title:"Bootstrap 5 Complete",          cat:"frontend",   level:"beginner",  tags:["free","beginner"],      icon:"🅱️", color:"linear-gradient(135deg,#7b1fa2,#ba68c8)",  inst:"Priya Kapoor",  av:"bg4",  lessons:20, dur:"3h",     rating:"4.6", students:"7K",  type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Bootstrap 5 components, grid system, utilities, responsive design and building modern websites quickly.", link:"blog-8-nextjs-14-full-course.html" },
+  { id:9,  title:"Sass/SCSS Advanced",            cat:"frontend",   level:"beginner",  tags:["premium","beginner"],  icon:"💅", color:"linear-gradient(135deg,#880e4f,#f48fb1)",  inst:"Priya Kapoor",  av:"bg4",  lessons:20, dur:"3h",     rating:"4.6", students:"7K",  type:"premium", price:349,   orig:1299,   badge:"PRO",  desc:"Variables, mixins, nesting, partials, functions and building organized, maintainable stylesheets.", link:"blog-9-tailwind-css-mastery.html" },
+  { id:10, title:"Web Components",               cat:"frontend",   level:"advanced",  tags:["premium","advanced"],  icon:"🧩", color:"linear-gradient(135deg,#4a148c,#ab47bc)",  inst:"Kapil Dev",     av:"bg3",  lessons:22, dur:"3h 45m", rating:"4.7", students:"9K",  type:"premium", price:399,   orig:1499,   badge:"PRO",  desc:"Custom elements, shadow DOM, templates, and building reusable web components with vanilla JavaScript.", link:"blog-10-sass-scss-complete.html" },
+
+  // Backend Development
+  { id:11, title:"Node.js \u0026 Express API",        cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"🟢", color:"linear-gradient(135deg,#2e7d32,#66bb6a)",  inst:"Arjun Mehta",   av:"bg2",  lessons:48, dur:"12h",    rating:"4.8", students:"16K", type:"premium", price:899,   orig:2999,   badge:"HOT",  desc:"Build REST APIs with Node.js, Express, MongoDB, authentication, middleware, and deployment strategies.", link:"blog-11-bootstrap-5-complete.html" },
+  { id:12, title:"Python Django Complete",       cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"🐍", color:"linear-gradient(135deg,#0d47a1,#42a5f5)",  inst:"Dr. Sarah Lee", av:"bg8",  lessons:55, dur:"15h",    rating:"4.9", students:"12K", type:"premium", price:999,   orig:3499,   badge:"HOT",  desc:"Django framework, models, views, templates, REST framework, authentication, and building web applications.", link:"blog-12-web-performance-optimization.html" },
+  { id:13, title:"PHP \u0026 Laravel Mastery",        cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"🐘", color:"linear-gradient(135deg,#bf360c,#ff8f00)",  inst:"Michael Brown", av:"bg9",  lessons:45, dur:"11h",    rating:"4.7", students:"8K",  type:"premium", price:699,   orig:2499,   badge:"PRO",  desc:"Laravel framework, MVC architecture, Eloquent ORM, routing, middleware, and building modern PHP applications.", link:"blog-13-nodejs-express-api.html" },
+  { id:14, title:"React Hooks Deep Dive",        cat:"frontend",   level:"advanced",  tags:["premium","advanced"],  icon:"🪝", color:"linear-gradient(135deg,#00838f,#00bcd4)", inst:"Priya Kapoor",  av:"bg4",  lessons:35, dur:"8h",     rating:"4.9", students:"15K", type:"premium", price:599,   orig:1999,   badge:"HOT",  desc:"Master useState, useEffect, useContext, useReducer, custom hooks, and advanced React patterns.", link:"blog-14-react-hooks-deep-dive.html" },
+  { id:15, title:"Next.js 14 Full Course",        cat:"frontend",   level:"advanced",  tags:["premium","advanced","framework"], icon:"▲",  color:"linear-gradient(135deg,#212121,#616161)", inst:"Arjun Mehta",   av:"bg2",  lessons:60, dur:"17h",    rating:"4.9", students:"15K", type:"premium", price:999,   orig:3499,   badge:"HOT",  desc:"App Router, Server Components, SSR, SSG, ISR, API routes, authentication and deploying to Vercel.", link:"blog-15-nextjs-14-full-course.html" },
+  { id:16, title:"Vue 3 Composition API",       cat:"frontend",   level:"advanced",  tags:["premium","advanced","framework"], icon:"💚", color:"linear-gradient(135deg,#1b5e20,#66bb6a)", inst:"Ananya Mishra", av:"bg5",  lessons:32, dur:"8h",     rating:"4.8", students:"9K",  type:"premium", price:549,   orig:1999,   badge:"PRO",  desc:"Vue 3 Composition API, reactivity system, computed properties, watchers, and building modern Vue apps.", link:"blog-16-react-native-mobile.html" },
+  { id:17, title:"TypeScript Complete",          cat:"frontend",   level:"advanced",  tags:["premium","advanced"],  icon:"📘", color:"linear-gradient(135deg,#0d47a1,#42a5f5)",  inst:"Sneha Patel",   av:"bg7",  lessons:38, dur:"9h",     rating:"4.8", students:"10K", type:"premium", price:549,   orig:1999,   badge:"PRO",  desc:"Interfaces, generics, decorators, utility types, type narrowing and TypeScript in React \u0026 Node projects.", link:"blog-17-graphql-frontend-devs.html" },
+  { id:18, title:"Docker \u0026 Kubernetes Guide",    cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"🐳", color:"linear-gradient(135deg,#00695c,#00bcd4)",  inst:"David Kim",    av:"bg10", lessons:42, dur:"10h",    rating:"4.7", students:"7K", type:"premium", price:799,   orig:2999,   badge:"PRO",  desc:"Containerization, Docker, Kubernetes, orchestration, microservices, and cloud-native development.", link:"blog-18-docker-kubernetes-guide.html" },
+  { id:19, title:"Python Data Science",          cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"📊", color:"linear-gradient(135deg,#f9a825,#fdd835)", inst:"Dr. Sarah Lee", av:"bg8",  lessons:48, dur:"14h",    rating:"4.9", students:"11K", type:"premium", price:1099,  orig:3999,   badge:"HOT",  desc:"NumPy, Pandas, Matplotlib, data analysis, visualization, and machine learning fundamentals with Python.", link:"blog-19-python-data-science.html" },
+  { id:20, title:"Machine Learning Complete",    cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"🤖", color:"linear-gradient(135deg,#e91e8c,#ff4081)", inst:"Dr. James Chen",av:"bg11", lessons:65, dur:"18h",    rating:"4.8", students:"9K",  type:"premium", price:1299,  orig:4999,   badge:"HOT",  desc:"Supervised learning, unsupervised learning, neural networks, deep learning, and real-world ML projects.", link:"blog-20-machine-learning-complete.html" },
+
+  // Advanced Technologies
+  { id:21, title:"Deep Learning \u0026 Neural Networks", cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"🧠", color:"linear-gradient(135deg,#6a1b9a,#ab47bc)",  inst:"Dr. James Chen",av:"bg11", lessons:72, dur:"20h",    rating:"4.9", students:"7K", type:"premium", price:1499,  orig:5999,   badge:"HOT",  desc:"Neural networks, CNNs, RNNs, transformers, TensorFlow, PyTorch, and building deep learning models.", link:"blog-21-deep-learning-neural-networks.html" },
+  { id:22, title:"Git \u0026 GitHub Mastery",         cat:"frontend",   level:"beginner",  tags:["free","beginner"],      icon:"🔀", color:"linear-gradient(135deg,#212121,#616161)", inst:"Arjun Mehta",   av:"bg2",  lessons:18, dur:"3h 30m", rating:"4.8", students:"15K", type:"free",    price:null,  orig:null,   badge:"FREE", desc:"Version control fundamentals, branching strategies, GitHub workflows, PRs and CI/CD integration.", link:"blog-22-git-github-mastery.html" },
+  { id:23, title:"Advanced TypeScript",           cat:"frontend",   level:"advanced",  tags:["premium","advanced"],  icon:"📘", color:"linear-gradient(135deg,#0d47a1,#42a5f5)",  inst:"Sneha Patel",   av:"bg7",  lessons:30, dur:"7h",     rating:"4.8", students:"6K",  type:"premium", price:449,   orig:1699,   badge:"PRO",  desc:"Advanced TypeScript patterns, conditional types, template literals, decorators, and enterprise TypeScript.", link:"blog-23-typescript-advanced.html" },
+  { id:24, title:"Web3 \u0026 Blockchain Development", cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"⛓️", color:"linear-gradient(135deg,#00695c,#4caf50)",  inst:"Rahul Verma",  av:"bg12", lessons:55, dur:"16h",    rating:"4.8", students:"5K", type:"premium", price:1199,  orig:4499,   badge:"NEW",  desc:"Ethereum, Solidity, smart contracts, Web3.js, DeFi, NFTs, and building decentralized applications.", link:"blog-24-web3-blockchain.html" },
+  { id:25, title:"Cybersecurity Essentials",      cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"🔒", color:"linear-gradient(135deg,#b71c1c,#f44336)",  inst:"Dr. Vikram Singh",av:"bg13", lessons:40, dur:"11h",    rating:"4.7", students:"8K",  type:"premium", price:899,   orig:3499,   badge:"PRO",  desc:"Network security, ethical hacking, cryptography, firewalls, IDS, incident response, and security best practices.", link:"blog-25-cybersecurity-essentials.html" },
+  { id:26, title:"Cloud Computing with AWS",      cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"☁️", color:"linear-gradient(135deg,#ff9800,#ff5722)",  inst:"Priya Sharma",  av:"bg14", lessons:48, dur:"14h",    rating:"4.8", students:"10K", type:"premium", price:999,   orig:3999,   badge:"HOT",  desc:"AWS services, EC2, S3, Lambda, RDS, VPC, deployment, and building scalable cloud applications.", link:"blog-26-cloud-computing-aws.html" },
+  { id:27, title:"Mobile App Development",       cat:"frontend",   level:"advanced",  tags:["premium","advanced"],  icon:"📱", color:"linear-gradient(135deg,#2196f3,#03a9f4)",  inst:"Arjun Mehta",   av:"bg2",  lessons:52, dur:"15h",    rating:"4.7", students:"9K",  type:"premium", price:899,   orig:3499,   badge:"PRO",  desc:"React Native, Flutter, iOS/Android development, Redux, navigation, and building cross-platform apps.", link:"blog-27-mobile-app-development.html" },
+  { id:28, title:"UI/UX Design Mastery",         cat:"frontend",   level:"beginner",  tags:["premium","beginner"],  icon:"🎨", color:"linear-gradient(135deg,#667eea,#764ba2)",  inst:"Sarah Chen",   av:"bg15", lessons:58, dur:"15h",    rating:"4.9", students:"14K", type:"premium", price:899,   orig:3499,   badge:"HOT",  desc:"Design principles, Figma, Adobe XD, user research, prototyping, and creating stunning user interfaces.", link:"blog-28-ui-ux-design-mastery.html" },
+  { id:29, title:"DevOps Complete Guide",        cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"🔄", color:"linear-gradient(135deg,#ff6b6b,#4ecdc4)",  inst:"Michael Roberts",av:"bg16", lessons:82, dur:"22h",    rating:"4.8", students:"10K", type:"premium", price:1299,  orig:5999,   badge:"HOT",  desc:"CI/CD, Docker, Kubernetes, Jenkins, infrastructure as code, monitoring, and robust deployment pipelines.", link:"blog-29-devops-complete-guide.html" },
+  { id:30, title:"Software Testing Complete",    cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"🧪", color:"linear-gradient(135deg,#10b981,#059669)",  inst:"Dr. Lisa Thompson",av:"bg17", lessons:65, dur:"16h",    rating:"4.8", students:"9.5K", type:"premium", price:999,   orig:3999,   badge:"PRO",  desc:"Unit testing, integration testing, E2E testing, test automation frameworks, and ensuring software quality.", link:"blog-30-software-testing-complete.html" },
+  { id:31, title:"Database Design Mastery",      cat:"backend",    level:"advanced",  tags:["premium","advanced"],  icon:"🗄️", color:"linear-gradient(135deg,#3b82f6,#1e40af)",  inst:"Dr. Robert Kim", av:"bg18", lessons:72, dur:"18h",    rating:"4.8", students:"8.5K", type:"premium", price:1099,  orig:4499,   badge:"PRO",  desc:"SQL, NoSQL, database architecture, normalization, indexing, performance optimization, and scalable data systems.", link:"blog-31-database-design-mastery.html" },
+  { id:32, title:"API Development - REST \u0026 GraphQL", cat:"backend", level:"advanced",  tags:["premium","advanced"],  icon:"🔌", color:"linear-gradient(135deg,#8b5cf6,#6366f1)",  inst:"Alex Thompson", av:"bg19", lessons:68, dur:"16h",    rating:"4.8", students:"11K", type:"premium", price:999,   orig:3999,   badge:"HOT",  desc:"REST API, GraphQL, API design, authentication, documentation, testing, and building robust backend services.", link:"blog-32-api-development-rest-graphql.html" },
+  { id:33, title:"Performance Optimization",     cat:"frontend",   level:"advanced",  tags:["premium","advanced"],  icon:"⚡", color:"linear-gradient(135deg,#f59e0b,#dc2626)",  inst:"David Chen",    av:"bg20", lessons:62, dur:"14h",    rating:"4.9", students:"12K", type:"premium", price:899,   orig:3499,   badge:"HOT",  desc:"Frontend performance, backend optimization, caching strategies, monitoring, and lightning-fast applications.", link:"blog-33-performance-optimization.html" },
+  { id:34, title:"Software Architecture Patterns", cat:"backend", level:"advanced", tags:["premium","advanced"], icon:"🏗️", color:"linear-gradient(135deg,#6366f1,#8b5cf6)", inst:"Dr. James Wilson", av:"bg21", lessons:78, dur:"20h", rating:"4.9", students:"10K", type:"premium", price:1199, orig:5999, badge:"HOT", desc:"Microservices, monolith, event-driven, distributed systems, design patterns, and scalable software architectures.", link:"blog-34-software-architecture-patterns.html" }
 ];
 
-const avatarColors = { bg1:'#e65100', bg2:'#1565c0', bg3:'#f9a825', bg4:'#00838f', bg5:'#1b5e20', bg6:'#b71c1c', bg7:'#4a148c' };
-const instructorInitials = { 'Riya Sharma':'RS', 'Arjun Mehta':'AM', 'Kapil Dev':'KD', 'Priya Kapoor':'PK', 'Ananya Mishra':'AM', 'Rohit Verma':'RV', 'Sneha Patel':'SP' };
+const avatarColors = { 
+  bg1:'#e65100', bg2:'#1565c0', bg3:'#f9a825', bg4:'#00838f', bg5:'#1b5e20', bg6:'#b71c1c', bg7:'#4a148c',
+  bg8:'#0d47a1', bg9:'#bf360c', bg10:'#00695c', bg11:'#6a1b9a', bg12:'#00695c', bg13:'#b71c1c',
+  bg14:'#ff9800', bg15:'#667eea', bg16:'#ff6b6b', bg17:'#10b981', bg18:'#3b82f6', bg19:'#8b5cf6',
+  bg20:'#f59e0b', bg21:'#6366f1'
+};
+const instructorInitials = { 
+  'Riya Sharma':'RS', 'Arjun Mehta':'AM', 'Kapil Dev':'KD', 'Priya Kapoor':'PK', 'Ananya Mishra':'AM', 
+  'Rohit Verma':'RV', 'Sneha Patel':'SP', 'Dr. Sarah Lee':'SL', 'Michael Brown':'MB', 'David Kim':'DK',
+  'Dr. James Chen':'JC', 'Rahul Verma':'RV', 'Dr. Vikram Singh':'VS', 'Priya Sharma':'PS', 'Sarah Chen':'SC',
+  'Michael Roberts':'MR', 'Dr. Lisa Thompson':'LT', 'Dr. Robert Kim':'RK', 'Alex Thompson':'AT', 'David Chen':'DC',
+  'Dr. James Wilson':'JW'
+};
 
 let enrolledCourses = JSON.parse(localStorage.getItem('th_enrolled') || '[]');
 let currentTag = 'all';
@@ -297,21 +404,32 @@ function getBadgeClass(badge) {
   return 'tag-pro';
 }
 
+// ─── HELPER FUNCTIONS ───
+function getInstructorInitials(name) {
+  if (instructorInitials[name]) return instructorInitials[name];
+  return name.split(' ').map(function(n) { return n[0]; }).join('').toUpperCase();
+}
+
 // ─── RENDER ───────────────────────────────────────────────────
 function renderCourses(list) {
-  const grid = document.getElementById('coursesGrid');
-  const noResults = document.getElementById('noResults');
-  const countEl = document.getElementById('courseCount');
-  grid.querySelectorAll('.course-card').forEach(c => c.remove());
+  try {
+    const grid = document.getElementById('coursesGrid');
+    const noResults = document.getElementById('noResults');
+    const countEl = document.getElementById('courseCount');
+    if (!grid || !noResults || !countEl) {
+      console.error('Required DOM elements not found');
+      return;
+    }
+    grid.querySelectorAll('.course-card').forEach(c => c.remove());
 
-  if (list.length === 0) {
-    noResults.classList.add('show'); countEl.innerHTML = 'Showing <strong>0</strong> courses';
-    return;
-  }
-  noResults.classList.remove('show');
-  countEl.innerHTML = `Showing <strong>${list.length}</strong> course${list.length !== 1 ? 's' : ''}`;
+    if (list.length === 0) {
+      noResults.classList.add('show'); countEl.innerHTML = 'Showing <strong>0</strong> courses';
+      return;
+    }
+    noResults.classList.remove('show');
+    countEl.innerHTML = `Showing <strong>${list.length}</strong> course${list.length !== 1 ? 's' : ''}`;
 
-  list.forEach((c, i) => {
+    list.forEach((c, i) => {
     const isEnrolled = enrolledCourses.includes(c.id);
     const gst = c.type === 'premium' ? Math.round(c.price * 0.18) : 0;
     const total = c.type === 'premium' ? c.price + gst : 0;
@@ -330,6 +448,7 @@ function renderCourses(list) {
     card.className = 'course-card';
     card.dataset.tags = c.tags.join(',');
     card.dataset.title = c.title.toLowerCase();
+    card.dataset.category = c.cat;
     card.style.animationDelay = (i * 0.04) + 's';
     card.innerHTML = `
       <div class="card-banner" style="background:${c.color}">
@@ -338,11 +457,11 @@ function renderCourses(list) {
         <span class="card-banner-badge ${getBadgeClass(c.badge)}">${c.badge}</span>
       </div>
       <div class="card-body">
-        <div class="card-cat">${c.cat === 'framework' ? '⚛️ Framework' : '🌐 Web Dev'}</div>
-        <div class="card-title">${c.title}</div>
+        <div class="card-cat">${c.cat === 'frontend' ? '🎨 Frontend' : c.cat === 'backend' ? '⚙️ Backend' : '🌐 Web Dev'}</div>
+        <div class="card-title" style="cursor:pointer;" onclick="window.location.href='${c.link}'">${c.title}</div>
         <div class="card-desc">${c.desc}</div>
         <div class="card-instructor">
-          <div class="instructor-avatar" style="background:${avatarColors[c.av]};color:white">${instructorInitials[c.inst]}</div>
+          <div class="instructor-avatar" style="background:${avatarColors[c.av] || '#6366f1'};color:white">${getInstructorInitials(c.inst)}</div>
           <span class="instructor-name">${c.inst}</span>
         </div>
         <div class="card-meta">
@@ -357,6 +476,13 @@ function renderCourses(list) {
     grid.insertBefore(card, document.getElementById('noResults'));
   });
   updateEnrolledBanner();
+  } catch (error) {
+    console.error('Error rendering courses:', error);
+    const grid = document.getElementById('coursesGrid');
+    if (grid) {
+      grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #ef4444;">Error loading courses. Please refresh the page.</div>';
+    }
+  }
 }
 
 // ─── FILTER ───────────────────────────────────────────────────
@@ -364,7 +490,7 @@ function filterCourses(search, tag) {
   currentSearch = search.toLowerCase();
   const filtered = courses.filter(c => {
     const matchSearch = !currentSearch || c.title.toLowerCase().includes(currentSearch) || c.desc.toLowerCase().includes(currentSearch);
-    const matchTag = tag === 'all' || c.tags.includes(tag) || (tag === 'beginner' && c.level === 'beginner') || (tag === 'advanced' && c.level === 'advanced');
+    const matchTag = tag === 'all' || c.tags.includes(tag) || (tag === 'beginner' && c.level === 'beginner') || (tag === 'advanced' && c.level === 'advanced') || c.cat === tag;
     return matchSearch && matchTag;
   });
   renderCourses(filtered);
@@ -421,6 +547,7 @@ function showToast(msg) {
 }
 
 // ─── INIT ─────────────────────────────────────────────────────
+console.log('Initializing courses...', courses.length);
 renderCourses(courses);
 
 // Sync globalSearch with courseSearch

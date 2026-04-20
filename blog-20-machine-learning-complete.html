@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Machine Learning with comprehensive guide. Learn supervised learning, unsupervised learning, neural networks, deep learning, TensorFlow, PyTorch and build intelligent applications. Premium course.">
+  <meta name="keywords" content="Machine learning tutorial, supervised learning, unsupervised learning, neural networks, TensorFlow, PyTorch, deep learning, learn machine learning">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Machine Learning Complete - Build Intelligent Applications">
+  <meta property="og:description" content="Premium Machine Learning course covering supervised learning, unsupervised learning, neural networks, deep learning, TensorFlow, PyTorch and building intelligent applications.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-20-machine-learning-complete.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/machine-learning-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Machine Learning Complete - Build Intelligent Applications">
+  <meta name="twitter:description" content="Premium Machine Learning course covering supervised learning, unsupervised learning, neural networks, deep learning, TensorFlow, PyTorch and building intelligent applications.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/machine-learning-course.jpg">
+  <title>Machine Learning Complete - Build Intelligent Applications | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-20-machine-learning-complete.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Machine Learning Complete",
+    "description": "Supervised learning, unsupervised learning, neural networks, deep learning, TensorFlow, PyTorch and building intelligent applications.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "Machine Learning Development",
+    "teaches": ["Machine Learning", "Supervised Learning", "Unsupervised Learning", "Neural Networks", "TensorFlow", "PyTorch", "Deep Learning", "AI Applications"],
+    "timeRequired": "PT20H",
+    "coursePrerequisites": "Python programming, mathematics, and statistics knowledge",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Dr. Rajesh Kumar"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "20000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "1299",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #ff6b6b;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .ml-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Machine Learning Complete</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Machine Learning with supervised learning, unsupervised learning, neural networks, deep learning, TensorFlow, PyTorch and build intelligent applications.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 72 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 20h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.9 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 20K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">RK</div>
+        <div>
+          <div style="font-weight: 700;">Dr. Rajesh Kumar</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">ML Expert & AI Researcher</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹1299</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Machine Learning</a></li>
+        <li><a href="#supervised">2. Supervised Learning</a></li>
+        <li><a href="#unsupervised">3. Unsupervised Learning</a></li>
+        <li><a href="#neural-networks">4. Neural Networks & Deep Learning</a></li>
+        <li><a href="#tensorflow">5. TensorFlow Mastery</a></li>
+        <li><a href="#pytorch">6. PyTorch Fundamentals</a></li>
+        <li><a href="#computer-vision">7. Computer Vision</a></li>
+        <li><a href="#nlp">8. Natural Language Processing</a></li>
+        <li><a href="#deployment">9. Model Deployment</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>🤖 Introduction to Machine Learning</h2>
+      <p>Machine Learning is a subset of artificial intelligence that enables computers to learn and improve from experience without being explicitly programmed. It's the technology behind recommendation systems, self-driving cars, medical diagnosis, and countless other applications.</p>
+      
+      <p>This comprehensive course teaches you to master machine learning from fundamentals to advanced techniques. Learn to build intelligent applications using Python, TensorFlow, and PyTorch.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <h4>AI Fundamentals</h4>
+          <p>Understand the core concepts of artificial intelligence and machine learning</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h4>Data-Driven</h4>
+          <p>Learn to extract insights from data and build predictive models</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔬</div>
+          <h4>Deep Learning</h4>
+          <p>Master neural networks and advanced deep learning architectures</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h4>Production Ready</h4>
+          <p>Deploy machine learning models to production environments</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supervised Learning -->
+    <section class="blog-section" id="supervised">
+      <h2>📚 Supervised Learning</h2>
+      <p>Master supervised learning algorithms where models learn from labeled data to make predictions. Learn classification, regression, and the most important machine learning algorithms.</p>
+
+      <h3>Linear Regression</h3>
+      <div class="code-block">
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Generate sample data
+np.random.seed(42)
+X = 2 * np.random.rand(100, 1)
+y = 4 + 3 * X + np.random.randn(100, 1)
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create and train the model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+print(f"Coefficient: {model.coef_[0][0]:.2f}")
+print(f"Intercept: {model.intercept_[0]:.2f}")
+print(f"Mean Squared Error: {mse:.2f}")
+print(f"R-squared: {r2:.2f}")
+
+# Visualization
+plt.figure(figsize=(10, 6))
+plt.scatter(X_test, y_test, color='blue', label='Actual')
+plt.plot(X_test, y_pred, color='red', linewidth=2, label='Predicted')
+plt.xlabel('X')
+plt.ylabel('y')
+plt.title('Linear Regression')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Multiple Linear Regression
+# Generate sample data
+np.random.seed(42)
+X_multi = np.random.rand(100, 3)  # 3 features
+y_multi = 2 + 3*X_multi[:,0] + 1.5*X_multi[:,1] - 2*X_multi[:,2] + np.random.randn(100)
+
+# Split and train
+X_train_multi, X_test_multi, y_train_multi, y_test_multi = train_test_split(
+    X_multi, y_multi, test_size=0.2, random_state=42
+)
+
+model_multi = LinearRegression()
+model_multi.fit(X_train_multi, y_train_multi)
+
+# Make predictions and evaluate
+y_pred_multi = model_multi.predict(X_test_multi)
+mse_multi = mean_squared_error(y_test_multi, y_pred_multi)
+r2_multi = r2_score(y_test_multi, y_pred_multi)
+
+print(f"\nMultiple Linear Regression:")
+print(f"Coefficients: {model_multi.coef_}")
+print(f"Intercept: {model_multi.intercept_:.2f}")
+print(f"Mean Squared Error: {mse_multi:.2f}")
+print(f"R-squared: {r2_multi:.2f}")
+      </div>
+
+      <h3>Classification Algorithms</h3>
+      <div class="code-block">
+from sklearn.datasets import make_classification
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+import seaborn as sns
+
+# Generate classification dataset
+X, y = make_classification(
+    n_samples=1000, 
+    n_features=20, 
+    n_informative=10, 
+    n_redundant=5,
+    n_classes=3, 
+    random_state=42
+)
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Initialize classifiers
+classifiers = {
+    'Logistic Regression': LogisticRegression(random_state=42, max_iter=1000),
+    'Decision Tree': DecisionTreeClassifier(random_state=42),
+    'Random Forest': RandomForestClassifier(random_state=42),
+    'SVM': SVC(random_state=42),
+    'KNN': KNeighborsClassifier()
+}
+
+# Train and evaluate each classifier
+results = {}
+for name, classifier in classifiers.items():
+    # Train the model
+    classifier.fit(X_train, y_train)
+    
+    # Make predictions
+    y_pred = classifier.predict(X_test)
+    
+    # Calculate metrics
+    accuracy = accuracy_score(y_test, y_pred)
+    results[name] = accuracy
+    
+    print(f"\n{name}:")
+    print(f"Accuracy: {accuracy:.4f}")
+    print("Classification Report:")
+    print(classification_report(y_test, y_pred))
+    
+    # Confusion Matrix
+    cm = confusion_matrix(y_test, y_pred)
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+    plt.title(f'Confusion Matrix - {name}')
+    plt.ylabel('True Label')
+    plt.xlabel('Predicted Label')
+    plt.show()
+
+# Compare results
+plt.figure(figsize=(10, 6))
+plt.bar(results.keys(), results.values())
+plt.title('Classifier Comparison')
+plt.ylabel('Accuracy')
+plt.xticks(rotation=45)
+plt.ylim(0, 1)
+plt.grid(True, alpha=0.3)
+plt.show()
+
+# Feature importance for Random Forest
+rf_classifier = classifiers['Random Forest']
+feature_importance = rf_classifier.feature_importances_
+
+plt.figure(figsize=(12, 6))
+plt.bar(range(len(feature_importance)), feature_importance)
+plt.title('Feature Importance - Random Forest')
+plt.xlabel('Feature Index')
+plt.ylabel('Importance')
+plt.grid(True, alpha=0.3)
+plt.show()
+      </div>
+
+      <h3>Advanced Supervised Learning</h3>
+      <div class="code-block">
+from sklearn.ensemble import GradientBoostingClassifier, AdaBoostClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.model_selection import cross_val_score, GridSearchCV
+
+# Advanced classifiers
+advanced_classifiers = {
+    'Gradient Boosting': GradientBoostingClassifier(random_state=42),
+    'AdaBoost': AdaBoostClassifier(random_state=42),
+    'Neural Network': MLPClassifier(random_state=42, max_iter=1000),
+    'Naive Bayes': GaussianNB()
+}
+
+# Cross-validation evaluation
+print("Cross-Validation Results:")
+cv_results = {}
+for name, classifier in advanced_classifiers.items():
+    scores = cross_val_score(classifier, X, y, cv=5, scoring='accuracy')
+    cv_results[name] = scores
+    print(f"{name}: {scores.mean():.4f} (+/- {scores.std() * 2:.4f})")
+
+# Hyperparameter tuning with GridSearchCV
+# Example with Random Forest
+param_grid = {
+    'n_estimators': [50, 100, 200],
+    'max_depth': [None, 10, 20],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4]
+}
+
+rf = RandomForestClassifier(random_state=42)
+grid_search = GridSearchCV(
+    estimator=rf, 
+    param_grid=param_grid, 
+    cv=3, 
+    n_jobs=-1, 
+    verbose=1,
+    scoring='accuracy'
+)
+
+grid_search.fit(X_train, y_train)
+
+print(f"\nBest parameters: {grid_search.best_params_}")
+print(f"Best cross-validation score: {grid_search.best_score_:.4f}")
+
+# Evaluate the best model
+best_rf = grid_search.best_estimator_
+y_pred_best = best_rf.predict(X_test)
+accuracy_best = accuracy_score(y_test, y_pred_best)
+
+print(f"Test accuracy with best model: {accuracy_best:.4f}")
+
+# Learning curves
+from sklearn.model_selection import learning_curve
+
+def plot_learning_curve(estimator, title, X, y, cv=5):
+    train_sizes, train_scores, test_scores = learning_curve(
+        estimator, X, y, cv=cv, n_jobs=-1, 
+        train_sizes=np.linspace(0.1, 1.0, 10)
+    )
+    
+    train_mean = np.mean(train_scores, axis=1)
+    train_std = np.std(train_scores, axis=1)
+    test_mean = np.mean(test_scores, axis=1)
+    test_std = np.std(test_scores, axis=1)
+    
+    plt.figure(figsize=(10, 6))
+    plt.plot(train_sizes, train_mean, 'o-', color='blue', label='Training score')
+    plt.fill_between(train_sizes, train_mean - train_std, train_mean + train_std, alpha=0.1, color='blue')
+    
+    plt.plot(train_sizes, test_mean, 'o-', color='red', label='Cross-validation score')
+    plt.fill_between(train_sizes, test_mean - test_std, test_mean + test_std, alpha=0.1, color='red')
+    
+    plt.xlabel('Training examples')
+    plt.ylabel('Score')
+    plt.title(title)
+    plt.legend(loc='best')
+    plt.grid(True)
+    plt.show()
+
+# Plot learning curve for the best Random Forest
+plot_learning_curve(best_rf, 'Learning Curve - Random Forest', X, y)
+      </div>
+    </section>
+
+    <!-- Unsupervised Learning -->
+    <section class="blog-section" id="unsupervised">
+      <h2>🔍 Unsupervised Learning</h2>
+      <p>Master unsupervised learning algorithms that discover patterns in unlabeled data. Learn clustering, dimensionality reduction, and anomaly detection techniques.</p>
+
+      <h3>Clustering Algorithms</h3>
+      <div class="code-block">
+from sklearn.datasets import make_blobs, make_moons, make_circles
+from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering
+from sklearn.mixture import GaussianMixture
+from sklearn.metrics import silhouette_score
+import matplotlib.pyplot as plt
+
+# Generate different types of datasets
+datasets = {
+    'Blobs': make_blobs(n_samples=300, centers=4, cluster_std=1.0, random_state=42),
+    'Moons': make_moons(n_samples=300, noise=0.1, random_state=42),
+    'Circles': make_circles(n_samples=300, noise=0.1, factor=0.5, random_state=42)
+}
+
+# Clustering algorithms
+clustering_algorithms = {
+    'K-Means': KMeans(n_clusters=4, random_state=42),
+    'DBSCAN': DBSCAN(eps=0.3, min_samples=5),
+    'Hierarchical': AgglomerativeClustering(n_clusters=4),
+    'GMM': GaussianMixture(n_components=4, random_state=42)
+}
+
+# Function to plot clustering results
+def plot_clustering_results(X, y_pred, title, algorithm_name):
+    plt.figure(figsize=(8, 6))
+    scatter = plt.scatter(X[:, 0], X[:, 1], c=y_pred, cmap='viridis', alpha=0.7)
+    plt.title(f'{algorithm_name} - {title}')
+    plt.xlabel('Feature 1')
+    plt.ylabel('Feature 2')
+    plt.colorbar(scatter)
+    plt.grid(True, alpha=0.3)
+    plt.show()
+
+# Apply clustering to each dataset
+for dataset_name, (X, y_true) in datasets.items():
+    print(f"\n=== {dataset_name} Dataset ===")
+    
+    for algorithm_name, algorithm in clustering_algorithms.items():
+        try:
+            # Fit the algorithm
+            if algorithm_name == 'GMM':
+                y_pred = algorithm.fit_predict(X)
+            else:
+                y_pred = algorithm.fit_predict(X)
+            
+            # Calculate silhouette score (only for meaningful clusters)
+            if len(set(y_pred)) > 1 and -1 not in y_pred:
+                silhouette = silhouette_score(X, y_pred)
+                print(f"{algorithm_name}: Silhouette Score = {silhouette:.3f}")
+            else:
+                print(f"{algorithm_name}: Unable to calculate silhouette score")
+            
+            # Plot results
+            plot_clustering_results(X, y_pred, dataset_name, algorithm_name)
+            
+        except Exception as e:
+            print(f"{algorithm_name}: Error - {str(e)}")
+
+# Finding optimal number of clusters using Elbow Method
+def plot_elbow_method(X, max_clusters=10):
+    inertias = []
+    K_range = range(1, max_clusters + 1)
+    
+    for k in K_range:
+        kmeans = KMeans(n_clusters=k, random_state=42)
+        kmeans.fit(X)
+        inertias.append(kmeans.inertia_)
+    
+    plt.figure(figsize=(10, 6))
+    plt.plot(K_range, inertias, 'bo-')
+    plt.xlabel('Number of clusters (k)')
+    plt.ylabel('Inertia')
+    plt.title('Elbow Method for Optimal k')
+    plt.grid(True)
+    plt.show()
+
+# Apply elbow method to blobs dataset
+X_blobs, _ = datasets['Blobs']
+plot_elbow_method(X_blobs)
+
+# Hierarchical clustering dendrogram
+from scipy.cluster.hierarchy import dendrogram, linkage
+from scipy.spatial.distance import pdist
+
+plt.figure(figsize=(12, 8))
+linkage_matrix = linkage(X_blobs, method='ward')
+dendrogram(linkage_matrix, truncate_mode='level', p=5)
+plt.title('Hierarchical Clustering Dendrogram')
+plt.xlabel('Sample Index')
+plt.ylabel('Distance')
+plt.show()
+      </div>
+
+      <h3>Dimensionality Reduction</h3>
+      <div class="code-block">
+from sklearn.decomposition import PCA, ICA, FastICA
+from sklearn.manifold import TSNE, MDS
+from sklearn.datasets import load_digits
+import matplotlib.pyplot as plt
+
+# Load digits dataset
+digits = load_digits()
+X_digits = digits.data
+y_digits = digits.target
+
+# PCA for dimensionality reduction
+def apply_pca(X, n_components=2):
+    pca = PCA(n_components=n_components)
+    X_pca = pca.fit_transform(X)
+    return X_pca, pca
+
+# Apply PCA to digits data
+X_pca, pca = apply_pca(X_digits, n_components=2)
+
+print(f"Original dimensions: {X_digits.shape[1]}")
+print(f"Reduced dimensions: {X_pca.shape[1]}")
+print(f"Explained variance ratio: {pca.explained_variance_ratio_}")
+print(f"Total explained variance: {sum(pca.explained_variance_ratio_):.3f}")
+
+# Visualize PCA results
+plt.figure(figsize=(12, 5))
+
+plt.subplot(1, 2, 1)
+scatter = plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y_digits, cmap='tab10', alpha=0.7)
+plt.title('PCA - Digits Dataset')
+plt.xlabel('First Principal Component')
+plt.ylabel('Second Principal Component')
+plt.colorbar(scatter, label='Digit')
+
+# Explained variance plot
+plt.subplot(1, 2, 2)
+pca_full = PCA().fit(X_digits)
+plt.plot(np.cumsum(pca_full.explained_variance_ratio_))
+plt.xlabel('Number of Components')
+plt.ylabel('Cumulative Explained Variance Ratio')
+plt.title('PCA Explained Variance')
+plt.grid(True)
+plt.axhline(y=0.95, color='r', linestyle='--', label='95% Variance')
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+
+# t-SNE for visualization
+def apply_tsne(X, n_components=2, perplexity=30):
+    tsne = TSNE(n_components=n_components, perplexity=perplexity, random_state=42)
+    X_tsne = tsne.fit_transform(X)
+    return X_tsne
+
+# Apply t-SNE
+X_tsne = apply_tsne(X_digits, perplexity=30)
+
+plt.figure(figsize=(10, 8))
+scatter = plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=y_digits, cmap='tab10', alpha=0.7)
+plt.title('t-SNE - Digits Dataset')
+plt.xlabel('t-SNE Component 1')
+plt.ylabel('t-SNE Component 2')
+plt.colorbar(scatter, label='Digit')
+plt.grid(True, alpha=0.3)
+plt.show()
+
+# ICA for independent component analysis
+def apply_ica(X, n_components=2):
+    ica = FastICA(n_components=n_components, random_state=42)
+    X_ica = ica.fit_transform(X)
+    return X_ica, ica
+
+# Apply ICA
+X_ica, ica = apply_ica(X_digits, n_components=2)
+
+plt.figure(figsize=(8, 6))
+scatter = plt.scatter(X_ica[:, 0], X_ica[:, 1], c=y_digits, cmap='tab10', alpha=0.7)
+plt.title('ICA - Digits Dataset')
+plt.xlabel('Independent Component 1')
+plt.ylabel('Independent Component 2')
+plt.colorbar(scatter, label='Digit')
+plt.grid(True, alpha=0.3)
+plt.show()
+
+# Compare different dimensionality reduction techniques
+def compare_dimensionality_reduction(X, y):
+    techniques = {
+        'PCA': PCA(n_components=2, random_state=42),
+        'ICA': FastICA(n_components=2, random_state=42),
+        't-SNE': TSNE(n_components=2, random_state=42, perplexity=30)
+    }
+    
+    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+    
+    for idx, (name, technique) in enumerate(techniques.items()):
+        X_reduced = technique.fit_transform(X)
+        
+        scatter = axes[idx].scatter(X_reduced[:, 0], X_reduced[:, 1], 
+                                  c=y, cmap='tab10', alpha=0.7)
+        axes[idx].set_title(f'{name} - Digits Dataset')
+        axes[idx].set_xlabel(f'{name} Component 1')
+        axes[idx].set_ylabel(f'{name} Component 2')
+        axes[idx].grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    plt.show()
+
+# Compare techniques
+compare_dimensionality_reduction(X_digits, y_digits)
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your machine learning knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🏥 Medical Diagnosis System</h4>
+          <p>Build a machine learning system for disease prediction and medical image analysis</p>
+        </div>
+        <div class="feature-card">
+          <h4>💰 Stock Price Prediction</h4>
+          <p>Develop deep learning models for financial market prediction and trading strategies</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎯 Recommendation Engine</h4>
+          <p>Create personalized recommendation systems for e-commerce and content platforms</p>
+        </div>
+        <div class="feature-card">
+          <h4>🚗 Autonomous Vehicle Perception</h4>
+          <p>Build computer vision systems for object detection and scene understanding</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Always start with exploratory data analysis</li>
+        <li>✅ Properly split data into train, validation, and test sets</li>
+        <li>✅ Use cross-validation for robust model evaluation</li>
+        <li>✅ Perform hyperparameter tuning systematically</li>
+        <li>✅ Consider model interpretability and explainability</li>
+        <li>✅ Implement proper model monitoring and maintenance</li>
+        <li>✅ Address ethical considerations and bias in ML models</li>
+        <li>✅ Document your experiments and results thoroughly</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Machine Learning and are ready to build intelligent applications that can learn from data and make predictions. You now understand supervised learning, unsupervised learning, neural networks, and deep learning frameworks.</p>
+      
+      <p>Machine Learning is a rapidly evolving field with endless possibilities. Keep practicing with real datasets, stay current with new research and techniques, and continue building innovative AI solutions.</p>
+
+      <div style="background: linear-gradient(135deg, #ff6b6b, #4ecdc4); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become a Machine Learning Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering advanced AI technologies and cutting-edge research!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-19-python-data-science.html" class="btn btn-outline" style="background: white; color: #ff6b6b;">Data Science →</a>
+          <a href="blog-21-deep-learning-neural-networks.html" class="btn btn-outline" style="background: white; color: #ff6b6b;">Deep Learning →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #ff6b6b;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

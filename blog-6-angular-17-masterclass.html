@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Angular 17 with comprehensive guide. Learn components, directives, services, dependency injection, RxJS, Angular Material and enterprise patterns. Premium course.">
+  <meta name="keywords" content="Angular 17 tutorial, Angular components, Angular directives, dependency injection, RxJS, Angular Material, enterprise Angular, learn Angular">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Angular 17 Masterclass - Enterprise Angular Development">
+  <meta property="og:description" content="Premium Angular 17 course covering components, directives, services, dependency injection, RxJS, Angular Material and enterprise patterns.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-6-angular-17-masterclass.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/angular-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Angular 17 Masterclass - Enterprise Angular Development">
+  <meta name="twitter:description" content="Premium Angular 17 course covering components, directives, services, dependency injection, RxJS, Angular Material and enterprise patterns.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/angular-course.jpg">
+  <title>Angular 17 Masterclass - Enterprise Angular Development | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-6-angular-17-masterclass.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Angular 17 Masterclass",
+    "description": "Components, directives, services, dependency injection, RxJS, Angular Material and enterprise patterns.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "Angular Development",
+    "teaches": ["Angular 17", "Components", "Directives", "Services", "Dependency Injection", "RxJS", "Angular Material", "Enterprise Patterns"],
+    "timeRequired": "PT16H",
+    "coursePrerequisites": "TypeScript and JavaScript proficiency",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Rohit Verma"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "ratingCount": "6000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "799",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #b71c1c, #ef5350);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #b71c1c;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Angular 17 Masterclass</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Angular 17 with components, directives, services, dependency injection, RxJS, Angular Material and enterprise development patterns.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 58 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 16h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.6 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 6K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👑 Premium</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">RV</div>
+        <div>
+          <div style="font-weight: 700;">Rohit Verma</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Angular Expert & Enterprise Architect</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹799</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Angular 17</a></li>
+        <li><a href="#setup">2. Angular Setup & CLI</a></li>
+        <li><a href="#components">3. Components & Templates</a></li>
+        <li><a href="#directives">4. Directives Deep Dive</a></li>
+        <li><a href="#services">5. Services & Dependency Injection</a></li>
+        <li><a href="#rxjs">6. RxJS & Reactive Programming</a></li>
+        <li><a href="#routing">7. Routing & Navigation</a></li>
+        <li><a href="#forms">8. Forms & Validation</a></li>
+        <li><a href="#material">9. Angular Material</a></li>
+        <li><a href="#enterprise">10. Enterprise Patterns</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>🔺 Introduction to Angular 17</h2>
+      <p>Angular 17 represents the latest evolution of Google's comprehensive frontend framework, bringing significant performance improvements, enhanced developer experience, and powerful new features for building enterprise-scale applications.</p>
+      
+      <p>This masterclass covers everything from Angular fundamentals to advanced enterprise patterns. You'll learn to build robust, scalable applications with TypeScript, reactive programming, and modern development practices.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔺</div>
+          <h4>Enterprise Ready</h4>
+          <p>Build large-scale applications with proven patterns</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h4>High Performance</h4>
+          <p>Optimized rendering and bundle size</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h4>Reactive Programming</h4>
+          <p>Master RxJS for reactive data flows</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h4>Angular Material</h4>
+          <p>Beautiful, accessible UI components</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Setup -->
+    <section class="blog-section" id="setup">
+      <h2>⚙️ Angular Setup & CLI</h2>
+      <p>The Angular CLI provides a powerful command-line interface for initializing, developing, scaffolding, and maintaining Angular applications. It follows best practices and helps you build applications efficiently.</p>
+
+      <h3>Installation and Setup</h3>
+      <div class="code-block">
+# Install Angular CLI globally
+npm install -g @angular/cli@17
+
+# Create a new Angular project
+ng new my-angular-app --style=scss --routing=true
+
+# Serve the development server
+cd my-angular-app
+ng serve --open
+
+# Build for production
+ng build --configuration production
+
+# Run tests
+ng test
+ng e2e
+
+# Generate components, services, etc.
+ng generate component my-component
+ng generate service my-service
+ng generate module my-module
+      </div>
+
+      <h3>Angular Project Structure</h3>
+      <div class="code-block">
+my-angular-app/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   ├── services/
+│   │   ├── models/
+│   │   ├── app.component.ts
+│   │   ├── app.component.html
+│   │   ├── app.component.css
+│   │   ├── app.module.ts
+│   │   └── app-routing.module.ts
+│   ├── assets/
+│   ├── environments/
+│   ├── index.html
+│   ├── main.ts
+│   └── styles.scss
+├── angular.json
+├── package.json
+├── tsconfig.json
+└── README.md
+      </div>
+    </section>
+
+    <!-- Components -->
+    <section class="blog-section" id="components">
+      <h2>🧩 Components & Templates</h2>
+      <p>Components are the fundamental building blocks of Angular applications. They combine TypeScript logic, HTML templates, and CSS styles into reusable, self-contained units.</p>
+
+      <h3>Creating Components</h3>
+      <div class="code-block">
+// app/components/user/user.component.ts
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
+})
+export class UserComponent {
+  @Input() user: User;
+  @Input() showDetails: boolean = false;
+  @Output() userSelected = new EventEmitter&lt;User&gt;();
+
+  constructor() { }
+
+  onSelectUser(): void {
+    this.userSelected.emit(this.user);
+  }
+
+  get fullName(): string {
+    return `${this.user.firstName} ${this.user.lastName}`;
+  }
+}
+
+// app/components/user/user.component.html
+&lt;div class="user-card" [class.active]="showDetails"&gt;
+  &lt;div class="user-header"&gt;
+    &lt;img [src]="user.avatar" [alt]="fullName" /&gt;
+    &lt;h3&gt;{{ fullName }}&lt;/h3&gt;
+    &lt;p class="email"&gt;{{ user.email }}&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;div *ngIf="showDetails" class="user-details"&gt;
+    &lt;p&gt;{{ user.bio }}&lt;/p&gt;
+    &lt;button (click)="onSelectUser()"&gt;Select User&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </div>
+
+      <h3>Component Lifecycle</h3>
+      <div class="code-block">
+import { Component, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+
+@Component({
+  selector: 'app-lifecycle-demo',
+  template: `&lt;div&gt;Lifecycle Demo&lt;/div&gt;`
+})
+export class LifecycleDemoComponent implements OnInit, OnDestroy, OnChanges {
+  
+  constructor() {
+    console.log('1. Constructor called');
+  }
+
+  ngOnInit(): void {
+    console.log('2. ngOnInit called');
+    // Initialize data, start subscriptions
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('3. ngOnChanges called', changes);
+    // Respond to input property changes
+  }
+
+  ngOnDestroy(): void {
+    console.log('4. ngOnDestroy called');
+    // Cleanup subscriptions, timers, etc.
+  }
+}
+      </div>
+
+      <h3>Template Syntax</h3>
+      <div class="code-block">
+<!-- Interpolation -->
+&lt;h1&gt;{{ title }}&lt;/h1&gt;
+&lt;p&gt;{{ user.name | uppercase }}&lt;/p&gt;
+
+<!-- Property binding -->
+&lt;img [src]="imageUrl" [alt]="imageAlt" /&gt;
+&lt;div [class.active]="isActive"&gt;&lt;/div&gt;
+&lt;div [style.color]="textColor"&gt;&lt;/div&gt;
+
+<!-- Event binding -->
+&lt;button (click)="onClick()"&gt;Click me&lt;/button&gt;
+&lt;input (input)="onInput($event)" /&gt;
+
+<!-- Two-way binding -->
+&lt;input [(ngModel)]="username" /&gt;
+
+<!-- Structural directives -->
+&lt;div *ngIf="isVisible"&gt;Visible content&lt;/div&gt;
+&lt;div *ngFor="let item of items; let i = index"&gt;
+  {{ i }}: {{ item.name }}
+&lt;/div&gt;
+
+<!-- Template reference variables -->
+&lt;input #emailInput (keyup.enter)="onSubmit(emailInput.value)" /&gt;
+
+<!-- Pipes -->
+&lt;p&gt;{{ birthday | date:'longDate' }}&lt;/p&gt;
+&lt;p&gt;{{ price | currency:'USD':'symbol' }}&lt;/p&gt;
+      </div>
+    </section>
+
+    <!-- Directives -->
+    <section class="blog-section" id="directives">
+      <h2>🎯 Directives Deep Dive</h2>
+      <p>Directives are classes that add additional behavior to elements in your Angular applications. Angular provides three types of directives: Components, Structural, and Attribute directives.</p>
+
+      <h3>Custom Attribute Directive</h3>
+      <div class="code-block">
+// app/directives/highlight.directive.ts
+import { Directive, ElementRef, Input, HostListener } from '@angular/core';
+
+@Directive({
+  selector: '[appHighlight]'
+})
+export class HighlightDirective {
+  @Input() appHighlight: string = 'yellow';
+  
+  constructor(private el: ElementRef) {}
+
+  @HostListener('mouseenter') onMouseEnter() {
+    this.highlight(this.appHighlight);
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.highlight('');
+  }
+
+  private highlight(color: string): void {
+    this.el.nativeElement.style.backgroundColor = color;
+  }
+}
+
+// Usage
+&lt;p [appHighlight]="'lightblue'"&gt;
+  Highlight me on hover!
+&lt;/p&gt;
+      </div>
+
+      <h3>Custom Structural Directive</h3>
+      <div class="code-block">
+// app/directives/unless.directive.ts
+import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+
+@Directive({
+  selector: '[appUnless]'
+})
+export class UnlessDirective {
+  private hasView = false;
+
+  constructor(
+    private templateRef: TemplateRef&lt;any&gt;,
+    private viewContainer: ViewContainerRef
+  ) {}
+
+  @Input() set appUnless(condition: boolean) {
+    if (!condition && !this.hasView) {
+      this.viewContainer.createEmbeddedView(this.templateRef);
+      this.hasView = true;
+    } else if (condition && this.hasView) {
+      this.viewContainer.clear();
+      this.hasView = false;
+    }
+  }
+}
+
+// Usage
+&lt;div *appUnless="isLoggedIn"&gt;
+  Please log in to continue.
+&lt;/div&gt;
+      </div>
+
+      <h3>Built-in Directives</h3>
+      <div class="code-block">
+<!-- NgIf -->
+&lt;div *ngIf="user; else noUser"&gt;
+  Welcome, {{ user.name }}!
+&lt;/div&gt;
+&lt;ng-template #noUser&gt;
+  Please log in.
+&lt;/ng-template&gt;
+
+<!-- NgFor with trackBy -->
+&lt;div *ngFor="let item of items; trackBy: trackByFn"&gt;
+  {{ item.name }}
+&lt;/div&gt;
+
+<!-- NgSwitch -->
+&lt;div [ngSwitch]="status"&gt;
+  &lt;p *ngSwitchCase="'loading'"&gt;Loading...&lt;/p&gt;
+  &lt;p *ngSwitchCase="'success'"&gt;Success!&lt;/p&gt;
+  &lt;p *ngSwitchCase="'error'"&gt;Error occurred.&lt;/p&gt;
+  &lt;p *ngSwitchDefault&gt;Unknown status.&lt;/p&gt;
+&lt;/div&gt;
+
+<!-- NgStyle and NgClass -->
+&lt;div [ngStyle]="{'color': textColor, 'font-size': fontSize + 'px'}"&gt;
+  Styled text
+&lt;/div&gt;
+
+&lt;div [ngClass]="{
+  'active': isActive,
+  'disabled': isDisabled,
+  'loading': isLoading
+}"&gt;
+  Dynamic classes
+&lt;/div&gt;
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="blog-section" id="services">
+      <h2>🔧 Services & Dependency Injection</h2>
+      <p>Services are classes that encapsulate business logic, data access, and utility functions. Angular's dependency injection system manages service instantiation and provides them to components that need them.</p>
+
+      <h3>Creating Services</h3>
+      <div class="code-block">
+// app/services/user.service.ts
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { User } from '../models/user.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  private apiUrl = 'https://api.example.com/users';
+  private currentUserSubject = new BehaviorSubject&lt;User | null&gt;(null);
+  
+  public currentUser$ = this.currentUserSubject.asObservable();
+
+  constructor(private http: HttpClient) { }
+
+  getUsers(): Observable&lt;User[]&gt; {
+    return this.http.get&lt;User[]&gt;(this.apiUrl);
+  }
+
+  getUserById(id: number): Observable&lt;User&gt; {
+    return this.http.get&lt;User&gt;(`${this.apiUrl}/${id}`);
+  }
+
+  createUser(user: User): Observable&lt;User&gt; {
+    return this.http.post&lt;User&gt;(this.apiUrl, user);
+  }
+
+  updateUser(user: User): Observable&lt;User&gt; {
+    return this.http.put&lt;User&gt;(`${this.apiUrl}/${user.id}`, user);
+  }
+
+  deleteUser(id: number): Observable&lt;void&gt; {
+    return this.http.delete&lt;void&gt;(`${this.apiUrl}/${id}`);
+  }
+
+  setCurrentUser(user: User): void {
+    this.currentUserSubject.next(user);
+  }
+
+  getCurrentUser(): User | null {
+    return this.currentUserSubject.value;
+  }
+}
+      </div>
+
+      <h3>Dependency Injection</h3>
+      <div class="code-block">
+// app/components/user-list/user-list.component.ts
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user.model';
+
+@Component({
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.scss']
+})
+export class UserListComponent implements OnInit {
+  users: User[] = [];
+  loading: boolean = false;
+  error: string | null = null;
+
+  constructor(private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.loadUsers();
+  }
+
+  loadUsers(): void {
+    this.loading = true;
+    this.error = null;
+    
+    this.userService.getUsers().subscribe({
+      next: (users) => {
+        this.users = users;
+        this.loading = false;
+      },
+      error: (err) => {
+        this.error = 'Failed to load users';
+        this.loading = false;
+        console.error('Error loading users:', err);
+      }
+    });
+  }
+
+  onDeleteUser(id: number): void {
+    this.userService.deleteUser(id).subscribe({
+      next: () => {
+        this.users = this.users.filter(user => user.id !== id);
+      },
+      error: (err) => {
+        console.error('Error deleting user:', err);
+      }
+    });
+  }
+}
+
+// Providing services at module level
+@NgModule({
+  declarations: [UserListComponent],
+  imports: [CommonModule],
+  providers: [UserService], // Override root provider
+  exports: [UserListComponent]
+})
+export class UserModule { }
+      </div>
+
+      <h3>Advanced DI Patterns</h3>
+      <div class="code-block">
+// Interface for DI token
+export abstract class LoggerService {
+  abstract log(message: string): void;
+  abstract error(message: string): void;
+}
+
+// Implementation
+@Injectable()
+export class ConsoleLoggerService extends LoggerService {
+  log(message: string): void {
+    console.log(message);
+  }
+  
+  error(message: string): void {
+    console.error(message);
+  }
+}
+
+// Providing with token
+@NgModule({
+  providers: [
+    {
+      provide: LoggerService,
+      useClass: ConsoleLoggerService
+    }
+  ]
+})
+export class CoreModule { }
+
+// Using factory provider
+export function loggerFactory(): LoggerService {
+  return new ConsoleLoggerService();
+}
+
+@NgModule({
+  providers: [
+    {
+      provide: LoggerService,
+      useFactory: loggerFactory
+    }
+  ]
+})
+export class AppModule { }
+      </div>
+    </section>
+
+    <!-- RxJS -->
+    <section class="blog-section" id="rxjs">
+      <h2>🔄 RxJS & Reactive Programming</h2>
+      <p>RxJS (Reactive Extensions for JavaScript) is a library for reactive programming using observables. Angular heavily uses RxJS for handling asynchronous operations, event handling, and data streams.</p>
+
+      <h3>Observables and Operators</h3>
+      <div class="code-block">
+import { Observable, Subject, BehaviorSubject, of, from, interval } from 'rxjs';
+import { map, filter, switchMap, catchError, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+// Creating observables
+const simpleObservable = new Observable&lt;string&gt;(subscriber => {
+  subscriber.next('Hello');
+  subscriber.next('World');
+  subscriber.complete();
+});
+
+const subject = new Subject&lt;string&gt;();
+const behaviorSubject = new BehaviorSubject&lt;string&gt;('Initial value');
+
+// Using operators
+const numbers$ = of(1, 2, 3, 4, 5);
+const processedNumbers$ = numbers$.pipe(
+  filter(n => n % 2 === 0),
+  map(n => n * 10),
+  catchError(error => {
+    console.error('Error:', error);
+    return of([]);
+  })
+);
+
+// Real-world example: Search with debouncing
+export class SearchService {
+  private searchTerms = new Subject&lt;string&gt;();
+  
+  searchResults$ = this.searchTerms.pipe(
+    debounceTime(300),
+    distinctUntilChanged(),
+    switchMap(term => this.performSearch(term)),
+    catchError(error => {
+      console.error('Search error:', error);
+      return of([]);
+    })
+  );
+  
+  search(term: string): void {
+    this.searchTerms.next(term);
+  }
+  
+  private performSearch(term: string): Observable&lt;SearchResult[]&gt; {
+    return this.http.get&lt;SearchResult[]&gt;(`/api/search?q=${term}`);
+  }
+}
+      </div>
+
+      <h3>Reactive Forms with RxJS</h3>
+      <div class="code-block">
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+@Component({
+  selector: 'app-reactive-form',
+  template: `
+    &lt;form [formGroup]="userForm" (ngSubmit)="onSubmit()"&gt;
+      &lt;input formControlName="name" placeholder="Name" /&gt;
+      &lt;div *ngIf="nameErrors?.required"&gt;Name is required&lt;/div&gt;
+      
+      &lt;input formControlName="email" placeholder="Email" /&gt;
+      &lt;div *ngIf="emailErrors?.email"&gt;Invalid email&lt;/div&gt;
+      
+      &lt;button type="submit" [disabled]="userForm.invalid"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+  `
+})
+export class ReactiveFormComponent implements OnInit {
+  userForm: FormGroup;
+  
+  get nameErrors() {
+    return this.userForm.get('name')?.errors;
+  }
+  
+  get emailErrors() {
+    return this.userForm.get('email')?.errors;
+  }
+  
+  constructor(private fb: FormBuilder) {
+    this.userForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
+  
+  ngOnInit(): void {
+    // Listen to form value changes
+    this.userForm.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe(value => {
+      console.log('Form changed:', value);
+    });
+    
+    // Listen to specific field changes
+    this.userForm.get('name')?.valueChanges.subscribe(name => {
+      console.log('Name changed:', name);
+    });
+  }
+  
+  onSubmit(): void {
+    if (this.userForm.valid) {
+      console.log('Form submitted:', this.userForm.value);
+    }
+  }
+}
+      </div>
+    </section>
+
+    <!-- Routing -->
+    <section class="blog-section" id="routing">
+      <h2>🛣️ Routing & Navigation</h2>
+      <p>Angular Router enables navigation from one view to the next as users perform application tasks. It provides sophisticated routing features including lazy loading, route guards, and parameterized routes.</p>
+
+      <h3>Basic Routing Setup</h3>
+      <div class="code-block">
+// app/app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
+import { UserComponent } from './components/user/user.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'about', component: AboutComponent },
+  { 
+    path: 'user/:id', 
+    component: UserComponent,
+    resolve: {
+      user: UserResolver
+    }
+  },
+  { 
+    path: 'admin', 
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    canActivate: [AuthGuard]
+  },
+  { path: '**', component: PageNotFoundComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+      </div>
+
+      <h3>Route Guards</h3>
+      <div class="code-block">
+// app/guards/auth.guard.ts
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): boolean {
+    if (this.authService.isLoggedIn()) {
+      return true;
+    }
+    
+    // Redirect to login page with return URL
+    this.router.navigate(['/login'], { 
+      queryParams: { returnUrl: state.url } 
+    });
+    return false;
+  }
+}
+
+// Using guards in routes
+const routes: Routes = [
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'users', component: UserManagementComponent }
+    ]
+  }
+];
+      </div>
+
+      <h3>Navigation and Parameters</h3>
+      <div class="code-block">
+// app/components/user/user.component.ts
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+
+@Component({
+  selector: 'app-user',
+  template: `
+    &lt;div *ngIf="user"&gt;
+      &lt;h2&gt;{{ user.name }}&lt;/h2&gt;
+      &lt;p&gt;{{ user.email }}&lt;/p&gt;
+      &lt;button (click)="goToEdit()"&gt;Edit&lt;/button&gt;
+      &lt;button (click)="goBack()"&gt;Back&lt;/button&gt;
+    &lt;/div&gt;
+  `
+})
+export class UserComponent implements OnInit {
+  user: User | null = null;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService
+  ) {}
+
+  ngOnInit(): void {
+    // Get route parameters
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        const id = Number(params.get('id'));
+        return this.userService.getUserById(id);
+      })
+    ).subscribe(user => {
+      this.user = user;
+    });
+
+    // Get query parameters
+    this.route.queryParamMap.subscribe(params => {
+      const tab = params.get('tab');
+      console.log('Active tab:', tab);
+    });
+  }
+
+  goToEdit(): void {
+    this.router.navigate(['edit'], { 
+      relativeTo: this.route,
+      queryParams: { mode: 'edit' }
+    });
+  }
+
+  goBack(): void {
+    this.router.navigate(['../'], { relativeTo: this.route });
+  }
+}
+      </div>
+    </section>
+
+    <!-- Forms -->
+    <section class="blog-section" id="forms">
+      <h2>📋 Forms & Validation</h2>
+      <p>Angular provides two approaches to forms: Template-driven forms (simple, two-way binding) and Reactive forms (more complex, scalable). Both include powerful validation features.</p>
+
+      <h3>Reactive Forms</h3>
+      <div class="code-block">
+// app/components/user-form/user-form.component.ts
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+
+@Component({
+  selector: 'app-user-form',
+  templateUrl: './user-form.component.html'
+})
+export class UserFormComponent implements OnInit {
+  userForm: FormGroup;
+  
+  constructor(private fb: FormBuilder) {
+    this.userForm = this.fb.group({
+      personalInfo: this.fb.group({
+        firstName: ['', [Validators.required, Validators.minLength(2)]],
+        lastName: ['', [Validators.required, Validators.minLength(2)]],
+        email: ['', [Validators.required, Validators.email]],
+        age: ['', [Validators.required, this.ageValidator]]
+      }),
+      address: this.fb.group({
+        street: [''],
+        city: ['', Validators.required],
+        zipCode: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]]
+      }),
+      preferences: this.fb.group({
+        newsletter: [false],
+        notifications: [true]
+      })
+    });
+  }
+  
+  ngOnInit(): void {
+    // Listen to value changes
+    this.userForm.valueChanges.subscribe(value => {
+      console.log('Form changed:', value);
+    });
+    
+    // Listen to status changes
+    this.userForm.statusChanges.subscribe(status => {
+      console.log('Form status:', status);
+    });
+  }
+  
+  // Custom validator
+  ageValidator(control: AbstractControl): ValidationErrors | null {
+    const age = control.value;
+    if (age < 18 || age > 120) {
+      return { invalidAge: { min: 18, max: 120 } };
+    }
+    return null;
+  }
+  
+  onSubmit(): void {
+    if (this.userForm.valid) {
+      console.log('Form submitted:', this.userForm.value);
+      // Process form data
+    } else {
+      this.markFormGroupTouched(this.userForm);
+    }
+  }
+  
+  // Utility to mark all controls as touched
+  markFormGroupTouched(formGroup: FormGroup): void {
+    Object.values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
+  }
+}
+      </div>
+
+      <h3>Form Template</h3>
+      <div class="code-block">
+<!-- user-form.component.html -->
+&lt;form [formGroup]="userForm" (ngSubmit)="onSubmit()"&gt;
+  &lt;!-- Personal Info Section --&gt;
+  &lt;div formGroupName="personalInfo" class="form-section"&gt;
+    &lt;h3&gt;Personal Information&lt;/h3&gt;
+    
+    &lt;div class="form-group"&gt;
+      &lt;label for="firstName"&gt;First Name&lt;/label&gt;
+      &lt;input 
+        id="firstName" 
+        formControlName="firstName" 
+        type="text"
+        class="form-control"
+      /&gt;
+      &lt;div *ngIf="personalInfo.get('firstName')?.invalid && personalInfo.get('firstName')?.touched" class="error"&gt;
+        &lt;div *ngIf="personalInfo.get('firstName')?.errors?.required"&gt;First name is required&lt;/div&gt;
+        &lt;div *ngIf="personalInfo.get('firstName')?.errors?.minlength"&gt;Minimum 2 characters&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-group"&gt;
+      &lt;label for="email"&gt;Email&lt;/label&gt;
+      &lt;input 
+        id="email" 
+        formControlName="email" 
+        type="email"
+        class="form-control"
+      /&gt;
+      &lt;div *ngIf="personalInfo.get('email')?.invalid && personalInfo.get('email')?.touched" class="error"&gt;
+        &lt;div *ngIf="personalInfo.get('email')?.errors?.email"&gt;Invalid email format&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Address Section --&gt;
+  &lt;div formGroupName="address" class="form-section"&gt;
+    &lt;h3&gt;Address&lt;/h3&gt;
+    &lt;!-- Address fields... --&gt;
+  &lt;/div&gt;
+  
+  &lt;button type="submit" [disabled]="userForm.invalid" class="btn btn-primary"&gt;
+    Submit
+  &lt;/button&gt;
+&lt;/form&gt;
+
+&lt;div class="debug-info"&gt;
+  &lt;h4&gt;Form Status&lt;/h4&gt;
+  &lt;p&gt;Valid: {{ userForm.valid }}&lt;/p&gt;
+  &lt;p&gt;Invalid: {{ userForm.invalid }}&lt;/p&gt;
+  &lt;p&gt;Touched: {{ userForm.touched }}&lt;/p&gt;
+  &lt;pre&gt;{{ userForm.value | json }}&lt;/pre&gt;
+&lt;/div&gt;
+      </div>
+    </section>
+
+    <!-- Angular Material -->
+    <section class="blog-section" id="material">
+      <h2>🎨 Angular Material</h2>
+      <p>Angular Material is a UI component library that implements Google's Material Design. It provides a comprehensive set of reusable, accessible, and beautifully designed UI components.</p>
+
+      <h3>Setting Up Angular Material</h3>
+      <div class="code-block">
+# Install Angular Material
+ng add @angular/material
+
+# Choose theme during installation
+# Configure typography and animations
+
+# Import required modules
+import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+
+@NgModule({
+  imports: [
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+    MatTableModule
+  ],
+  exports: [
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+    MatTableModule
+  ]
+})
+export class MaterialModule { }
+      </div>
+
+      <h3>Material Components</h3>
+      <div class="code-block">
+<!-- Using Material Components -->
+&lt;mat-card class="user-card"&gt;
+  &lt;mat-card-header&gt;
+    &lt;mat-card-title&gt;{{ user.name }}&lt;/mat-card-title&gt;
+    &lt;mat-card-subtitle&gt;{{ user.email }}&lt;/mat-card-subtitle&gt;
+  &lt;/mat-card-header&gt;
+  
+  &lt;mat-card-content&gt;
+    &lt;form [formGroup]="userForm"&gt;
+      &lt;mat-form-field appearance="outline"&gt;
+        &lt;mat-label&gt;Name&lt;/mat-label&gt;
+        &lt;input matInput formControlName="name" placeholder="Enter name"&gt;
+        &lt;mat-error *ngIf="userForm.get('name')?.hasError('required')"&gt;
+          Name is required
+        &lt;/mat-error&gt;
+      &lt;/mat-form-field&gt;
+      
+      &lt;mat-form-field appearance="outline"&gt;
+        &lt;mat-label&gt;Email&lt;/mat-label&gt;
+        &lt;input matInput formControlName="email" type="email"&gt;
+        &lt;mat-hint&gt;Enter a valid email address&lt;/mat-hint&gt;
+        &lt;mat-error *ngIf="userForm.get('email')?.hasError('email')"&gt;
+          Invalid email format
+        &lt;/mat-error&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/form&gt;
+  &lt;/mat-card-content&gt;
+  
+  &lt;mat-card-actions&gt;
+    &lt;button mat-raised-button color="primary" (click)="saveUser()"&gt;
+      Save
+    &lt;/button&gt;
+    &lt;button mat-stroked-button (click)="cancel()"&gt;
+      Cancel
+    &lt;/button&gt;
+  &lt;/mat-card-actions&gt;
+&lt;/mat-card&gt;
+
+<!-- Data Table -->
+&lt;mat-table [dataSource]="users" class="user-table"&gt;
+  &lt;ng-container matColumnDef="name"&gt;
+    &lt;mat-header-cell *matHeaderCellDef&gt;Name&lt;/mat-header-cell&gt;
+    &lt;mat-cell *matCellDef="let user"&gt;{{ user.name }}&lt;/mat-cell&gt;
+  &lt;/ng-container&gt;
+  
+  &lt;ng-container matColumnDef="email"&gt;
+    &lt;mat-header-cell *matHeaderCellDef&gt;Email&lt;/mat-header-cell&gt;
+    &lt;mat-cell *matCellDef="let user"&gt;{{ user.email }}&lt;/mat-cell&gt;
+  &lt;/ng-container&gt;
+  
+  &lt;ng-container matColumnDef="actions"&gt;
+    &lt;mat-header-cell *matHeaderCellDef&gt;Actions&lt;/mat-header-cell&gt;
+    &lt;mat-cell *matCellDef="let user"&gt;
+      &lt;button mat-icon-button (click)="editUser(user)"&gt;
+        &lt;mat-icon&gt;edit&lt;/mat-icon&gt;
+      &lt;/button&gt;
+      &lt;button mat-icon-button (click)="deleteUser(user)"&gt;
+        &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+      &lt;/button&gt;
+    &lt;/mat-cell&gt;
+  &lt;/ng-container&gt;
+  
+  &lt;mat-header-row *matHeaderRowDef="['name', 'email', 'actions']"&gt;&lt;/mat-header-row&gt;
+  &lt;mat-row *matRowDef="let row; columns: ['name', 'email', 'actions']"&gt;&lt;/mat-row&gt;
+&lt;/mat-table&gt;
+      </div>
+
+      <h3>Custom Theme</h3>
+      <div class="code-block">
+// styles.scss
+@import '~@angular/material/theming';
+
+// Define custom theme
+$app-primary: mat-palette($mat-indigo);
+$app-accent: mat-palette($mat-pink, A200, A100, A400);
+$app-warn: mat-palette($mat-red);
+
+$app-theme: mat-light-theme((
+  color: (
+    primary: $app-primary,
+    accent: $app-accent,
+    warn: $app-warn,
+  )
+));
+
+// Apply theme
+@include angular-material-theme($app-theme);
+
+// Custom component theme
+.user-card {
+  @include mat-elevation(2);
+  margin: 16px;
+  
+  &:hover {
+    @include mat-elevation(8);
+  }
+}
+
+// Dark theme
+$app-dark-theme: mat-dark-theme((
+  color: (
+    primary: $app-primary,
+    accent: $app-accent,
+    warn: $app-warn,
+  )
+));
+
+.dark-theme {
+  @include angular-material-theme($app-dark-theme);
+}
+      </div>
+    </section>
+
+    <!-- Enterprise Patterns -->
+    <section class="blog-section" id="enterprise">
+      <h2>🏢 Enterprise Patterns</h2>
+      <p>Enterprise applications require robust architecture patterns, proper state management, security, and scalability. Angular provides the tools and patterns needed for large-scale application development.</p>
+
+      <h3>Module Architecture</h3>
+      <div class="code-block">
+// Core module - Singletons, app-wide services
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    TranslateModule.forRoot()
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    LoggerService,
+    AuthService
+  ]
+})
+export class CoreModule {
+  constructor(@Optional() @SkipSelf() core: CoreModule) {
+    if (core) {
+      throw new Error('CoreModule should be imported only in AppModule');
+    }
+  }
+}
+
+// Shared module - Common components, directives, pipes
+@NgModule({
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    LoadingSpinnerComponent,
+    ConfirmDialogComponent
+  ],
+  imports: [
+    CommonModule,
+    MaterialModule
+  ],
+  exports: [
+    CommonModule,
+    MaterialModule,
+    HeaderComponent,
+    FooterComponent,
+    LoadingSpinnerComponent
+  ],
+  entryComponents: [
+    ConfirmDialogComponent
+  ]
+})
+export class SharedModule { }
+
+// Feature module - Specific business functionality
+@NgModule({
+  declarations: [
+    UserListComponent,
+    UserDetailComponent,
+    UserFormComponent
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    UserRoutingModule,
+    StoreModule.forFeature('users', userReducer)
+  ],
+  providers: [
+    UserService
+  ]
+})
+export class UserModule { }
+      </div>
+
+      <h3>State Management with NgRx</h3>
+      <div class="code-block">
+// store/actions/user.actions.ts
+import { createAction, props } from '@ngrx/store';
+
+export const loadUsers = createAction('[User] Load Users');
+export const loadUsersSuccess = createAction(
+  '[User] Load Users Success',
+  props<{ users: User[] }>()
+);
+export const loadUsersFailure = createAction(
+  '[User] Load Users Failure',
+  props<{ error: string }>()
+);
+
+export const createUser = createAction(
+  '[User] Create User',
+  props<{ user: User }>()
+);
+
+// store/reducers/user.reducer.ts
+import { createReducer, on, Action } from '@ngrx/store';
+import * as UserActions from '../actions/user.actions';
+import { User } from '../../models/user.model';
+
+export interface UserState {
+  users: User[];
+  loading: boolean;
+  error: string | null;
+}
+
+export const initialState: UserState = {
+  users: [],
+  loading: false,
+  error: null
+};
+
+const userReducer = createReducer(
+  initialState,
+  on(UserActions.loadUsers, state => ({
+    ...state,
+    loading: true,
+    error: null
+  })),
+  on(UserActions.loadUsersSuccess, (state, { users }) => ({
+    ...state,
+    users,
+    loading: false
+  })),
+  on(UserActions.loadUsersFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error
+  }))
+);
+
+export function reducer(state: UserState | undefined, action: Action): UserState {
+  return userReducer(state, action);
+}
+
+// store/selectors/user.selectors.ts
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { UserState } from '../reducers/user.reducer';
+
+export const selectUserState = createFeatureSelector&lt;UserState&gt;('users');
+
+export const selectAllUsers = createSelector(
+  selectUserState,
+  (state: UserState) => state.users
+);
+
+export const selectUsersLoading = createSelector(
+  selectUserState,
+  (state: UserState) => state.loading
+);
+
+export const selectUsersError = createSelector(
+  selectUserState,
+  (state: UserState) => state.error
+);
+      </div>
+
+      <h3>Security & Authentication</h3>
+      <div class="code-block">
+// Interceptor for JWT
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+  constructor(private authService: AuthService) {}
+
+  intercept(req: HttpRequest&lt;any&gt;, next: HttpHandler): Observable&lt;HttpEvent&lt;any&gt;&gt; {
+    const authToken = this.authService.getToken();
+    
+    if (authToken) {
+      req = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${authToken}`
+        }
+      });
+    }
+    
+    return next.handle(req).pipe(
+      catchError(error => {
+        if (error.status === 401) {
+          this.authService.logout();
+        }
+        return throwError(error);
+      })
+    );
+  }
+}
+
+// Role-based access control
+@Injectable()
+export class RoleGuard implements CanActivate {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  canActivate(route: ActivatedRouteSnapshot): boolean {
+    const requiredRoles = route.data['roles'] as string[];
+    const userRoles = this.authService.getUserRoles();
+    
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+      return false;
+    }
+    
+    if (requiredRoles && !requiredRoles.some(role => userRoles.includes(role))) {
+      this.router.navigate(['/unauthorized']);
+      return false;
+    }
+    
+    return true;
+  }
+}
+
+// Usage in routes
+const routes: Routes = [
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [RoleGuard],
+    data: { roles: ['ADMIN', 'SUPER_ADMIN'] }
+  }
+];
+      </div>
+
+      <h3>Testing Strategies</h3>
+      <div class="code-block">
+// Unit test for service
+describe('UserService', () => {
+  let service: UserService;
+  let httpMock: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [UserService]
+    });
+    service = TestBed.inject(UserService);
+    httpMock = TestBed.inject(HttpTestingController);
+  });
+
+  afterEach(() => {
+    httpMock.verify();
+  });
+
+  it('should retrieve users', () => {
+    const mockUsers = [{ id: 1, name: 'John' }];
+    
+    service.getUsers().subscribe(users => {
+      expect(users).toEqual(mockUsers);
+    });
+
+    const req = httpMock.expectOne(`${service.apiUrl}`);
+    expect(req.request.method).toBe('GET');
+    req.flush(mockUsers);
+  });
+});
+
+// Component test
+describe('UserListComponent', () => {
+  let component: UserListComponent;
+  let fixture: ComponentFixture&lt;UserListComponent&gt;;
+  let userService: jasmine.SpyObj&lt;UserService&gt;;
+
+  beforeEach(async () => {
+    const spy = jasmine.createSpyObj('UserService', ['getUsers']);
+
+    await TestBed.configureTestingModule({
+      declarations: [UserListComponent],
+      providers: [
+        { provide: UserService, useValue: spy }
+      ]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(UserListComponent);
+    component = fixture.componentInstance;
+    userService = TestBed.inject(UserService) as jasmine.SpyObj&lt;UserService&gt;;
+  });
+
+  it('should load users on init', () => {
+    const mockUsers = [{ id: 1, name: 'John' }];
+    userService.getUsers.and.returnValue(of(mockUsers));
+
+    fixture.detectChanges();
+
+    expect(component.users).toEqual(mockUsers);
+    expect(userService.getUsers).toHaveBeenCalled();
+  });
+});
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your Angular knowledge with these enterprise-level projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🏢 Enterprise Dashboard</h4>
+          <p>Build a comprehensive admin dashboard with real-time data, charts, and role-based access control</p>
+        </div>
+        <div class="feature-card">
+          <h4>📱 E-commerce Platform</h4>
+          <p>Create a full-featured e-commerce application with product catalog, cart, and payment integration</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Project Management Tool</h4>
+          <p>Develop a project management system with tasks, teams, timelines, and collaboration features</p>
+        </div>
+        <div class="feature-card">
+          <h4>💬 Messaging Application</h4>
+          <p>Build a real-time messaging app with WebSocket integration, notifications, and file sharing</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>Follow Angular style guide and naming conventions</li>
+        <li>Use lazy loading for better performance</li>
+        <li>Implement proper error handling and logging</li>
+        <li>Write comprehensive unit and integration tests</li>
+        <li>Use reactive programming patterns consistently</li>
+        <li>Implement proper security measures</li>
+        <li>Optimize bundle size and loading performance</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Angular 17 and are ready to build enterprise-scale applications. You now understand components, services, reactive programming, routing, and the advanced patterns used in production environments.</p>
+      
+      <p>Angular continues to evolve with a focus on performance, developer experience, and enterprise features. Keep building real applications, contributing to the community, and staying current with the latest Angular developments.</p>
+
+      <div style="background: linear-gradient(135deg, #b71c1c, #ef5350); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Master the Full Stack!</h3>
+        <p style="margin-bottom: 20px;">Continue your journey with backend development and database skills!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-10-sass-scss-complete.html" class="btn btn-outline" style="background: white; color: #b71c1c;">Advanced CSS →</a>
+          <a href="blog-13-web-performance-optimization.html" class="btn btn-outline" style="background: white; color: #b71c1c;">Performance →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #b71c1c;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master React Hooks with comprehensive guide. Learn useState, useEffect, useContext, custom hooks, performance optimization, advanced patterns and build modern React applications. Premium course.">
+  <meta name="keywords" content="React Hooks tutorial, useState, useEffect, useContext, custom React hooks, React performance, advanced React patterns, learn React Hooks">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="React Hooks Deep Dive - Modern React Development">
+  <meta property="og:description" content="Premium React Hooks course covering useState, useEffect, useContext, custom hooks, performance optimization, advanced patterns and modern React applications.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-14-react-hooks-deep-dive.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/react-hooks-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="React Hooks Deep Dive - Modern React Development">
+  <meta name="twitter:description" content="Premium React Hooks course covering useState, useEffect, useContext, custom hooks, performance optimization, advanced patterns and modern React applications.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/react-hooks-course.jpg">
+  <title>React Hooks Deep Dive - Modern React Development | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-14-react-hooks-deep-dive.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "React Hooks Deep Dive",
+    "description": "useState, useEffect, useContext, custom hooks, performance optimization, advanced patterns and modern React applications.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "React Hooks Development",
+    "teaches": ["React Hooks", "useState", "useEffect", "useContext", "Custom Hooks", "Performance Optimization", "Advanced Patterns", "Modern React"],
+    "timeRequired": "PT12H",
+    "coursePrerequisites": "React fundamentals and JavaScript ES6+",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Priya Sharma"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "15000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "799",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #61dafb, #282c34);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #61dafb;
+      color: #282c34;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .hook-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">React Hooks Deep Dive</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master React Hooks with useState, useEffect, useContext, custom hooks, performance optimization, advanced patterns and build modern React applications.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 45 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 12h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.9 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 15K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">PS</div>
+        <div>
+          <div style="font-weight: 700;">Priya Sharma</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">React Expert & Frontend Architect</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹799</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to React Hooks</a></li>
+        <li><a href="#usestate">2. useState Hook Deep Dive</a></li>
+        <li><a href="#useeffect">3. useEffect Hook Mastery</a></li>
+        <li><a href="#usecontext">4. useContext & State Management</a></li>
+        <li><a href="#custom-hooks">5. Building Custom Hooks</a></li>
+        <li><a href="#performance">6. Performance Optimization</a></li>
+        <li><a href="#advanced-hooks">7. Advanced Hooks Patterns</a></li>
+        <li><a href="#testing">8. Testing Hooks</a></li>
+        <li><a href="#migration">9. Migration from Class Components</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>⚛️ Introduction to React Hooks</h2>
+      <p>React Hooks revolutionized the way we write React components by allowing state and other React features in functional components. This comprehensive course teaches you to master Hooks and build modern, efficient React applications.</p>
+      
+      <p>Learn the fundamentals and advanced patterns of React Hooks, including useState, useEffect, useContext, and custom hooks. Discover performance optimization techniques and best practices for building scalable React applications.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎣</div>
+          <h4>Modern Hooks</h4>
+          <p>Master all built-in React Hooks and their use cases</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h4>Custom Hooks</h4>
+          <p>Build reusable custom hooks for complex logic</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h4>Performance</h4>
+          <p>Optimize component performance with Hooks</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧪</div>
+          <h4>Testing</h4>
+          <p>Test Hooks effectively with React Testing Library</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- useState -->
+    <section class="blog-section" id="usestate">
+      <h2>🔄 useState Hook Deep Dive</h2>
+      <p>The useState Hook is the foundation of state management in functional components. Learn advanced patterns, best practices, and optimization techniques for effective state management.</p>
+
+      <h3>Basic useState Usage</h3>
+      <div class="code-block">
+import React, { useState } from 'react';
+
+// Basic counter example
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;
+        Increment
+      &lt;/button&gt;
+      &lt;button onClick={() => setCount(count - 1)}&gt;
+        Decrement
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Multiple state variables
+function UserProfile() {
+  const [name, setName] = useState('');
+  const [age, setAge] = useState(18);
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    // Submit logic here
+    setTimeout(() => setIsLoading(false), 1000);
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;input
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Name"
+      /&gt;
+      &lt;input
+        type="number"
+        value={age}
+        onChange={(e) => setAge(parseInt(e.target.value))}
+        placeholder="Age"
+      /&gt;
+      &lt;input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      /&gt;
+      &lt;button type="submit" disabled={isLoading}&gt;
+        {isLoading ? 'Saving...' : 'Save'}
+      &lt;/button&gt;
+    &lt;/form&gt;
+  );
+}
+
+// Lazy initialization
+function ExpensiveComponent() {
+  const [data, setData] = useState(() => {
+    // This function runs only once during initial render
+    return computeExpensiveValue();
+  });
+
+  return &lt;div&gt;{data}&lt;/div&gt;;
+}
+
+function computeExpensiveValue() {
+  console.log('Computing expensive value...');
+  return Array.from({ length: 1000 }, (_, i) => i).reduce((a, b) => a + b, 0);
+}
+      </div>
+
+      <h3>Advanced useState Patterns</h3>
+      <div class="code-block">
+// Functional updates
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  // Safe way to update state based on previous state
+  const increment = () => {
+    setCount(prevCount => prevCount + 1);
+  };
+
+  const incrementMultiple = () => {
+    setCount(prevCount => prevCount + 1);
+    setCount(prevCount => prevCount + 1);
+    setCount(prevCount => prevCount + 1);
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={increment}&gt;Increment&lt;/button&gt;
+      &lt;button onClick={incrementMultiple}&gt;+3&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Object state management
+function UserForm() {
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    age: 18,
+    preferences: {
+      theme: 'light',
+      notifications: true
+    }
+  });
+
+  const updateField = (field, value) => {
+    setUser(prevUser => ({
+      ...prevUser,
+      [field]: value
+    }));
+  };
+
+  const updateNestedField = (parent, field, value) => {
+    setUser(prevUser => ({
+      ...prevUser,
+      [parent]: {
+        ...prevUser[parent],
+        [field]: value
+      }
+    }));
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;input
+        value={user.name}
+        onChange={(e) => updateField('name', e.target.value)}
+        placeholder="Name"
+      /&gt;
+      &lt;input
+        value={user.email}
+        onChange={(e) => updateField('email', e.target.value)}
+        placeholder="Email"
+      /&gt;
+      &lt;select
+        value={user.preferences.theme}
+        onChange={(e) => updateNestedField('preferences', 'theme', e.target.value)}
+      &gt;
+        &lt;option value="light"&gt;Light&lt;/option&gt;
+        &lt;option value="dark"&gt;Dark&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Array state management
+function TodoList() {
+  const [todos, setTodos] = useState([
+    { id: 1, text: 'Learn React Hooks', completed: false },
+    { id: 2, text: 'Build a project', completed: false }
+  ]);
+
+  const addTodo = (text) => {
+    setTodos(prevTodos => [
+      ...prevTodos,
+      {
+        id: Date.now(),
+        text,
+        completed: false
+      }
+    ]);
+  };
+
+  const toggleTodo = (id) => {
+    setTodos(prevTodos =>
+      prevTodos.map(todo =>
+        todo.id === id
+          ? { ...todo, completed: !todo.completed }
+          : todo
+      )
+    );
+  };
+
+  const deleteTodo = (id) => {
+    setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+  };
+
+  return (
+    &lt;div&gt;
+      {todos.map(todo => (
+        &lt;div key={todo.id}&gt;
+          &lt;input
+            type="checkbox"
+            checked={todo.completed}
+            onChange={() => toggleTodo(todo.id)}
+          /&gt;
+          &lt;span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}&gt;
+            {todo.text}
+          &lt;/span&gt;
+          &lt;button onClick={() => deleteTodo(todo.id)}&gt;Delete&lt;/button&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}
+      </div>
+
+      <h3>useState Best Practices</h3>
+      <div class="code-block">
+// Separate unrelated state
+function GoodExample() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Each piece of state has its own hook
+  return &lt;div&gt;Component content&lt;/div&gt;;
+}
+
+// Avoid this - combining unrelated state
+function BadExample() {
+  const [state, setState] = useState({
+    name: '',
+    email: '',
+    isLoading: false,
+    error: null
+  });
+
+  // Harder to update individual pieces
+  const updateName = (name) => {
+    setState(prev => ({ ...prev, name }));
+  };
+
+  return &lt;div&gt;Component content&lt;/div&gt;;
+}
+
+// Use useReducer for complex state logic
+import { useReducer } from 'react';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'SET_FIELD':
+      return {
+        ...state,
+        [action.field]: action.value
+      };
+    case 'SET_LOADING':
+      return {
+        ...state,
+        isLoading: action.isLoading
+      };
+    case 'SET_ERROR':
+      return {
+        ...state,
+        error: action.error
+      };
+    default:
+      return state;
+  }
+}
+
+function ComplexForm() {
+  const [state, dispatch] = useReducer(reducer, {
+    name: '',
+    email: '',
+    isLoading: false,
+    error: null
+  });
+
+  const handleChange = (field) => (e) => {
+    dispatch({
+      type: 'SET_FIELD',
+      field,
+      value: e.target.value
+    });
+  };
+
+  return (
+    &lt;form&gt;
+      &lt;input
+        value={state.name}
+        onChange={handleChange('name')}
+        placeholder="Name"
+      /&gt;
+      &lt;input
+        value={state.email}
+        onChange={handleChange('email')}
+        placeholder="Email"
+      /&gt;
+    &lt;/form&gt;
+  );
+}
+      </div>
+    </section>
+
+    <!-- useEffect -->
+    <section class="blog-section" id="useeffect">
+      <h2>🔄 useEffect Hook Mastery</h2>
+      <p>The useEffect Hook allows you to perform side effects in functional components. Master data fetching, subscriptions, DOM manipulation, and cleanup operations.</p>
+
+      <h3>Basic useEffect Usage</h3>
+      <div class="code-block">
+import React, { useState, useEffect } from 'react';
+
+// Simple effect - runs after every render
+function Logger() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log('Component rendered, count:', count);
+  });
+
+  return (
+    &lt;button onClick={() => setCount(count + 1)}&gt;
+      Count: {count}
+    &lt;/button&gt;
+  );
+}
+
+// Effect with dependency array - runs only when dependencies change
+function DocumentTitle() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `Count: ${count}`;
+  }, [count]); // Only runs when count changes
+
+  return (
+    &lt;button onClick={() => setCount(count + 1)}&gt;
+      Update Title
+    &lt;/button&gt;
+  );
+}
+
+// Effect with empty dependency array - runs only once
+function DataFetcher() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // This runs only once after initial render
+    fetchData()
+      .then(data => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Failed to fetch data:', error);
+        setLoading(false);
+      });
+  }, []); // Empty dependency array
+
+  return (
+    &lt;div&gt;
+      {loading ? 'Loading...' : data ? JSON.stringify(data) : 'No data'}
+    &lt;/div&gt;
+  );
+}
+
+async function fetchData() {
+  const response = await fetch('https://api.example.com/data');
+  return response.json();
+}
+      </div>
+
+      <h3>Cleanup Functions</h3>
+      <div class="code-block">
+// Effect with cleanup
+function Timer() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setSeconds(prevSeconds => prevSeconds + 1);
+    }, 1000);
+
+    // Cleanup function - runs when component unmounts
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []); // Empty dependency array - interval set up only once
+
+  return &lt;div&gt;Seconds: {seconds}&lt;/div&gt;;
+}
+
+// Event listener with cleanup
+function WindowSize() {
+  const [size, setSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return (
+    &lt;div&gt;
+      Width: {size.width}, Height: {size.height}
+    &lt;/div&gt;
+  );
+}
+
+// Subscription with cleanup
+function WebSocketComponent() {
+  const [messages, setMessages] = useState([]);
+  const [connected, setConnected] = useState(false);
+
+  useEffect(() => {
+    const ws = new WebSocket('wss://echo.websocket.org');
+
+    ws.onopen = () => {
+      setConnected(true);
+      console.log('WebSocket connected');
+    };
+
+    ws.onmessage = (event) => {
+      setMessages(prevMessages => [...prevMessages, event.data]);
+    };
+
+    ws.onclose = () => {
+      setConnected(false);
+      console.log('WebSocket disconnected');
+    };
+
+    ws.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
+
+    // Cleanup WebSocket connection
+    return () => {
+      ws.close();
+    };
+  }, []);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Status: {connected ? 'Connected' : 'Disconnected'}&lt;/p&gt;
+      &lt;ul&gt;
+        {messages.map((msg, index) => (
+          &lt;li key={index}&gt;{msg}&lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}
+      </div>
+
+      <h3>Advanced useEffect Patterns</h3>
+      <div class="code-block">
+// Data fetching with dependencies
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let isCancelled = false;
+
+    const fetchUser = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        const response = await fetch(`/api/users/${userId}`);
+        const data = await response.json();
+
+        if (!isCancelled) {
+          setUser(data);
+        }
+      } catch (err) {
+        if (!isCancelled) {
+          setError(err.message);
+        }
+      } finally {
+        if (!isCancelled) {
+          setLoading(false);
+        }
+      }
+    };
+
+    if (userId) {
+      fetchUser();
+    }
+
+    // Cleanup function
+    return () => {
+      isCancelled = true;
+    };
+  }, [userId]); // Re-run when userId changes
+
+  if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;
+  if (error) return &lt;div&gt;Error: {error}&lt;/div&gt;;
+  if (!user) return &lt;div&gt;No user found&lt;/div&gt;;
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;{user.name}&lt;/h2&gt;
+      &lt;p&gt;{user.email}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Debounced search
+function SearchComponent() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (searchTerm) {
+        searchUsers(searchTerm);
+      } else {
+        setResults([]);
+      }
+    }, 500); // 500ms debounce
+
+    return () => clearTimeout(timeoutId);
+  }, [searchTerm]);
+
+  const searchUsers = async (term) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/search?q=${term}`);
+      const data = await response.json();
+      setResults(data);
+    } catch (error) {
+      console.error('Search failed:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search users..."
+      /&gt;
+      {loading && &lt;p&gt;Searching...&lt;/p&gt;}
+      &lt;ul&gt;
+        {results.map(user => (
+          &lt;li key={user.id}&gt;{user.name}&lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Local storage synchronization
+function PersistentCounter() {
+  const [count, setCount] = useState(() => {
+    // Initialize from localStorage
+    const savedCount = localStorage.getItem('count');
+    return savedCount ? parseInt(savedCount, 10) : 0;
+  });
+
+  useEffect(() => {
+    // Save to localStorage whenever count changes
+    localStorage.setItem('count', count.toString());
+  }, [count]);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;Increment&lt;/button&gt;
+      &lt;button onClick={() => setCount(count - 1)}&gt;Decrement&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+      </div>
+    </section>
+
+    <!-- useContext -->
+    <section class="blog-section" id="usecontext">
+      <h2>🌐 useContext & State Management</h2>
+      <p>The useContext Hook allows you to consume context values in functional components. Learn to build scalable state management solutions and avoid prop drilling.</p>
+
+      <h3>Basic Context Usage</h3>
+      <div class="code-block">
+import React, { createContext, useContext, useState } from 'react';
+
+// Create context
+const ThemeContext = createContext();
+
+// Theme provider component
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  };
+
+  const value = {
+    theme,
+    toggleTheme
+  };
+
+  return (
+    &lt;ThemeContext.Provider value={value}&gt;
+      {children}
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+
+// Custom hook for consuming theme context
+function useTheme() {
+  const context = useContext(ThemeContext);
+  if (context === undefined) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+}
+
+// Components using theme context
+function Header() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    &lt;header style={{ 
+      background: theme === 'light' ? '#fff' : '#333',
+      color: theme === 'light' ? '#333' : '#fff',
+      padding: '1rem'
+    }}&gt;
+      &lt;h1&gt;My App&lt;/h1&gt;
+      &lt;button onClick={toggleTheme}&gt;
+        Switch to {theme === 'light' ? 'dark' : 'light'} theme
+      &lt;/button&gt;
+    &lt;/header&gt;
+  );
+}
+
+function Content() {
+  const { theme } = useTheme();
+
+  return (
+    &lt;main style={{ 
+      background: theme === 'light' ? '#f5f5f5' : '#1a1a1a',
+      color: theme === 'light' ? '#333' : '#fff',
+      padding: '1rem'
+    }}&gt;
+      &lt;p&gt;Content area with {theme} theme&lt;/p&gt;
+    &lt;/main&gt;
+  );
+}
+
+// App component
+function App() {
+  return (
+    &lt;ThemeProvider&gt;
+      &lt;Header /&gt;
+      &lt;Content /&gt;
+    &lt;/ThemeProvider&gt;
+  );
+}
+      </div>
+
+      <h3>Advanced Context Patterns</h3>
+      <div class="code-block">
+// Authentication context
+const AuthContext = createContext();
+
+function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Check if user is logged in on app load
+    checkAuthStatus();
+  }, []);
+
+  const checkAuthStatus = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const response = await fetch('/api/auth/me', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const userData = await response.json();
+        setUser(userData);
+      }
+    } catch (error) {
+      console.error('Auth check failed:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const login = async (email, password) => {
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const { token, user: userData } = await response.json();
+      
+      localStorage.setItem('token', token);
+      setUser(userData);
+      return { success: true };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    setUser(null);
+  };
+
+  const value = {
+    user,
+    loading,
+    login,
+    logout,
+    isAuthenticated: !!user
+  };
+
+  return (
+    &lt;AuthContext.Provider value={value}&gt;
+      {children}
+    &lt;/AuthContext.Provider&gt;
+  );
+}
+
+function useAuth() {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+}
+
+// Protected route component
+function ProtectedRoute({ children }) {
+  const { isAuthenticated, loading } = useAuth();
+
+  if (loading) {
+    return &lt;div&gt;Loading...&lt;/div&gt;;
+  }
+
+  if (!isAuthenticated) {
+    return &lt;div&gt;Please log in to access this page&lt;/div&gt;;
+  }
+
+  return children;
+}
+
+// Using the auth context
+function Profile() {
+  const { user, logout } = useAuth();
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Welcome, {user.name}!&lt;/h2&gt;
+      &lt;p&gt;Email: {user.email}&lt;/p&gt;
+      &lt;button onClick={logout}&gt;Logout&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+      </div>
+
+      <h3>Multiple Contexts</h3>
+      <div class="code-block">
+// User context
+const UserContext = createContext();
+
+// Settings context
+const SettingsContext = createContext();
+
+// App context provider that combines multiple contexts
+function AppProviders({ children }) {
+  return (
+    &lt;AuthProvider&gt;
+      &lt;ThemeProvider&gt;
+        &lt;SettingsProvider&gt;
+          {children}
+        &lt;/SettingsProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/AuthProvider&gt;
+  );
+}
+
+// Settings provider
+function SettingsProvider({ children }) {
+  const [settings, setSettings] = useState({
+    language: 'en',
+    notifications: true,
+    autoSave: true
+  });
+
+  const updateSetting = (key, value) => {
+    setSettings(prev => ({
+      ...prev,
+      [key]: value
+    }));
+  };
+
+  const value = {
+    settings,
+    updateSetting
+  };
+
+  return (
+    &lt;SettingsContext.Provider value={value}&gt;
+      {children}
+    &lt;/SettingsContext.Provider&gt;
+  );
+}
+
+function useSettings() {
+  const context = useContext(SettingsContext);
+  if (context === undefined) {
+    throw new Error('useSettings must be used within a SettingsProvider');
+  }
+  return context;
+}
+
+// Component using multiple contexts
+function UserDashboard() {
+  const { user } = useAuth();
+  const { theme } = useTheme();
+  const { settings } = useSettings();
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Dashboard for {user.name}&lt;/h2&gt;
+      &lt;p&gt;Theme: {theme}&lt;/p&gt;
+      &lt;p&gt;Language: {settings.language}&lt;/p&gt;
+      &lt;p&gt;Notifications: {settings.notifications ? 'Enabled' : 'Disabled'}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+      </div>
+    </section>
+
+    <!-- Custom Hooks -->
+    <section class="blog-section" id="custom-hooks">
+      <h2>🔧 Building Custom Hooks</h2>
+      <p>Custom hooks allow you to extract component logic into reusable functions. Learn to build powerful custom hooks for common patterns and complex state management.</p>
+
+      <h3>Data Fetching Custom Hook</h3>
+      <div class="code-block">
+import { useState, useEffect, useCallback } from 'react';
+
+// Generic data fetching hook
+function useFetch(url, options = {}) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchData = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const result = await response.json();
+      setData(result);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, [url, JSON.stringify(options)]);
+
+  useEffect(() => {
+    if (url) {
+      fetchData();
+    }
+  }, [fetchData]);
+
+  const refetch = useCallback(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return { data, loading, error, refetch };
+}
+
+// Usage example
+function UserProfile({ userId }) {
+  const { data: user, loading, error, refetch } = useFetch(
+    userId ? `/api/users/${userId}` : null
+  );
+
+  if (loading) return &lt;div&gt;Loading user...&lt;/div&gt;;
+  if (error) return &lt;div&gt;Error: {error}&lt;/div&gt;;
+  if (!user) return &lt;div&gt;No user found&lt;/div&gt;;
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;{user.name}&lt;/h2&gt;
+      &lt;p&gt;{user.email}&lt;/p&gt;
+      &lt;button onClick={refetch}&gt;Refresh&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Paginated data fetching hook
+function usePaginatedFetch(baseUrl, initialPage = 1, initialLimit = 10) {
+  const [page, setPage] = useState(initialPage);
+  const [limit, setLimit] = useState(initialLimit);
+  const [total, setTotal] = useState(0);
+
+  const url = `${baseUrl}?page=${page}&limit=${limit}`;
+  const { data, loading, error, refetch } = useFetch(url);
+
+  useEffect(() => {
+    if (data && data.pagination) {
+      setTotal(data.pagination.total);
+    }
+  }, [data]);
+
+  const nextPage = () => {
+    if (page * limit < total) {
+      setPage(prev => prev + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (page > 1) {
+      setPage(prev => prev - 1);
+    }
+  };
+
+  const goToPage = (pageNumber) => {
+    setPage(pageNumber);
+  };
+
+  return {
+    data: data?.items || [],
+    loading,
+    error,
+    refetch,
+    pagination: {
+      page,
+      limit,
+      total,
+      totalPages: Math.ceil(total / limit),
+      nextPage,
+      prevPage,
+      goToPage,
+      setLimit
+    }
+  };
+}
+      </div>
+
+      <h3>LocalStorage Custom Hook</h3>
+      <div class="code-block">
+import { useState, useEffect, useCallback } from 'react';
+
+function useLocalStorage(key, initialValue) {
+  // Get value from localStorage or use initial value
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(`Error reading localStorage key "${key}":`, error);
+      return initialValue;
+    }
+  });
+
+  // Update localStorage when state changes
+  const setValue = useCallback((value) => {
+    try {
+      // Allow value to be a function so we have the same API as useState
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      setStoredValue(valueToStore);
+      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    } catch (error) {
+      console.error(`Error setting localStorage key "${key}":`, error);
+    }
+  }, [key, storedValue]);
+
+  // Remove item from localStorage
+  const removeValue = useCallback(() => {
+    try {
+      window.localStorage.removeItem(key);
+      setStoredValue(initialValue);
+    } catch (error) {
+      console.error(`Error removing localStorage key "${key}":`, error);
+    }
+  }, [key, initialValue]);
+
+  // Listen for changes to localStorage
+  useEffect(() => {
+    const handleStorageChange = (e) => {
+      if (e.key === key && e.newValue !== null) {
+        try {
+          setStoredValue(JSON.parse(e.newValue));
+        } catch (error) {
+          console.error(`Error parsing localStorage change for key "${key}":`, error);
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, [key]);
+
+  return [storedValue, setValue, removeValue];
+}
+
+// Usage examples
+function PersistentForm() {
+  const [name, setName] = useLocalStorage('userName', '');
+  const [email, setEmail] = useLocalStorage('userEmail', '');
+  const [preferences, setPreferences] = useLocalStorage('userPreferences', {
+    theme: 'light',
+    notifications: true
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', { name, email, preferences });
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;input
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Name"
+      /&gt;
+      &lt;input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      /&gt;
+      &lt;select
+        value={preferences.theme}
+        onChange={(e) => setPreferences({
+          ...preferences,
+          theme: e.target.value
+        })}
+      &gt;
+        &lt;option value="light"&gt;Light&lt;/option&gt;
+        &lt;option value="dark"&gt;Dark&lt;/option&gt;
+      &lt;/select&gt;
+      &lt;button type="submit"&gt;Save&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}
+      </div>
+
+      <h3>Debounce and Throttle Custom Hooks</h3>
+      <div class="code-block">
+import { useState, useEffect, useCallback } from 'react';
+
+// Debounce hook
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
+// Throttle hook
+function useThrottle(value, delay) {
+  const [throttledValue, setThrottledValue] = useState(value);
+
+  useEffect(() => {
+    let lastCall = 0;
+    const handler = () => {
+      const now = Date.now();
+      if (now - lastCall >= delay) {
+        setThrottledValue(value);
+        lastCall = now;
+      }
+    };
+
+    const timeoutId = setTimeout(handler, delay);
+    return () => clearTimeout(timeoutId);
+  }, [value, delay]);
+
+  return throttledValue;
+}
+
+// Debounced callback hook
+function useDebouncedCallback(callback, delay) {
+  const [debouncedCallback, setDebouncedCallback] = useState(null);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedCallback(() => callback);
+    }, delay);
+
+    return () => clearTimeout(handler);
+  }, [callback, delay]);
+
+  return debouncedCallback;
+}
+
+// Usage examples
+function SearchWithDebounce() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [results, setResults] = useState([]);
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      // Perform search only when debounced term changes
+      fetchSearchResults(debouncedSearchTerm).then(setResults);
+    } else {
+      setResults([]);
+    }
+  }, [debouncedSearchTerm]);
+
+  return (
+    &lt;div&gt;
+      &lt;input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search..."
+      /&gt;
+      &lt;ul&gt;
+        {results.map(item => (
+          &lt;li key={item.id}&gt;{item.name}&lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}
+
+async function fetchSearchResults(query) {
+  const response = await fetch(`/api/search?q=${query}`);
+  return response.json();
+}
+
+// Window resize hook with throttle
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    // Throttle resize events
+    const throttledHandleResize = throttle(handleResize, 100);
+    window.addEventListener('resize', throttledHandleResize);
+
+    return () => window.removeEventListener('resize', throttledHandleResize);
+  }, []);
+
+  return windowSize;
+}
+
+// Simple throttle function
+function throttle(func, delay) {
+  let timeoutId;
+  let lastExecTime = 0;
+  return function (...args) {
+    const currentTime = Date.now();
+    
+    if (currentTime - lastExecTime > delay) {
+      func.apply(this, args);
+      lastExecTime = currentTime;
+    } else {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+        lastExecTime = Date.now();
+      }, delay - (currentTime - lastExecTime));
+    }
+  };
+}
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your React Hooks knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>📱 Task Management App</h4>
+          <p>Build a complete task management app with custom hooks for state management and data persistence</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎮 Game Dashboard</h4>
+          <p>Create an interactive game dashboard with real-time updates and performance optimizations</p>
+        </div>
+        <div class="feature-card">
+          <h4>💬 Real-time Chat</h4>
+          <p>Develop a chat application with WebSocket integration and custom hooks for connection management</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Data Visualization</h4>
+          <p>Build a data visualization dashboard with complex state management and custom chart hooks</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Start with built-in hooks before creating custom ones</li>
+        <li>✅ Keep custom hooks focused and reusable</li>
+        <li>✅ Use proper dependency arrays in useEffect</li>
+        <li>✅ Implement cleanup functions for side effects</li>
+        <li>✅ Use useCallback and useMemo for performance optimization</li>
+        <li>✅ Test custom hooks thoroughly</li>
+        <li>✅ Follow naming conventions (use prefix)</li>
+        <li>✅ Document custom hooks with JSDoc</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered React Hooks and are ready to build modern, efficient React applications. You now understand useState, useEffect, useContext, custom hooks, performance optimization, and advanced patterns.</p>
+      
+      <p>React Hooks continue to evolve with new features and patterns. Keep building real applications, contributing to the ecosystem, and staying current with the latest React developments.</p>
+
+      <div style="background: linear-gradient(135deg, #61dafb, #282c34); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become a React Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering advanced React patterns and full-stack development!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-15-nextjs-14-full-course.html" class="btn btn-outline" style="background: white; color: #61dafb;">Next.js →</a>
+          <a href="blog-16-react-native-mobile.html" class="btn btn-outline" style="background: white; color: #61dafb;">React Native →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #61dafb;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -3,13 +3,55 @@
 # Tells search engine crawlers which pages to index
 # ============================================================
 
-# Allow all well-behaved crawlers to crawl the site
+# Allow all search engines to crawl the site
 User-agent: *
+Disallow:
+
+# Allow access to important directories and files
 Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /images/
 Allow: /index.html
 Allow: /tutorials.html
 Allow: /blogs.html
 Allow: /login.html
+
+# Allow all blog pages
+Allow: /blog-1-html5-complete-guide.html
+Allow: /blog-2-css3-mastery.html
+Allow: /blog-3-javascript-complete-course.html
+Allow: /blog-4-reactjs-complete-guide.html
+Allow: /blog-5-vuejs-full-course.html
+Allow: /blog-6-angular-complete-guide.html
+Allow: /blog-7-tailwind-css-mastery.html
+Allow: /blog-8-bootstrap-5-complete.html
+Allow: /blog-9-sass-scss-advanced.html
+Allow: /blog-10-web-components.html
+Allow: /blog-11-nodejs-express-api.html
+Allow: /blog-12-python-django-complete.html
+Allow: /blog-13-php-laravel-mastery.html
+Allow: /blog-14-react-hooks-deep-dive.html
+Allow: /blog-15-nextjs-14-full-course.html
+Allow: /blog-16-vue-3-composition-api.html
+Allow: /blog-17-typescript-complete.html
+Allow: /blog-18-docker-kubernetes-guide.html
+Allow: /blog-19-python-data-science.html
+Allow: /blog-20-machine-learning-complete.html
+Allow: /blog-21-deep-learning-neural-networks.html
+Allow: /blog-22-git-github-mastery.html
+Allow: /blog-23-typescript-advanced.html
+Allow: /blog-24-web3-blockchain.html
+Allow: /blog-25-cybersecurity-essentials.html
+Allow: /blog-26-cloud-computing-aws.html
+Allow: /blog-27-mobile-app-development.html
+Allow: /blog-28-ui-ux-design-mastery.html
+Allow: /blog-29-devops-complete-guide.html
+Allow: /blog-30-software-testing-complete.html
+Allow: /blog-31-database-design-mastery.html
+Allow: /blog-32-api-development-rest-graphql.html
+Allow: /blog-33-performance-optimization.html
+Allow: /blog-34-software-architecture-patterns.html
 
 # Block private/transactional pages from being indexed
 Disallow: /payment.html
@@ -18,22 +60,78 @@ Disallow: /enrolled.html
 # Block common non-content paths
 Disallow: /cgi-bin/
 Disallow: /*.json$
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cache/
+Disallow: /tmp/
+Disallow: /config/
+Disallow: /.env
+Disallow: /.git/
 
-# Crawl-delay (optional) — 1 second between requests
+# Disallow common bot/scrapers that don't respect crawl rules
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: BacklinkCrawler
+Disallow: /
+
+# Specific instructions for major search engines
+User-agent: Googlebot
+Disallow:
+Allow: /
+
+User-agent: Bingbot
+Disallow:
+Allow: /
+
+User-agent: Slurp
+Disallow:
+Allow: /
+
+User-agent: DuckDuckBot
+Disallow:
+Allow: /
+
+User-agent: Baiduspider
+Disallow:
+Allow: /
+
+User-agent: YandexBot
+Disallow:
+Allow: /
+
+# Social media crawlers
+User-agent: facebookexternalhit
+Disallow:
+Allow: /
+
+User-agent: Twitterbot
+Disallow:
+Allow: /
+
+User-agent: LinkedInBot
+Disallow:
+Allow: /
+
+User-agent: InstagramBot
+Disallow:
+Allow: /
+
+User-agent: Pinterestbot
+Disallow:
+Allow: /
+
+# Crawl delay for respectful crawling
 Crawl-delay: 1
 
-# ── Google-specific settings ──
-User-agent: Googlebot
-Allow: /
-Disallow: /payment.html
-Disallow: /enrolled.html
-
-# ── Bing-specific settings ──
-User-agent: Bingbot
-Allow: /
-Disallow: /payment.html
-Disallow: /enrolled.html
-
-# ── Sitemap location ──
-# Update this URL once you deploy to a real domain
+# Sitemap location
 Sitemap: https://tutorialshub.com/sitemap.xml

@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Bootstrap 5 with comprehensive guide. Learn responsive grid system, components, utilities, JavaScript plugins, custom themes and build modern websites. Premium course.">
+  <meta name="keywords" content="Bootstrap 5 tutorial, responsive design, Bootstrap components, Bootstrap grid, Bootstrap JavaScript, custom Bootstrap themes, learn Bootstrap">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Bootstrap 5 Complete - Modern Responsive Framework">
+  <meta property="og:description" content="Premium Bootstrap 5 course covering responsive grid system, components, utilities, JavaScript plugins, custom themes and modern website development.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-11-bootstrap-5-complete.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/bootstrap-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bootstrap 5 Complete - Modern Responsive Framework">
+  <meta name="twitter:description" content="Premium Bootstrap 5 course covering responsive grid system, components, utilities, JavaScript plugins, custom themes and modern website development.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/bootstrap-course.jpg">
+  <title>Bootstrap 5 Complete - Modern Responsive Framework | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-11-bootstrap-5-complete.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Bootstrap 5 Complete",
+    "description": "Responsive grid system, components, utilities, JavaScript plugins, custom themes and modern website development.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Intermediate",
+    "about": "Bootstrap Development",
+    "teaches": ["Bootstrap 5", "Responsive Grid", "Components", "Utilities", "JavaScript Plugins", "Custom Themes", "Modern Website Development"],
+    "timeRequired": "PT10H",
+    "coursePrerequisites": "HTML, CSS, and JavaScript basics",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Rahul Kumar"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "ratingCount": "11000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "599",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #7952b3, #9c27b0);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #7952b3;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .bootstrap-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Bootstrap 5 Complete</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Bootstrap 5 with responsive grid system, components, utilities, JavaScript plugins, custom themes and build modern websites.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 42 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 10h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.6 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 11K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👑 Premium</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">RK</div>
+        <div>
+          <div style="font-weight: 700;">Rahul Kumar</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Bootstrap Expert & Frontend Developer</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Intermediate</span>
+        <span>💰 ₹599</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Bootstrap 5</a></li>
+        <li><a href="#setup">2. Setup & Installation</a></li>
+        <li><a href="#grid">3. Responsive Grid System</a></li>
+        <li><a href="#components">4. Bootstrap Components</a></li>
+        <li><a href="#utilities">5. Utilities & Helpers</a></li>
+        <li><a href="#javascript">6. JavaScript Plugins</a></li>
+        <li><a href="#forms">7. Forms & Validation</a></li>
+        <li><a href="#themes">8. Custom Themes & Customization</a></li>
+        <li><a href="#advanced">9. Advanced Techniques</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>🎨 Introduction to Bootstrap 5</h2>
+      <p>Bootstrap 5 is the world's most popular front-end framework for building responsive, mobile-first websites. It provides a comprehensive collection of HTML, CSS, and JavaScript tools for creating modern web interfaces.</p>
+      
+      <p>With Bootstrap 5, you get a powerful grid system, pre-built components, extensive utilities, and JavaScript plugins that accelerate development while maintaining consistency and best practices.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h4>Mobile-First</h4>
+          <p>Responsive design that works on all devices</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧩</div>
+          <h4>Components</h4>
+          <p>Pre-built UI components for rapid development</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h4>Utilities</h4>
+          <p>Powerful utility classes for custom styling</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h4>Customizable</h4>
+          <p>Easily customize themes and components</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Setup -->
+    <section class="blog-section" id="setup">
+      <h2>⚙️ Setup & Installation</h2>
+      <p>Getting started with Bootstrap 5 is simple with multiple installation options. Choose the method that best fits your project requirements.</p>
+
+      <h3>Installation Methods</h3>
+      <div class="code-block">
+<!-- CDN Link -->
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Bootstrap 5&lt;/title&gt;
+  
+  <!-- CSS CDN -->
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+  
+  <!-- JavaScript Bundle with Popper -->
+  &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;/html&gt;
+
+<!-- Package Manager -->
+npm install bootstrap@5.3.0
+
+<!-- Yarn -->
+yarn add bootstrap@5.3.0
+
+<!-- Download -->
+<!-- Download from getbootstrap.com -->
+      </div>
+
+      <h3>Basic HTML Template</h3>
+      <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Bootstrap 5 Starter Template&lt;/title&gt;
+  
+  <!-- Bootstrap CSS -->
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+  
+  <!-- Custom CSS -->
+  &lt;style&gt;
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  
+  &lt;header&gt;
+    &lt;nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"&gt;
+      &lt;div class="container-fluid"&gt;
+        &lt;a class="navbar-brand" href="#"&gt;Bootstrap&lt;/a&gt;
+        &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"&gt;
+          &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="collapse navbar-collapse" id="navbarCollapse"&gt;
+          &lt;ul class="navbar-nav me-auto mb-2 mb-md-0"&gt;
+            &lt;li class="nav-item"&gt;
+              &lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="nav-item"&gt;
+              &lt;a class="nav-link" href="#"&gt;Features&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;div class="container py-5"&gt;
+      &lt;h1&gt;Hello, world!&lt;/h1&gt;
+      &lt;p class="lead"&gt;This is a simple Bootstrap 5 starter template.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+
+  &lt;footer class="container"&gt;
+    &lt;p class="float-end"&gt;&lt;a href="#"&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&copy; 2025 Company, Inc. &lt;/p&gt;
+  &lt;/footer&gt;
+
+  &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </div>
+    </section>
+
+    <!-- Grid System -->
+    <section class="blog-section" id="grid">
+      <h2>📐 Responsive Grid System</h2>
+      <p>Bootstrap's grid system uses a series of containers, rows, and columns to layout and align content. It's built with flexbox and is fully responsive.</p>
+
+      <h3>Grid Basics</h3>
+      <div class="code-block">
+<!-- Basic Grid Structure -->
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col"&gt;
+      Column 1
+    &lt;/div&gt;
+    &lt;div class="col"&gt;
+      Column 2
+    &lt;/div&gt;
+    &lt;div class="col"&gt;
+      Column 3
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+<!-- Column Sizing -->
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-6"&gt;50% width&lt;/div&gt;
+    &lt;div class="col-4"&gt;33.33% width&lt;/div&gt;
+    &lt;div class="col-2"&gt;16.66% width&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+<!-- Responsive Grid -->
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-12 col-md-6 col-lg-4"&gt;
+      Responsive column
+    &lt;/div&gt;
+    &lt;div class="col-12 col-md-6 col-lg-4"&gt;
+      Responsive column
+    &lt;/div&gt;
+    &lt;div class="col-12 col-md-12 col-lg-4"&gt;
+      Responsive column
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+<!-- Auto-layout Columns -->
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col"&gt;Auto column&lt;/div&gt;
+    &lt;div class="col-6"&gt;6 columns&lt;/div&gt;
+    &lt;div class="col"&gt;Auto column&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </div>
+
+      <h3>Grid Options</h3>
+      <div class="code-block">
+<!-- Breakpoints -->
+/*
+xs: <576px   Extra small (phone)
+sm: ≥576px   Small (tablet)
+md: ≥768px   Medium (tablet)
+lg: ≥992px   Large (desktop)
+xl: ≥1200px  Extra large (desktop)
+xxl: ≥1400px Extra extra large (large desktop)
+*/
+
+<!-- Container Types -->
+&lt;div class="container"&gt;Fixed width container&lt;/div&gt;
+&lt;div class="container-sm"&gt;100% wide until sm breakpoint&lt;/div&gt;
+&lt;div class="container-md"&gt;100% wide until md breakpoint&lt;/div&gt;
+&lt;div class="container-lg"&gt;100% wide until lg breakpoint&lt;/div&gt;
+&lt;div class="container-xl"&gt;100% wide until xl breakpoint&lt;/div&gt;
+&lt;div class="container-xxl"&gt;100% wide until xxl breakpoint&lt;/div&gt;
+&lt;div class="container-fluid"&gt;Full width container&lt;/div&gt;
+
+<!-- Row and Column Options -->
+&lt;div class="row justify-content-center"&gt;
+  &lt;div class="col-4"&gt;Centered column&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="row align-items-center"&gt;
+  &lt;div class="col"&gt;Aligned content&lt;/div&gt;
+&lt;/div&gt;
+
+<!-- Gutter Options -->
+&lt;div class="row g-0"&gt;No gutters&lt;/div&gt;
+&lt;div class="row g-1"&gt;Small gutters&lt;/div&gt;
+&lt;div class="row g-3"&gt;Default gutters&lt;/div&gt;
+&lt;div class="row g-5"&gt;Large gutters&lt;/div&gt;
+&lt;div class="row gx-3"&gt;Horizontal gutters only&lt;/div&gt;
+&lt;div class="row gy-3"&gt;Vertical gutters only&lt;/div&gt;
+      </div>
+
+      <div class="bootstrap-demo">
+        <h4>Grid Demo</h4>
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <div class="p-3 bg-light border">Column 1</div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="p-3 bg-light border">Column 2</div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="p-3 bg-light border">Column 3</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Components -->
+    <section class="blog-section" id="components">
+      <h2>🧩 Bootstrap Components</h2>
+      <p>Bootstrap provides a comprehensive set of reusable components for building user interfaces. These components are fully responsive and accessible.</p>
+
+      <h3>Alerts</h3>
+      <div class="code-block">
+<!-- Basic Alerts -->
+&lt;div class="alert alert-primary" role="alert"&gt;
+  A simple primary alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-secondary" role="alert"&gt;
+  A simple secondary alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-success" role="alert"&gt;
+  A simple success alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-danger" role="alert"&gt;
+  A simple danger alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-warning" role="alert"&gt;
+  A simple warning alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-info" role="alert"&gt;
+  A simple info alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-light" role="alert"&gt;
+  A simple light alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-dark" role="alert"&gt;
+  A simple dark alert—check it out!
+&lt;/div&gt;
+
+<!-- Alert with Dismissible -->
+&lt;div class="alert alert-warning alert-dismissible fade show" role="alert"&gt;
+  &lt;strong&gt;Holy guacamole!&lt;/strong&gt; You should check in on some of those fields below.
+  &lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+<!-- Alert with Icon -->
+&lt;div class="alert alert-success d-flex align-items-center" role="alert"&gt;
+  &lt;svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"&gt;&lt;/svg&gt;
+  &lt;div&gt;
+    An example success alert with an icon
+  &lt;/div&gt;
+&lt;/div&gt;
+      </div>
+
+      <h3>Buttons</h3>
+      <div class="code-block">
+<!-- Button Colors -->
+&lt;button type="button" class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button type="button" class="btn btn-success"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button type="button" class="btn btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button type="button" class="btn btn-info"&gt;Info&lt;/button&gt;
+&lt;button type="button" class="btn btn-light"&gt;Light&lt;/button&gt;
+&lt;button type="button" class="btn btn-dark"&gt;Dark&lt;/button&gt;
+&lt;button type="button" class="btn btn-link"&gt;Link&lt;/button&gt;
+
+<!-- Outline Buttons -->
+&lt;button type="button" class="btn btn-outline-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-success"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-danger"&gt;Danger&lt;/button&gt;
+
+<!-- Button Sizes -->
+&lt;button type="button" class="btn btn-primary btn-lg"&gt;Large button&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary"&gt;Default button&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary btn-sm"&gt;Small button&lt;/button&gt;
+
+<!-- Button Groups -->
+&lt;div class="btn-group" role="group"&gt;
+  &lt;button type="button" class="btn btn-outline-primary"&gt;Left&lt;/button&gt;
+  &lt;button type="button" class="btn btn-outline-primary"&gt;Middle&lt;/button&gt;
+  &lt;button type="button" class="btn btn-outline-primary"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+      </div>
+
+      <h3>Cards</h3>
+      <div class="code-block">
+<!-- Basic Card -->
+&lt;div class="card" style="width: 18rem;"&gt;
+  &lt;img src="..." class="card-img-top" alt="..."&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Card title&lt;/h5&gt;
+    &lt;p class="card-text"&gt;Some quick example text.&lt;/p&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+<!-- Card with Header and Footer -->
+&lt;div class="card"&gt;
+  &lt;div class="card-header"&gt;
+    Featured
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Special title treatment&lt;/h5&gt;
+    &lt;p class="card-text"&gt;With supporting text below.&lt;/p&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="card-footer text-muted"&gt;
+    2 days ago
+  &lt;/div&gt;
+&lt;/div&gt;
+
+<!-- Card Grid -->
+&lt;div class="row"&gt;
+  &lt;div class="col-sm-6"&gt;
+    &lt;div class="card"&gt;
+      &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Special title&lt;/h5&gt;
+        &lt;p class="card-text"&gt;With supporting text.&lt;/p&gt;
+        &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-sm-6"&gt;
+    &lt;div class="card"&gt;
+      &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Special title&lt;/h5&gt;
+        &lt;p class="card-text"&gt;With supporting text.&lt;/p&gt;
+        &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </div>
+
+      <h3>Navigation</h3>
+      <div class="code-block">
+<!-- Navbar -->
+&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+  &lt;div class="container-fluid"&gt;
+    &lt;a class="navbar-brand" href="#"&gt;Navbar&lt;/a&gt;
+    &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"&gt;
+      &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+      &lt;ul class="navbar-nav"&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link" href="#"&gt;Features&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link" href="#"&gt;Pricing&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item dropdown"&gt;
+          &lt;a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"&gt;
+            Dropdown
+          &lt;/a&gt;
+          &lt;ul class="dropdown-menu"&gt;
+            &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+<!-- Breadcrumb -->
+&lt;nav aria-label="breadcrumb"&gt;
+  &lt;ol class="breadcrumb"&gt;
+    &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Library&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="breadcrumb-item active" aria-current="page"&gt;Data&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+
+<!-- Pagination -->
+&lt;nav aria-label="Page navigation example"&gt;
+  &lt;ul class="pagination"&gt;
+    &lt;li class="page-item"&gt;&a class="page-link" href="#"&gt;Previous&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="page-item"&gt;&a class="page-link" href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="page-item active"&gt;&a class="page-link" href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="page-item"&gt;&a class="page-link" href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="page-item"&gt;&a class="page-link" href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+      </div>
+    </section>
+
+    <!-- Utilities -->
+    <section class="blog-section" id="utilities">
+      <h2>🛠️ Utilities & Helpers</h2>
+      <p>Bootstrap utilities are helper classes that provide quick styling options without writing custom CSS. They cover spacing, typography, colors, and more.</p>
+
+      <h3>Spacing Utilities</h3>
+      <div class="code-block">
+<!-- Margin -->
+&lt;div class="m-0"&gt;No margin&lt;/div&gt;
+&lt;div class="m-1"&gt;Small margin (0.25rem)&lt;/div&gt;
+&lt;div class="m-2"&gt;Medium margin (0.5rem)&lt;/div&gt;
+&lt;div class="m-3"&gt;Large margin (1rem)&lt;/div&gt;
+&lt;div class="m-4"&gt;Larger margin (1.5rem)&lt;/div&gt;
+&lt;div class="m-5"&gt;Largest margin (3rem)&lt;/div&gt;
+&lt;div class="m-auto"&gt;Auto margin&lt;/div&gt;
+
+<!-- Directional Margins -->
+&lt;div class="mt-3"&gt;Margin top&lt;/div&gt;
+&lt;div class="mb-3"&gt;Margin bottom&lt;/div&gt;
+&lt;div class="ms-3"&gt;Margin start (left)&lt;/div&gt;
+&lt;div class="me-3"&gt;Margin end (right)&lt;/div&gt;
+&lt;div class="mx-3"&gt;Horizontal margins&lt;/div&gt;
+&lt;div class="my-3"&gt;Vertical margins&lt;/div&gt;
+
+<!-- Padding (same pattern as margin) -->
+&lt;div class="p-3"&gt;Padding on all sides&lt;/div&gt;
+&lt;div class="pt-3"&gt;Padding top&lt;/div&gt;
+&lt;div class="pb-3"&gt;Padding bottom&lt;/div&gt;
+&lt;div class="ps-3"&gt;Padding start (left)&lt;/div&gt;
+&lt;div class="pe-3"&gt;Padding end (right)&lt;/div&gt;
+&lt;div class="px-3"&gt;Horizontal padding&lt;/div&gt;
+&lt;div class="py-3"&gt;Vertical padding&lt;/div&gt;
+
+<!-- Responsive Spacing -->
+&lt;div class="mt-3 mt-md-0"&gt;
+  Margin on mobile, no margin on desktop
+&lt;/div&gt;
+      </div>
+
+      <h3>Color Utilities</h3>
+      <div class="code-block">
+<!-- Text Colors -->
+&lt;p class="text-primary"&gt;Primary text&lt;/p&gt;
+&lt;p class="text-secondary"&gt;Secondary text&lt;/p&gt;
+&lt;p class="text-success"&gt;Success text&lt;/p&gt;
+&lt;p class="text-danger"&gt;Danger text&lt;/p&gt;
+&lt;p class="text-warning"&gt;Warning text&lt;/p&gt;
+&lt;p class="text-info"&gt;Info text&lt;/p&gt;
+&lt;p class="text-light bg-dark"&gt;Light text&lt;/p&gt;
+&lt;p class="text-dark"&gt;Dark text&lt;/p&gt;
+&lt;p class="text-muted"&gt;Muted text&lt;/p&gt;
+&lt;p class="text-white bg-dark"&gt;White text&lt;/p&gt;
+
+<!-- Background Colors -->
+&lt;div class="p-3 mb-2 bg-primary text-white"&gt;Primary background&lt;/div&gt;
+&lt;div class="p-3 mb-2 bg-secondary text-white"&gt;Secondary background&lt;/div&gt;
+&lt;div class="p-3 mb-2 bg-success text-white"&gt;Success background&lt;/div&gt;
+&lt;div class="p-3 mb-2 bg-danger text-white"&gt;Danger background&lt;/div&gt;
+&lt;div class="p-3 mb-2 bg-warning text-dark"&gt;Warning background&lt;/div&gt;
+&lt;div class="p-3 mb-2 bg-info text-white"&gt;Info background&lt;/div&gt;
+&lt;div class="p-3 mb-2 bg-light text-dark"&gt;Light background&lt;/div&gt;
+&lt;div class="p-3 mb-2 bg-dark text-white"&gt;Dark background&lt;/div&gt;
+
+<!-- Gradient Backgrounds -->
+&lt;div class="p-3 mb-2 bg-gradient-primary text-white"&gt;Primary gradient&lt;/div&gt;
+&lt;div class="p-3 mb-2 bg-gradient-secondary text-white"&gt;Secondary gradient&lt;/div&gt;
+      </div>
+
+      <h3>Display Utilities</h3>
+      <div class="code-block">
+<!-- Display Properties -->
+&lt;div class="d-inline"&gt;Inline&lt;/div&gt;
+&lt;div class="d-inline-block"&gt;Inline block&lt;/div&gt;
+&lt;div class="d-block"&gt;Block&lt;/div&gt;
+&lt;div class="d-grid"&gt;Grid&lt;/div&gt;
+&lt;div class="d-table"&gt;Table&lt;/div&gt;
+&lt;div class="d-table-cell"&gt;Table cell&lt;/div&gt;
+&lt;div class="d-flex"&gt;Flex&lt;/div&gt;
+&lt;div class="d-inline-flex"&gt;Inline flex&lt;/div&gt;
+&lt;div class="d-none"&gt;Hidden&lt;/div&gt;
+
+<!-- Responsive Display -->
+&lt;div class="d-none d-md-block"&gt;Hidden on mobile, visible on desktop&lt;/div&gt;
+&lt;div class="d-block d-md-none"&gt;Visible on mobile, hidden on desktop&lt;/div&gt;
+
+<!-- Flexbox Utilities -->
+&lt;div class="d-flex justify-content-start"&gt;Start aligned&lt;/div&gt;
+&lt;div class="d-flex justify-content-end"&gt;End aligned&lt;/div&gt;
+&lt;div class="d-flex justify-content-center"&gt;Center aligned&lt;/div&gt;
+&lt;div class="d-flex justify-content-between"&gt;Space between&lt;/div&gt;
+&lt;div class="d-flex justify-content-around"&gt;Space around&lt;/div&gt;
+
+&lt;div class="d-flex align-items-start"&gt;Start aligned&lt;/div&gt;
+&lt;div class="d-flex align-items-end"&gt;End aligned&lt;/div&gt;
+&lt;div class="d-flex align-items-center"&gt;Center aligned&lt;/div&gt;
+&lt;div class="d-flex align-items-baseline"&gt;Baseline aligned&lt;/div&gt;
+&lt;div class="d-flex align-items-stretch"&gt;Stretch aligned&lt;/div&gt;
+
+<!-- Flex Direction and Wrap -->
+&lt;div class="d-flex flex-row"&gt;Row direction&lt;/div&gt;
+&lt;div class="d-flex flex-row-reverse"&gt;Row reverse&lt;/div&gt;
+&lt;div class="d-flex flex-column"&gt;Column direction&lt;/div&gt;
+&lt;div class="d-flex flex-column-reverse"&gt;Column reverse&lt;/div&gt;
+
+&lt;div class="d-flex flex-wrap"&gt;Wrap&lt;/div&gt;
+&lt;div class="d-flex flex-nowrap"&gt;No wrap&lt;/div&gt;
+&lt;div class="d-flex flex-wrap-reverse"&gt;Wrap reverse&lt;/div&gt;
+      </div>
+
+      <h3>Sizing Utilities</h3>
+      <div class="code-block">
+<!-- Width -->
+&lt;div class="w-25"&gt;Width 25%&lt;/div&gt;
+&lt;div class="w-50"&gt;Width 50%&lt;/div&gt;
+&lt;div class="w-75"&gt;Width 75%&lt;/div&gt;
+&lt;div class="w-100"&gt;Width 100%&lt;/div&gt;
+&lt;div class="w-auto"&gt;Auto width&lt;/div&gt;
+
+<!-- Height -->
+&lt;div class="h-25"&gt;Height 25%&lt;/div&gt;
+&lt;div class="h-50"&gt;Height 50%&lt;/div&gt;
+&lt;div class="h-75"&gt;Height 75%&lt;/div&gt;
+&lt;div class="h-100"&gt;Height 100%&lt;/div&gt;
+&lt;div class="h-auto"&gt;Auto height&lt;/div&gt;
+
+<!-- Max Width/Height -->
+&lt;div class="mw-100"&gt;Max width 100%&lt;/div&gt;
+&lt;div class="mh-100"&gt;Max height 100%&lt;/div&gt;
+
+<!-- Viewport Sizing -->
+&lt;div class="vw-100"&gt;100vw width&lt;/div&gt;
+&lt;div class="vh-100"&gt;100vh height&lt;/div&gt;
+&lt;div class="min-vw-100"&gt;Min 100vw width&lt;/div&gt;
+&lt;div class="min-vh-100"&gt;Min 100vh height&lt;/div&gt;
+      </div>
+    </section>
+
+    <!-- JavaScript -->
+    <section class="blog-section" id="javascript">
+      <h2>⚡ JavaScript Plugins</h2>
+      <p>Bootstrap includes dozens of custom JavaScript plugins that add interactive functionality to components. All plugins are built with vanilla JavaScript and don't require jQuery.</p>
+
+      <h3>Modal</h3>
+      <div class="code-block">
+<!-- Modal HTML -->
+&lt;!-- Button trigger modal --&gt;
+&lt;button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"&gt;
+  Launch demo modal
+&lt;/button&gt;
+
+&lt;!-- Modal --&gt;
+&lt;div class="modal fade" id="exampleModal" tabindex="-1"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+      &lt;div class="modal-header"&gt;
+        &lt;h5 class="modal-title"&gt;Modal title&lt;/h5&gt;
+        &lt;button type="button" class="btn-close" data-bs-dismiss="modal"&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-body"&gt;
+        &lt;p&gt;Modal body text goes here.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;button type="button" class="btn btn-secondary" data-bs-dismiss="modal"&gt;Close&lt;/button&gt;
+        &lt;button type="button" class="btn btn-primary"&gt;Save changes&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+<!-- JavaScript -->
+&lt;script&gt;
+var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
+  keyboard: false
+})
+
+myModal.show()
+&lt;/script&gt;
+      </div>
+
+      <h3>Carousel</h3>
+      <div class="code-block">
+&lt;div id="carouselExample" class="carousel slide" data-bs-ride="carousel"&gt;
+  &lt;div class="carousel-indicators"&gt;
+    &lt;button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"&gt;&lt;/button&gt;
+    &lt;button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"&gt;&lt;/button&gt;
+    &lt;button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="carousel-inner"&gt;
+    &lt;div class="carousel-item active"&gt;
+      &lt;img src="..." class="d-block w-100" alt="..."&gt;
+    &lt;/div&gt;
+    &lt;div class="carousel-item"&gt;
+      &lt;img src="..." class="d-block w-100" alt="..."&gt;
+    &lt;/div&gt;
+    &lt;div class="carousel-item"&gt;
+      &lt;img src="..." class="d-block w-100" alt="..."&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"&gt;
+    &lt;span class="carousel-control-prev-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"&gt;
+    &lt;span class="carousel-control-next-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+var myCarousel = new bootstrap.Carousel(document.getElementById('carouselExample'), {
+  interval: 2000,
+  wrap: false
+})
+&lt;/script&gt;
+      </div>
+
+      <h3>Tooltip & Popover</h3>
+      <div class="code-block">
+<!-- Tooltip -->
+&lt;button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"&gt;
+  Tooltip on top
+&lt;/button&gt;
+
+&lt;script&gt;
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+&lt;/script&gt;
+
+<!-- Popover -->
+&lt;button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?"&gt;
+  Click to toggle popover
+&lt;/button&gt;
+
+&lt;script&gt;
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
+&lt;/script&gt;
+      </div>
+
+      <h3>Collapse & Accordion</h3>
+      <div class="code-block">
+<!-- Simple Collapse -->
+&lt;p&gt;
+  &lt;a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"&gt;
+    Link with href
+  &lt;/a&gt;
+  &lt;button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"&gt;
+    Button with data-bs-target
+  &lt;/button&gt;
+&lt;/p&gt;
+&lt;div class="collapse" id="collapseExample"&gt;
+  &lt;div class="card card-body"&gt;
+    Some placeholder content for the collapse component.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+<!-- Accordion -->
+&lt;div class="accordion" id="accordionExample"&gt;
+  &lt;div class="accordion-item"&gt;
+    &lt;h2 class="accordion-header" id="headingOne"&gt;
+      &lt;button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"&gt;
+        Accordion Item #1
+      &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample"&gt;
+      &lt;div class="accordion-body"&gt;
+        &lt;strong&gt;This is the first item's accordion body.&lt;/strong&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="accordion-item"&gt;
+    &lt;h2 class="accordion-header" id="headingTwo"&gt;
+      &lt;button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"&gt;
+        Accordion Item #2
+      &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample"&gt;
+      &lt;div class="accordion-body"&gt;
+        &lt;strong&gt;This is the second item's accordion body.&lt;/strong&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </div>
+    </section>
+
+    <!-- Forms -->
+    <section class="blog-section" id="forms">
+      <h2>📝 Forms & Validation</h2>
+      <p>Bootstrap provides form controls, layouts, and validation styles that work seamlessly with the framework's components and utilities.</p>
+
+      <h3>Form Controls</h3>
+      <div class="code-block">
+<!-- Basic Form Controls -->
+&lt;div class="mb-3"&gt;
+  &lt;label for="exampleInputEmail1" class="form-label"&gt;Email address&lt;/label&gt;
+  &lt;input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"&gt;
+  &lt;div id="emailHelp" class="form-text"&gt;We'll never share your email with anyone else.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="mb-3"&gt;
+  &lt;label for="exampleInputPassword1" class="form-label"&gt;Password&lt;/label&gt;
+  &lt;input type="password" class="form-control" id="exampleInputPassword1"&gt;
+&lt;/div&gt;
+
+&lt;div class="mb-3 form-check"&gt;
+  &lt;input type="checkbox" class="form-check-input" id="exampleCheck1"&gt;
+  &lt;label class="form-check-label" for="exampleCheck1"&gt;Check me out&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+
+<!-- Form Sizing -->
+&lt;input class="form-control form-control-lg" type="text" placeholder=".form-control-lg"&gt;
+&lt;input class="form-control" type="text" placeholder="Default input"&gt;
+&lt;input class="form-control form-control-sm" type="text" placeholder=".form-control-sm"&gt;
+
+<!-- Disabled Forms -->
+&lt;input class="form-control" type="text" placeholder="Disabled input" disabled&gt;
+&lt;input class="form-control" type="text" placeholder="Readonly input" readonly&gt;
+
+<!-- Select and Textarea -->
+&lt;select class="form-select" aria-label="Default select example"&gt;
+  &lt;option selected&gt;Open this select menu&lt;/option&gt;
+  &lt;option value="1"&gt;One&lt;/option&gt;
+  &lt;option value="2"&gt;Two&lt;/option&gt;
+  &lt;option value="3"&gt;Three&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;div class="mb-3"&gt;
+  &lt;label for="exampleFormControlTextarea1" class="form-label"&gt;Example textarea&lt;/label&gt;
+  &lt;textarea class="form-control" id="exampleFormControlTextarea1" rows="3"&gt;&lt;/textarea&gt;
+&lt;/div&gt;
+      </div>
+
+      <h3>Form Validation</h3>
+      <div class="code-block">
+<!-- Custom Validation Styles -->
+&lt;form class="row g-3 needs-validation" novalidate&gt;
+  &lt;div class="col-md-4"&gt;
+    &lt;label for="validationCustom01" class="form-label"&gt;First name&lt;/label&gt;
+    &lt;input type="text" class="form-control" id="validationCustom01" value="Mark" required&gt;
+    &lt;div class="valid-feedback"&gt;
+      Looks good!
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-4"&gt;
+    &lt;label for="validationCustom02" class="form-label"&gt;Last name&lt;/label&gt;
+    &lt;input type="text" class="form-control" id="validationCustom02" value="Otto" required&gt;
+    &lt;div class="valid-feedback"&gt;
+      Looks good!
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-4"&gt;
+    &lt;label for="validationCustomUsername" class="form-label"&gt;Username&lt;/label&gt;
+    &lt;div class="input-group"&gt;
+      &lt;span class="input-group-text" id="inputGroupPrepend"&gt;@&lt;/span&gt;
+      &lt;input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required&gt;
+      &lt;div class="invalid-feedback"&gt;
+        Please choose a username.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-12"&gt;
+    &lt;button class="btn btn-primary" type="submit"&gt;Submit form&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+  var forms = document.querySelectorAll('.needs-validation')
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+&lt;/script&gt;
+      </div>
+
+      <h3>Input Groups</h3>
+      <div class="code-block">
+<!-- Basic Input Groups -->
+&lt;div class="input-group mb-3"&gt;
+  &lt;span class="input-group-text" id="basic-addon1"&gt;@&lt;/span&gt;
+  &lt;input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"&gt;
+&lt;/div&gt;
+
+&lt;div class="input-group mb-3"&gt;
+  &lt;input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"&gt;
+  &lt;span class="input-group-text" id="basic-addon2"&gt;@example.com&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-group mb-3"&gt;
+  &lt;button class="btn btn-outline-secondary" type="button" id="button-addon1"&gt;Button&lt;/button&gt;
+  &lt;input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"&gt;
+&lt;/div&gt;
+
+<!-- Input Group Sizing -->
+&lt;div class="input-group input-group-sm mb-3"&gt;
+  &lt;span class="input-group-text"&gt;Small&lt;/span&gt;
+  &lt;input type="text" class="form-control" aria-label="Sizing example input"&gt;
+&lt;/div&gt;
+
+&lt;div class="input-group mb-3"&gt;
+  &lt;span class="input-group-text"&gt;Default&lt;/span&gt;
+  &lt;input type="text" class="form-control" aria-label="Sizing example input"&gt;
+&lt;/div&gt;
+
+&lt;div class="input-group input-group-lg"&gt;
+  &lt;span class="input-group-text"&gt;Large&lt;/span&gt;
+  &lt;input type="text" class="form-control" aria-label="Sizing example input"&gt;
+&lt;/div&gt;
+      </div>
+    </section>
+
+    <!-- Themes -->
+    <section class="blog-section" id="themes">
+      <h2>🎨 Custom Themes & Customization</h2>
+      <p>Bootstrap 5 makes it easy to customize the framework's appearance through Sass variables, maps, and mixins. Create your own unique themes while maintaining Bootstrap's functionality.</p>
+
+      <h3>Sass Variables</h3>
+      <div class="code-block">
+// Custom Bootstrap Variables
+$primary: #007bff;
+$secondary: #6c757d;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #343a40;
+
+// Custom Colors
+$custom-colors: (
+  "purple": #6f42c1,
+  "pink": #e83e8c,
+  "orange": #fd7e14,
+  "teal": #20c997
+);
+
+// Merge with default colors
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// Custom Fonts
+$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace: "Fira Code", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+// Custom Spacing
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 4,
+  7: $spacer * 5,
+  8: $spacer * 6
+);
+
+// Custom Border Radius
+$border-radius: .375rem;
+$border-radius-sm: .25rem;
+$border-radius-lg: .5rem;
+$border-radius-xl: 1rem;
+$border-radius-2xl: 2rem;
+
+// Custom Shadows
+$box-shadow: 0 .5rem 1rem rgba($black, .15);
+$box-shadow-sm: 0 .125rem .25rem rgba($black, .075);
+$box-shadow-lg: 0 1rem 3rem rgba($black, .175);
+$box-shadow-inset: inset 0 1px 2px rgba($black, .075);
+      </div>
+
+      <h3>Custom Components</h3>
+      <div class="code-block">
+// Custom Button Variant
+@mixin button-variant($background, $border, $color: color-contrast($background), $hover-background: if($color == $color-contrast($background), shade-color($background, $btn-hover-bg-shade-amount), tint-color($background, $btn-hover-bg-tint-amount)), $hover-border: if($color == $color-contrast($background), shade-color($border, $btn-hover-border-shade-amount), tint-color($border, $btn-hover-border-tint-amount)), $hover-color: color-contrast($hover-background), $active-background: if($color == $color-contrast($background), shade-color($background, $btn-active-bg-shade-amount), tint-color($background, $btn-active-bg-tint-amount)), $active-border: if($color == $color-contrast($background), shade-color($border, $btn-active-border-shade-amount), tint-color($border, $btn-active-border-tint-amount)), $active-color: color-contrast($active-background), $disabled-background: $background, $disabled-border: $border, $disabled-color: color-contrast($disabled-background)) {
+  --#{$prefix}btn-color: #{$color};
+  --#{$prefix}btn-bg: #{$background};
+  --#{$prefix}btn-border-color: #{$border};
+  --#{$prefix}btn-hover-color: #{$hover-color};
+  --#{$prefix}btn-hover-bg: #{$hover-background};
+  --#{$prefix}btn-hover-border-color: #{$hover-border};
+  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
+  --#{$prefix}btn-active-color: #{$active-color};
+  --#{$prefix}btn-active-bg: #{$active-background};
+  --#{$prefix}btn-active-border-color: #{$active-border};
+  --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
+  --#{$prefix}btn-disabled-color: #{$disabled-color};
+  --#{$prefix}btn-disabled-bg: #{$disabled-background};
+  --#{$prefix}btn-disabled-border-color: #{$disabled-border};
+}
+
+// Custom Button Styles
+.btn-purple {
+  @include button-variant($purple, $purple);
+}
+
+.btn-outline-purple {
+  @include button-outline-variant($purple);
+}
+
+// Custom Card Styles
+.card-purple {
+  background-color: $purple;
+  border-color: $purple;
+  color: $white;
+  
+  .card-header {
+    background-color: darken($purple, 5%);
+    border-color: darken($purple, 10%);
+  }
+  
+  .card-footer {
+    background-color: darken($purple, 5%);
+    border-color: darken($purple, 10%);
+  }
+}
+      </div>
+
+      <h3>Building Custom Theme</h3>
+      <div class="code-block">
+// custom.scss
+// 1. Include functions first
+@import "functions";
+
+// 2. Include variable overrides
+@import "variables";
+@import "variables-dark";
+
+// 3. Include map overrides
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// 4. Include required Bootstrap stylesheets
+@import "mixins";
+@import "utilities";
+
+// 5. Include optional Bootstrap components
+@import "root";
+@import "reboot";
+
+// 6. Include custom components
+@import "components/buttons";
+@import "components/cards";
+
+// 7. Include helpers
+@import "helpers";
+
+// 8. Include Bootstrap utilities
+@import "utilities/api";
+
+// Custom CSS
+body {
+  font-family: $font-family-sans-serif;
+  background-color: $gray-100;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+  color: $white;
+  padding: 5rem 0;
+}
+
+.custom-navbar {
+  background-color: rgba($white, .95);
+  backdrop-filter: blur(10px);
+  box-shadow: $box-shadow-sm;
+}
+
+// Compile with Sass
+// sass custom.scss custom.css
+      </div>
+    </section>
+
+    <!-- Advanced -->
+    <section class="blog-section" id="advanced">
+      <h2>🚀 Advanced Techniques</h2>
+      <p>Explore advanced Bootstrap techniques including custom builds, optimization, and integration with modern development tools.</p>
+
+      <h3>Custom Build Process</h3>
+      <div class="code-block">
+// package.json
+{
+  "scripts": {
+    "build-css": "sass --style=compressed scss/custom.scss dist/css/custom.min.css",
+    "watch-css": "sass --watch scss/custom.scss dist/css/custom.css",
+    "build-js": "webpack --mode production",
+    "build": "npm run build-css && npm run build-js"
+  },
+  "devDependencies": {
+    "sass": "^1.54.0",
+    "bootstrap": "^5.3.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.0"
+  }
+}
+
+// webpack.config.js
+const path = require('path');
+
+module.exports = {
+  entry: './src/js/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist/js'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      }
+    ]
+  }
+};
+      </div>
+
+      <h3>Performance Optimization</h3>
+      <div class="code-block">
+// Import only needed Bootstrap components
+// custom.scss
+@import "functions";
+@import "variables";
+@import "mixins";
+
+// Import only required components
+@import "utilities";
+@import "reboot";
+
+// Components you need
+@import "buttons";
+@import "cards";
+@import "navbar";
+@import "forms";
+
+// Utilities you need
+@import "utilities/api";
+
+// Purge unused CSS with PurgeCSS
+// postcss.config.js
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+    ...(process.env.NODE_ENV === 'production' ? { 
+      '@fullhuman/postcss-purgecss': {
+        content: [
+          './src/**/*.html',
+          './src/**/*.js'
+        ],
+        defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+      }
+    } : {})
+  }
+};
+
+// Critical CSS extraction
+// Extract above-the-fold CSS for faster loading
+.critical-css {
+  // Include only critical styles
+  @import "reboot";
+  @import "navbar";
+  @import "utilities/display";
+  @import "utilities/spacing";
+}
+      </div>
+
+      <h3>Integration with Frameworks</h3>
+      <div class="code-block">
+// React with Bootstrap
+import { Button, Card, Navbar, Nav } from 'react-bootstrap';
+
+function App() {
+  return (
+    &lt;&gt;
+      &lt;Navbar bg="dark" variant="dark"&gt;
+        &lt;Navbar.Brand href="#home"&gt;React-Bootstrap&lt;/Navbar.Brand&gt;
+        &lt;Nav className="me-auto"&gt;
+          &lt;Nav.Link href="#home"&gt;Home&lt;/Nav.Link&gt;
+          &lt;Nav.Link href="#features"&gt;Features&lt;/Nav.Link&gt;
+        &lt;/Nav&gt;
+      &lt;/Navbar&gt;
+      
+      &lt;Card style={{ width: '18rem' }}&gt;
+        &lt;Card.Img variant="top" src="holder.js/100px180" /&gt;
+        &lt;Card.Body&gt;
+          &lt;Card.Title&gt;Card Title&lt;/Card.Title&gt;
+          &lt;Card.Text&gt;
+            Some quick example text.
+          &lt;/Card.Text&gt;
+          &lt;Button variant="primary"&gt;Go somewhere&lt;/Button&gt;
+        &lt;/Card.Body&gt;
+      &lt;/Card&gt;
+    &lt;/&gt;
+  );
+}
+
+// Vue with Bootstrap
+&lt;template&gt;
+  &lt;b-navbar variant="faded" type="light"&gt;
+    &lt;b-navbar-brand href="#"&gt;BootstrapVue&lt;/b-navbar-brand&gt;
+    &lt;b-navbar-nav&gt;
+      &lt;b-nav-item href="#"&gt;Home&lt;/b-nav-item&gt;
+      &lt;b-nav-item href="#"&gt;Features&lt;/b-nav-item&gt;
+    &lt;/b-navbar-nav&gt;
+  &lt;/b-navbar&gt;
+  
+  &lt;b-card
+    title="Card Title"
+    img-src="https://picsum.photos/600/300/?image=25"
+    img-alt="Image"
+    img-top
+    tag="article"
+    style="max-width: 20rem;"
+    class="mb-2"
+  &gt;
+    &lt;b-card-text&gt;
+      Some quick example text.
+    &lt;/b-card-text&gt;
+    &lt;b-button href="#" variant="primary"&gt;Go somewhere&lt;/b-button&gt;
+  &lt;/b-card&gt;
+&lt;/template&gt;
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your Bootstrap 5 knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🛒 E-commerce Website</h4>
+          <p>Build a complete e-commerce site with product listings, shopping cart, and checkout flow</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Admin Dashboard</h4>
+          <p>Create a responsive admin dashboard with charts, tables, and data visualization</p>
+        </div>
+        <div class="feature-card">
+          <h4>📱 Portfolio Website</h4>
+          <p>Design a personal portfolio with galleries, contact forms, and smooth animations</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎨 Landing Page</h4>
+          <p>Build a marketing landing page with hero sections, testimonials, and call-to-actions</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>Use semantic HTML5 elements for better accessibility</li>
+        <li>Implement proper responsive design with mobile-first approach</li>
+        <li>Customize Bootstrap themes to match your brand</li>
+        <li>Optimize performance by importing only needed components</li>
+        <li>Follow Bootstrap's naming conventions for consistency</li>
+        <li>Test across different browsers and devices</li>
+        <li>Use proper form validation and accessibility features</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Bootstrap 5 and are ready to build beautiful, responsive websites. You now understand the grid system, components, utilities, JavaScript plugins, and theme customization.</p>
+      
+      <p>Bootstrap continues to evolve with new features and improvements. Keep practicing, building real projects, and exploring advanced techniques to become a Bootstrap expert.</p>
+
+      <div style="background: linear-gradient(135deg, #7952b3, #9c27b0); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Continue Your Frontend Journey!</h3>
+        <p style="margin-bottom: 20px;">Master modern CSS frameworks and advanced web development!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-9-tailwind-css-mastery.html" class="btn btn-outline" style="background: white; color: #7952b3;">Tailwind CSS →</a>
+          <a href="blog-10-sass-scss-complete.html" class="btn btn-outline" style="background: white; color: #7952b3;">Sass/SCSS →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #7952b3;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master HTML5 from basics to advanced. Learn semantic HTML5 tags, forms, multimedia, Canvas, SVG, Web APIs, and SEO-friendly structure. Complete free guide with examples.">
+  <meta name="keywords" content="HTML5 tutorial, HTML5 complete guide, semantic HTML, HTML5 forms, Canvas, SVG, Web APIs, HTML5 SEO, learn HTML5">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="HTML5 Complete Guide - Master Modern Web Development">
+  <meta property="og:description" content="Free comprehensive HTML5 course covering semantic tags, forms, multimedia, Canvas, SVG, and SEO best practices.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-1-html5-complete-guide.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/html5-guide.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HTML5 Complete Guide - Master Modern Web Development">
+  <meta name="twitter:description" content="Free comprehensive HTML5 course covering semantic tags, forms, multimedia, Canvas, SVG, and SEO best practices.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/html5-guide.jpg">
+  <title>HTML5 Complete Guide - Master Modern Web Development | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-1-html5-complete-guide.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "HTML5 Complete Guide",
+    "description": "Master every HTML5 element — semantic tags, forms, multimedia, canvas SVG and SEO-friendly structure.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Beginner",
+    "about": "HTML5 Web Development",
+    "teaches": ["HTML5 Semantic Elements", "HTML5 Forms", "Canvas API", "SVG Graphics", "Web APIs", "SEO Optimization"],
+    "timeRequired": "PT6H20M",
+    "coursePrerequisites": "Basic computer skills",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Riya Sharma"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "18000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #e65100, #ff8f00);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #e65100;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Free Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">HTML5 Complete Guide</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master every HTML5 element from basics to advanced — semantic tags, forms, multimedia, Canvas, SVG, and SEO-friendly structure.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 42 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 6h 20m</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.9 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 18K Students</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">RS</div>
+        <div>
+          <div style="font-weight: 700;">Riya Sharma</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Senior Web Developer</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Beginner</span>
+        <span>✅ Free</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to HTML5</a></li>
+        <li><a href="#basics">2. HTML5 Basics & Structure</a></li>
+        <li><a href="#semantic">3. Semantic HTML5 Elements</a></li>
+        <li><a href="#forms">4. HTML5 Forms & Input Types</a></li>
+        <li><a href="#multimedia">5. Multimedia Elements</a></li>
+        <li><a href="#canvas">6. Canvas API & Graphics</a></li>
+        <li><a href="#svg">7. SVG Graphics & Animations</a></li>
+        <li><a href="#apis">8. HTML5 Web APIs</a></li>
+        <li><a href="#seo">9. SEO Best Practices</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>🚀 Introduction to HTML5</h2>
+      <p>HTML5 represents the evolution of web markup, bringing semantic structure, multimedia capabilities, and powerful APIs that enable modern web applications. This comprehensive guide will take you from the fundamentals to advanced concepts, ensuring you master every aspect of HTML5 development.</p>
+      
+      <p>Whether you're a complete beginner or looking to upgrade your HTML4 skills, this course covers everything you need to build modern, accessible, and SEO-friendly websites. HTML5 isn't just about new tags—it's about creating meaningful, structured content that works across all devices and browsers.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h4>Learn by Doing</h4>
+          <p>Hands-on exercises and real-world projects throughout the course</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h4>Responsive Design</h4>
+          <p>Build websites that work perfectly on all devices</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">♿</div>
+          <h4>Accessibility First</h4>
+          <p>Create inclusive web experiences for all users</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h4>SEO Optimized</h4>
+          <p>Learn semantic HTML that search engines love</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HTML5 Basics -->
+    <section class="blog-section" id="basics">
+      <h2>📝 HTML5 Basics & Structure</h2>
+      <p>Every HTML5 document starts with a proper DOCTYPE and semantic structure. The basic HTML5 template includes essential elements that provide meaning to your content and ensure proper rendering across browsers.</p>
+      
+      <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Your Page Title&lt;/title&gt;
+  &lt;meta name="description" content="Page description for SEO"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav&gt;Navigation&lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;h1&gt;Main Heading&lt;/h1&gt;
+    &lt;p&gt;Your content goes here&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;Footer content&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </div>
+
+      <h3>Essential Meta Tags</h3>
+      <p>Meta tags provide crucial information about your webpage to browsers and search engines. The viewport meta tag ensures responsive design, while charset specifies character encoding. Description meta tags are vital for SEO, appearing in search results.</p>
+    </section>
+
+    <!-- Semantic Elements -->
+    <section class="blog-section" id="semantic">
+      <h2>🏗️ Semantic HTML5 Elements</h2>
+      <p>Semantic HTML5 elements give meaning to your content structure, making it accessible to screen readers and understandable to search engines. These elements replace generic div elements with purpose-specific tags.</p>
+
+      <h3>Key Semantic Elements</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>&lt;header&gt;</h4>
+          <p>Contains introductory content or navigation links</p>
+        </div>
+        <div class="feature-card">
+          <h4>&lt;nav&gt;</h4>
+          <p>Defines navigation links within your document</p>
+        </div>
+        <div class="feature-card">
+          <h4>&lt;main&gt;</h4>
+          <p>Specifies the main, unique content of the document</p>
+        </div>
+        <div class="feature-card">
+          <h4>&lt;article&gt;</h4>
+          <p>Self-contained content that could stand alone</p>
+        </div>
+        <div class="feature-card">
+          <h4>&lt;section&gt;</h4>
+          <p>Groups related content within a document</p>
+        </div>
+        <div class="feature-card">
+          <h4>&lt;aside&gt;</h4>
+          <p>Content aside from the main content (sidebar)</p>
+        </div>
+        <div class="feature-card">
+          <h4>&lt;footer&gt;</h4>
+          <p>Contains footer information, copyright, etc.</p>
+        </div>
+        <div class="feature-card">
+          <h4>&lt;figure&gt; &amp; &lt;figcaption&gt;</h4>
+          <p>Self-contained content with caption</p>
+        </div>
+      </div>
+
+      <div class="code-block">
+&lt;article&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Article Title&lt;/h1&gt;
+    &lt;time datetime="2025-01-15"&gt;January 15, 2025&lt;/time&gt;
+  &lt;/header&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Section Heading&lt;/h2&gt;
+    &lt;p&gt;Section content here...&lt;/p&gt;
+    &lt;figure&gt;
+      &lt;img src="image.jpg" alt="Description"&gt;
+      &lt;figcaption&gt;Image caption&lt;/figcaption&gt;
+    &lt;/figure&gt;
+  &lt;/section&gt;
+  &lt;footer&gt;
+    &lt;p&gt;Article footer content&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;
+      </div>
+    </section>
+
+    <!-- Forms -->
+    <section class="blog-section" id="forms">
+      <h2>📋 HTML5 Forms & Input Types</h2>
+      <p>HTML5 revolutionized form handling with new input types, validation attributes, and built-in browser validation. These improvements enhance user experience and reduce the need for JavaScript validation.</p>
+
+      <h3>New Input Types</h3>
+      <div class="code-block">
+&lt;form&gt;
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" required&gt;
+  
+  &lt;label for="url"&gt;Website:&lt;/label&gt;
+  &lt;input type="url" id="url" placeholder="https://example.com"&gt;
+  
+  &lt;label for="tel"&gt;Phone:&lt;/label&gt;
+  &lt;input type="tel" id="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"&gt;
+  
+  &lt;label for="date"&gt;Date:&lt;/label&gt;
+  &lt;input type="date" id="date" min="2025-01-01" max="2025-12-31"&gt;
+  
+  &lt;label for="range"&gt;Volume:&lt;/label&gt;
+  &lt;input type="range" id="range" min="0" max="100" value="50"&gt;
+  
+  &lt;label for="color"&gt;Color:&lt;/label&gt;
+  &lt;input type="color" id="color" value="#ff6b6b"&gt;
+  
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+      </div>
+
+      <h3>Form Validation Attributes</h3>
+      <p>HTML5 introduces powerful validation attributes that work without JavaScript:</p>
+      <ul>
+        <li><strong>required</strong> - Field must be filled</li>
+        <li><strong>pattern</strong> - Must match a regex pattern</li>
+        <li><strong>min/max</strong> - Numeric or date range limits</li>
+        <li><strong>minlength/maxlength</strong> - Text length constraints</li>
+        <li><strong>step</strong> - Valid increments for numeric inputs</li>
+      </ul>
+    </section>
+
+    <!-- Multimedia -->
+    <section class="blog-section" id="multimedia">
+      <h2>🎵 Multimedia Elements</h2>
+      <p>HTML5 provides native support for audio and video content without requiring plugins like Flash. The &lt;audio&gt; and &lt;video&gt; elements make embedding media simple and accessible.</p>
+
+      <h3>Video Element</h3>
+      <div class="code-block">
+&lt;video width="640" height="360" controls poster="video-poster.jpg"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  &lt;source src="video.webm" type="video/webm"&gt;
+  &lt;track kind="subtitles" src="subtitles.vtt" srclang="en" label="English"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+      </div>
+
+      <h3>Audio Element</h3>
+      <div class="code-block">
+&lt;audio controls&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+  &lt;source src="audio.ogg" type="audio/ogg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;
+      </div>
+
+      <h3>Key Attributes</h3>
+      <ul>
+        <li><strong>controls</strong> - Shows browser default controls</li>
+        <li><strong>autoplay</strong> - Starts playing automatically (use sparingly)</li>
+        <li><strong>loop</strong> - Repeats when finished</li>
+        <li><strong>muted</strong> - Starts with audio muted</li>
+        <li><strong>poster</strong> - Image shown before video loads</li>
+      </ul>
+    </section>
+
+    <!-- Canvas -->
+    <section class="blog-section" id="canvas">
+      <h2>🎨 Canvas API & Graphics</h2>
+      <p>The HTML5 Canvas element provides a powerful drawing surface for creating dynamic graphics, animations, and visualizations. Using JavaScript, you can draw shapes, images, and complex animations directly in the browser.</p>
+
+      <div class="code-block">
+&lt;canvas id="myCanvas" width="500" height="300"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Draw rectangle
+  ctx.fillStyle = '#ff6b6b';
+  ctx.fillRect(50, 50, 100, 75);
+
+  // Draw circle
+  ctx.beginPath();
+  ctx.arc(250, 100, 50, 0, 2 * Math.PI);
+  ctx.fillStyle = '#4ecdc4';
+  ctx.fill();
+
+  // Draw text
+  ctx.font = '24px Arial';
+  ctx.fillStyle = '#333';
+  ctx.fillText('Canvas Graphics', 150, 200);
+&lt;/script&gt;
+      </div>
+
+      <h3>Canvas Applications</h3>
+      <ul>
+        <li>Interactive games and animations</li>
+        <li>Data visualization and charts</li>
+        <li>Image editing and filters</li>
+        <li>Real-time video processing</li>
+        <li>Particle effects and simulations</li>
+      </ul>
+    </section>
+
+    <!-- SVG -->
+    <section class="blog-section" id="svg">
+      <h2>🖼️ SVG Graphics & Animations</h2>
+      <p>Scalable Vector Graphics (SVG) provide resolution-independent graphics that scale perfectly at any size. Unlike raster images, SVG graphics are defined with XML markup and can be manipulated with CSS and JavaScript.</p>
+
+      <div class="code-block">
+&lt;svg width="200" height="200" viewBox="0 0 200 200"&gt;
+  &lt;!-- Animated circle --&gt;
+  &lt;circle cx="100" cy="100" r="50" fill="#4ecdc4"&gt;
+    &lt;animate attributeName="r" 
+             values="50;70;50" 
+             dur="2s" 
+             repeatCount="indefinite"/&gt;
+  &lt;/circle&gt;
+  
+  &lt;!-- Rotating rectangle --&gt;
+  &lt;rect x="75" y="75" width="50" height="50" 
+        fill="#ff6b6b" opacity="0.7"&gt;
+    &lt;animateTransform attributeName="transform"
+                      type="rotate"
+                      from="0 100 100"
+                      to="360 100 100"
+                      dur="4s"
+                      repeatCount="indefinite"/&gt;
+  &lt;/rect&gt;
+&lt;/svg&gt;
+      </div>
+
+      <h3>SVG Benefits</h3>
+      <ul>
+        <li>Infinitely scalable without quality loss</li>
+        <li>Small file sizes for simple graphics</li>
+        <li>Searchable and indexable text</li>
+        <li>Styleable with CSS</li>
+        <li>Animatable with SMIL and JavaScript</li>
+        <li>Accessible with proper markup</li>
+      </ul>
+    </section>
+
+    <!-- Web APIs -->
+    <section class="blog-section" id="apis">
+      <h2>🔧 HTML5 Web APIs</h2>
+      <p>HTML5 includes powerful JavaScript APIs that enable web applications with capabilities previously requiring native apps. These APIs provide access to device features and enhanced functionality.</p>
+
+      <h3>Essential Web APIs</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>📍 Geolocation</h4>
+          <p>Access user's location with permission</p>
+        </div>
+        <div class="feature-card">
+          <h4>💾 Local Storage</h4>
+          <p>Store data locally in the browser</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎤 Web Audio</h4>
+          <p>Process and synthesize audio</p>
+        </div>
+        <div class="feature-card">
+          <h4>📹 Media Capture</h4>
+          <p>Access camera and microphone</p>
+        </div>
+        <div class="feature-card">
+          <h4>🔔 Notifications</h4>
+          <p>Display system notifications</p>
+        </div>
+        <div class="feature-card">
+          <h4>👆 Touch Events</h4>
+          <p>Handle touch interactions</p>
+        </div>
+      </div>
+
+      <h3>Geolocation Example</h3>
+      <div class="code-block">
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(
+    position => {
+      const { latitude, longitude } = position.coords;
+      console.log(`Location: ${latitude}, ${longitude}`);
+    },
+    error => {
+      console.error('Geolocation error:', error);
+    }
+  );
+}
+      </div>
+    </section>
+
+    <!-- SEO -->
+    <section class="blog-section" id="seo">
+      <h2>🔍 SEO Best Practices</h2>
+      <p>HTML5 provides semantic elements and attributes that significantly improve search engine optimization. Proper HTML5 structure helps search engines understand your content hierarchy and improve rankings.</p>
+
+      <h3>SEO Optimization Tips</h3>
+      <ul>
+        <li><strong>Use semantic HTML5 elements</strong> - header, nav, main, article, section, aside, footer</li>
+        <li><strong>Proper heading hierarchy</strong> - Use h1 for main title, h2-h6 for subheadings</li>
+        <li><strong>Descriptive meta tags</strong> - Unique title and description for each page</li>
+        <li><strong>Alt text for images</strong> - Describe images for accessibility and SEO</li>
+        <li><strong>Structured data</strong> - Use schema.org markup for rich snippets</li>
+        <li><strong>Clean URLs</strong> - Use descriptive, keyword-rich URLs</li>
+        <li><strong>Mobile optimization</strong> - Ensure responsive design and fast loading</li>
+      </ul>
+
+      <div class="code-block">
+&lt;article itemscope itemtype="https://schema.org/Article"&gt;
+  &lt;header&gt;
+    &lt;h1 itemprop="headline"&gt;Article Title&lt;/h1&gt;
+    &lt;time datetime="2025-01-15" itemprop="datePublished"&gt;
+      January 15, 2025
+    &lt;/time&gt;
+    &lt;img src="author.jpg" alt="Author Name" 
+         itemprop="author" itemscope itemtype="https://schema.org/Person"&gt;
+  &lt;/header&gt;
+  &lt;section itemprop="articleBody"&gt;
+    &lt;p&gt;Article content here...&lt;/p&gt;
+    &lt;img src="content-image.jpg" alt="Descriptive alt text" 
+         itemprop="image"&gt;
+  &lt;/section&gt;
+&lt;/article&gt;
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your HTML5 knowledge with these practical projects that reinforce concepts and build your portfolio:</p>
+
+      <h3>Project Ideas</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>📄 Portfolio Website</h4>
+          <p>Create a responsive portfolio with semantic HTML5, contact forms, and multimedia content</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎮 Interactive Game</h4>
+          <p>Build a browser game using Canvas API with animations and user interactions</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Data Visualization</h4>
+          <p>Develop interactive charts and graphs using Canvas or SVG</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎵 Media Player</h4>
+          <p>Create a custom audio/video player with playlists and controls</p>
+        </div>
+      </div>
+
+      <h3>Best Practices for Projects</h3>
+      <ul>
+        <li>Start with semantic HTML5 structure</li>
+        <li>Ensure cross-browser compatibility</li>
+        <li>Test on mobile devices</li>
+        <li>Validate HTML with W3C validator</li>
+        <li>Optimize images and media files</li>
+        <li>Implement accessibility features</li>
+        <li>Add proper SEO meta tags</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Mastering HTML5 is essential for modern web development. This comprehensive guide has covered everything from basic structure to advanced features like Canvas, SVG, and Web APIs. Remember that HTML5 is continuously evolving, so stay updated with new features and best practices.</p>
+      
+      <p>The key to becoming proficient is practice. Build projects, experiment with new features, and always prioritize semantic, accessible, and SEO-friendly code. HTML5 provides the foundation for all web development, and a strong understanding will serve you well throughout your development career.</p>
+
+      <div style="background: var(--primary); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Ready to Continue Learning?</h3>
+        <p style="margin-bottom: 20px;">Explore our other frontend courses to become a full-stack developer!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-2-css3-flexbox-mastery.html" class="btn btn-outline" style="background: white; color: var(--primary);">CSS3 Mastery →</a>
+          <a href="blog-3-javascript-zero-to-hero.html" class="btn btn-outline" style="background: white; color: var(--primary);">JavaScript Course →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: var(--primary);">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

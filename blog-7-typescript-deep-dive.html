@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master TypeScript with comprehensive guide. Learn interfaces, generics, decorators, utility types, type narrowing and TypeScript in React & Node projects. Premium course.">
+  <meta name="keywords" content="TypeScript tutorial, TypeScript interfaces, generics, decorators, utility types, type narrowing, TypeScript React, TypeScript Node, learn TypeScript">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="TypeScript Deep Dive - Master Type-Safe JavaScript">
+  <meta property="og:description" content="Premium TypeScript course covering interfaces, generics, decorators, utility types, type narrowing and TypeScript in React & Node projects.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-7-typescript-deep-dive.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/typescript-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TypeScript Deep Dive - Master Type-Safe JavaScript">
+  <meta name="twitter:description" content="Premium TypeScript course covering interfaces, generics, decorators, utility types, type narrowing and TypeScript in React & Node projects.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/typescript-course.jpg">
+  <title>TypeScript Deep Dive - Master Type-Safe JavaScript | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-7-typescript-deep-dive.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "TypeScript Deep Dive",
+    "description": "Interfaces, generics, decorators, utility types, type narrowing and TypeScript in React & Node projects.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "TypeScript Programming",
+    "teaches": ["TypeScript Fundamentals", "Interfaces", "Generics", "Decorators", "Utility Types", "Type Narrowing", "React TypeScript", "Node TypeScript"],
+    "timeRequired": "PT9H",
+    "coursePrerequisites": "JavaScript proficiency",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Sneha Patel"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "10000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "549",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #0d47a1, #42a5f5);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #0d47a1;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">TypeScript Deep Dive</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master TypeScript with interfaces, generics, decorators, utility types, type narrowing and apply it in React & Node.js projects.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 38 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 9h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.8 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 10K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👑 Premium</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">SP</div>
+        <div>
+          <div style="font-weight: 700;">Sneha Patel</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">TypeScript Expert & Senior Developer</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹549</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to TypeScript</a></li>
+        <li><a href="#basics">2. TypeScript Basics & Types</a></li>
+        <li><a href="#interfaces">3. Interfaces & Type Aliases</a></li>
+        <li><a href="#generics">4. Generics Deep Dive</a></li>
+        <li><a href="#decorators">5. Decorators & Metadata</a></li>
+        <li><a href="#utility">6. Utility Types</a></li>
+        <li><a href="#narrowing">7. Type Narrowing</a></li>
+        <li><a href="#react">8. TypeScript in React</a></li>
+        <li><a href="#node">9. TypeScript in Node.js</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>📘 Introduction to TypeScript</h2>
+      <p>TypeScript is a powerful superset of JavaScript that adds static typing to the language. It enables developers to catch errors early, improve code quality, and build more maintainable applications with better tooling and IDE support.</p>
+      
+      <p>This comprehensive course will take you from TypeScript basics to advanced concepts like generics, decorators, and complex type manipulations. You'll learn to apply TypeScript in real-world scenarios with React and Node.js applications.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📘</div>
+          <h4>Type Safety</h4>
+          <p>Catch errors at compile-time instead of runtime</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h4>Better Tooling</h4>
+          <p>Enhanced IDE support with autocomplete and refactoring</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏗️</div>
+          <h4>Scalable Code</h4>
+          <p>Build large applications with confidence</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h4>Modern JavaScript</h4>
+          <p>Latest ES features with backward compatibility</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Basics -->
+    <section class="blog-section" id="basics">
+      <h2>📝 TypeScript Basics & Types</h2>
+      <p>TypeScript's type system is the foundation of the language. Understanding basic types, annotations, and type inference is essential for writing type-safe code.</p>
+
+      <h3>Basic Types</h3>
+      <div class="code-block">
+// Primitive types
+let isDone: boolean = false;
+let decimal: number = 6;
+let color: string = "blue";
+let list: number[] = [1, 2, 3];
+let x: [string, number] = ["hello", 10]; // Tuple
+
+// Enum
+enum Color {
+  Red,
+  Green,
+  Blue
+}
+let c: Color = Color.Green;
+
+// Any and Unknown
+let notSure: any = 4;
+let value: unknown = 4;
+
+// Void and Never
+function warnUser(): void {
+  console.log("This is a warning message");
+}
+
+function error(message: string): never {
+  throw new Error(message);
+}
+
+// Type assertions
+let someValue: any = "this is a string";
+let strLength: number = (someValue as string).length;
+let strLength2: number = (&lt;string&gt;someValue).length;
+      </div>
+
+      <h3>Type Inference</h3>
+      <div class="code-block">
+// TypeScript can infer types
+let x = 3; // x is inferred as number
+let y = "hello"; // y is inferred as string
+
+// Best common type
+let zoo = [new Rhino(), new Elephant(), new Snake()];
+// zoo is inferred as (Rhino | Elephant | Snake)[]
+
+// Contextual typing
+window.onmousedown = function(mouseEvent) {
+  // mouseEvent is inferred as MouseEvent
+  console.log(mouseEvent.button);
+};
+      </div>
+
+      <h3>Union and Intersection Types</h3>
+      <div class="code-block">
+// Union types
+function printId(id: number | string) {
+  if (typeof id === "string") {
+    console.log(id.toUpperCase());
+  } else {
+    console.log(id);
+  }
+}
+
+// Intersection types
+interface Person {
+  name: string;
+}
+
+interface Employee {
+  id: number;
+}
+
+type PersonEmployee = Person & Employee;
+let worker: PersonEmployee = {
+  name: "John",
+  id: 123
+};
+      </div>
+    </section>
+
+    <!-- Interfaces -->
+    <section class="blog-section" id="interfaces">
+      <h2>🔗 Interfaces & Type Aliases</h2>
+      <p>Interfaces and type aliases are fundamental TypeScript features for defining the shape of objects and creating reusable type definitions.</p>
+
+      <h3>Interface Basics</h3>
+      <div class="code-block">
+// Basic interface
+interface User {
+  name: string;
+  age: number;
+  email?: string; // Optional property
+  readonly id: number; // Read-only property
+}
+
+// Function types
+interface SearchFunc {
+  (source: string, subString: string): boolean;
+}
+
+let mySearch: SearchFunc = function(source, subString) {
+  return source.search(subString) > -1;
+};
+
+// Indexable types
+interface StringArray {
+  [index: number]: string;
+}
+
+let myArray: StringArray = ["Bob", "Fred"];
+let myStr: string = myArray[0];
+
+// Extending interfaces
+interface Shape {
+  color: string;
+}
+
+interface Square extends Shape {
+  sideLength: number;
+}
+
+let square: Square = {
+  color: "blue",
+  sideLength: 10
+};
+      </div>
+
+      <h3>Type Aliases</h3>
+      <div class="code-block">
+// Type alias for object type
+type User = {
+  name: string;
+  age: number;
+  email?: string;
+};
+
+// Type alias for union
+type ID = string | number;
+
+// Type alias for function
+type AddFunction = (a: number, b: number) => number;
+
+const add: AddFunction = (a, b) => a + b;
+
+// Generic type alias
+type Container&lt;T&gt; = {
+  value: T;
+};
+
+let numberContainer: Container&lt;number&gt; = { value: 42 };
+let stringContainer: Container&lt;string&gt; = { value: "hello" };
+      </div>
+
+      <h3>Interface vs Type Alias</h3>
+      <div class="code-block">
+// Interface - can be extended and implemented
+interface Animal {
+  name: string;
+}
+
+interface Dog extends Animal {
+  breed: string;
+}
+
+// Type alias - more flexible with unions and computed types
+type Status = "pending" | "approved" | "rejected";
+type EventName = `on${Capitalize&lt;string&gt;}`;
+
+// Use interfaces for object shapes that might be extended
+// Use type aliases for unions, computed types, or more complex types
+      </div>
+    </section>
+
+    <!-- Generics -->
+    <section class="blog-section" id="generics">
+      <h2>🎯 Generics Deep Dive</h2>
+      <p>Generics provide a way to create reusable, type-safe components and functions that work with multiple types while maintaining type safety.</p>
+
+      <h3>Generic Functions</h3>
+      <div class="code-block">
+// Basic generic function
+function identity&lt;T&gt;(arg: T): T {
+  return arg;
+}
+
+let output1 = identity&lt;string&gt;("myString");
+let output2 = identity&lt;number&gt;(100);
+
+// Type inference
+let output3 = identity("myString"); // type inferred as string
+
+// Generic constraints
+interface Lengthwise {
+  length: number;
+}
+
+function loggingIdentity&lt;T extends Lengthwise&gt;(arg: T): T {
+  console.log(arg.length);
+  return arg;
+}
+
+loggingIdentity({ length: 10, value: 3 }); // Works
+// loggingIdentity(3); // Error: doesn't have length property
+
+// Using type parameters in generic constraints
+function getProperty&lt;T, K extends keyof T&gt;(obj: T, key: K): T[K] {
+  return obj[key];
+}
+
+let x = { a: 1, b: 2, c: 3, d: 4 };
+getProperty(x, "a"); // OK
+// getProperty(x, "m"); // Error: "m" is not a key of x
+      </div>
+
+      <h3>Generic Classes</h3>
+      <div class="code-block">
+class GenericNumber&lt;T&gt; {
+  zeroValue: T;
+  add: (x: T, y: T) => T;
+}
+
+let myGenericNumber = new GenericNumber&lt;number&gt;();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function(x, y) { return x + y; };
+
+let stringNumeric = new GenericNumber&lt;string&gt;();
+stringNumeric.zeroValue = "";
+stringNumeric.add = function(x, y) { return x + y; };
+
+// Generic class with constraints
+interface Database {
+  connect(): Promise&lt;void&gt;;
+  disconnect(): Promise&lt;void&gt;;
+}
+
+class Repository&lt;T extends { id: number }&gt; {
+  private items: T[] = [];
+  
+  constructor(private db: Database) {}
+  
+  async add(item: T): Promise&lt;void&gt; {
+    await this.db.connect();
+    this.items.push(item);
+    await this.db.disconnect();
+  }
+  
+  findById(id: number): T | undefined {
+    return this.items.find(item => item.id === id);
+  }
+}
+      </div>
+
+      <h3>Advanced Generic Patterns</h3>
+      <div class="code-block">
+// Conditional types
+type IsString&lt;T&gt; = T extends string ? true : false;
+
+type Test1 = IsString&lt;string&gt;; // true
+type Test2 = IsString&lt;number&gt;; // false
+
+// Mapped types
+type Readonly&lt;T&gt; = {
+  readonly [P in keyof T]: T[P];
+};
+
+type Partial&lt;T&gt; = {
+  [P in keyof T]?: T[P];
+};
+
+// Utility types with generics
+type Required&lt;T&gt; = {
+  [P in keyof T]-?: T[P];
+};
+
+type Pick&lt;T, K extends keyof T&gt; = {
+  [P in K]: T[P];
+};
+
+type Omit&lt;T, K extends keyof T&gt; = Pick&lt;T, Exclude&lt;keyof T, K&gt;&gt;;
+
+// Recursive types
+type JsonValue = 
+  | string
+  | number
+  | boolean
+  | null
+  | JsonValue[]
+  | { [key: string]: JsonValue };
+      </div>
+    </section>
+
+    <!-- Decorators -->
+    <section class="blog-section" id="decorators">
+      <h2>🎨 Decorators & Metadata</h2>
+      <p>Decorators provide a way to add metadata and modify class declarations and members. They're commonly used in frameworks like Angular and NestJS.</p>
+
+      <h3>Class Decorators</h3>
+      <div class="code-block">
+// Simple class decorator
+function sealed(constructor: Function) {
+  Object.seal(constructor);
+  Object.seal(constructor.prototype);
+}
+
+@sealed
+class Greeter {
+  greeting: string;
+  
+  constructor(message: string) {
+    this.greeting = message;
+  }
+  
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
+
+// Decorator factory
+function classDecorator&lt;T extends { new(...args: any[]): {} }&gt;(constructor: T) {
+  return class extends constructor {
+    greeting = "Overridden";
+  };
+}
+
+@classDecorator
+class Greeter2 {
+  greeting = "original";
+  
+  constructor() {}
+}
+      </div>
+
+      <h3>Method and Property Decorators</h3>
+      <div class="code-block">
+// Method decorator
+function enumerable(value: boolean) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    descriptor.enumerable = value;
+  };
+}
+
+class Greeter {
+  greeting: string;
+  
+  constructor(message: string) {
+    this.greeting = message;
+  }
+  
+  @enumerable(false)
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
+
+// Property decorator
+function format(formatString: string) {
+  return function (target: any, propertyKey: string) {
+    let value = target[propertyKey];
+    
+    const getter = () => {
+      return `${formatString} ${value}`;
+    };
+    
+    const setter = (newVal: string) => {
+      value = newVal;
+    };
+    
+    Object.defineProperty(target, propertyKey, {
+      get: getter,
+      set: setter,
+      enumerable: true,
+      configurable: true
+    });
+  };
+}
+
+class Greeter3 {
+  @format("Hello,")
+  greeting: string;
+}
+      </div>
+
+      <h3>Parameter Decorators</h3>
+      <div class="code-block">
+import "reflect-metadata";
+
+// Parameter decorator
+function validate(target: any, propertyKey: string, parameterIndex: number) {
+  let existingRequiredParameters = Reflect.getMetadata("required", target, propertyKey) || [];
+  existingRequiredParameters.push(parameterIndex);
+  Reflect.defineMetadata("required", existingRequiredParameters, target, propertyKey);
+}
+
+// Method decorator that validates parameters
+function validateParams(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  const originalMethod = descriptor.value;
+  
+  descriptor.value = function(...args: any[]) {
+    let requiredParameters = Reflect.getMetadata("required", target, propertyKey) || [];
+    
+    for (const parameterIndex of requiredParameters) {
+      if (args[parameterIndex] === undefined) {
+        throw new Error(`Missing required argument at position ${parameterIndex}`);
+      }
+    }
+    
+    return originalMethod.apply(this, args);
+  };
+}
+
+class User {
+  @validateParams
+  createUser(@validate name: string, @validate age: number) {
+    console.log(`Creating user ${name} with age ${age}`);
+  }
+}
+      </div>
+    </section>
+
+    <!-- Utility Types -->
+    <section class="blog-section" id="utility">
+      <h2>🛠️ Utility Types</h2>
+      <p>TypeScript provides built-in utility types that facilitate common type transformations. These utilities help you write more concise and maintainable type definitions.</p>
+
+      <h3>Built-in Utility Types</h3>
+      <div class="code-block">
+interface User {
+  id: number;
+  name: string;
+  age: number;
+  email: string;
+  address: {
+    street: string;
+    city: string;
+  };
+}
+
+// Partial - makes all properties optional
+type PartialUser = Partial&lt;User&gt;;
+const updateUser: PartialUser = { name: "John" };
+
+// Required - makes all properties required
+type RequiredUser = Required&lt;PartialUser&gt;;
+
+// Pick - select specific properties
+type UserBasicInfo = Pick&lt;User, "id" | "name" | "email"&gt;;
+
+// Omit - remove specific properties
+type UserWithoutAddress = Omit&lt;User, "address"&gt;;
+
+// Record - create object type with specific keys
+type UserRoles = Record&lt;"admin" | "editor" | "viewer", boolean&gt;;
+
+// Extract - extract types from union
+type StringKeys = Extract&lt;keyof User, string&gt;;
+
+// Exclude - exclude types from union
+type NonStringKeys = Exclude&lt;keyof User, string&gt;;
+
+// ReturnType - get return type of function
+type CreateUserReturn = ReturnType&lt;typeof createUser&gt;;
+function createUser(user: User): Promise&lt;User&gt; {
+  return Promise.resolve(user);
+}
+      </div>
+
+      <h3>Custom Utility Types</h3>
+      <div class="code-block">
+// DeepPartial - makes all nested properties optional
+type DeepPartial&lt;T&gt; = {
+  [P in keyof T]?: T[P] extends object ? DeepPartial&lt;T[P]&gt; : T[P];
+};
+
+type DeepPartialUser = DeepPartial&lt;User&gt;;
+
+// DeepRequired - makes all nested properties required
+type DeepRequired&lt;T&gt; = {
+  [P in keyof T]-?: T[P] extends object ? DeepRequired&lt;T[P]&gt; : T[P];
+};
+
+// Optional - make specific properties optional
+type Optional&lt;T, K extends keyof T&gt; = Omit&lt;T, K&gt; & Partial&lt;Pick&lt;T, K&gt;&gt;;
+
+type OptionalUserEmail = Optional&lt;User, "email" | "address"&gt;;
+
+// ValueOf - get value type of object
+type ValueOf&lt;T&gt; = T[keyof T];
+
+type UserValues = ValueOf&lt;User&gt;; // number | string
+
+// ArrayElement - get element type of array
+type ArrayElement&lt;T&gt; = T extends (infer U)[] ? U : never;
+
+type StringArray = string[];
+type StringElement = ArrayElement&lt;StringArray&gt;; // string
+      </div>
+
+      <h3>Template Literal Types</h3>
+      <div class="code-block">
+// Template literal types (TypeScript 4.1+)
+type EventName = `on${Capitalize&lt;string&gt;}`;
+type ClickEvent = "onClick";
+type HoverEvent = "onHover";
+
+// String manipulation types
+type CamelCase&lt;S extends string&gt; = 
+  S extends `${infer P1}_${infer P2}${infer P3}`
+    ? `${P1}${Uppercase&lt;P2&gt;}${CamelCase&lt;P3&gt;}`
+    : S;
+
+type TestCamel = CamelCase&lt;"hello_world_test"&gt;; // "helloWorldTest"
+
+// Conditional types with template literals
+type Getters&lt;T&gt; = {
+  [K in keyof T as `get${Capitalize&lt;string & K&gt;}`]: () => T[K];
+};
+
+interface User {
+  name: string;
+  age: number;
+}
+
+type UserGetters = Getters&lt;User&gt;;
+// {
+//   getName: () => string;
+//   getAge: () => number;
+// }
+      </div>
+    </section>
+
+    <!-- Type Narrowing -->
+    <section class="blog-section" id="narrowing">
+      <h2>🔍 Type Narrowing</h2>
+      <p>Type narrowing is the process of refining a general type to a more specific type within a conditional block. TypeScript uses various techniques to understand and narrow types.</p>
+
+      <h3>Type Guards</h3>
+      <div class="code-block">
+// typeof type guard
+function padLeft(value: string, padding: string | number) {
+  if (typeof padding === "number") {
+    return Array(padding + 1).join(" ") + value;
+  }
+  if (typeof padding === "string") {
+    return padding + value;
+  }
+  throw new Error(`Expected string or number, got '${padding}'.`);
+}
+
+// Equality narrowing
+function example(x: string | number, y: string | boolean) {
+  if (x === y) {
+    // x and y are both strings here
+    console.log(x.toUpperCase());
+  } else {
+    // x is string | number, y is string | boolean
+    console.log(x);
+    console.log(y);
+  }
+}
+
+// in operator narrowing
+interface Admin {
+  name: string;
+  privileges: string[];
+}
+
+interface Employee {
+  name: string;
+  startDate: Date;
+}
+
+type UnknownEmployee = Employee | Admin;
+
+function printEmployeeInformation(emp: UnknownEmployee) {
+  console.log("Name: " + emp.name);
+  if ("privileges" in emp) {
+    console.log("Privileges: " + emp.privileges);
+  }
+  if ("startDate" in emp) {
+    console.log("Start Date: " + emp.startDate);
+  }
+}
+      </div>
+
+      <h3>instanceof and Custom Type Guards</h3>
+      <div class="code-block">
+// instanceof type guard
+class Car {
+  drive() {
+    console.log("Driving a car");
+  }
+}
+
+class Truck {
+  drive() {
+    console.log("Driving a truck");
+  }
+}
+
+type Vehicle = Car | Truck;
+
+function useVehicle(vehicle: Vehicle) {
+  if (vehicle instanceof Car) {
+    vehicle.drive(); // Car
+  } else {
+    vehicle.drive(); // Truck
+  }
+}
+
+// Custom type guard
+function isString(value: unknown): value is string {
+  return typeof value === "string";
+}
+
+function processValue(value: unknown) {
+  if (isString(value)) {
+    console.log(value.toUpperCase()); // TypeScript knows it's a string
+  }
+}
+
+// Discriminated unions
+interface Square {
+  kind: "square";
+  size: number;
+}
+
+interface Rectangle {
+  kind: "rectangle";
+  width: number;
+  height: number;
+}
+
+interface Circle {
+  kind: "circle";
+  radius: number;
+}
+
+type Shape = Square | Rectangle | Circle;
+
+function getArea(shape: Shape) {
+  switch (shape.kind) {
+    case "square":
+      return shape.size * shape.size;
+    case "rectangle":
+      return shape.width * shape.height;
+    case "circle":
+      return Math.PI * shape.radius ** 2;
+    default:
+      const _exhaustiveCheck: never = shape;
+      return _exhaustiveCheck;
+  }
+}
+      </div>
+
+      <h3>Assertion Functions</h3>
+      <div class="code-block">
+// Assertion function
+function assertIsNumber(value: unknown): asserts value is number {
+  if (typeof value !== "number") {
+    throw new Error("Not a number!");
+  }
+}
+
+function processValue2(value: unknown) {
+  assertIsNumber(value);
+  // After this, TypeScript knows value is number
+  console.log(value * 2);
+}
+
+// Assertion function with generics
+function assert&lt;T&gt;(value: unknown, predicate: (value: unknown) => value is T): asserts value is T {
+  if (!predicate(value)) {
+    throw new Error("Assertion failed");
+  }
+}
+
+function processValue3(value: unknown) {
+  assert(value, (v): v is string => typeof v === "string");
+  // TypeScript knows value is string here
+  console.log(value.toUpperCase());
+}
+      </div>
+    </section>
+
+    <!-- TypeScript in React -->
+    <section class="blog-section" id="react">
+      <h2>⚛️ TypeScript in React</h2>
+      <p>TypeScript enhances React development by providing type safety for props, state, and component interfaces. It helps catch errors early and improves developer experience.</p>
+
+      <h3>Functional Components with TypeScript</h3>
+      <div class="code-block">
+import React, { useState, useEffect, ReactNode } from 'react';
+
+// Basic functional component
+interface UserCardProps {
+  user: {
+    name: string;
+    email: string;
+    age: number;
+  };
+  onEdit?: () => void;
+  children?: ReactNode;
+}
+
+const UserCard: React.FC&lt;UserCardProps&gt; = ({ user, onEdit, children }) => {
+  const [isEditing, setIsEditing] = useState&lt;boolean&gt;(false);
+  
+  useEffect(() => {
+    console.log('UserCard mounted');
+  }, []);
+  
+  return (
+    &lt;div className="user-card"&gt;
+      &lt;h3&gt;{user.name}&lt;/h3&gt;
+      &lt;p&gt;{user.email}&lt;/p&gt;
+      &lt;p&gt;Age: {user.age}&lt;/p&gt;
+      {onEdit && (
+        &lt;button onClick={onEdit}&gt;Edit&lt;/button&gt;
+      )}
+      {children}
+    &lt;/div&gt;
+  );
+};
+
+// Generic component
+interface ListProps&lt;T&gt; {
+  items: T[];
+  renderItem: (item: T) => ReactNode;
+  keyExtractor: (item: T) => string;
+}
+
+function List&lt;T&gt;({ items, renderItem, keyExtractor }: ListProps&lt;T&gt;) {
+  return (
+    &lt;ul&gt;
+      {items.map(item => (
+        &lt;li key={keyExtractor(item)}&gt;
+          {renderItem(item)}
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+
+// Usage
+interface User {
+  id: string;
+  name: string;
+}
+
+const UserList: React.FC = () => {
+  const users: User[] = [
+    { id: "1", name: "John" },
+    { id: "2", name: "Jane" }
+  ];
+  
+  return (
+    &lt;List
+      items={users}
+      renderItem={user => &lt;span&gt;{user.name}&lt;/span&gt;}
+      keyExtractor={user => user.id}
+    /&gt;
+  );
+};
+      </div>
+
+      <h3>Custom Hooks with TypeScript</h3>
+      <div class="code-block">
+// Custom hook with TypeScript
+interface UseApiResult&lt;T&gt; {
+  data: T | null;
+  loading: boolean;
+  error: string | null;
+  refetch: () => Promise&lt;void&gt;;
+}
+
+function useApi&lt;T&gt;(url: string): UseApiResult&lt;T&gt; {
+  const [data, setData] = useState&lt;T | null&gt;(null);
+  const [loading, setLoading] = useState&lt;boolean&gt;(true);
+  const [error, setError] = useState&lt;string | null&gt;(null);
+  
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await fetch(url);
+      const result = await response.json();
+      setData(result);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  useEffect(() => {
+    fetchData();
+  }, [url]);
+  
+  return { data, loading, error, refetch: fetchData };
+}
+
+// Usage
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+const UserProfile: React.FC = () => {
+  const { data: user, loading, error } = useApi&lt;User&gt;('/api/user/1');
+  
+  if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;
+  if (error) return &lt;div&gt;Error: {error}&lt;/div&gt;;
+  if (!user) return &lt;div&gt;No user data&lt;/div&gt;;
+  
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;{user.name}&lt;/h1&gt;
+      &lt;p&gt;{user.email}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+};
+      </div>
+
+      <h3>Context API with TypeScript</h3>
+      <div class="code-block">
+import React, { createContext, useContext, ReactNode, useState } from 'react';
+
+interface ThemeContextType {
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
+}
+
+const ThemeContext = createContext&lt;ThemeContextType | undefined&gt;(undefined);
+
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
+export const ThemeProvider: React.FC&lt;ThemeProviderProps&gt; = ({ children }) => {
+  const [theme, setTheme] = useState&lt;'light' | 'dark'&gt;('light');
+  
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+  
+  return (
+    &lt;ThemeContext.Provider value={{ theme, toggleTheme }}&gt;
+      {children}
+    &lt;/ThemeContext.Provider&gt;
+  );
+};
+
+export const useTheme = (): ThemeContextType => {
+  const context = useContext(ThemeContext);
+  if (context === undefined) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+};
+
+// Usage
+const ThemedComponent: React.FC = () => {
+  const { theme, toggleTheme } = useTheme();
+  
+  return (
+    &lt;div className={`theme-${theme}`}&gt;
+      &lt;p&gt;Current theme: {theme}&lt;/p&gt;
+      &lt;button onClick={toggleTheme}&gt;Toggle Theme&lt;/button&gt;
+    &lt;/div&gt;
+  );
+};
+      </div>
+    </section>
+
+    <!-- TypeScript in Node.js -->
+    <section class="blog-section" id="node">
+      <h2>🟢 TypeScript in Node.js</h2>
+      <p>TypeScript brings type safety and better tooling to Node.js development. It helps catch errors early, improves code maintainability, and provides better IDE support.</p>
+
+      <h3>Setting Up TypeScript for Node.js</h3>
+      <div class="code-block">
+// tsconfig.json for Node.js
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
+
+// package.json scripts
+{
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "dev:watch": "ts-node --watch src/index.ts"
+  }
+}
+      </div>
+
+      <h3>Express.js with TypeScript</h3>
+      <div class="code-block">
+import express, { Request, Response, NextFunction } from 'express';
+import { validationResult, ValidationChain } from 'express-validator';
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface CreateUserRequest extends Request {
+  body: Omit&lt;User, 'id'&gt;;
+}
+
+interface AuthenticatedRequest extends Request {
+  user?: {
+    id: number;
+    email: string;
+  };
+}
+
+const app = express();
+
+// Type-safe middleware
+const authenticate = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+  // Authentication logic
+  req.user = { id: 1, email: 'user@example.com' };
+  next();
+};
+
+// Type-safe route handlers
+const createUser = async (req: CreateUserRequest, res: Response&lt;{ user: User }&gt;) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    
+    const { name, email } = req.body;
+    const user: User = {
+      id: Date.now(),
+      name,
+      email
+    };
+    
+    res.status(201).json({ user });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+// Route with validation
+const userValidation: ValidationChain[] = [
+  body('name').notEmpty().withMessage('Name is required'),
+  body('email').isEmail().withMessage('Valid email is required')
+];
+
+app.post('/users', userValidation, createUser);
+app.use(authenticate);
+
+// Error handling middleware
+interface CustomError extends Error {
+  statusCode?: number;
+}
+
+const errorHandler = (
+  err: CustomError,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const statusCode = err.statusCode || 500;
+  res.status(statusCode).json({
+    error: err.message || 'Internal server error'
+  });
+};
+
+app.use(errorHandler);
+      </div>
+
+      <h3>Database Integration</h3>
+      <div class="code-block">
+// Type-safe database models
+interface UserEntity {
+  id: number;
+  name: string;
+  email: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface CreateUserDto {
+  name: string;
+  email: string;
+}
+
+interface UpdateUserDto {
+  name?: string;
+  email?: string;
+}
+
+// Repository pattern with TypeScript
+abstract class BaseRepository&lt;T&gt; {
+  constructor(protected model: any) {}
+  
+  async create(data: Partial&lt;T&gt;): Promise&lt;T&gt; {
+    const entity = this.model.create(data);
+    return entity.save();
+  }
+  
+  async findById(id: number): Promise&lt;T | null&gt; {
+    return this.model.findByPk(id);
+  }
+  
+  async findAll(): Promise&lt;T[]&gt; {
+    return this.model.findAll();
+  }
+  
+  async update(id: number, data: Partial&lt;T&gt;): Promise&lt;T | null&gt; {
+    await this.model.update(data, { where: { id } });
+    return this.findById(id);
+  }
+  
+  async delete(id: number): Promise&lt;boolean&gt; {
+    const result = await this.model.destroy({ where: { id } });
+    return result > 0;
+  }
+}
+
+class UserRepository extends BaseRepository&lt;UserEntity&gt; {
+  constructor() {
+    super(UserModel);
+  }
+  
+  async findByEmail(email: string): Promise&lt;UserEntity | null&gt; {
+    return this.model.findOne({ where: { email } });
+  }
+}
+
+// Service layer
+class UserService {
+  constructor(private userRepository: UserRepository) {}
+  
+  async createUser(userData: CreateUserDto): Promise&lt;UserEntity&gt; {
+    const existingUser = await this.userRepository.findByEmail(userData.email);
+    if (existingUser) {
+      throw new Error('User with this email already exists');
+    }
+    
+    return this.userRepository.create(userData);
+  }
+  
+  async getUserById(id: number): Promise&lt;UserEntity&gt; {
+    const user = await this.userRepository.findById(id);
+    if (!user) {
+      throw new Error('User not found');
+    }
+    return user;
+  }
+}
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your TypeScript knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🔧 TypeScript Library</h4>
+          <p>Build a reusable TypeScript library with generics, utility types, and comprehensive type definitions</p>
+        </div>
+        <div class="feature-card">
+          <h4>⚛️ React + TypeScript App</h4>
+          <p>Create a full-featured React application with TypeScript, custom hooks, and type-safe components</p>
+        </div>
+        <div class="feature-card">
+          <h4>🟢 Node.js API</h4>
+          <p>Develop a RESTful API with Express.js, TypeScript, and type-safe database integration</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎨 CLI Tool</h4>
+          <p>Build a command-line tool with TypeScript, argument parsing, and plugin architecture</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>Enable strict mode in tsconfig.json for maximum type safety</li>
+        <li>Use interfaces for object shapes and type aliases for unions</li>
+        <li>Prefer explicit return types for public functions</li>
+        <li>Use generics for reusable components and functions</li>
+        <li>Implement proper error handling with typed errors</li>
+        <li>Write comprehensive type tests with tools like tsd</li>
+        <li>Use ESLint with TypeScript rules for code consistency</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered TypeScript and are ready to build type-safe applications with confidence. You now understand advanced type concepts, generics, decorators, and how to apply TypeScript in real-world scenarios.</p>
+      
+      <p>TypeScript continues to evolve with new features and improvements. Keep practicing, contributing to open-source TypeScript projects, and staying current with the latest developments in the TypeScript ecosystem.</p>
+
+      <div style="background: linear-gradient(135deg, #0d47a1, #42a5f5); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Continue Your TypeScript Journey!</h3>
+        <p style="margin-bottom: 20px;">Apply your TypeScript skills in advanced frameworks and tools!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-8-nextjs-14-full-course.html" class="btn btn-outline" style="background: white; color: #0d47a1;">Next.js with TypeScript →</a>
+          <a href="blog-17-graphql-frontend-devs.html" class="btn btn-outline" style="background: white; color: #0d47a1;">GraphQL & TypeScript →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #0d47a1;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

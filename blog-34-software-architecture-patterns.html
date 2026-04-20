@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Software Architecture Patterns with comprehensive guide. Learn microservices, monolith, event-driven, distributed systems and build scalable software architectures. Premium course.">
+  <meta name="keywords" content="Software architecture tutorial, microservices, monolith architecture, event-driven architecture, distributed systems, design patterns, learn software architecture">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Software Architecture Patterns - Build Scalable Systems">
+  <meta property="og:description" content="Premium Software Architecture course covering microservices, monolith, event-driven, distributed systems and building scalable software architectures.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-34-software-architecture-patterns.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/software-architecture-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Software Architecture Patterns - Build Scalable Systems">
+  <meta name="twitter:description" content="Premium Software Architecture course covering microservices, monolith, event-driven, distributed systems and building scalable software architectures.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/software-architecture-course.jpg">
+  <title>Software Architecture Patterns - Build Scalable Systems | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-34-software-architecture-patterns.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Software Architecture Patterns",
+    "description": "Microservices, monolith, event-driven, distributed systems and building scalable software architectures.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "Software Architecture",
+    "teaches": ["Software Architecture", "Microservices", "Monolith Architecture", "Event-Driven Architecture", "Distributed Systems", "Design Patterns", "Scalable Systems"],
+    "timeRequired": "PT20H",
+    "coursePrerequisites": "Software development experience and understanding of system design",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Dr. James Wilson"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "10000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "1199",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #6366f1;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .architecture-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Software Architecture Patterns</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Software Architecture with microservices, monolith, event-driven, distributed systems and build scalable software architectures.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 78 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 20h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.9 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 10K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">JW</div>
+        <div>
+          <div style="font-weight: 700;">Dr. James Wilson</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Architecture Expert & System Designer</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹1199</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Software Architecture</a></li>
+        <li><a href="#monolith">2. Monolith Architecture</a></li>
+        <li><a href="#microservices">3. Microservices Architecture</a></li>
+        <li><a href="#event-driven">4. Event-Driven Architecture</a></li>
+        <li><a href="#distributed">5. Distributed Systems</a></li>
+        <li><a href="#design-patterns">6. Architectural Design Patterns</a></li>
+        <li><a href="#scalability">7. Scalability Patterns</a></li>
+        <li><a href="#resilience">8. Resilience & Fault Tolerance</a></li>
+        <li><a href="#security">9. Security Architecture</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>🏗️ Introduction to Software Architecture</h2>
+      <p>Software architecture is the fundamental structure of a software system, encompassing its components, relationships, and principles governing its design and evolution.</p>
+      
+      <p>This comprehensive course teaches you to master software architecture patterns, from traditional monoliths to modern microservices and event-driven systems. Learn to design scalable, maintainable, and robust software architectures.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🏗️</div>
+          <h4>Architecture Patterns</h4>
+          <p>Master various architectural patterns and their use cases</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h4>Microservices</h4>
+          <p>Build distributed microservices architectures</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h4>Event-Driven</h4>
+          <p>Design scalable event-driven systems</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h4>Resilience</h4>
+          <p>Build fault-tolerant and resilient systems</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Microservices -->
+    <section class="blog-section" id="microservices">
+      <h2>🔧 Microservices Architecture</h2>
+      <p>Master microservices architecture principles and patterns. Learn to design, implement, and manage distributed microservices systems with proper communication, data management, and deployment strategies.</p>
+
+      <h3>Microservices Implementation Example</h3>
+      <div class="code-block">
+# Microservices Architecture Example
+# User Service (Node.js + Express)
+# user-service/package.json
+{
+  "name": "user-service",
+  "version": "1.0.0",
+  "description": "User Management Microservice",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "helmet": "^6.0.1",
+    "dotenv": "^16.0.3",
+    "winston": "^3.8.2",
+    "prom-client": "^14.2.0",
+    "circuit-breaker-js": "^1.0.1"
+  }
+}
+
+# user-service/server.js
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+require('dotenv').config();
+
+const userService = require('./services/userService');
+const authMiddleware = require('./middleware/auth');
+const rateLimiter = require('./middleware/rateLimiter');
+const circuitBreaker = require('./middleware/circuitBreaker');
+const logger = require('./utils/logger');
+const metrics = require('./utils/metrics');
+
+const app = express();
+
+// Security middleware
+app.use(helmet());
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000'],
+  credentials: true
+}));
+
+// Rate limiting
+app.use(rateLimiter);
+
+// Metrics middleware
+app.use(metrics.middleware);
+
+// Body parsing
+app.use(express.json());
+
+// Database connection
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/user-service', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => logger.info('Connected to MongoDB'))
+.catch(err => logger.error('MongoDB connection error:', err));
+
+// Health check
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    service: 'user-service',
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    version: process.env.npm_package_version
+  });
+});
+
+// Metrics endpoint
+app.get('/metrics', (req, res) => {
+  res.set('Content-Type', metrics.register.contentType);
+  res.end(metrics.register.metrics());
+});
+
+// Routes
+app.post('/api/users', circuitBreaker(userService.createUser));
+app.get('/api/users/:id', authMiddleware, circuitBreaker(userService.getUserById));
+app.put('/api/users/:id', authMiddleware, circuitBreaker(userService.updateUser));
+app.delete('/api/users/:id', authMiddleware, circuitBreaker(userService.deleteUser));
+app.post('/api/auth/login', circuitBreaker(userService.login));
+app.post('/api/auth/refresh', circuitBreaker(userService.refreshToken));
+
+// Error handling
+app.use((err, req, res, next) => {
+  logger.error('Unhandled error:', err);
+  res.status(500).json({
+    error: 'Internal Server Error',
+    message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
+  });
+});
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  logger.info(`User service running on port ${PORT}`);
+});
+
+# user-service/services/userService.js
+const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const logger = require('../utils/logger');
+const eventBus = require('../utils/eventBus');
+
+class UserService {
+  async createUser(userData) {
+    try {
+      const { email, username, password, firstName, lastName } = userData;
+      
+      // Check if user already exists
+      const existingUser = await User.findOne({
+        $or: [{ email }, { username }]
+      });
+      
+      if (existingUser) {
+        throw new Error('User with this email or username already exists');
+      }
+      
+      // Hash password
+      const hashedPassword = await bcrypt.hash(password, 12);
+      
+      const user = new User({
+        email,
+        username,
+        password: hashedPassword,
+        firstName,
+        lastName
+      });
+      
+      await user.save();
+      
+      // Publish user created event
+      await eventBus.publish('user.created', {
+        userId: user._id,
+        email: user.email,
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        timestamp: new Date().toISOString()
+      });
+      
+      logger.info(`User created: ${user._id}`);
+      
+      return {
+        id: user._id,
+        email: user.email,
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName
+      };
+    } catch (error) {
+      logger.error('Error creating user:', error);
+      throw error;
+    }
+  }
+  
+  async getUserById(userId) {
+    try {
+      const user = await User.findById(userId).select('-password');
+      if (!user) {
+        throw new Error('User not found');
+      }
+      return user;
+    } catch (error) {
+      logger.error('Error getting user:', error);
+      throw error;
+    }
+  }
+  
+  async updateUser(userId, updateData) {
+    try {
+      const user = await User.findByIdAndUpdate(
+        userId,
+        updateData,
+        { new: true, runValidators: true }
+      ).select('-password');
+      
+      if (!user) {
+        throw new Error('User not found');
+      }
+      
+      // Publish user updated event
+      await eventBus.publish('user.updated', {
+        userId: user._id,
+        updatedFields: Object.keys(updateData),
+        timestamp: new Date().toISOString()
+      });
+      
+      logger.info(`User updated: ${userId}`);
+      return user;
+    } catch (error) {
+      logger.error('Error updating user:', error);
+      throw error;
+    }
+  }
+  
+  async deleteUser(userId) {
+    try {
+      const user = await User.findByIdAndDelete(userId);
+      if (!user) {
+        throw new Error('User not found');
+      }
+      
+      // Publish user deleted event
+      await eventBus.publish('user.deleted', {
+        userId: user._id,
+        email: user.email,
+        timestamp: new Date().toISOString()
+      });
+      
+      logger.info(`User deleted: ${userId}`);
+      return { message: 'User deleted successfully' };
+    } catch (error) {
+      logger.error('Error deleting user:', error);
+      throw error;
+    }
+  }
+  
+  async login(email, password) {
+    try {
+      const user = await User.findOne({ email, isActive: true });
+      if (!user) {
+        throw new Error('Invalid credentials');
+      }
+      
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (!isPasswordValid) {
+        throw new Error('Invalid credentials');
+      }
+      
+      // Generate tokens
+      const accessToken = jwt.sign(
+        { userId: user._id, email: user.email },
+        process.env.JWT_SECRET,
+        { expiresIn: '15m' }
+      );
+      
+      const refreshToken = jwt.sign(
+        { userId: user._id },
+        process.env.JWT_REFRESH_SECRET,
+        { expiresIn: '7d' }
+      );
+      
+      // Update last login
+      user.lastLogin = new Date();
+      await user.save();
+      
+      // Publish login event
+      await eventBus.publish('user.login', {
+        userId: user._id,
+        timestamp: new Date().toISOString()
+      });
+      
+      logger.info(`User logged in: ${user._id}`);
+      
+      return {
+        accessToken,
+        refreshToken,
+        user: {
+          id: user._id,
+          email: user.email,
+          username: user.username,
+          firstName: user.firstName,
+          lastName: user.lastName
+        }
+      };
+    } catch (error) {
+      logger.error('Error during login:', error);
+      throw error;
+    }
+  }
+  
+  async refreshToken(refreshToken) {
+    try {
+      const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+      const user = await User.findById(decoded.userId).select('-password');
+      
+      if (!user || !user.isActive) {
+        throw new Error('Invalid refresh token');
+      }
+      
+      const newAccessToken = jwt.sign(
+        { userId: user._id, email: user.email },
+        process.env.JWT_SECRET,
+        { expiresIn: '15m' }
+      );
+      
+      return { accessToken: newAccessToken };
+    } catch (error) {
+      logger.error('Error refreshing token:', error);
+      throw error;
+    }
+  }
+}
+
+module.exports = new UserService();
+
+# API Gateway Configuration
+# api-gateway/kong.yml
+_format_version: "3.0"
+
+services:
+  - name: user-service
+    url: http://user-service:3001
+    plugins:
+      - name: rate-limiting
+        config:
+          minute: 100
+          hour: 1000
+      - name: prometheus
+        config:
+          per_consumer: true
+    routes:
+      - name: user-routes
+        paths:
+          - /api/users
+          - /api/auth
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+
+  - name: order-service
+    url: http://order-service:3002
+    plugins:
+      - name: rate-limiting
+        config:
+          minute: 200
+          hour: 2000
+      - name: prometheus
+        config:
+          per_consumer: true
+    routes:
+      - name: order-routes
+        paths:
+          - /api/orders
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+
+  - name: product-service
+    url: http://product-service:3003
+    plugins:
+      - name: rate-limiting
+        config:
+          minute: 500
+          hour: 5000
+      - name: prometheus
+        config:
+          per_consumer: true
+    routes:
+      - name: product-routes
+        paths:
+          - /api/products
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+
+# Docker Compose for Microservices
+# docker-compose.yml
+version: '3.8'
+
+services:
+  # API Gateway
+  kong:
+    image: kong:3.3
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /kong/declarative/kong.yml
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+    volumes:
+      - ./kong.yml:/kong/declarative/kong.yml
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    networks:
+      - microservices
+
+  # User Service
+  user-service:
+    build: ./user-service
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/user-service
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
+    depends_on:
+      - mongodb
+    networks:
+      - microservices
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+
+  # Order Service
+  order-service:
+    build: ./order-service
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/order-service
+      - RABBITMQ_URL=amqp://rabbitmq:5672
+    depends_on:
+      - mongodb
+      - rabbitmq
+    networks:
+      - microservices
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+
+  # Product Service
+  product-service:
+    build: ./product-service
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/product-service
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - microservices
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+
+  # Message Broker
+  rabbitmq:
+    image: rabbitmq:3.11-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin123
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - microservices
+
+  # Database
+  mongodb:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - microservices
+
+  # Cache
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - microservices
+
+  # Monitoring
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    networks:
+      - microservices
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - microservices
+
+volumes:
+  mongodb_data:
+  redis_data:
+  rabbitmq_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  microservices:
+    driver: bridge
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your software architecture knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🛒 E-commerce Microservices</h4>
+          <p>Build complete microservices architecture for e-commerce platform</p>
+        </div>
+        <div class="feature-card">
+          <h4>📱 Event-Driven Social Network</h4>
+          <p>Create scalable social network with event-driven architecture</p>
+        </div>
+        <div class="feature-card">
+          <h4>🏦 Banking System</h4>
+          <p>Design secure banking system with distributed architecture</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Analytics Platform</h4>
+          <p>Build data analytics platform with microservices architecture</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Choose the right architecture pattern for your use case</li>
+        <li>✅ Implement proper service boundaries and responsibilities</li>
+        <li>✅ Design for scalability and maintainability from the start</li>
+        <li>✅ Implement proper monitoring and observability</li>
+        <li>✅ Use circuit breakers and fallback mechanisms</li>
+        <li>✅ Implement proper data consistency strategies</li>
+        <li>✅ Design for failure and implement resilience patterns</li>
+        <li>✅ Document architecture decisions and trade-offs</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Software Architecture Patterns and are ready to design and build scalable, robust systems. You now understand various architectural patterns, microservices, event-driven systems, and distributed computing principles.</p>
+      
+      <p>Software architecture is a continuously evolving field with new patterns and technologies. Keep exploring emerging architectural trends, stay current with best practices, and continue creating innovative system designs.</p>
+
+      <div style="background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become an Architecture Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering advanced architectural patterns and distributed systems!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-29-devops-complete-guide.html" class="btn btn-outline" style="background: white; color: #6366f1;">DevOps →</a>
+          <a href="blog-26-cloud-computing-aws.html" class="btn btn-outline" style="background: white; color: #6366f1;">Cloud Computing →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #6366f1;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

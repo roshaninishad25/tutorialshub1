@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Next.js 14 with comprehensive guide. Learn App Router, Server Components, Server Actions, API routes, authentication, deployment and build production-ready full-stack applications. Premium course.">
+  <meta name="keywords" content="Next.js 14 tutorial, App Router, Server Components, Server Actions, Next.js API routes, Next.js authentication, Next.js deployment, learn Next.js">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Next.js 14 Full Course - Production-Ready Full-Stack Apps">
+  <meta property="og:description" content="Premium Next.js 14 course covering App Router, Server Components, Server Actions, API routes, authentication, deployment and production-ready full-stack applications.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-15-nextjs-14-full-course.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/nextjs-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Next.js 14 Full Course - Production-Ready Full-Stack Apps">
+  <meta name="twitter:description" content="Premium Next.js 14 course covering App Router, Server Components, Server Actions, API routes, authentication, deployment and production-ready full-stack applications.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/nextjs-course.jpg">
+  <title>Next.js 14 Full Course - Production-Ready Full-Stack Apps | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-15-nextjs-14-full-course.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Next.js 14 Full Course",
+    "description": "App Router, Server Components, Server Actions, API routes, authentication, deployment and production-ready full-stack applications.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "Next.js Development",
+    "teaches": ["Next.js 14", "App Router", "Server Components", "Server Actions", "API Routes", "Authentication", "Deployment", "Full-Stack Development"],
+    "timeRequired": "PT15H",
+    "coursePrerequisites": "React fundamentals and JavaScript ES6+",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Amit Singh"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "16000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "999",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #000000, #ffffff);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #000000;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .nextjs-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Next.js 14 Full Course</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Next.js 14 with App Router, Server Components, Server Actions, API routes, authentication, deployment and build production-ready full-stack applications.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 58 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 15h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.9 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 16K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">AS</div>
+        <div>
+          <div style="font-weight: 700;">Amit Singh</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Next.js Expert & Full-Stack Developer</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹999</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Next.js 14</a></li>
+        <li><a href="#setup">2. Setup & Project Structure</a></li>
+        <li><a href="#app-router">3. App Router Deep Dive</a></li>
+        <li><a href="#server-components">4. Server Components</a></li>
+        <li><a href="#server-actions">5. Server Actions</a></li>
+        <li><a href="#data-fetching">6. Advanced Data Fetching</a></li>
+        <li><a href="#api-routes">7. API Routes & Backend</a></li>
+        <li><a href="#authentication">8. Authentication & Authorization</a></li>
+        <li><a href="#deployment">9. Deployment & Production</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>▲ Next.js 14 Introduction</h2>
+      <p>Next.js 14 represents the pinnacle of React framework development, introducing revolutionary features like the App Router, Server Components, and Server Actions. This comprehensive course teaches you to build production-ready full-stack applications with the latest Next.js features.</p>
+      
+      <p>Master the new paradigm shift in React development with Server Components, learn advanced data fetching patterns, implement robust authentication systems, and deploy scalable applications to production.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">▲</div>
+          <h4>App Router</h4>
+          <p>Master the new file-system based router with layouts and nested routes</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🖥️</div>
+          <h4>Server Components</h4>
+          <p>Build server-rendered components for optimal performance</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h4>Server Actions</h4>
+          <p>Implement server-side data mutations with ease</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h4>Production Ready</h4>
+          <p>Deploy scalable applications with best practices</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Setup -->
+    <section class="blog-section" id="setup">
+      <h2>⚙️ Setup & Project Structure</h2>
+      <p>Learn to set up a Next.js 14 project with optimal configuration and understand the new project structure for the App Router.</p>
+
+      <h3>Creating a Next.js Project</h3>
+      <div class="code-block">
+# Create new Next.js 14 project
+npx create-next-app@latest my-app --typescript --tailwind --eslint --app
+
+# Or with all options
+npx create-next-app@latest my-app \
+  --typescript \
+  --tailwind \
+  --eslint \
+  --app \
+  --src-dir \
+  --import-alias "@/*"
+
+# Project structure
+my-app/
+├── app/                    # App Router directory
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx           # Home page
+│   ├── loading.tsx        # Loading UI
+│   ├── error.tsx          # Error UI
+│   └── not-found.tsx      # 404 page
+├── public/                # Static assets
+├── src/                   # Optional source directory
+│   ├── app/              # App pages if using src-dir
+│   ├── components/       # Reusable components
+│   ├── lib/              # Utility functions
+│   └── styles/           # CSS modules
+├── next.config.js        # Next.js configuration
+├── package.json
+├── tailwind.config.js    # Tailwind CSS config
+└── tsconfig.json         # TypeScript config
+      </div>
+
+      <h3>Configuration Files</h3>
+      <div class="code-block">
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    // Enable experimental features
+    serverActions: true,
+    appDir: true,
+  },
+  images: {
+    domains: ['example.com'],
+    formats: ['image/webp', 'image/avif'],
+  },
+  env: {
+    CUSTOM_KEY: process.env.CUSTOM_KEY,
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/old/:path*',
+        destination: '/api/new/:path*',
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/old-path',
+        destination: '/new-path',
+        permanent: true,
+      },
+    ];
+  },
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Custom webpack configuration
+    return config;
+  },
+};
+
+module.exports = nextConfig;
+
+// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#eff6ff',
+          500: '#3b82f6',
+          900: '#1e3a8a',
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+  ],
+};
+      </div>
+
+      <h3>TypeScript Configuration</h3>
+      <div class="code-block">
+// tsconfig.json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "es6"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/lib/*": ["./src/lib/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+
+// next-env.d.ts (auto-generated)
+/// &lt;reference types="next" /&gt;
+/// &lt;reference types="next/image-types/global" /&gt;
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/basic-features/typescript for more information.
+      </div>
+    </section>
+
+    <!-- App Router -->
+    <section class="blog-section" id="app-router">
+      <h2>🛣️ App Router Deep Dive</h2>
+      <p>The App Router is a revolutionary new routing system in Next.js 14 that provides improved performance, developer experience, and powerful new capabilities.</p>
+
+      <h3>Basic Routing</h3>
+      <div class="code-block">
+// app/page.tsx - Home page
+export default function HomePage() {
+  return (
+    &lt;main&gt;
+      &lt;h1&gt;Welcome to Next.js 14&lt;/h1&gt;
+      &lt;p&gt;This is the home page using App Router.&lt;/p&gt;
+    &lt;/main&gt;
+  );
+}
+
+// app/about/page.tsx - About page
+export default function AboutPage() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;About Us&lt;/h1&gt;
+      &lt;p&gt;Learn more about our company.&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// app/blog/[slug]/page.tsx - Dynamic route
+interface BlogPostPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function BlogPostPage({ params }: BlogPostPageProps) {
+  return (
+    &lt;article&gt;
+      &lt;h1&gt;Blog Post: {params.slug}&lt;/h1&gt;
+      &lt;p&gt;This is a dynamic blog post page.&lt;/p&gt;
+    &lt;/article&gt;
+  );
+}
+
+// app/shop/[...slug]/page.tsx - Catch-all route
+interface ShopPageProps {
+  params: {
+    slug: string[];
+  };
+}
+
+export default function ShopPage({ params }: ShopPageProps) {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Shop&lt;/h1&gt;
+      &lt;p&gt;Path: {params.slug.join('/')}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+      </div>
+
+      <h3>Layouts</h3>
+      <div class="code-block">
+// app/layout.tsx - Root layout
+import './globals.css';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata = {
+  title: 'My Next.js App',
+  description: 'Built with Next.js 14',
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    &lt;html lang="en"&gt;
+      &lt;body className={inter.className}&gt;
+        &lt;header&gt;
+          &lt;nav&gt;
+            &lt;a href="/"&gt;Home&lt;/a&gt;
+            &lt;a href="/about"&gt;About&lt;/a&gt;
+            &lt;a href="/blog"&gt;Blog&lt;/a&gt;
+          &lt;/nav&gt;
+        &lt;/header&gt;
+        &lt;main&gt;{children}&lt;/main&gt;
+        &lt;footer&gt;
+          &lt;p&gt;&copy; 2024 My App&lt;/p&gt;
+        &lt;/footer&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  );
+}
+
+// app/dashboard/layout.tsx - Nested layout
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    &lt;section&gt;
+      &lt;nav&gt;
+        &lt;h2&gt;Dashboard Navigation&lt;/h2&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="/dashboard"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="/dashboard/settings"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="/dashboard/analytics"&gt;Analytics&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+      &lt;div className="dashboard-content"&gt;
+        {children}
+      &lt;/div&gt;
+    &lt;/section&gt;
+  );
+}
+
+// app/dashboard/page.tsx
+export default function DashboardPage() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Dashboard Overview&lt;/h1&gt;
+      &lt;p&gt;Welcome to your dashboard!&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+      </div>
+
+      <h3>Route Groups</h3>
+      <div class="code-block">
+// app/(marketing)/layout.tsx - Route group layout
+export default function MarketingLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    &lt;div className="marketing-layout"&gt;
+      &lt;header&gt;Marketing Header&lt;/header&gt;
+      {children}
+      &lt;footer&gt;Marketing Footer&lt;/footer&gt;
+    &lt;/div&gt;
+  );
+}
+
+// app/(marketing)/page.tsx
+export default function MarketingHomePage() {
+  return &lt;h1&gt;Marketing Home Page&lt;/h1&gt;;
+}
+
+// app/(marketing)/about/page.tsx
+export default function AboutPage() {
+  return &lt;h1&gt;About Page&lt;/h1&gt;;
+}
+
+// app/(dashboard)/layout.tsx - Another route group
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    &lt;div className="dashboard-layout"&gt;
+      &lt;aside&gt;Dashboard Sidebar&lt;/aside&gt;
+      &lt;main&gt;{children}&lt;/main&gt;
+    &lt;/div&gt;
+  );
+}
+
+// app/(dashboard)/dashboard/page.tsx
+export default function DashboardPage() {
+  return &lt;h1&gt;Dashboard&lt;/h1&gt;;
+}
+
+// Route groups don't affect URL structure
+// / -> Marketing home page
+// /about -> About page
+// /dashboard -> Dashboard page
+      </div>
+    </section>
+
+    <!-- Server Components -->
+    <section class="blog-section" id="server-components">
+      <h2>🖥️ Server Components</h2>
+      <p>Server Components are a revolutionary feature that allows components to run on the server, providing direct access to data sources and improved performance.</p>
+
+      <h3>Basic Server Components</h3>
+      <div class="code-block">
+// app/components/UserProfile.tsx - Server component
+import { getUser } from '@/lib/users';
+
+interface UserProfileProps {
+  userId: string;
+}
+
+export default async function UserProfile({ userId }: UserProfileProps) {
+  const user = await getUser(userId);
+
+  return (
+    &lt;div className="user-profile"&gt;
+      &lt;h2&gt;{user.name}&lt;/h2&gt;
+      &lt;p&gt;{user.email}&lt;/p&gt;
+      &lt;p&gt;Member since: {new Date(user.createdAt).toLocaleDateString()}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// app/users/[id]/page.tsx - Using server component
+import UserProfile from '@/components/UserProfile';
+
+interface UserPageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default function UserPage({ params }: UserPageProps) {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;User Details&lt;/h1&gt;
+      &lt;UserProfile userId={params.id} /&gt;
+    &lt;/div&gt;
+  );
+}
+
+// app/components/PostList.tsx - Server component with data fetching
+import { getPosts } from '@/lib/posts';
+
+export default async function PostList() {
+  const posts = await getPosts();
+
+  return (
+    &lt;div className="post-list"&gt;
+      &lt;h2&gt;Latest Posts&lt;/h2&gt;
+      {posts.map((post) => (
+        &lt;article key={post.id} className="post-item"&gt;
+          &lt;h3&gt;{post.title}&lt;/h3&gt;
+          &lt;p&gt;{post.excerpt}&lt;/p&gt;
+          &lt;small&gt;{new Date(post.createdAt).toLocaleDateString()}&lt;/small&gt;
+        &lt;/article&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}
+      </div>
+
+      <h3>Mixing Server and Client Components</h3>
+      <div class="code-block">
+// app/components/InteractiveButton.tsx - Client component
+'use client';
+
+import { useState } from 'react';
+
+interface InteractiveButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
+export default function InteractiveButton({ children, onClick }: InteractiveButtonProps) {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(prev => prev + 1);
+    onClick?.();
+  };
+
+  return (
+    &lt;button onClick={handleClick}&gt;
+      {children} (clicked {count} times)
+    &lt;/button&gt;
+  );
+}
+
+// app/components/UserCard.tsx - Mixed component
+import { getUser } from '@/lib/users';
+import InteractiveButton from './InteractiveButton';
+
+interface UserCardProps {
+  userId: string;
+}
+
+export default async function UserCard({ userId }: UserCardProps) {
+  const user = await getUser(userId);
+
+  return (
+    &lt;div className="user-card"&gt;
+      &lt;h3&gt;{user.name}&lt;/h3&gt;
+      &lt;p&gt;{user.bio}&lt;/p&gt;
+      &lt;InteractiveButton&gt;
+        Follow {user.name}
+      &lt;/InteractiveButton&gt;
+    &lt;/div&gt;
+  );
+}
+
+// app/components/SearchableUserList.tsx - Server component with client interactivity
+import { searchUsers } from '@/lib/users';
+import UserSearch from './UserSearch';
+
+interface SearchableUserListProps {
+  initialQuery?: string;
+}
+
+export default async function SearchableUserList({ 
+  initialQuery = '' 
+}: SearchableUserListProps) {
+  const users = await searchUsers(initialQuery);
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;User Directory&lt;/h2&gt;
+      &lt;UserSearch initialUsers={users} /&gt;
+    &lt;/div&gt;
+  );
+}
+
+// app/components/UserSearch.tsx - Client component for search functionality
+'use client';
+
+import { useState, useEffect } from 'react';
+import { searchUsers } from '@/lib/users';
+
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
+interface UserSearchProps {
+  initialUsers: User[];
+}
+
+export default function UserSearch({ initialUsers }: UserSearchProps) {
+  const [users, setUsers] = useState(initialUsers);
+  const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (query.trim()) {
+      setLoading(true);
+      searchUsers(query).then((results) => {
+        setUsers(results);
+        setLoading(false);
+      });
+    } else {
+      setUsers(initialUsers);
+    }
+  }, [query, initialUsers]);
+
+  return (
+    &lt;div&gt;
+      &lt;input
+        type="text"
+        placeholder="Search users..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        className="search-input"
+      /&gt;
+      {loading ? (
+        &lt;p&gt;Searching...&lt;/p&gt;
+      ) : (
+        &lt;ul&gt;
+          {users.map((user) => (
+            &lt;li key={user.id}&gt;
+              {user.name} - {user.email}
+            &lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      )}
+    &lt;/div&gt;
+  );
+}
+      </div>
+
+      <h3>Server Component Patterns</h3>
+      <div class="code-block">
+// app/components/DataProvider.tsx - Data fetching pattern
+import { cache } from 'react';
+
+interface Post {
+  id: string;
+  title: string;
+  content: string;
+  author: string;
+  createdAt: string;
+}
+
+// Cached data fetching function
+const getPosts = cache(async () => {
+  const response = await fetch('https://api.example.com/posts', {
+    next: { revalidate: 3600 }, // Revalidate every hour
+  });
+  return response.json();
+});
+
+export default async function DataProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const posts = await getPosts();
+
+  return (
+    &lt;PostContext.Provider value={posts}&gt;
+      {children}
+    &lt;/PostContext.Provider&gt;
+  );
+}
+
+// app/components/StreamingContent.tsx - Streaming pattern
+import { Suspense } from 'react';
+import UserCard from './UserCard';
+import PostList from './PostList';
+
+export default function StreamingContent() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Dashboard&lt;/h1&gt;
+      &lt;Suspense fallback={&lt;div&gt;Loading user info...&lt;/div&gt;}&gt;
+        &lt;UserCard userId="123" /&gt;
+      &lt;/Suspense&gt;
+      &lt;Suspense fallback={&lt;div&gt;Loading posts...&lt;/div&gt;}&gt;
+        &lt;PostList /&gt;
+      &lt;/Suspense&gt;
+    &lt;/div&gt;
+  );
+}
+
+// app/components/ErrorBoundary.tsx - Error handling for server components
+interface ErrorBoundaryProps {
+  children: React.ReactNode;
+  fallback?: React.ReactNode;
+}
+
+export default function ErrorBoundary({ 
+  children, 
+  fallback 
+}: ErrorBoundaryProps) {
+  return (
+    &lt;div className="error-boundary"&gt;
+      {children}
+    &lt;/div&gt;
+  );
+}
+
+// app/error.tsx - Global error boundary
+'use client';
+
+import { useEffect } from 'react';
+
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Something went wrong!&lt;/h2&gt;
+      &lt;button onClick={reset}&gt;Try again&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+      </div>
+    </section>
+
+    <!-- Server Actions -->
+    <section class="blog-section" id="server-actions">
+      <h2>⚡ Server Actions</h2>
+      <p>Server Actions allow you to define server-side functions that can be called from client components, simplifying data mutations and form handling.</p>
+
+      <h3>Basic Server Actions</h3>
+      <div class="code-block">
+// app/actions/user.ts - Server action definitions
+'use server';
+
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { z } from 'zod';
+
+const CreateUserSchema = z.object({
+  name: z.string().min(2),
+  email: z.string().email(),
+});
+
+export async function createUser(formData: FormData) {
+  const validatedFields = CreateUserSchema.safeParse({
+    name: formData.get('name'),
+    email: formData.get('email'),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+
+  try {
+    // Create user in database
+    const response = await fetch('https://api.example.com/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(validatedFields.data),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create user');
+    }
+
+    // Revalidate the users page cache
+    revalidatePath('/users');
+    
+    // Redirect to users page
+    redirect('/users');
+  } catch (error) {
+    return {
+      error: 'Failed to create user. Please try again.',
+    };
+  }
+}
+
+export async function updateUser(userId: string, formData: FormData) {
+  const validatedFields = CreateUserSchema.safeParse({
+    name: formData.get('name'),
+    email: formData.get('email'),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+
+  try {
+    const response = await fetch(`https://api.example.com/users/${userId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(validatedFields.data),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update user');
+    }
+
+    revalidatePath('/users');
+    revalidatePath(`/users/${userId}`);
+  } catch (error) {
+    return {
+      error: 'Failed to update user. Please try again.',
+    };
+  }
+}
+
+export async function deleteUser(userId: string) {
+  try {
+    const response = await fetch(`https://api.example.com/users/${userId}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to delete user');
+    }
+
+    revalidatePath('/users');
+    redirect('/users');
+  } catch (error) {
+    return {
+      error: 'Failed to delete user. Please try again.',
+    };
+  }
+}
+      </div>
+
+      <h3>Using Server Actions in Forms</h3>
+      <div class="code-block">
+// app/users/create/page.tsx - Create user page
+import { createUser } from '@/app/actions/user';
+
+export default function CreateUserPage() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Create New User&lt;/h1&gt;
+      &lt;form action={createUser}&gt;
+        &lt;div&gt;
+          &lt;label htmlFor="name"&gt;Name:&lt;/label&gt;
+          &lt;input type="text" id="name" name="name" required /&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;label htmlFor="email"&gt;Email:&lt;/label&gt;
+          &lt;input type="email" id="email" name="email" required /&gt;
+        &lt;/div&gt;
+        &lt;button type="submit"&gt;Create User&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  );
+}
+
+// app/components/UserForm.tsx - Reusable form component
+'use client';
+
+import { useFormState } from 'react-dom';
+import { createUser } from '@/app/actions/user';
+
+interface UserFormProps {
+  initialData?: {
+    name?: string;
+    email?: string;
+  };
+}
+
+export default function UserForm({ initialData = {} }: UserFormProps) {
+  const [state, formAction] = useFormState(createUser, null);
+
+  return (
+    &lt;form action={formAction}&gt;
+      &lt;div&gt;
+        &lt;label htmlFor="name"&gt;Name:&lt;/label&gt;
+        &lt;input
+          type="text"
+          id="name"
+          name="name"
+          defaultValue={initialData.name}
+          required
+        /&gt;
+        {state?.errors?.name && (
+          &lt;p className="error"&gt;{state.errors.name[0]}&lt;/p&gt;
+        )}
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;label htmlFor="email"&gt;Email:&lt;/label&gt;
+        &lt;input
+          type="email"
+          id="email"
+          name="email"
+          defaultValue={initialData.email}
+          required
+        /&gt;
+        {state?.errors?.email && (
+          &lt;p className="error"&gt;{state.errors.email[0]}&lt;/p&gt;
+        )}
+      &lt;/div&gt;
+      {state?.error && (
+        &lt;p className="error"&gt;{state.error}&lt;/p&gt;
+      )}
+      &lt;button type="submit"&gt;
+        {initialData.name ? 'Update User' : 'Create User'}
+      &lt;/button&gt;
+    &lt;/form&gt;
+  );
+}
+      </div>
+
+      <h3>Advanced Server Action Patterns</h3>
+      <div class="code-block">
+// app/actions/post.ts - Advanced server actions
+'use server';
+
+import { revalidateTag, revalidatePath } from 'next/cache';
+import { headers } from 'next/headers';
+
+export async function createPost(formData: FormData) {
+  // Get headers for authentication
+  const headersList = headers();
+  const authorization = headersList.get('authorization');
+
+  if (!authorization) {
+    return {
+      error: 'Authentication required',
+    };
+  }
+
+  // Validate user
+  const user = await validateUser(authorization);
+  if (!user) {
+    return {
+      error: 'Invalid authentication',
+    };
+  }
+
+  const title = formData.get('title') as string;
+  const content = formData.get('content') as string;
+
+  if (!title || !content) {
+    return {
+      error: 'Title and content are required',
+    };
+  }
+
+  try {
+    const response = await fetch('https://api.example.com/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': authorization,
+      },
+      body: JSON.stringify({
+        title,
+        content,
+        authorId: user.id,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create post');
+    }
+
+    const post = await response.json();
+
+    // Revalidate specific cache tags
+    revalidateTag('posts');
+    revalidateTag(`user-${user.id}-posts`);
+    
+    // Revalidate specific paths
+    revalidatePath('/posts');
+    revalidatePath('/dashboard');
+
+    return {
+      success: true,
+      post,
+    };
+  } catch (error) {
+    return {
+      error: 'Failed to create post. Please try again.',
+    };
+  }
+}
+
+// Server action with file upload
+export async function uploadImage(formData: FormData) {
+  const file = formData.get('image') as File;
+  
+  if (!file) {
+    return {
+      error: 'No file provided',
+    };
+  }
+
+  // Validate file type
+  if (!file.type.startsWith('image/')) {
+    return {
+      error: 'File must be an image',
+    };
+  }
+
+  // Validate file size (5MB max)
+  if (file.size > 5 * 1024 * 1024) {
+    return {
+      error: 'File size must be less than 5MB',
+    };
+  }
+
+  try {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    const response = await fetch('https://api.example.com/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to upload image');
+    }
+
+    const result = await response.json();
+
+    return {
+      success: true,
+      imageUrl: result.url,
+    };
+  } catch (error) {
+    return {
+      error: 'Failed to upload image. Please try again.',
+    };
+  }
+}
+
+// Server action with optimistic updates
+export async function toggleLike(postId: string, userId: string) {
+  try {
+    const response = await fetch(`https://api.example.com/posts/${postId}/like`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to toggle like');
+    }
+
+    const result = await response.json();
+
+    // Revalidate specific post cache
+    revalidateTag(`post-${postId}`);
+    revalidateTag('user-likes');
+
+    return {
+      success: true,
+      liked: result.liked,
+      likesCount: result.likesCount,
+    };
+  } catch (error) {
+    return {
+      error: 'Failed to toggle like. Please try again.',
+    };
+  }
+}
+
+// Helper function for user validation
+async function validateUser(authorization: string) {
+  try {
+    const response = await fetch('https://api.example.com/auth/me', {
+      headers: { Authorization: authorization },
+    });
+    
+    if (!response.ok) {
+      return null;
+    }
+    
+    return response.json();
+  } catch {
+    return null;
+  }
+}
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your Next.js 14 knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>📱 Social Media Platform</h4>
+          <p>Build a complete social media platform with real-time features, authentication, and optimized performance</p>
+        </div>
+        <div class="feature-card">
+          <h4>🛒 E-commerce Store</h4>
+          <p>Create a full-featured e-commerce application with product management, cart, and payment integration</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Analytics Dashboard</h4>
+          <p>Develop a comprehensive analytics dashboard with data visualization and real-time updates</p>
+        </div>
+        <div class="feature-card">
+          <h4>💬 Chat Application</h4>
+          <p>Build a real-time chat application with WebSocket integration and message persistence</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Use Server Components for data fetching and static content</li>
+        <li>✅ Implement proper error handling and loading states</li>
+        <li>✅ Leverage Server Actions for form submissions</li>
+        <li>✅ Optimize images and assets with Next.js Image component</li>
+        <li>✅ Implement proper caching strategies</li>
+        <li>✅ Use TypeScript for type safety</li>
+        <li>✅ Follow accessibility best practices</li>
+        <li>✅ Test components thoroughly</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Next.js 14 and are ready to build production-ready full-stack applications. You now understand the App Router, Server Components, Server Actions, data fetching, authentication, and deployment strategies.</p>
+      
+      <p>Next.js continues to evolve with new features and improvements. Keep building real applications, contributing to the ecosystem, and staying current with the latest Next.js developments.</p>
+
+      <div style="background: linear-gradient(135deg, #000000, #ffffff); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become a Next.js Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering advanced full-stack development and modern web technologies!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-14-react-hooks-deep-dive.html" class="btn btn-outline" style="background: white; color: #000000;">React Hooks →</a>
+          <a href="blog-13-nodejs-express-api.html" class="btn btn-outline" style="background: white; color: #000000;">Node.js API →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #000000;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

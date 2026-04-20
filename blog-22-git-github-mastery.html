@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Git & GitHub with comprehensive guide. Learn version control, branching strategies, collaboration workflows, CI/CD, Git commands and manage professional development projects. Premium course.">
+  <meta name="keywords" content="Git tutorial, GitHub mastery, version control, Git commands, branching strategies, collaboration, CI/CD, learn Git">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Git & GitHub Mastery - Professional Version Control">
+  <meta property="og:description" content="Premium Git & GitHub course covering version control, branching strategies, collaboration workflows, CI/CD, Git commands and managing professional development projects.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-22-git-github-mastery.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/git-github-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Git & GitHub Mastery - Professional Version Control">
+  <meta name="twitter:description" content="Premium Git & GitHub course covering version control, branching strategies, collaboration workflows, CI/CD, Git commands and managing professional development projects.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/git-github-course.jpg">
+  <title>Git & GitHub Mastery - Professional Version Control | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-22-git-github-mastery.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Git & GitHub Mastery",
+    "description": "Version control, branching strategies, collaboration workflows, CI/CD, Git commands and managing professional development projects.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Intermediate",
+    "about": "Git & GitHub Development",
+    "teaches": ["Git", "GitHub", "Version Control", "Branching Strategies", "Collaboration", "CI/CD", "Git Commands", "Professional Development"],
+    "timeRequired": "PT10H",
+    "coursePrerequisites": "Basic command line knowledge and development experience",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Amit Patel"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "13000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "699",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #f05032, #000000);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #f05032;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .git-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Git & GitHub Mastery</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Git & GitHub with version control, branching strategies, collaboration workflows, CI/CD, Git commands and manage professional development projects.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 42 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 10h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.8 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 13K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">AP</div>
+        <div>
+          <div style="font-weight: 700;">Amit Patel</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Git Expert & DevOps Engineer</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Intermediate</span>
+        <span>💰 ₹699</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Version Control</a></li>
+        <li><a href="#git-basics">2. Git Fundamentals</a></li>
+        <li><a href="#branching">3. Branching Strategies</a></li>
+        <li><a href="#collaboration">4. Collaboration Workflows</a></li>
+        <li><a href="#github">5. GitHub Advanced Features</a></li>
+        <li><a href="#ci-cd">6. CI/CD with GitHub Actions</a></li>
+        <li><a href="#advanced-git">7. Advanced Git Commands</a></li>
+        <li><a href="#troubleshooting">8. Troubleshooting & Best Practices</a></li>
+        <li><a href="#team-workflows">9. Team Workflows</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>🔧 Introduction to Version Control</h2>
+      <p>Git is the most widely used version control system in the world, essential for modern software development. It enables developers to track changes, collaborate efficiently, and maintain code history.</p>
+      
+      <p>This comprehensive course teaches you to master Git and GitHub, from basic commands to advanced workflows. Learn to manage professional development projects, implement CI/CD pipelines, and collaborate effectively with teams.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h4>Version Control</h4>
+          <p>Track changes and manage code history effectively</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌳</div>
+          <h4>Branching</h4>
+          <p>Master branching strategies for parallel development</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h4>Collaboration</h4>
+          <p>Work efficiently with teams using Git workflows</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h4>CI/CD</h4>
+          <p>Automate testing and deployment with GitHub Actions</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Git Basics -->
+    <section class="blog-section" id="git-basics">
+      <h2>📚 Git Fundamentals</h2>
+      <p>Master the fundamental Git commands and concepts. Learn about repositories, staging area, commits, and the basic workflow that powers all Git operations.</p>
+
+      <h3>Setting Up Git</h3>
+      <div class="code-block">
+# Install Git
+# macOS: brew install git
+# Ubuntu/Debian: sudo apt-get install git
+# Windows: Download from git-scm.com
+
+# Configure Git
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# Set default branch name
+git config --global init.defaultBranch main
+
+# Configure default text editor
+git config --global core.editor "code --wait"  # VS Code
+git config --global core.editor "nano"       # Nano
+
+# Check configuration
+git config --list
+
+# Set up SSH keys for GitHub
+ssh-keygen -t ed25519 -C "your.email@example.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub  # Copy this to GitHub
+
+# Test SSH connection
+ssh -T git@github.com
+
+# Initialize a new repository
+git init my-project
+cd my-project
+
+# Or clone an existing repository
+git clone https://github.com/username/repository.git
+git clone git@github.com:username/repository.git  # SSH
+      </div>
+
+      <h3>Basic Git Workflow</h3>
+      <div class="code-block">
+# Check repository status
+git status
+
+# Add files to staging area
+git add filename.txt
+git add .                    # Add all files
+git add *.js                # Add all JavaScript files
+git add src/                 # Add entire directory
+
+# Remove files from staging area
+git reset filename.txt
+git reset                    # Remove all files from staging area
+
+# Commit changes
+git commit -m "Add new feature"
+git commit -am "Fix bug in login"  # Add and commit in one step
+
+# View commit history
+git log
+git log --oneline
+git log --graph --oneline --all
+git log --author="Your Name"
+git log --since="2024-01-01"
+
+# View specific commit
+git show commit-hash
+git show HEAD
+git show HEAD~1
+
+# Compare commits
+git diff                    # Working directory vs staging area
+git diff --staged          # Staging area vs last commit
+git diff HEAD              # Working directory vs last commit
+git diff commit1 commit2   # Compare two commits
+
+# Unstage files
+git reset HEAD filename.txt
+
+# Discard changes in working directory
+git checkout -- filename.txt
+git restore filename.txt    # Git 2.23+
+
+# Undo commits
+git reset --soft HEAD~1     # Keep changes staged
+git reset --mixed HEAD~1     # Keep changes unstaged
+git reset --hard HEAD~1      # Discard all changes
+      </div>
+
+      <h3>Working with Remotes</h3>
+      <div class="code-block">
+# Add remote repository
+git remote add origin https://github.com/username/repository.git
+git remote add upstream https://github.com/original-owner/repository.git
+
+# List remotes
+git remote -v
+
+# Fetch from remote
+git fetch origin
+git fetch --all
+
+# Pull changes (fetch + merge)
+git pull origin main
+git pull --rebase origin main
+
+# Push changes
+git push origin main
+git push -u origin main    # Set upstream branch
+git push --all origin      # Push all branches
+
+# Push with force (use carefully)
+git push --force-with-lease origin main
+
+# View remote branches
+git branch -r
+
+# Track remote branch
+git checkout -b feature-branch origin/feature-branch
+
+# Delete remote branch
+git push origin --delete feature-branch
+git push origin :feature-branch
+      </div>
+    </section>
+
+    <!-- Branching -->
+    <section class="blog-section" id="branching">
+      <h2>🌳 Branching Strategies</h2>
+      <p>Master branching strategies for parallel development, feature development, and release management. Learn about Git Flow, GitHub Flow, and modern branching practices.</p>
+
+      <h3>Branch Management</h3>
+      <div class="code-block">
+# Create and switch to new branch
+git checkout -b feature/user-authentication
+git switch -c feature/user-authentication  # Git 2.23+
+
+# List branches
+git branch
+git branch -a                 # Include remote branches
+git branch -r                 # Remote branches only
+git branch -v                 # Show last commit
+
+# Switch between branches
+git checkout main
+git switch main               # Git 2.23+
+
+# Rename branch
+git branch -m old-name new-name
+git branch -m feature/user-auth feature/user-authentication
+
+# Delete local branch
+git branch -d feature-branch      # Safe delete (merged)
+git branch -D feature-branch      # Force delete
+
+# Merge branches
+git checkout main
+git merge feature/user-authentication
+
+# Merge with no fast-forward
+git merge --no-ff feature/user-authentication
+
+# Abort merge
+git merge --abort
+
+# Resolve merge conflicts
+# Edit conflicted files, then:
+git add conflicted-file.txt
+git commit -m "Resolve merge conflicts"
+
+# Rebase branches
+git checkout feature-branch
+git rebase main
+
+# Interactive rebase
+git rebase -i HEAD~3
+
+# Abort rebase
+git rebase --abort
+
+# Continue rebase after resolving conflicts
+git rebase --continue
+
+# Cherry-pick commits
+git cherry-pick commit-hash
+git cherry-pick commit1..commit3
+
+# Stash changes
+git stash
+git stash push -m "Work in progress"
+
+# List stashes
+git stash list
+
+# Apply stash
+git stash apply
+git stash pop                # Apply and remove
+
+# Apply specific stash
+git stash apply stash@{0}
+
+# Drop stash
+git stash drop stash@{0}
+git stash clear              # Remove all stashes
+      </div>
+
+      <h3>Git Flow Workflow</h3>
+      <div class="code-block">
+# Install Git Flow (if not already installed)
+# macOS: brew install git-flow
+# Ubuntu: sudo apt-get install git-flow
+
+# Initialize Git Flow
+git flow init
+
+# Start a new feature
+git flow feature start feature/new-dashboard
+
+# Finish a feature (merge to develop)
+git flow feature finish feature/new-dashboard
+
+# Start a release
+git flow release start v1.2.0
+
+# Finish a release (merge to main and develop, tag)
+git flow release finish v1.2.0
+
+# Start a hotfix
+git flow hotfix start hotfix/critical-bug
+
+# Finish a hotfix
+git flow hotfix finish hotfix/critical-bug
+
+# Manual Git Flow without git-flow tool
+# Create develop branch
+git checkout -b develop main
+
+# Create feature branch
+git checkout -b feature/new-dashboard develop
+
+# Complete feature
+git checkout develop
+git merge --no-ff feature/new-dashboard
+git branch -d feature/new-dashboard
+
+# Create release branch
+git checkout -b release/v1.2.0 develop
+
+# Complete release
+git checkout main
+git merge --no-ff release/v1.2.0
+git tag -a v1.2.0 -m "Release version 1.2.0"
+git checkout develop
+git merge --no-ff release/v1.2.0
+git branch -d release/v1.2.0
+
+# Create hotfix branch
+git checkout -b hotfix/critical-bug main
+
+# Complete hotfix
+git checkout main
+git merge --no-ff hotfix/critical-bug
+git tag -a v1.2.1 -m "Hotfix version 1.2.1"
+git checkout develop
+git merge --no-ff hotfix/critical-bug
+git branch -d hotfix/critical-bug
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your Git & GitHub knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🏗️ Open Source Contribution</h4>
+          <p>Contribute to real open source projects using professional Git workflows</p>
+        </div>
+        <div class="feature-card">
+          <h4>🚀 CI/CD Pipeline</h4>
+          <p>Build complete CI/CD pipeline with GitHub Actions and automated testing</p>
+        </div>
+        <div class="feature-card">
+          <h4>👥 Team Collaboration</h4>
+          <p>Implement team collaboration workflows with proper branching strategies</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Project Management</h4>
+          <p>Manage large-scale projects with Git submodules and monorepo strategies</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Always write meaningful commit messages</li>
+        <li>✅ Use branching strategies appropriate for your team</li>
+        <li>✅ Pull frequently and push often</li>
+        <li>✅ Review code before merging</li>
+        <li>✅ Keep commits small and focused</li>
+        <li>✅ Use .gitignore to exclude unnecessary files</li>
+        <li>✅ Protect important branches with branch protection rules</li>
+        <li>✅ Automate testing and deployment with CI/CD</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Git & GitHub and are ready to manage professional development projects efficiently. You now understand version control, branching strategies, collaboration workflows, and CI/CD automation.</p>
+      
+      <p>Git is an essential skill for modern developers. Keep practicing with real projects, contribute to open source, and stay current with new Git features and best practices.</p>
+
+      <div style="background: linear-gradient(135deg, #f05032, #000000); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become a Git Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering DevOps technologies and professional development workflows!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-18-docker-kubernetes-guide.html" class="btn btn-outline" style="background: white; color: #f05032;">Docker & Kubernetes →</a>
+          <a href="blog-13-nodejs-express-api.html" class="btn btn-outline" style="background: white; color: #f05032;">Node.js API →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #f05032;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

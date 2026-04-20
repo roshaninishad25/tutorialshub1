@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master React.js fundamentals with comprehensive guide. Learn JSX, components, hooks (useState, useEffect, useContext), Redux Toolkit, and build complete applications. Premium course.">
+  <meta name="keywords" content="React.js tutorial, JSX, React hooks, useState, useEffect, useContext, Redux Toolkit, React components, learn React, React course">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="React.js Fundamentals - Build Modern Web Applications">
+  <meta property="og:description" content="Premium React.js course covering JSX, components, hooks (useState, useEffect, useContext), Redux Toolkit, and building a complete app.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-4-reactjs-fundamentals.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/react-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="React.js Fundamentals - Build Modern Web Applications">
+  <meta name="twitter:description" content="Premium React.js course covering JSX, components, hooks (useState, useEffect, useContext), Redux Toolkit, and building a complete app.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/react-course.jpg">
+  <title>React.js Fundamentals - Build Modern Web Applications | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-4-reactjs-fundamentals.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "React.js Fundamentals",
+    "description": "JSX, components, hooks (useState, useEffect, useContext), Redux Toolkit, and building a complete app.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "React.js Development",
+    "teaches": ["JSX", "React Components", "React Hooks", "useState", "useEffect", "useContext", "Redux Toolkit", "State Management"],
+    "timeRequired": "PT13H",
+    "coursePrerequisites": "JavaScript proficiency and HTML/CSS knowledge",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Priya Kapoor"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "20000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "899",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #00838f, #00bcd4);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #00838f;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .react-component {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: monospace;
+    }
+    .react-demo {
+      background: #282c34;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">React.js Fundamentals</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master React.js from scratch - JSX, components, hooks (useState, useEffect, useContext), Redux Toolkit, and build complete real-world applications.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 52 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 13h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.9 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 20K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">PK</div>
+        <div>
+          <div style="font-weight: 700;">Priya Kapoor</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">React Developer & Instructor</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹899</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to React.js</a></li>
+        <li><a href="#jsx">2. JSX - JavaScript XML</a></li>
+        <li><a href="#components">3. React Components</a></li>
+        <li><a href="#props">4. Props and Props Drilling</a></li>
+        <li><a href="#state">5. State Management</a></li>
+        <li><a href="#hooks">6. React Hooks Deep Dive</a></li>
+        <li><a href="#events">7. Event Handling</a></li>
+        <li><a href="#lifecycle">8. Component Lifecycle</a></li>
+        <li><a href="#redux">9. Redux Toolkit</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>⚛️ Introduction to React.js</h2>
+      <p>React.js is a powerful JavaScript library for building user interfaces, particularly single-page applications. Developed by Facebook, React revolutionized frontend development with its component-based architecture and virtual DOM.</p>
+      
+      <p>This comprehensive course will take you from React basics to advanced concepts, including modern hooks, state management with Redux Toolkit, and building production-ready applications. You'll learn to think in React and create scalable, maintainable web applications.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚛️</div>
+          <h4>Component-Based</h4>
+          <p>Build reusable UI components with encapsulated logic</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h4>Virtual DOM</h4>
+          <p>Lightning-fast updates with efficient DOM manipulation</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎣</div>
+          <h4>Modern Hooks</h4>
+          <p>Master useState, useEffect, useContext and custom hooks</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🗂️</div>
+          <h4>State Management</h4>
+          <p>Learn Redux Toolkit for complex application state</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- JSX -->
+    <section class="blog-section" id="jsx">
+      <h2>📝 JSX - JavaScript XML</h2>
+      <p>JSX is a syntax extension for JavaScript that allows you to write HTML-like code in your JavaScript files. It makes React components more readable and intuitive, bridging the gap between markup and logic.</p>
+
+      <h3>JSX Basics</h3>
+      <div class="code-block">
+// JSX looks like HTML but it's actually JavaScript
+const element = <h1>Hello, World!</h1>;
+
+// JSX with expressions
+const name = "John";
+const element = <h1>Hello, {name}!</h1>;
+
+// JSX with attributes
+const element = <img src={user.avatarUrl} alt={user.name} />;
+
+// JSX represents objects
+const element = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+);
+
+// Compiled to:
+const element = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, world!'
+);
+      </div>
+
+      <h3>JSX Rules and Best Practices</h3>
+      <ul>
+        <li><strong>Single Parent Element:</strong> JSX must have one parent element</li>
+        <li><strong>className instead of class:</strong> Use className for CSS classes</li>
+        <li><strong>Self-closing tags:</strong> Always close tags like `<img />` and `<br />`</li>
+        <li><strong>JavaScript Expressions:</strong> Wrap JS code in curly braces `{}`</li>
+        <li><strong>camelCase properties:</strong> Use `onClick` instead of `onclick`</li>
+      </ul>
+
+      <div class="code-block">
+// JSX with conditional rendering
+function Greeting({ isLoggedIn }) {
+  if (isLoggedIn) {
+    return <h1>Welcome back!</h1>;
+  }
+  return <h1>Please sign in.</h1>;
+}
+
+// JSX with lists
+function NumberList({ numbers }) {
+  return (
+    <ul>
+      {numbers.map((number) => (
+        <li key={number.toString()}>
+          {number}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// JSX with styling
+const style = {
+  color: 'white',
+  backgroundColor: '#61dafb',
+  padding: '10px'
+};
+
+const element = <div style={style}>Styled JSX</div>;
+      </div>
+    </section>
+
+    <!-- Components -->
+    <section class="blog-section" id="components">
+      <h2>🧩 React Components</h2>
+      <p>Components are the building blocks of React applications. They are reusable, self-contained pieces of UI that can have their own state and logic. React supports both functional and class components.</p>
+
+      <h3>Functional Components</h3>
+      <div class="code-block">
+// Simple functional component
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+// Arrow function component
+const Welcome = (props) => {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+// Component with JSX
+function App() {
+  return (
+    <div>
+      <header>
+        <h1>My Application</h1>
+      </header>
+      <main>
+        <p>Welcome to React!</p>
+      </main>
+    </div>
+  );
+}
+      </div>
+
+      <h3>Class Components (Legacy)</h3>
+      <div class="code-block">
+import React, { Component } from 'react';
+
+class Welcome extends Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+  
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Increment
+        </button>
+      </div>
+    );
+  }
+}
+      </div>
+
+      <h3>Component Composition</h3>
+      <div class="code-block">
+// Parent component
+function Card({ children, title }) {
+  return (
+    <div className="card">
+      <h2>{title}</h2>
+      <div className="card-content">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// Using composition
+function App() {
+  return (
+    <Card title="User Profile">
+      <p>Name: John Doe</p>
+      <p>Email: john@example.com</p>
+      <button>Edit Profile</button>
+    </Card>
+  );
+}
+
+// Higher-order component pattern
+function withBorder(WrappedComponent) {
+  return function WithBorderComponent(props) {
+    return (
+      <div className="bordered-component">
+        <WrappedComponent {...props} />
+      </div>
+    );
+  };
+}
+      </div>
+    </section>
+
+    <!-- Props -->
+    <section class="blog-section" id="props">
+      <h2>📦 Props and Props Drilling</h2>
+      <p>Props (short for properties) are how components pass data to each other. They are read-only and flow from parent to child components, creating a unidirectional data flow.</p>
+
+      <h3>Using Props</h3>
+      <div class="code-block">
+// Passing props to child components
+function ParentComponent() {
+  const user = { name: "Alice", age: 25 };
+  
+  return (
+    <div>
+      <UserProfile user={user} />
+      <UserStats stats={{ posts: 42, followers: 1000 }} />
+    </div>
+  );
+}
+
+// Receiving props in child component
+function UserProfile({ user }) {
+  return (
+    <div>
+      <h2>{user.name}</h2>
+      <p>Age: {user.age}</p>
+    </div>
+  );
+}
+
+// Destructuring props
+function UserStats({ stats }) {
+  const { posts, followers } = stats;
+  return (
+    <div>
+      <span>Posts: {posts}</span>
+      <span>Followers: {followers}</span>
+    </div>
+  );
+}
+      </div>
+
+      <h3>Props Validation with PropTypes</h3>
+      <div class="code-block">
+import PropTypes from 'prop-types';
+
+function Button({ text, onClick, variant }) {
+  return (
+    <button 
+      className={`btn btn-${variant}`}
+      onClick={onClick}
+    >
+      {text}
+    </button>
+  );
+}
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  variant: PropTypes.oneOf(['primary', 'secondary', 'danger'])
+};
+
+Button.defaultProps = {
+  variant: 'primary',
+  onClick: () => {}
+};
+      </div>
+
+      <h3>Solving Props Drilling</h3>
+      <div class="code-block">
+// Problem: Props drilling
+function App() {
+  const [theme, setTheme] = useState('light');
+  
+  return (
+    <div>
+      <Header theme={theme} />
+      <Main theme={theme} />
+      <Footer theme={theme} />
+    </div>
+  );
+}
+
+// Solution 1: Context API
+const ThemeContext = createContext();
+
+function App() {
+  const [theme, setTheme] = useState('light');
+  
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <Header />
+      <Main />
+      <Footer />
+    </ThemeContext.Provider>
+  );
+}
+
+// Solution 2: Component composition
+function ThemedApp({ children }) {
+  const [theme, setTheme] = useState('light');
+  
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+      </div>
+    </section>
+
+    <!-- State -->
+    <section class="blog-section" id="state">
+      <h2>🗂️ State Management</h2>
+      <p>State is data that changes over time and affects what the component renders. React provides multiple ways to manage state, from local component state to global state management solutions.</p>
+
+      <h3>Local State with useState</h3>
+      <div class="code-block">
+import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState('');
+  
+  const increment = () => {
+    setCount(count + 1);
+  };
+  
+  const decrement = () => {
+    setCount(count - 1);
+  };
+  
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+      
+      <input 
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Enter your name"
+      />
+      <p>Hello, {name || 'Guest'}!</p>
+    </div>
+  );
+}
+
+// State with objects
+function UserProfile() {
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    age: ''
+  });
+  
+  const updateField = (field, value) => {
+    setUser(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+  
+  return (
+    <form>
+      <input 
+        value={user.name}
+        onChange={(e) => updateField('name', e.target.value)}
+        placeholder="Name"
+      />
+    </form>
+  );
+}
+      </div>
+
+      <h3>State Management Patterns</h3>
+      <div class="code-block">
+// useReducer for complex state
+import { useReducer } from 'react';
+
+const initialState = { count: 0, step: 1 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { ...state, count: state.count + state.step };
+    case 'decrement':
+      return { ...state, count: state.count - state.step };
+    case 'setStep':
+      return { ...state, step: action.payload };
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  
+  return (
+    <div>
+      <h2>Count: {state.count}</h2>
+      <button onClick={() => dispatch({ type: 'increment' })}>
+        +{state.step}
+      </button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>
+        -{state.step}
+      </button>
+      <input 
+        type="number"
+        value={state.step}
+        onChange={(e) => dispatch({ 
+          type: 'setStep', 
+          payload: Number(e.target.value) 
+        })}
+      />
+    </div>
+  );
+}
+      </div>
+    </section>
+
+    <!-- Hooks -->
+    <section class="blog-section" id="hooks">
+      <h2>🎣 React Hooks Deep Dive</h2>
+      <p>Hooks revolutionized React by allowing state and other React features in functional components. They provide a more direct API to React concepts and promote reusable stateful logic.</p>
+
+      <h3>Core Hooks</h3>
+      <div class="code-block">
+import { useState, useEffect, useContext, useRef, useMemo, useCallback } from 'react';
+
+// useState - State management
+function Timer() {
+  const [seconds, setSeconds] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(s => s + 1);
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
+  
+  return <div>Timer: {seconds}s</div>;
+}
+
+// useEffect - Side effects
+function DataFetcher({ userId }) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/users/${userId}`)
+      .then(response => response.json())
+      .then(data => {
+        setData(data);
+        setLoading(false);
+      });
+  }, [userId]);
+  
+  if (loading) return <div>Loading...</div>;
+  return <div>{data.name}</div>;
+}
+
+// useContext - Global state
+const ThemeContext = createContext();
+
+function Button() {
+  const { theme, setTheme } = useContext(ThemeContext);
+  
+  return (
+    <button 
+      style={{ backgroundColor: theme === 'dark' ? '#333' : '#fff' }}
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+    >
+      Toggle Theme
+    </button>
+  );
+}
+
+// useRef - DOM access and persistent values
+function FocusInput() {
+  const inputRef = useRef(null);
+  
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+  
+  return <input ref={inputRef} type="text" />;
+}
+      </div>
+
+      <h3>Performance Hooks</h3>
+      <div class="code-block">
+// useMemo - Memoize expensive calculations
+function ExpensiveComponent({ data }) {
+  const expensiveValue = useMemo(() => {
+    console.log('Calculating expensive value...');
+    return data.reduce((sum, item) => sum + item.value, 0);
+  }, [data]);
+  
+  return <div>Total: {expensiveValue}</div>;
+}
+
+// useCallback - Memoize functions
+function ParentComponent() {
+  const [count, setCount] = useState(0);
+  
+  const handleClick = useCallback(() => {
+    console.log('Button clicked');
+  }, []); // Empty dependency array means function never changes
+  
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>
+        Count: {count}
+      </button>
+      <ChildComponent onClick={handleClick} />
+    </div>
+  );
+}
+
+// Custom hook example
+function useLocalStorage(key, initialValue) {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      return initialValue;
+    }
+  });
+  
+  const setValue = (value) => {
+    try {
+      setStoredValue(value);
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  return [storedValue, setValue];
+}
+
+// Using custom hook
+function App() {
+  const [name, setName] = useLocalStorage('name', 'Guest');
+  
+  return (
+    <input 
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+    />
+  );
+}
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section class="blog-section" id="events">
+      <h2>🖱️ Event Handling</h2>
+      <p>React handles events similarly to HTML but with some syntactic differences. React events are synthetic events that provide a consistent API across different browsers.</p>
+
+      <h3>Basic Event Handling</h3>
+      <div class="code-block">
+function ButtonExample() {
+  const handleClick = () => {
+    alert('Button clicked!');
+  };
+  
+  const handleMouseOver = () => {
+    console.log('Mouse over button');
+  };
+  
+  return (
+    <button 
+      onClick={handleClick}
+      onMouseOver={handleMouseOver}
+    >
+      Click Me
+    </button>
+  );
+}
+
+// Event with parameters
+function DeleteButton({ itemId }) {
+  const handleDelete = (id) => {
+    if (window.confirm('Are you sure?')) {
+      // Delete item with id
+      console.log(`Deleting item ${id}`);
+    }
+  };
+  
+  return (
+    <button onClick={() => handleDelete(itemId)}>
+      Delete
+    </button>
+  );
+}
+
+// Form handling
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission
+    console.log('Form submitted:', formData);
+  };
+  
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        placeholder="Name"
+      />
+      <input
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        placeholder="Email"
+      />
+      <textarea
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        placeholder="Message"
+      />
+      <button type="submit">Send</button>
+    </form>
+  );
+}
+      </div>
+
+      <h3>Event Object and Methods</h3>
+      <div class="code-block">
+function EventDemo() {
+  const handleClick = (event) => {
+    console.log('Event type:', event.type);
+    console.log('Target:', event.target);
+    console.log('Current target:', event.currentTarget);
+    
+    // Prevent default behavior
+    event.preventDefault();
+    
+    // Stop event propagation
+    event.stopPropagation();
+  };
+  
+  const handleKeyPress = (event) => {
+    console.log('Key pressed:', event.key);
+    console.log('Key code:', event.keyCode);
+    
+    if (event.key === 'Enter') {
+      console.log('Enter key pressed');
+    }
+  };
+  
+  return (
+    <div>
+      <button onClick={handleClick}>
+        Click me
+      </button>
+      <input 
+        type="text"
+        onKeyPress={handleKeyPress}
+        placeholder="Type something"
+      />
+    </div>
+  );
+}
+      </div>
+    </section>
+
+    <!-- Lifecycle -->
+    <section class="blog-section" id="lifecycle">
+      <h2>🔄 Component Lifecycle</h2>
+      <p>While functional components use hooks for lifecycle management, understanding the component lifecycle is crucial for managing side effects, performance optimization, and resource cleanup.</p>
+
+      <h3>useEffect for Lifecycle Management</h3>
+      <div class="code-block">
+// ComponentDidMount equivalent
+function DataComponent() {
+  const [data, setData] = useState(null);
+  
+  useEffect(() => {
+    // Runs after component mounts
+    fetchData().then(setData);
+    
+    // Cleanup function (ComponentWillUnmount)
+    return () => {
+      console.log('Component unmounting');
+      cleanup();
+    };
+  }, []); // Empty dependency array = runs only once
+  
+  return <div>{data ? data : 'Loading...'}</div>;
+}
+
+// ComponentDidUpdate equivalent
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    // Runs when userId changes
+    fetchUser(userId).then(setUser);
+  }, [userId]); // Dependency array = runs when userId changes
+  
+  return <div>{user?.name}</div>;
+}
+
+// Multiple effects
+function ComplexComponent() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  // Data fetching effect
+  useEffect(() => {
+    setLoading(true);
+    fetchData().then(result => {
+      setData(result);
+      setLoading(false);
+    });
+  }, []);
+  
+  // Event listener effect
+  useEffect(() => {
+    const handleResize = () => {
+      console.log('Window resized');
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  
+  // Timer effect
+  useEffect(() => {
+    const timer = setInterval(() => {
+      console.log('Timer tick');
+    }, 1000);
+    
+    return () => clearInterval(timer);
+  }, []);
+  
+  if (loading) return <div>Loading...</div>;
+  return <div>Data loaded</div>;
+}
+      </div>
+
+      <h3>Performance Optimization</h3>
+      <div class="code-block">
+import { memo, useMemo, useCallback } from 'react';
+
+// React.memo for component memoization
+const ExpensiveChild = memo(({ data, onUpdate }) => {
+  console.log('ExpensiveChild rendered');
+  return (
+    <div>
+      {data.map(item => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+      <button onClick={onUpdate}>Update</button>
+    </div>
+  );
+});
+
+function ParentComponent() {
+  const [data, setData] = useState([]);
+  const [count, setCount] = useState(0);
+  
+  // Memoize callback to prevent unnecessary re-renders
+  const handleUpdate = useCallback(() => {
+    setData(prev => [...prev, { id: Date.now(), name: 'New Item' }]);
+  }, []);
+  
+  // Memoize expensive calculation
+  const expensiveData = useMemo(() => {
+    return data.map(item => ({
+      ...item,
+      processed: item.name.toUpperCase()
+    }));
+  }, [data]);
+  
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>
+        Count: {count}
+      </button>
+      <ExpensiveChild data={expensiveData} onUpdate={handleUpdate} />
+    </div>
+  );
+}
+      </div>
+    </section>
+
+    <!-- Redux Toolkit -->
+    <section class="blog-section" id="redux">
+      <h2>🗃️ Redux Toolkit</h2>
+      <p>Redux Toolkit is the official, opinionated toolset for efficient Redux development. It simplifies store setup, reduces boilerplate, and includes best practices by default.</p>
+
+      <h3>Setting Up Redux Toolkit</h3>
+      <div class="code-block">
+// store.js
+import { configureStore, createSlice } from '@reduxjs/toolkit';
+
+// Create a slice
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: {
+    value: 0,
+    status: 'idle'
+  },
+  reducers: {
+    increment: (state) => {
+      state.value += 1;
+    },
+    decrement: (state) => {
+      state.value -= 1;
+    },
+    incrementByAmount: (state, action) => {
+      state.value += action.payload;
+    }
+  }
+});
+
+export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+
+const store = configureStore({
+  reducer: {
+    counter: counterSlice.reducer
+  }
+});
+
+export default store;
+      </div>
+
+      <h3>Using Redux in React Components</h3>
+      <div class="code-block">
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement, incrementByAmount } from './store';
+
+function Counter() {
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
+  
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={() => dispatch(increment())}>
+        Increment
+      </button>
+      <button onClick={() => dispatch(decrement())}>
+        Decrement
+      </button>
+      <button onClick={() => dispatch(incrementByAmount(5))}>
+        Add 5
+      </button>
+    </div>
+  );
+}
+
+// Async thunks with createAsyncThunk
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+export const fetchUsers = createAsyncThunk(
+  'users/fetchUsers',
+  async () => {
+    const response = await fetch('/api/users');
+    return response.json();
+  }
+);
+
+const usersSlice = createSlice({
+  name: 'users',
+  initialState: {
+    entities: [],
+    loading: 'idle',
+    error: null
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUsers.pending, (state) => {
+        state.loading = 'loading';
+      })
+      .addCase(fetchUsers.fulfilled, (state, action) => {
+        state.loading = 'idle';
+        state.entities = action.payload;
+      })
+      .addCase(fetchUsers.rejected, (state, action) => {
+        state.loading = 'idle';
+        state.error = action.error.message;
+      });
+  }
+});
+      </div>
+
+      <h3>Advanced Redux Patterns</h3>
+      <div class="code-block">
+// Normalized state with createEntityAdapter
+import { createEntityAdapter } from '@reduxjs/toolkit';
+
+const postsAdapter = createEntityAdapter({
+  selectId: (post) => post.id,
+  sortComparer: (a, b) => b.date.localeCompare(a.date)
+});
+
+const postsSlice = createSlice({
+  name: 'posts',
+  initialState: postsAdapter.getInitialState({
+    loading: 'idle',
+    error: null
+  }),
+  reducers: {
+    // Can use adapter methods
+    addPost: postsAdapter.addOne,
+    removePost: postsAdapter.removeOne,
+    updatePost: postsAdapter.updateOne
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchPosts.fulfilled, postsAdapter.setAll);
+  }
+});
+
+// Selectors
+export const {
+  selectAll: selectAllPosts,
+  selectById: selectPostById,
+  selectIds: selectPostIds
+} = postsAdapter.getSelectors((state) => state.posts);
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your React knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>📱 Social Media App</h4>
+          <p>Build a complete social media platform with posts, comments, likes, and real-time updates using Redux Toolkit</p>
+        </div>
+        <div class="feature-card">
+          <h4>🛒 E-commerce Store</h4>
+          <p>Create a full-featured e-commerce application with shopping cart, product catalog, and payment integration</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Dashboard Analytics</h4>
+          <p>Develop an analytics dashboard with charts, data visualization, and real-time data updates</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎮 Task Management</h4>
+          <p>Build a project management tool with drag-and-drop, team collaboration, and progress tracking</p>
+        </div>
+      </div>
+
+      <h3>Project Structure Best Practices</h3>
+      <div class="code-block">
+// Recommended folder structure
+src/
+├── components/          # Reusable UI components
+│   ├── common/         # Generic components
+│   └── features/       # Feature-specific components
+├── pages/              # Page components
+├── hooks/              # Custom hooks
+├── store/              # Redux store
+│   ├── slices/         # Redux slices
+│   └── api/            # RTK Query APIs
+├── services/           # API services
+├── utils/              # Utility functions
+├── styles/             # Global styles
+└── types/              # TypeScript types
+
+// Component organization
+components/
+├── Button/
+│   ├── Button.jsx
+│   ├── Button.module.css
+│   ├── Button.test.js
+│   └── index.js
+└── Card/
+    ├── Card.jsx
+    ├── Card.module.css
+    ├── Card.test.js
+    └── index.js
+      </div>
+
+      <h3>Testing React Applications</h3>
+      <div class="code-block">
+// Component testing with React Testing Library
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import Counter from './Counter';
+
+describe('Counter Component', () => {
+  test('renders initial count', () => {
+    render(<Counter />);
+    expect(screen.getByText('Count: 0')).toBeInTheDocument();
+  });
+  
+  test('increments count when button is clicked', async () => {
+    const user = userEvent.setup();
+    render(<Counter />);
+    
+    const incrementButton = screen.getByText('Increment');
+    await user.click(incrementButton);
+    
+    expect(screen.getByText('Count: 1')).toBeInTheDocument();
+  });
+  
+  test('handles async operations', async () => {
+    render(<AsyncComponent />);
+    
+    fireEvent.click(screen.getByText('Load Data'));
+    
+    await waitFor(() => {
+      expect(screen.getByText('Data loaded')).toBeInTheDocument();
+    });
+  });
+});
+
+// Integration testing
+import { renderWithProviders } from './test-utils';
+import App from './App';
+
+test('full app flow', async () => {
+  renderWithProviders(<App />);
+  
+  // Test complete user flow
+  expect(screen.getByText('Welcome')).toBeInTheDocument();
+  
+  fireEvent.click(screen.getByText('Get Started'));
+  await waitFor(() => {
+    expect(screen.getByText('Dashboard')).toBeInTheDocument();
+  });
+});
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered React.js fundamentals and are ready to build sophisticated web applications. You now understand components, hooks, state management, and modern React patterns used by professional developers worldwide.</p>
+      
+      <p>React continues to evolve with new features and best practices. Stay curious, build real projects, and join the amazing React community. Your journey into modern web development has just begun!</p>
+
+      <div style="background: linear-gradient(135deg, #00838f, #00bcd4); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Ready to Master Advanced React?</h3>
+        <p style="margin-bottom: 20px;">Take your React skills to the next level with Next.js and TypeScript!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-8-nextjs-14-full-course.html" class="btn btn-outline" style="background: white; color: #00838f;">Master Next.js →</a>
+          <a href="blog-7-typescript-deep-dive.html" class="btn btn-outline" style="background: white; color: #00838f;">Learn TypeScript →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #00838f;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

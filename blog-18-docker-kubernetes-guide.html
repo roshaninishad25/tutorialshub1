@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Docker & Kubernetes with comprehensive guide. Learn containerization, orchestration, deployment strategies, microservices, scaling and build production-ready containerized applications. Premium course.">
+  <meta name="keywords" content="Docker tutorial, Kubernetes guide, containerization, orchestration, microservices, Docker deployment, Kubernetes scaling, learn Docker">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Docker & Kubernetes Guide - Container Orchestration Mastery">
+  <meta property="og:description" content="Premium Docker & Kubernetes course covering containerization, orchestration, deployment strategies, microservices, scaling and building production-ready containerized applications.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-18-docker-kubernetes-guide.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/docker-kubernetes-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Docker & Kubernetes Guide - Container Orchestration Mastery">
+  <meta name="twitter:description" content="Premium Docker & Kubernetes course covering containerization, orchestration, deployment strategies, microservices, scaling and building production-ready containerized applications.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/docker-kubernetes-course.jpg">
+  <title>Docker & Kubernetes Guide - Container Orchestration Mastery | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-18-docker-kubernetes-guide.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Docker & Kubernetes Guide",
+    "description": "Containerization, orchestration, deployment strategies, microservices, scaling and building production-ready containerized applications.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "Docker & Kubernetes Development",
+    "teaches": ["Docker", "Kubernetes", "Containerization", "Orchestration", "Microservices", "Deployment", "Scaling", "Production Ready"],
+    "timeRequired": "PT16H",
+    "coursePrerequisites": "Linux fundamentals and basic web development knowledge",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Vikram Malhotra"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "11000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "999",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #2496ed, #0db7ed);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #2496ed;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .docker-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Docker & Kubernetes Guide</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Docker & Kubernetes with containerization, orchestration, deployment strategies, microservices, scaling and build production-ready containerized applications.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 62 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 16h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.8 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 11K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">VM</div>
+        <div>
+          <div style="font-weight: 700;">Vikram Malhotra</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">DevOps Expert & Container Architect</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹999</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Containerization</a></li>
+        <li><a href="#docker-basics">2. Docker Fundamentals</a></li>
+        <li><a href="#docker-advanced">3. Advanced Docker Concepts</a></li>
+        <li><a href="#kubernetes-basics">4. Kubernetes Fundamentals</a></li>
+        <li><a href="#kubernetes-advanced">5. Advanced Kubernetes</a></li>
+        <li><a href="#microservices">6. Microservices Architecture</a></li>
+        <li><a href="#deployment">7. Deployment Strategies</a></li>
+        <li><a href="#monitoring">8. Monitoring & Logging</a></li>
+        <li><a href="#security">9. Container Security</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>🐳 Introduction to Containerization</h2>
+      <p>Containerization has revolutionized how we develop, deploy, and manage applications. Docker and Kubernetes provide powerful tools for building scalable, portable, and resilient applications.</p>
+      
+      <p>This comprehensive course teaches you to master containerization technology, from basic Docker concepts to advanced Kubernetes orchestration, enabling you to build and manage production-ready containerized applications.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🐳</div>
+          <h4>Docker Mastery</h4>
+          <p>Build, ship, and run applications in containers</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">☸️</div>
+          <h4>Kubernetes Orchestration</h4>
+          <p>Manage containerized applications at scale</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏗️</div>
+          <h4>Microservices</h4>
+          <p>Design and deploy microservices architecture</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h4>Production Ready</h4>
+          <p>Deploy scalable and resilient applications</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Docker Basics -->
+    <section class="blog-section" id="docker-basics">
+      <h2>🐳 Docker Fundamentals</h2>
+      <p>Learn Docker fundamentals including images, containers, Dockerfile, volumes, networks, and basic container orchestration concepts.</p>
+
+      <h3>Getting Started with Docker</h3>
+      <div class="code-block">
+# Install Docker
+# Ubuntu/Debian
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+# macOS (using Homebrew)
+brew install --cask docker
+
+# Windows (using Chocolatey)
+choco install docker-desktop
+
+# Basic Docker commands
+docker --version                    # Check Docker version
+docker info                         # Display system-wide information
+docker run hello-world              # Run your first container
+
+# Working with images
+docker pull nginx:latest             # Pull an image from Docker Hub
+docker images                        # List local images
+docker rmi nginx:latest             # Remove an image
+
+# Working with containers
+docker run -d --name my-nginx -p 8080:80 nginx
+docker ps                           # List running containers
+docker ps -a                        # List all containers
+docker stop my-nginx                # Stop a container
+docker rm my-nginx                  # Remove a container
+docker logs my-nginx                # View container logs
+docker exec -it my-nginx bash       # Execute commands in a running container
+      </div>
+
+      <h3>Creating Docker Images</h3>
+      <div class="code-block">
+# Dockerfile for a Node.js application
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy application code
+COPY . .
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nodejs -u 1001
+
+# Change ownership of the app directory
+RUN chown -R nodejs:nodejs /app
+USER nodejs
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:3000/health || exit 1
+
+# Start the application
+CMD ["node", "server.js"]
+
+# Build the image
+docker build -t my-node-app:v1.0 .
+
+# Run the container
+docker run -d \
+  --name my-node-app \
+  -p 3000:3000 \
+  -e NODE_ENV=production \
+  -v /app/logs:/app/logs \
+  my-node-app:v1.0
+
+# Multi-stage build for optimization
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Production stage
+FROM node:18-alpine AS production
+
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+      </div>
+
+      <h3>Docker Compose</h3>
+      <div class="code-block">
+# docker-compose.yml
+version: '3.8'
+
+services:
+  # Web application
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://user:password@db:5432/myapp
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # PostgreSQL database
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=myapp
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # Redis cache
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - web
+    restart: unless-stopped
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  app-network:
+    driver: bridge
+
+# Docker Compose commands
+docker-compose up -d                    # Start all services
+docker-compose down                    # Stop and remove containers
+docker-compose ps                      # List running services
+docker-compose logs web                 # View logs for web service
+docker-compose exec web bash            # Execute commands in web container
+docker-compose build                   # Build or rebuild services
+docker-compose pull                    # Pull service images
+docker-compose restart web             # Restart web service
+docker-compose scale web=3             # Scale web service to 3 instances
+      </div>
+    </section>
+
+    <!-- Docker Advanced -->
+    <section class="blog-section" id="docker-advanced">
+      <h2>🔧 Advanced Docker Concepts</h2>
+      <p>Master advanced Docker concepts including multi-stage builds, optimization strategies, security best practices, and Docker networking.</p>
+
+      <h3>Optimization Techniques</h3>
+      <div class="code-block">
+# Optimized Dockerfile with best practices
+FROM node:18-alpine AS base
+
+# Install dependencies only when needed
+FROM base AS deps
+WORKDIR /app
+
+# Copy package files
+COPY package.json package-lock.json* ./
+RUN npm ci --only=production && npm cache clean --force
+
+# Build the application
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN npm run build
+
+# Production image
+FROM base AS runner
+WORKDIR /app
+
+# Create non-root user
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copy built application
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+
+CMD ["node", "server.js"]
+
+# .dockerignore file
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+.git
+.gitignore
+README.md
+.env
+.nyc_output
+coverage
+.nyc_output
+.next
+      </div>
+
+      <h3>Docker Networking</h3>
+      <div class="code-block">
+# Create custom networks
+docker network create --driver bridge app-network
+docker network create --driver overlay multi-host-network
+
+# Connect containers to networks
+docker run -d --name web --network app-network nginx
+docker run -d --name db --network app-network postgres
+
+# Network inspection
+docker network ls
+docker network inspect app-network
+
+# Advanced networking configuration
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    networks:
+      - frontend
+      - backend
+
+  backend:
+    build: ./backend
+    networks:
+      - backend
+      - database
+
+  database:
+    image: postgres:15
+    networks:
+      - database
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+  database:
+    driver: bridge
+    internal: true  # No external access
+      </div>
+
+      <h3>Security Best Practices</h3>
+      <div class="code-block">
+# Security-hardened Dockerfile
+FROM node:18-alpine AS base
+
+# Update and install security packages
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache dumb-init
+
+# Create non-root user with limited privileges
+RUN addgroup -g 1001 -S appgroup && \
+    adduser -u 1001 -S appuser -G appgroup
+
+WORKDIR /app
+
+# Copy and install dependencies
+COPY package*.json ./
+RUN npm ci --only=production && npm cache clean --force
+
+# Copy application with proper permissions
+COPY --chown=appuser:appgroup . .
+
+# Switch to non-root user
+USER appuser
+
+# Use dumb-init as PID 1
+ENTRYPOINT ["dumb-init", "--"]
+
+# Health check with timeout
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/health || exit 1
+
+EXPOSE 3000
+CMD ["node", "server.js"]
+
+# Docker security scanning
+docker scan my-node-app:v1.0
+
+# Run container with security options
+docker run -d \
+  --name secure-app \
+  --read-only \
+  --tmpfs /tmp:noexec,nosuid,size=100m \
+  --user 1001:1001 \
+  --cap-drop ALL \
+  --cap-add CHOWN \
+  --cap-add SETGID \
+  --cap-add SETUID \
+  --security-opt no-new-privileges:true \
+  my-node-app:v1.0
+      </div>
+    </section>
+
+    <!-- Kubernetes Basics -->
+    <section class="blog-section" id="kubernetes-basics">
+      <h2>☸️ Kubernetes Fundamentals</h2>
+      <p>Learn Kubernetes fundamentals including pods, services, deployments, configmaps, secrets, and basic cluster management.</p>
+
+      <h3>Basic Kubernetes Objects</h3>
+      <div class="code-block">
+# Pod definition
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app-pod
+  labels:
+    app: my-app
+spec:
+  containers:
+  - name: my-app-container
+    image: my-app:v1.0
+    ports:
+    - containerPort: 3000
+    env:
+    - name: NODE_ENV
+      value: "production"
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    livenessProbe:
+      httpGet:
+        path: /health
+        port: 3000
+      initialDelaySeconds: 30
+      periodSeconds: 10
+    readinessProbe:
+      httpGet:
+        path: /ready
+        port: 3000
+      initialDelaySeconds: 5
+      periodSeconds: 5
+
+# Service definition
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-service
+spec:
+  selector:
+    app: my-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: ClusterIP
+
+# Deployment definition
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app-container
+        image: my-app:v1.0
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      </div>
+
+      <h3>ConfigMaps and Secrets</h3>
+      <div class="code-block">
+# ConfigMap definition
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-app-config
+data:
+  NODE_ENV: "production"
+  API_URL: "https://api.example.com"
+  LOG_LEVEL: "info"
+  config.json: |
+    {
+      "database": {
+        "host": "db-service",
+        "port": 5432
+      },
+      "cache": {
+        "host": "redis-service",
+        "port": 6379
+      }
+    }
+
+# Secret definition
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-app-secrets
+type: Opaque
+data:
+  DATABASE_PASSWORD: cGFzc3dvcmQxMjM=  # base64 encoded
+  API_KEY: YXBpa2V5MTIzNDU2  # base64 encoded
+  JWT_SECRET: and0c2VjcmV0MTIz  # base64 encoded
+
+# Using ConfigMaps and Secrets in pods
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app-container
+        image: my-app:v1.0
+        envFrom:
+        - configMapRef:
+            name: my-app-config
+        - secretRef:
+            name: my-app-secrets
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config
+          readOnly: true
+      volumes:
+      - name: config-volume
+        configMap:
+          name: my-app-config
+          items:
+          - key: config.json
+            path: config.json
+      </div>
+
+      <h3>Basic Kubernetes Commands</h3>
+      <div class="code-block">
+# Cluster information
+kubectl cluster-info
+kubectl get nodes
+kubectl describe node node-name
+
+# Working with pods
+kubectl get pods
+kubectl get pods -o wide
+kubectl describe pod pod-name
+kubectl logs pod-name
+kubectl logs -f pod-name  # Follow logs
+kubectl exec -it pod-name -- bash
+
+# Working with deployments
+kubectl get deployments
+kubectl describe deployment deployment-name
+kubectl scale deployment deployment-name --replicas=5
+kubectl set image deployment/deployment-name container-name=new-image:v2
+
+# Working with services
+kubectl get services
+kubectl describe service service-name
+kubectl port-forward service-name 8080:80
+
+# Working with ConfigMaps and Secrets
+kubectl get configmaps
+kubectl describe configmap configmap-name
+kubectl get secrets
+kubectl describe secret secret-name
+
+# Apply and delete resources
+kubectl apply -f deployment.yaml
+kubectl delete -f deployment.yaml
+kubectl delete deployment deployment-name
+kubectl delete pod pod-name --force
+
+# Debugging
+kubectl get events
+kubectl describe pod pod-name | grep -A 10 "Events:"
+kubectl logs pod-name --previous  # Logs from previous container
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your Docker & Kubernetes knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🏗️ Microservices Platform</h4>
+          <p>Build a complete microservices platform with Docker, Kubernetes, and service mesh</p>
+        </div>
+        <div class="feature-card">
+          <h4>🚀 CI/CD Pipeline</h4>
+          <p>Create a complete CI/CD pipeline with Docker, Kubernetes, and automated deployments</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Monitoring Stack</h4>
+          <p>Deploy a comprehensive monitoring stack with Prometheus, Grafana, and AlertManager</p>
+        </div>
+        <div class="feature-card">
+          <h4>🔒 Security Hardening</h4>
+          <p>Implement security best practices for containers and Kubernetes clusters</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Use multi-stage builds for optimized images</li>
+        <li>✅ Implement proper resource limits and requests</li>
+        <li>✅ Use ConfigMaps and Secrets for configuration</li>
+        <li>✅ Implement health checks and readiness probes</li>
+        <li>✅ Use liveness and readiness probes</li>
+        <li>✅ Implement proper logging and monitoring</li>
+        <li>✅ Follow security best practices</li>
+        <li>✅ Use proper networking strategies</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Docker & Kubernetes and are ready to build production-ready containerized applications. You now understand containerization, orchestration, deployment strategies, microservices, and scaling techniques.</p>
+      
+      <p>Docker and Kubernetes continue to evolve with new features and improvements. Keep building real applications, contributing to the ecosystem, and staying current with the latest container technologies.</p>
+
+      <div style="background: linear-gradient(135deg, #2496ed, #0db7ed); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become a Container Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering DevOps technologies and cloud-native development!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-13-nodejs-express-api.html" class="btn btn-outline" style="background: white; color: #2496ed;">Node.js API →</a>
+          <a href="blog-17-graphql-frontend-devs.html" class="btn btn-outline" style="background: white; color: #2496ed;">GraphQL →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #2496ed;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Database Design with comprehensive guide. Learn SQL, NoSQL, database architecture, normalization, indexing, performance optimization and build scalable data systems. Premium course.">
+  <meta name="keywords" content="Database design tutorial, SQL, NoSQL, database architecture, normalization, indexing, performance optimization, learn database design">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Database Design Mastery - Build Scalable Data Systems">
+  <meta property="og:description" content="Premium Database Design course covering SQL, NoSQL, database architecture, normalization, indexing, performance optimization and building scalable data systems.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-31-database-design-mastery.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/database-design-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Database Design Mastery - Build Scalable Data Systems">
+  <meta name="twitter:description" content="Premium Database Design course covering SQL, NoSQL, database architecture, normalization, indexing, performance optimization and building scalable data systems.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/database-design-course.jpg">
+  <title>Database Design Mastery - Build Scalable Data Systems | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-31-database-design-mastery.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Database Design Mastery",
+    "description": "SQL, NoSQL, database architecture, normalization, indexing, performance optimization and building scalable data systems.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "Database Design",
+    "teaches": ["Database Design", "SQL", "NoSQL", "Database Architecture", "Normalization", "Indexing", "Performance Optimization", "Data Systems"],
+    "timeRequired": "PT18H",
+    "coursePrerequisites": "Basic programming and data structures knowledge",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Dr. Robert Kim"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "8500"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "1099",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #3b82f6, #1e40af);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #3b82f6;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .database-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Database Design Mastery</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Database Design with SQL, NoSQL, database architecture, normalization, indexing, performance optimization and build scalable data systems.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 72 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 18h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.8 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 8.5K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">RK</div>
+        <div>
+          <div style="font-weight: 700;">Dr. Robert Kim</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Database Expert & Data Architect</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹1099</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Database Design</a></li>
+        <li><a href="#relational-databases">2. Relational Database Design</a></li>
+        <li><a href="#sql-mastery">3. SQL Mastery</a></li>
+        <li><a href="#normalization">4. Database Normalization</a></li>
+        <li><a href="#indexing-performance">5. Indexing & Performance</a></li>
+        <li><a href="#nosql">6. NoSQL Databases</a></li>
+        <li><a href="#database-architecture">7. Database Architecture</a></li>
+        <li><a href="#scaling">8. Database Scaling</a></li>
+        <li><a href="#security">9. Database Security</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>🗄️ Introduction to Database Design</h2>
+      <p>Database design is the foundation of building efficient, scalable, and reliable data systems. It involves creating logical structures that organize data, ensure data integrity, and optimize performance.</p>
+      
+      <p>This comprehensive course teaches you to master database design from fundamentals to advanced concepts. Learn to design relational and NoSQL databases, optimize performance, and build scalable data architectures.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🗄️</div>
+          <h4>Relational Databases</h4>
+          <p>Master SQL and relational database design principles</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h4>NoSQL Systems</h4>
+          <p>Learn document, key-value, and graph database design</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h4>Performance</h4>
+          <p>Optimize database performance with indexing and query tuning</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏗️</div>
+          <h4>Scalability</h4>
+          <p>Design databases that scale horizontally and vertically</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SQL Mastery -->
+    <section class="blog-section" id="sql-mastery">
+      <h2>🔧 SQL Mastery</h2>
+      <p>Master SQL from basic queries to advanced optimization. Learn to write efficient queries, work with complex joins, and use advanced SQL features for data manipulation and analysis.</p>
+
+      <h3>Advanced SQL Queries</h3>
+      <div class="code-block">
+-- Basic SELECT with complex JOINs
+SELECT 
+    u.user_id,
+    u.username,
+    u.email,
+    p.profile_name,
+    o.order_id,
+    o.order_date,
+    o.total_amount,
+    oi.product_name,
+    oi.quantity,
+    oi.unit_price,
+    c.category_name
+FROM users u
+LEFT JOIN user_profiles p ON u.user_id = p.user_id
+INNER JOIN orders o ON u.user_id = o.user_id
+INNER JOIN order_items oi ON o.order_id = oi.order_id
+INNER JOIN products pr ON oi.product_id = pr.product_id
+INNER JOIN categories c ON pr.category_id = c.category_id
+WHERE o.order_date >= '2024-01-01'
+    AND o.status = 'completed'
+ORDER BY o.order_date DESC, o.total_amount DESC;
+
+-- Window Functions for Analytics
+SELECT 
+    order_id,
+    user_id,
+    order_date,
+    total_amount,
+    ROW_NUMBER() OVER (ORDER BY total_amount DESC) as rank_by_amount,
+    DENSE_RANK() OVER (PARTITION BY user_id ORDER BY order_date) as order_sequence,
+    LAG(total_amount, 1) OVER (PARTITION BY user_id ORDER BY order_date) as previous_order_amount,
+    SUM(total_amount) OVER (PARTITION BY user_id ORDER BY order_date ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) as running_total,
+    AVG(total_amount) OVER (PARTITION BY user_id ORDER BY order_date ROWS BETWEEN 2 PRECEDING AND 2 FOLLOWING) as moving_avg
+FROM orders
+WHERE order_date >= '2024-01-01';
+
+-- Common Table Expressions (CTEs) for Complex Queries
+WITH monthly_sales AS (
+    SELECT 
+        DATE_TRUNC('month', order_date) as month,
+        COUNT(DISTINCT user_id) as unique_customers,
+        COUNT(order_id) as total_orders,
+        SUM(total_amount) as total_revenue,
+        AVG(total_amount) as avg_order_value
+    FROM orders
+    WHERE order_date >= '2024-01-01'
+    GROUP BY DATE_TRUNC('month', order_date)
+),
+monthly_growth AS (
+    SELECT 
+        month,
+        unique_customers,
+        total_orders,
+        total_revenue,
+        avg_order_value,
+        LAG(total_revenue) OVER (ORDER BY month) as previous_revenue,
+        LAG(unique_customers) OVER (ORDER BY month) as previous_customers
+    FROM monthly_sales
+)
+SELECT 
+    month,
+    unique_customers,
+    total_orders,
+    total_revenue,
+    avg_order_value,
+    ROUND((total_revenue - previous_revenue) / previous_revenue * 100, 2) as revenue_growth_pct,
+    ROUND((unique_customers - previous_customers) / previous_customers * 100, 2) as customer_growth_pct
+FROM monthly_growth
+ORDER BY month;
+
+-- Stored Procedure for Order Processing
+CREATE PROCEDURE process_order(
+    IN p_user_id INT,
+    IN p_order_items JSON,
+    IN p_shipping_address JSON,
+    OUT p_order_id INT,
+    OUT p_status VARCHAR(50)
+)
+BEGIN
+    DECLARE v_total_amount DECIMAL(10,2) DEFAULT 0;
+    DECLARE v_item_count INT DEFAULT 0;
+    DECLARE v_product_id INT;
+    DECLARE v_quantity INT;
+    DECLARE v_unit_price DECIMAL(10,2);
+    DECLARE v_stock_quantity INT;
+    DECLARE i INT DEFAULT 0;
+    
+    -- Start transaction
+    START TRANSACTION;
+    
+    -- Calculate total amount and validate stock
+    WHILE i < JSON_LENGTH(p_order_items) DO
+        SET v_product_id = JSON_UNQUOTE(JSON_EXTRACT(p_order_items, CONCAT('$[', i, '].product_id')));
+        SET v_quantity = JSON_UNQUOTE(JSON_EXTRACT(p_order_items, CONCAT('$[', i, '].quantity')));
+        
+        -- Get product price and stock
+        SELECT unit_price, stock_quantity INTO v_unit_price, v_stock_quantity
+        FROM products WHERE product_id = v_product_id FOR UPDATE;
+        
+        -- Validate stock
+        IF v_stock_quantity < v_quantity THEN
+            SET p_status = CONCAT('Insufficient stock for product ', v_product_id);
+            ROLLBACK;
+            LEAVE main_proc;
+        END IF;
+        
+        -- Update stock
+        UPDATE products SET stock_quantity = stock_quantity - v_quantity WHERE product_id = v_product_id;
+        
+        -- Calculate subtotal
+        SET v_total_amount = v_total_amount + (v_unit_price * v_quantity);
+        SET v_item_count = v_item_count + 1;
+        SET i = i + 1;
+    END WHILE;
+    
+    -- Create order
+    INSERT INTO orders (user_id, order_date, total_amount, status, item_count)
+    VALUES (p_user_id, NOW(), v_total_amount, 'pending', v_item_count);
+    
+    SET p_order_id = LAST_INSERT_ID();
+    
+    -- Create order items
+    SET i = 0;
+    WHILE i < JSON_LENGTH(p_order_items) DO
+        SET v_product_id = JSON_UNQUOTE(JSON_EXTRACT(p_order_items, CONCAT('$[', i, '].product_id')));
+        SET v_quantity = JSON_UNQUOTE(JSON_EXTRACT(p_order_items, CONCAT('$[', i, '].quantity')));
+        
+        SELECT unit_price INTO v_unit_price FROM products WHERE product_id = v_product_id;
+        
+        INSERT INTO order_items (order_id, product_id, quantity, unit_price)
+        VALUES (p_order_id, v_product_id, v_quantity, v_unit_price);
+        
+        SET i = i + 1;
+    END WHILE;
+    
+    -- Create shipping address
+    INSERT INTO shipping_addresses (order_id, address_line1, address_line2, city, state, postal_code, country)
+    VALUES (
+        p_order_id,
+        JSON_UNQUOTE(JSON_EXTRACT(p_shipping_address, '$.address_line1')),
+        JSON_UNQUOTE(JSON_EXTRACT(p_shipping_address, '$.address_line2')),
+        JSON_UNQUOTE(JSON_EXTRACT(p_shipping_address, '$.city')),
+        JSON_UNQUOTE(JSON_EXTRACT(p_shipping_address, '$.state')),
+        JSON_UNQUOTE(JSON_EXTRACT(p_shipping_address, '$.postal_code')),
+        JSON_UNQUOTE(JSON_EXTRACT(p_shipping_address, '$.country'))
+    );
+    
+    COMMIT;
+    SET p_status = 'Order processed successfully';
+    
+    main_proc: BEGIN END;
+END;
+
+-- Trigger for Audit Logging
+CREATE TABLE order_audit (
+    audit_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    old_status VARCHAR(50),
+    new_status VARCHAR(50),
+    changed_by VARCHAR(100),
+    changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    change_reason TEXT
+);
+
+CREATE TRIGGER order_status_audit
+AFTER UPDATE ON orders
+FOR EACH ROW
+BEGIN
+    IF OLD.status != NEW.status THEN
+        INSERT INTO order_audit (order_id, old_status, new_status, changed_by, change_reason)
+        VALUES (NEW.order_id, OLD.status, NEW.status, CURRENT_USER(), 'Status updated');
+    END IF;
+END;
+
+-- Performance Optimization with Indexes
+-- Create composite index for common query patterns
+CREATE INDEX idx_orders_user_date_status ON orders(user_id, order_date DESC, status);
+CREATE INDEX idx_products_category_stock ON products(category_id, stock_quantity);
+CREATE INDEX idx_order_items_order_product ON order_items(order_id, product_id);
+
+-- Partitioning for large tables
+-- Partition orders table by year
+ALTER TABLE orders PARTITION BY RANGE (YEAR(order_date)) (
+    PARTITION p2022 VALUES LESS THAN (2023),
+    PARTITION p2023 VALUES LESS THAN (2024),
+    PARTITION p2024 VALUES LESS THAN (2025),
+    PARTITION p2025 VALUES LESS THAN (2026),
+    PARTITION p_future VALUES LESS THAN MAXVALUE
+);
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your database design knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🛒 E-commerce Database</h4>
+          <p>Design complete database architecture for an e-commerce platform</p>
+        </div>
+        <div class="feature-card">
+          <h4>📱 Social Media Database</h4>
+          <p>Create scalable database for social networking applications</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Analytics Data Warehouse</h4>
+          <p>Build data warehouse for business intelligence and analytics</p>
+        </div>
+        <div class="feature-card">
+          <h4>🏦 Banking System Database</h4>
+          <p>Design secure database for financial transactions and accounts</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Follow proper normalization principles to avoid data redundancy</li>
+        <li>✅ Use appropriate indexes to optimize query performance</li>
+        <li>✅ Implement proper constraints to ensure data integrity</li>
+        <li>✅ Design for scalability from the beginning</li>
+        <li>✅ Use transactions to maintain data consistency</li>
+        <li>✅ Implement proper security and access controls</li>
+        <li>✅ Regularly monitor and optimize database performance</li>
+        <li>✅ Document database schema and design decisions</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Database Design and are ready to build scalable, efficient data systems. You now understand relational and NoSQL databases, performance optimization, and database architecture principles.</p>
+      
+      <p>Database design is a critical skill that continues to evolve with new technologies and paradigms. Keep exploring emerging database technologies, stay current with optimization techniques, and continue building robust data solutions.</p>
+
+      <div style="background: linear-gradient(135deg, #3b82f6, #1e40af); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become a Database Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering advanced database technologies and data architectures!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-19-python-data-science.html" class="btn btn-outline" style="background: white; color: #3b82f6;">Python Data Science →</a>
+          <a href="blog-20-machine-learning-complete.html" class="btn btn-outline" style="background: white; color: #3b82f6;">Machine Learning →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #3b82f6;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

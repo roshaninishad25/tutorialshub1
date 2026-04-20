@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Cloud Computing with AWS comprehensive guide. Learn EC2, S3, Lambda, RDS, VPC, deployment strategies and build scalable cloud applications. Premium course.">
+  <meta name="keywords" content="Cloud computing tutorial, AWS tutorial, EC2, S3, Lambda, RDS, VPC, cloud deployment, learn AWS">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Cloud Computing with AWS - Build Scalable Applications">
+  <meta property="og:description" content="Premium AWS course covering EC2, S3, Lambda, RDS, VPC, deployment strategies and building scalable cloud applications.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-26-cloud-computing-aws.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/aws-cloud-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cloud Computing with AWS - Build Scalable Applications">
+  <meta name="twitter:description" content="Premium AWS course covering EC2, S3, Lambda, RDS, VPC, deployment strategies and building scalable cloud applications.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/aws-cloud-course.jpg">
+  <title>Cloud Computing with AWS - Build Scalable Applications | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-26-cloud-computing-aws.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Cloud Computing with AWS",
+    "description": "EC2, S3, Lambda, RDS, VPC, deployment strategies and building scalable cloud applications.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "AWS Cloud Computing",
+    "teaches": ["AWS", "Cloud Computing", "EC2", "S3", "Lambda", "RDS", "VPC", "Cloud Deployment", "Scalable Applications"],
+    "timeRequired": "PT18H",
+    "coursePrerequisites": "Basic networking knowledge and programming experience",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Priya Sharma"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "12000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "1099",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #ff9900, #232f3e);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #ff9900;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .aws-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Cloud Computing with AWS</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master AWS with EC2, S3, Lambda, RDS, VPC, deployment strategies and build scalable cloud applications.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 68 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 18h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.8 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 12K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">PS</div>
+        <div>
+          <div style="font-weight: 700;">Priya Sharma</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">AWS Expert & Cloud Architect</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹1099</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Cloud Computing</a></li>
+        <li><a href="#aws-fundamentals">2. AWS Fundamentals</a></li>
+        <li><a href="#ec2">3. Amazon EC2 & Compute Services</a></li>
+        <li><a href="#storage">4. AWS Storage Solutions</a></li>
+        <li><a href="#database">5. Database Services (RDS, DynamoDB)</a></li>
+        <li><a href="#networking">6. VPC & Networking</a></li>
+        <li><a href="#serverless">7. Serverless with Lambda</a></li>
+        <li><a href="#deployment">8. Deployment & DevOps</a></li>
+        <li><a href="#security">9. Security & Compliance</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>☁️ Introduction to Cloud Computing</h2>
+      <p>Cloud computing has revolutionized how businesses deploy and scale applications. AWS (Amazon Web Services) is the leading cloud platform, offering over 200 services for computing, storage, databases, networking, and more.</p>
+      
+      <p>This comprehensive course teaches you to master AWS cloud computing, from fundamental concepts to advanced architectures. Learn to build scalable, secure, and cost-effective cloud applications using industry best practices.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">☁️</div>
+          <h4>Cloud Services</h4>
+          <p>Master comprehensive AWS services and their use cases</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h4>Scalability</h4>
+          <p>Build applications that scale automatically with demand</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h4>Security</h4>
+          <p>Implement robust security and compliance measures</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h4>Cost Optimization</h4>
+          <p>Optimize cloud spending and maximize ROI</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AWS Fundamentals -->
+    <section class="blog-section" id="aws-fundamentals">
+      <h2>🏗️ AWS Fundamentals</h2>
+      <p>Learn AWS fundamentals including the global infrastructure, IAM, billing, and core services. Understand how to navigate the AWS Management Console and use the AWS CLI and SDKs.</p>
+
+      <h3>AWS CLI and SDK Setup</h3>
+      <div class="code-block">
+# Install AWS CLI
+# macOS
+brew install awscli
+
+# Ubuntu/Debian
+sudo apt-get update
+sudo apt-get install awscli
+
+# Windows
+# Download and run the installer from aws.amazon.com/cli
+
+# Configure AWS CLI
+aws configure
+
+# Enter your credentials when prompted:
+# AWS Access Key ID: YOUR_ACCESS_KEY
+# AWS Secret Access Key: YOUR_SECRET_KEY
+# Default region name: us-west-2
+# Default output format: json
+
+# Verify configuration
+aws sts get-caller-identity
+
+# List available services
+aws help
+
+# Working with S3 via CLI
+# List buckets
+aws s3 ls
+
+# Create bucket
+aws s3 mb s3://my-unique-bucket-name
+
+# Upload file
+aws s3 cp myfile.txt s3://my-unique-bucket-name/
+
+# Download file
+aws s3 cp s3://my-unique-bucket-name/myfile.txt ./myfile.txt
+
+# Sync directory
+aws s3 sync ./local-folder s3://my-unique-bucket-name/remote-folder
+
+# Working with EC2 via CLI
+# List instances
+aws ec2 describe-instances
+
+# List available instance types
+aws ec2 describe-instance-types --query "InstanceTypes[0:5].{Type:InstanceType,VCPU:VCpuInfo.DefaultVCpus,Memory:MemoryInfo.SizeInMiB}"
+
+# Create security group
+aws ec2 create-security-group --group-name my-sg --description "My security group"
+
+# Authorize inbound traffic
+aws ec2 authorize-security-group-ingress --group-id sg-xxxxxxxx --protocol tcp --port 22 --cidr 0.0.0.0/0
+
+# Working with IAM via CLI
+# Create user
+aws iam create-user --user-name myuser
+
+# Create access key
+aws iam create-access-key --user-name myuser
+
+# List users
+aws iam list-users
+
+# Create policy
+aws iam create-policy --policy-name MyPolicy --policy-document file://policy.json
+
+# Attach policy to user
+aws iam attach-user-policy --user-name myuser --policy-arn arn:aws:iam::account:policy/MyPolicy
+
+# AWS SDK for Python (Boto3) example
+import boto3
+import json
+
+# Create S3 client
+s3 = boto3.client('s3')
+
+# List buckets
+response = s3.list_buckets()
+print("Buckets:")
+for bucket in response['Buckets']:
+    print(f"  {bucket['Name']}")
+
+# Create bucket
+s3.create_bucket(Bucket='my-python-bucket')
+
+# Upload file
+s3.upload_file('localfile.txt', 'my-python-bucket', 'remotefile.txt')
+
+# Download file
+s3.download_file('my-python-bucket', 'remotefile.txt', 'downloaded.txt')
+
+# Working with EC2
+ec2 = boto3.client('ec2')
+
+# List instances
+response = ec2.describe_instances()
+print("EC2 Instances:")
+for reservation in response['Reservations']:
+    for instance in reservation['Instances']:
+        print(f"  Instance ID: {instance['InstanceId']}")
+        print(f"  State: {instance['State']['Name']}")
+
+# Create EC2 instance
+response = ec2.run_instances(
+    ImageId='ami-0c55b159cbfafe1f0',  # Amazon Linux 2
+    MinCount=1,
+    MaxCount=1,
+    InstanceType='t2.micro',
+    KeyName='my-key-pair',
+    SecurityGroupIds=['sg-xxxxxxxx']
+)
+
+instance_id = response['Instances'][0]['InstanceId']
+print(f"Created instance: {instance_id}")
+      </div>
+
+      <h3>AWS Infrastructure and Regions</h3>
+      <div class="code-block">
+# AWS Global Infrastructure
+# Regions: Geographic areas where AWS has data centers
+# Availability Zones: Isolated locations within regions
+# Edge Locations: Sites for CloudFront content delivery
+
+# List all regions
+aws ec2 describe-regions --query "Regions[].{Name:RegionName}"
+
+# List availability zones for a region
+aws ec2 describe-availability-zones --region us-west-2
+
+# Working with multiple regions
+export AWS_DEFAULT_REGION=us-west-2
+aws s3 ls
+
+# Or specify region per command
+aws s3 ls --region eu-west-1
+
+# AWS CloudFormation - Infrastructure as Code
+# template.yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Simple EC2 instance with S3 bucket'
+
+Parameters:
+  InstanceType:
+    Type: String
+    Default: t2.micro
+    Description: EC2 instance type
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Name of an existing EC2 KeyPair
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      ImageId: ami-0c55b159cbfafe1f0
+      SecurityGroupIds:
+        - !Ref MySecurityGroup
+
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${AWS::StackName}-bucket-${AWS::AccountId}'
+
+Outputs:
+  InstanceId:
+    Description: Instance ID of the EC2 instance
+    Value: !Ref MyEC2Instance
+  BucketName:
+    Description: Name of the S3 bucket
+    Value: !Ref MyS3Bucket
+
+# Deploy CloudFormation stack
+aws cloudformation create-stack \
+  --stack-name my-stack \
+  --template-body file://template.yaml \
+  --parameters ParameterKey=KeyName,ParameterValue=my-key-pair
+
+# Monitor stack creation
+aws cloudformation describe-stacks --stack-name my-stack
+
+# Delete stack
+aws cloudformation delete-stack --stack-name my-stack
+
+# AWS CDK (Cloud Development Kit) - Infrastructure as Code with TypeScript
+# Install CDK
+npm install -g aws-cdk
+
+# Initialize CDK project
+mkdir my-cdk-app
+cd my-cdk-app
+cdk init app --language typescript
+
+# lib/my-cdk-app-stack.ts
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
+import * as s3 from 'aws-cdk-lib/aws-s3';
+
+export class MyCdkAppStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
+
+    // Create VPC
+    const vpc = new ec2.Vpc(this, 'MyVpc', {
+      cidr: '10.0.0.0/16',
+      natGateways: 1,
+      maxAzs: 2
+    });
+
+    // Create security group
+    const securityGroup = new ec2.SecurityGroup(this, 'MySecurityGroup', {
+      vpc,
+      allowAllOutbound: true,
+      description: 'Allow SSH access'
+    });
+
+    securityGroup.addIngressRule(
+      ec2.Peer.anyIpv4(),
+      ec2.Port.tcp(22),
+      'Allow SSH access'
+    );
+
+    // Create EC2 instance
+    const instance = new ec2.Instance(this, 'MyInstance', {
+      vpc,
+      instanceType: ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+      machineImage: ec2.MachineImage.latestAmazonLinux(),
+      securityGroup,
+      vpcSubnets: { subnetType: ec2.SubnetType.PUBLIC }
+    });
+
+    // Create S3 bucket
+    const bucket = new s3.Bucket(this, 'MyBucket', {
+      versioned: true,
+      encryption: s3.BucketEncryption.S3_MANAGED,
+      blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL
+    });
+
+    // Output values
+    new cdk.CfnOutput(this, 'InstanceId', {
+      value: instance.instanceId
+    });
+
+    new cdk.CfnOutput(this, 'BucketName', {
+      value: bucket.bucketName
+    });
+  }
+}
+
+# Deploy CDK stack
+cdk deploy
+
+# Destroy CDK stack
+cdk destroy
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your AWS cloud computing knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🌐 Multi-Tier Web Application</h4>
+          <p>Deploy a complete web application with load balancer, auto-scaling, and database</p>
+        </div>
+        <div class="feature-card">
+          <h4>⚡ Serverless API</h4>
+          <p>Build a serverless REST API using Lambda, API Gateway, and DynamoDB</p>
+        </div>
+        <div class="feature-card">
+          <h4>📊 Data Pipeline</h4>
+          <p>Create an ETL pipeline with S3, Glue, and Redshift for data analytics</p>
+        </div>
+        <div class="feature-card">
+          <h4>🔒 Security Hardening</h4>
+          <p>Implement comprehensive security measures and compliance controls</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Use Infrastructure as Code for reproducible deployments</li>
+        <li>✅ Implement proper IAM policies and principle of least privilege</li>
+        <li>✅ Enable monitoring and logging for all resources</li>
+        <li>✅ Use multiple Availability Zones for high availability</li>
+        <li>✅ Implement proper backup and disaster recovery strategies</li>
+        <li>✅ Optimize costs using appropriate instance types and reserved capacity</li>
+        <li>✅ Use security groups and network ACLs for network security</li>
+        <li>✅ Regularly review and update security configurations</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered AWS cloud computing and are ready to build scalable, secure cloud applications. You now understand core AWS services, infrastructure management, deployment strategies, and cloud best practices.</p>
+      
+      <p>Cloud computing continues to evolve with new services and features. Keep exploring advanced AWS services, stay current with best practices, and continue building innovative cloud solutions.</p>
+
+      <div style="background: linear-gradient(135deg, #ff9900, #232f3e); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become an AWS Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering advanced cloud technologies and DevOps practices!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-18-docker-kubernetes-guide.html" class="btn btn-outline" style="background: white; color: #ff9900;">Docker & Kubernetes →</a>
+          <a href="blog-22-git-github-mastery.html" class="btn btn-outline" style="background: white; color: #ff9900;">Git & GitHub →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #ff9900;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

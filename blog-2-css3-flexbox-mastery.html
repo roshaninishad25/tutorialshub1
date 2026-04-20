@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master CSS3 and Flexbox with comprehensive guide. Learn modern layout techniques, animations, Grid, custom properties, responsive design, and glassmorphism effects. Premium course.">
+  <meta name="keywords" content="CSS3 tutorial, Flexbox mastery, CSS Grid, CSS animations, responsive design, custom properties, glassmorphism, modern CSS, learn CSS3">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="CSS3 & Flexbox Mastery - Modern Layout Techniques">
+  <meta property="og:description" content="Premium CSS3 course covering Flexbox, Grid, animations, custom properties, responsive design and modern glassmorphism techniques.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-2-css3-flexbox-mastery.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/css3-mastery.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CSS3 & Flexbox Mastery - Modern Layout Techniques">
+  <meta name="twitter:description" content="Premium CSS3 course covering Flexbox, Grid, animations, custom properties, responsive design and modern glassmorphism techniques.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/css3-mastery.jpg">
+  <title>CSS3 & Flexbox Mastery - Modern Layout Techniques | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-2-css3-flexbox-mastery.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "CSS3 & Flexbox Mastery",
+    "description": "CSS Grid, Flexbox, animations, custom properties, responsive design and modern glassmorphism techniques.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Beginner",
+    "about": "CSS3 Web Development",
+    "teaches": ["CSS3 Flexbox", "CSS Grid", "CSS Animations", "Custom Properties", "Responsive Design", "Glassmorphism"],
+    "timeRequired": "PT5H45M",
+    "coursePrerequisites": "Basic HTML knowledge",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Arjun Mehta"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "14000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "499",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #1565c0, #42a5f5);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #1565c0;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .demo-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .flex-demo {
+      display: flex;
+      gap: 10px;
+      padding: 20px;
+      background: var(--bg);
+      border-radius: 8px;
+    }
+    .flex-item {
+      background: var(--primary);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 4px;
+      flex: 1;
+    }
+    .glassmorphism {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 30px;
+      color: white;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">CSS3 & Flexbox Mastery</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master modern CSS layout techniques with Flexbox, Grid, animations, custom properties, responsive design and stunning glassmorphism effects.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 35 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 5h 45m</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.8 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 14K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👑 Premium</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">AM</div>
+        <div>
+          <div style="font-weight: 700;">Arjun Mehta</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">CSS Expert & UI Designer</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Beginner</span>
+        <span>💰 ₹499</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to CSS3</a></li>
+        <li><a href="#selectors">2. Advanced CSS Selectors</a></li>
+        <li><a href="#flexbox">3. Flexbox Complete Guide</a></li>
+        <li><a href="#grid">4. CSS Grid Layout</a></li>
+        <li><a href="#animations">5. CSS Animations & Transitions</a></li>
+        <li><a href="#custom-properties">6. CSS Custom Properties</a></li>
+        <li><a href="#responsive">7. Responsive Design Techniques</a></li>
+        <li><a href="#glassmorphism">8. Modern Glassmorphism</a></li>
+        <li><a href="#performance">9. CSS Performance Optimization</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>🎨 Introduction to CSS3</h2>
+      <p>CSS3 has revolutionized web design with powerful layout systems, animations, and visual effects that were once impossible without JavaScript. This premium course takes you from CSS basics to advanced techniques used by professional developers worldwide.</p>
+      
+      <p>Modern CSS3 enables you to create responsive, accessible, and visually stunning websites with clean, maintainable code. Whether you're building personal portfolios or enterprise applications, mastering CSS3 is essential for creating exceptional user experiences.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h4>Modern Layouts</h4>
+          <p>Master Flexbox and Grid for any layout challenge</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <h4>Stunning Effects</h4>
+          <p>Create animations, transitions, and glassmorphism</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h4>Responsive Design</h4>
+          <p>Build websites that adapt to any screen size</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h4>Performance</h4>
+          <p>Optimize CSS for lightning-fast load times</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advanced Selectors -->
+    <section class="blog-section" id="selectors">
+      <h2>🎯 Advanced CSS Selectors</h2>
+      <p>CSS3 introduces powerful selectors that give you precise control over styling. Understanding these selectors is crucial for writing efficient, maintainable CSS without excessive classes.</p>
+
+      <h3>Essential CSS3 Selectors</h3>
+      <div class="code-block">
+/* Attribute Selectors */
+input[type="text"] { border: 1px solid #ccc; }
+a[href^="https"] { color: green; }
+img[src$=".png"] { border: 1px solid blue; }
+div[class*="nav"] { background: #f0f0f0; }
+
+/* Structural Pseudo-classes */
+:first-child { margin-top: 0; }
+:last-child { margin-bottom: 0; }
+:nth-child(odd) { background: #f9f9f9; }
+:nth-of-type(2n) { color: blue; }
+
+/* UI State Pseudo-classes */
+:focus { outline: 2px solid blue; }
+:hover { transform: scale(1.05); }
+:disabled { opacity: 0.5; }
+:checked + label { font-weight: bold; }
+
+/* Combinators */
+.parent > .child { color: red; }
+.sibling + .adjacent { margin-top: 0; }
+.element ~ .following { border-left: 1px solid; }
+      </div>
+
+      <h3>Selector Specificity</h3>
+      <p>Understanding specificity is key to debugging CSS issues. The hierarchy is: Inline styles (1000) > IDs (100) > Classes/Attributes/Pseudo-classes (10) > Elements/Pseudo-elements (1).</p>
+    </section>
+
+    <!-- Flexbox -->
+    <section class="blog-section" id="flexbox">
+      <h2>📦 Flexbox Complete Guide</h2>
+      <p>Flexbox is a one-dimensional layout method that makes it easy to design flexible and responsive layout structures. It's perfect for arranging items in rows or columns with powerful alignment and distribution capabilities.</p>
+
+      <h3>Flex Container Properties</h3>
+      <div class="code-block">
+.flex-container {
+  display: flex;
+  flex-direction: row; /* row | row-reverse | column | column-reverse */
+  flex-wrap: nowrap; /* nowrap | wrap | wrap-reverse */
+  justify-content: flex-start; /* flex-start | flex-end | center | space-between | space-around | space-evenly */
+  align-items: stretch; /* stretch | flex-start | flex-end | center | baseline */
+  align-content: stretch; /* stretch | flex-start | flex-end | center | space-between | space-around */
+  gap: 20px; /* Modern spacing */
+}
+      </div>
+
+      <h3>Flex Item Properties</h3>
+      <div class="code-block">
+.flex-item {
+  flex-grow: 0; /* How much item grows */
+  flex-shrink: 1; /* How much item shrinks */
+  flex-basis: auto; /* Base size */
+  flex: 1 1 auto; /* Shorthand: grow shrink basis */
+  align-self: auto; /* Override container align-items */
+  order: 0; /* Visual order */
+}
+      </div>
+
+      <div class="demo-box">
+        <h4>Flexbox Demo</h4>
+        <div class="flex-demo">
+          <div class="flex-item">Item 1</div>
+          <div class="flex-item">Item 2</div>
+          <div class="flex-item">Item 3</div>
+        </div>
+      </div>
+
+      <h3>Common Flexbox Patterns</h3>
+      <ul>
+        <li><strong>Center content:</strong> display: flex; justify-content: center; align-items: center;</li>
+        <li><strong>Equal height columns:</strong> display: flex on parent</li>
+        <li><strong>Navigation bar:</strong> justify-content: space-between</li>
+        <li><strong>Card layout:</strong> flex-wrap: wrap with flex items</li>
+      </ul>
+    </section>
+
+    <!-- CSS Grid -->
+    <section class="blog-section" id="grid">
+      <h2>🔲 CSS Grid Layout</h2>
+      <p>CSS Grid is a two-dimensional layout system that revolutionizes web design. It enables complex layouts that were previously impossible or extremely difficult with CSS alone.</p>
+
+      <h3>Grid Container Setup</h3>
+      <div class="code-block">
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Fractional units */
+  grid-template-rows: auto 1fr auto; /* Row heights */
+  grid-template-areas: 
+    "header header header"
+    "sidebar main aside"
+    "footer footer footer";
+  gap: 20px;
+  padding: 20px;
+}
+      </div>
+
+      <h3>Grid Item Placement</h3>
+      <div class="code-block">
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.aside { grid-area: aside; }
+.footer { grid-area: footer; }
+
+/* Alternative placement */
+.featured {
+  grid-column: 1 / 3; /* Start at line 1, end at line 3 */
+  grid-row: 2 / 4; /* Start at line 2, end at line 4 */
+}
+      </div>
+
+      <h3>Advanced Grid Features</h3>
+      <ul>
+        <li><strong>Auto-fit and auto-fill:</strong> Responsive grid columns</li>
+        <li><strong>Minmax function:</strong> Flexible sizing constraints</li>
+        <li><strong>Subgrid:</strong> Nested grid alignment</li>
+        <li><strong>Grid lines:</strong> Named and numbered lines</li>
+        <li><strong>Dense packing:</strong> Fill available space efficiently</li>
+      </ul>
+
+      <div class="code-block">
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+      </div>
+    </section>
+
+    <!-- Animations -->
+    <section class="blog-section" id="animations">
+      <h2>🎬 CSS Animations & Transitions</h2>
+      <p>CSS animations and transitions bring your websites to life with smooth, performant motion effects. Understanding the difference and when to use each is crucial for creating engaging user interfaces.</p>
+
+      <h3>Transitions</h3>
+      <div class="code-block">
+.button {
+  background: #007bff;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+      </div>
+
+      <h3>Keyframe Animations</h3>
+      <div class="code-block">
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animated-element {
+  animation: slideIn 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+/* Complex animation */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.heartbeat {
+  animation: pulse 1s infinite;
+}
+      </div>
+
+      <h3>Performance Tips</h3>
+      <ul>
+        <li>Use transform and opacity for better performance</li>
+        <li>Avoid animating layout properties (width, height, margin)</li>
+        <li>Use will-change for complex animations</li>
+        <li>Prefer CSS animations over JavaScript when possible</li>
+        <li>Use reduced motion preferences for accessibility</li>
+      </ul>
+    </section>
+
+    <!-- Custom Properties -->
+    <section class="blog-section" id="custom-properties">
+      <h2>🎨 CSS Custom Properties</h2>
+      <p>CSS custom properties (variables) enable dynamic styling and theme management. They make your CSS more maintainable, reusable, and powerful.</p>
+
+      <h3>Defining and Using Variables</h3>
+      <div class="code-block">
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --border-radius: 4px;
+  --transition: all 0.3s ease;
+}
+
+.button {
+  background: var(--primary-color);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.card {
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--border-radius);
+}
+      </div>
+
+      <h3>Dynamic Variables with JavaScript</h3>
+      <div class="code-block">
+/* CSS */
+.theme-dark {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+}
+
+.theme-light {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s ease;
+}
+      </div>
+
+      <div class="code-block">
+// JavaScript
+document.documentElement.style.setProperty('--primary-color', '#ff6b6b');
+document.body.classList.toggle('theme-dark');
+      </div>
+
+      <h3>Advanced Use Cases</h3>
+      <ul>
+        <li>Theme switching (dark/light mode)</li>
+        <li>Responsive design breakpoints</li>
+        <li>Component-based styling</li>
+        <li>Mathematical calculations with calc()</li>
+        <li>Dynamic spacing systems</li>
+      </ul>
+    </section>
+
+    <!-- Responsive Design -->
+    <section class="blog-section" id="responsive">
+      <h2>📱 Responsive Design Techniques</h2>
+      <p>Responsive design ensures your websites work perfectly on all devices. Modern CSS provides multiple approaches to create flexible, adaptive layouts.</p>
+
+      <h3>Media Queries</h3>
+      <div class="code-block">
+/* Mobile-first approach */
+.container {
+  padding: 10px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+}
+
+/* Target specific features */
+@media (hover: hover) {
+  .button:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+      </div>
+
+      <h3>Modern Responsive Units</h3>
+      <div class="code-block">
+.responsive-text {
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  line-height: 1.5;
+}
+
+.responsive-spacing {
+  padding: clamp(1rem, 5vw, 3rem);
+  margin: clamp(0.5rem, 2.5vw, 1.5rem);
+}
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+}
+      </div>
+
+      <h3>Container Queries (Latest)</h3>
+      <div class="code-block">
+@container (min-width: 400px) {
+  .card {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@container (min-width: 600px) {
+  .card {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+      </div>
+    </section>
+
+    <!-- Glassmorphism -->
+    <section class="blog-section" id="glassmorphism">
+      <h2>✨ Modern Glassmorphism</h2>
+      <p>Glassmorphism is a modern design trend featuring translucent elements with blur effects. Create stunning, contemporary interfaces using CSS backdrop-filter and modern properties.</p>
+
+      <h3>Basic Glassmorphism</h3>
+      <div class="code-block">
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme glassmorphism */
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+      </div>
+
+      <div class="glassmorphism">
+        <h3>✨ Glassmorphism Effect</h3>
+        <p>This is an example of glassmorphism styling with backdrop blur, transparency, and subtle borders. Perfect for modern UI designs!</p>
+      </div>
+
+      <h3>Advanced Glassmorphism Techniques</h3>
+      <div class="code-block">
+.glass-button {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 50px;
+  padding: 12px 30px;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.glass-button:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* Animated glassmorphism */
+@keyframes glassFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating-glass {
+  animation: glassFloat 3s ease-in-out infinite;
+}
+      </div>
+
+      <h3>Browser Compatibility</h3>
+      <p>Always include fallbacks for browsers that don't support backdrop-filter:</p>
+      <div class="code-block">
+.glass {
+  background: rgba(255, 255, 255, 0.9); /* Fallback */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+  .glass {
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+      </div>
+    </section>
+
+    <!-- Performance -->
+    <section class="blog-section" id="performance">
+      <h2>⚡ CSS Performance Optimization</h2>
+      <p>Optimizing CSS is crucial for fast-loading websites. Learn techniques to reduce file size, improve rendering performance, and create efficient stylesheets.</p>
+
+      <h3>CSS Optimization Techniques</h3>
+      <ul>
+        <li><strong>Minimize and compress CSS files</strong></li>
+        <li><strong>Use efficient selectors</strong> - Avoid deeply nested selectors</li>
+        <li><strong>Leverage browser caching</strong> with proper headers</li>
+        <li><strong>Critical CSS inlining</strong> for above-the-fold content</li>
+        <li><strong>Remove unused CSS</strong> with tools like PurgeCSS</li>
+        <li><strong>Use modern layout methods</strong> (Flexbox, Grid)</li>
+        <li><strong>Optimize animations</strong> with transform and opacity</li>
+      </ul>
+
+      <h3>Critical CSS Example</h3>
+      <div class="code-block">
+/* Critical CSS - Inline in HTML */
+.critical-above-fold {
+  /* Only essential styles for initial viewport */
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+      </div>
+
+      <h3>Modern CSS Tools</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>PostCSS</h4>
+          <p>Transform CSS with JavaScript plugins</p>
+        </div>
+        <div class="feature-card">
+          <h4>Autoprefixer</h4>
+          <p>Add vendor prefixes automatically</p>
+        </div>
+        <div class="feature-card">
+          <h4>CSS Modules</h4>
+          <p>Scoped CSS for components</p>
+        </div>
+        <div class="feature-card">
+          <h4>PurgeCSS</h4>
+          <p>Remove unused CSS</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your CSS3 knowledge with these practical projects that demonstrate advanced techniques and build your portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🎨 Design System</h4>
+          <p>Create a complete design system with CSS custom properties, components, and documentation</p>
+        </div>
+        <div class="feature-card">
+          <h4>📱 Responsive Dashboard</h4>
+          <p>Build a complex dashboard with Grid, Flexbox, and responsive charts</p>
+        </div>
+        <div class="feature-card">
+          <h4>✨ Glassmorphism UI</h4>
+          <p>Design a modern interface with glassmorphism effects and smooth animations</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎪 Animation Showcase</h4>
+          <p>Create impressive CSS animations and micro-interactions</p>
+        </div>
+      </div>
+
+      <h3>Best Practices for Projects</h3>
+      <ul>
+        <li>Use semantic HTML5 with CSS3</li>
+        <li>Implement mobile-first responsive design</li>
+        <li>Create reusable component styles</li>
+        <li>Optimize for performance and accessibility</li>
+        <li>Test across browsers and devices</li>
+        <li>Document your CSS architecture</li>
+        <li>Use version control for your styles</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Mastering CSS3 and modern layout techniques is essential for creating exceptional web experiences. This comprehensive course has equipped you with the skills to build responsive, accessible, and visually stunning websites using the latest CSS features.</p>
+      
+      <p>Remember that CSS is continuously evolving. Stay curious, experiment with new features, and always prioritize user experience and accessibility. The techniques you've learned here will serve as a strong foundation for your web development career.</p>
+
+      <div style="background: linear-gradient(135deg, #1565c0, #42a5f5); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Continue Your Learning Journey!</h3>
+        <p style="margin-bottom: 20px;">Ready to master JavaScript and bring your designs to life?</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-3-javascript-zero-to-hero.html" class="btn btn-outline" style="background: white; color: #1565c0;">JavaScript Mastery →</a>
+          <a href="blog-4-reactjs-fundamentals.html" class="btn btn-outline" style="background: white; color: #1565c0;">React.js Course →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #1565c0;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

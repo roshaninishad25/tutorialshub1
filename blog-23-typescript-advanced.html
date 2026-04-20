@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Advanced TypeScript with comprehensive guide. Learn generics, decorators, advanced types, patterns, type-safe development and build scalable applications. Premium course.">
+  <meta name="keywords" content="TypeScript advanced tutorial, TypeScript generics, TypeScript decorators, advanced types, type-safe development, learn TypeScript">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Advanced TypeScript - Type-Safe Development Mastery">
+  <meta property="og:description" content="Premium Advanced TypeScript course covering generics, decorators, advanced types, patterns, type-safe development and building scalable applications.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-23-typescript-advanced.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/typescript-advanced-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced TypeScript - Type-Safe Development Mastery">
+  <meta name="twitter:description" content="Premium Advanced TypeScript course covering generics, decorators, advanced types, patterns, type-safe development and building scalable applications.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/typescript-advanced-course.jpg">
+  <title>Advanced TypeScript - Type-Safe Development Mastery | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-23-typescript-advanced.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Advanced TypeScript",
+    "description": "Generics, decorators, advanced types, patterns, type-safe development and building scalable applications.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "TypeScript Development",
+    "teaches": ["TypeScript", "Generics", "Decorators", "Advanced Types", "Type Safety", "Patterns", "Scalable Applications"],
+    "timeRequired": "PT12H",
+    "coursePrerequisites": "JavaScript ES6+ and basic TypeScript knowledge",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Neha Gupta"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "8500"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "899",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #3178c6, #235a97);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #3178c6;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .ts-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Advanced TypeScript</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Advanced TypeScript with generics, decorators, advanced types, patterns, type-safe development and build scalable applications.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 45 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 12h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.8 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 8.5K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">NG</div>
+        <div>
+          <div style="font-weight: 700;">Neha Gupta</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">TypeScript Expert & Senior Developer</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹899</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Advanced TypeScript Introduction</a></li>
+        <li><a href="#generics">2. Advanced Generics</a></li>
+        <li><a href="#decorators">3. Decorators & Metadata</a></li>
+        <li><a href="#advanced-types">4. Advanced Type System</a></li>
+        <li><a href="#patterns">5. Design Patterns</a></li>
+        <li><a href="#utility-types">6. Utility Types & Mapped Types</a></li>
+        <li><a href="#type-narrowing">7. Type Narrowing & Guards</a></li>
+        <li><a href="#modules">8. Advanced Modules & Namespaces</a></li>
+        <li><a href="#performance">9. Performance & Optimization</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>🚀 Advanced TypeScript Introduction</h2>
+      <p>TypeScript has evolved beyond simple type annotations to become a powerful tool for building scalable, type-safe applications. Advanced TypeScript features enable developers to create robust, maintainable code with excellent developer experience.</p>
+      
+      <p>This comprehensive course teaches you to master advanced TypeScript concepts, from sophisticated type manipulation to architectural patterns. Learn to build enterprise-grade applications with complete type safety.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔷</div>
+          <h4>Type Safety</h4>
+          <p>Achieve complete type safety in your applications</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h4>Advanced Types</h4>
+          <p>Master sophisticated type manipulation and inference</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏗️</div>
+          <h4>Design Patterns</h4>
+          <p>Implement proven patterns with TypeScript</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h4>Performance</h4>
+          <p>Optimize TypeScript for production applications</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Generics -->
+    <section class="blog-section" id="generics">
+      <h2>🎯 Advanced Generics</h2>
+      <p>Master TypeScript's powerful generic system to create reusable, type-safe components and utilities. Learn about generic constraints, conditional types, and advanced generic patterns.</p>
+
+      <h3>Generic Functions and Classes</h3>
+      <div class="code-block">
+// Basic generic function
+function identity&lt;T&gt;(arg: T): T {
+  return arg;
+}
+
+// Generic with constraints
+interface Lengthwise {
+  length: number;
+}
+
+function logLength&lt;T extends Lengthwise&gt;(arg: T): void {
+  console.log(arg.length);
+}
+
+logLength("hello"); // Works
+logLength([1, 2, 3]); // Works
+// logLength(42); // Error: number doesn't have length
+
+// Generic class
+class Box&lt;T&gt; {
+  private content: T;
+
+  constructor(content: T) {
+    this.content = content;
+  }
+
+  getContent(): T {
+    return this.content;
+  }
+
+  setContent(content: T): void {
+    this.content = content;
+  }
+}
+
+const stringBox = new Box("Hello TypeScript");
+const numberBox = new Box(42);
+
+// Advanced generic with multiple type parameters
+class Pair&lt;T, U&gt; {
+  constructor(
+    public first: T,
+    public second: U
+  ) {}
+
+  swap(): Pair&lt;U, T&gt; {
+    return new Pair(this.second, this.first);
+  }
+
+  toString(): string {
+    return `Pair(${this.first}, ${this.second})`;
+  }
+}
+
+const pair = new Pair("hello", 42);
+const swapped = pair.swap(); // Pair&lt;number, string&gt;
+
+// Generic factory pattern
+interface Constructor&lt;T&gt; {
+  new(...args: any[]): T;
+}
+
+function createInstance&lt;T&gt;(
+  ctor: Constructor&lt;T&gt;,
+  ...args: any[]
+): T {
+  return new ctor(...args);
+}
+
+class User {
+  constructor(public name: string, public age: number) {}
+}
+
+const user = createInstance(User, "John", 30);
+
+// Generic utility functions
+function getProperty&lt;T, K extends keyof T&gt;(
+  obj: T,
+  key: K
+): T[K] {
+  return obj[key];
+}
+
+function setProperty&lt;T, K extends keyof T&gt;(
+  obj: T,
+  key: K,
+  value: T[K]
+): void {
+  obj[key] = value;
+}
+
+const person = { name: "Alice", age: 25 };
+const name = getProperty(person, "name"); // string
+setProperty(person, "age", 26);
+      </div>
+
+      <h3>Conditional Types and Inference</h3>
+      <div class="code-block">
+// Conditional types
+type IsString&lt;T&gt; = T extends string ? true : false;
+
+type Test1 = IsString&lt;"hello"&gt;; // true
+type Test2 = IsString&lt;42&gt;; // false
+
+// Advanced conditional types
+type NonNullable&lt;T&gt; = T extends null | undefined ? never : T;
+
+type Test3 = NonNullable&lt;string | null&gt;; // string
+type Test4 = NonNullable&lt;number | undefined&gt;; // number
+
+// Conditional type with union distribution
+type ToArray&lt;T&gt; = T extends any ? T[] : never;
+
+type Test5 = ToArray&lt;string | number&gt;; // string[] | number[]
+
+// Infer keyword in conditional types
+type ReturnType&lt;T&gt; = T extends (...args: any[]) => infer R ? R : any;
+
+type Test6 = ReturnType&lt;() => string&gt;; // string
+type Test7 = ReturnType&lt;() => number&gt;; // number
+
+// Extract parameter types
+type FirstParameter&lt;T&gt; = T extends (
+  first: infer F,
+  ...args: any[]
+) => any ? F : never;
+
+type Test8 = FirstParameter&lt;(name: string, age: number) => void&gt;; // string
+
+// Advanced inference with tuples
+type UnpackTuple&lt;T&gt; = T extends (infer U)[] ? U : never;
+
+type Test9 = UnpackTuple&lt;[string, number, boolean]&gt;; // string | number | boolean
+
+// Generic type guards
+function isString&lt;T&gt;(value: T): value is Extract&lt;T, string&gt; {
+  return typeof value === "string";
+}
+
+function processValue&lt;T&gt;(value: T): void {
+  if (isString(value)) {
+    // TypeScript knows value is string here
+    console.log(value.toUpperCase());
+  }
+}
+
+// Generic constraints with keyof
+function getPropertyValue&lt;T, K extends keyof T&gt;(
+  obj: T,
+  key: K
+): T[K] {
+  return obj[key];
+}
+
+// Generic with default types
+interface ApiResponse&lt;T = any&gt; {
+  data: T;
+  status: number;
+  message: string;
+}
+
+const response: ApiResponse = {
+  data: { id: 1, name: "Test" },
+  status: 200,
+  message: "Success"
+};
+
+// Generic recursive types
+type DeepPartial&lt;T&gt; = {
+  [P in keyof T]?: T[P] extends object ? DeepPartial&lt;T[P]&gt; : T[P];
+};
+
+interface User {
+  id: number;
+  name: string;
+  address: {
+    street: string;
+    city: string;
+  };
+}
+
+type PartialUser = DeepPartial&lt;User&gt;;
+      </div>
+    </section>
+
+    <!-- Decorators -->
+    <section class="blog-section" id="decorators">
+      <h2>🎨 Decorators & Metadata</h2>
+      <p>Master TypeScript decorators to add metadata, modify behavior, and implement cross-cutting concerns. Learn about class, method, property, and parameter decorators.</p>
+
+      <h3>Creating Custom Decorators</h3>
+      <div class="code-block">
+// Enable experimental decorators in tsconfig.json
+// "experimentalDecorators": true,
+// "emitDecoratorMetadata": true
+
+// Class decorator
+function Entity&lt;T extends { new(...args: any[]): {} }&gt;(
+  constructor: T
+) {
+  return class extends constructor {
+    id = Math.random();
+    createdAt = new Date();
+  };
+}
+
+@Entity
+class User {
+  constructor(public name: string) {}
+}
+
+const user = new User("John");
+console.log(user.id); // Random number
+console.log(user.createdAt); // Current date
+
+// Method decorator
+function log(target: any, propertyName: string, descriptor: PropertyDescriptor) {
+  const method = descriptor.value;
+
+  descriptor.value = function(...args: any[]) {
+    console.log(`Calling ${propertyName} with args:`, args);
+    const result = method.apply(this, args);
+    console.log(`${propertyName} returned:`, result);
+    return result;
+  };
+}
+
+class Calculator {
+  @log
+  add(a: number, b: number): number {
+    return a + b;
+  }
+}
+
+const calc = new Calculator();
+calc.add(2, 3); // Logs method call and result
+
+// Property decorator
+function required(target: any, propertyName: string) {
+  let value: any;
+
+  const getter = () => value;
+  
+  const setter = (newValue: any) => {
+    if (newValue === undefined || newValue === null) {
+      throw new Error(`${propertyName} is required`);
+    }
+    value = newValue;
+  };
+
+  Object.defineProperty(target, propertyName, {
+    get: getter,
+    set: setter,
+    enumerable: true,
+    configurable: true
+  });
+}
+
+class Product {
+  @required
+  name!: string;
+
+  @required
+  price!: number;
+}
+
+const product = new Product();
+product.name = "Laptop";
+// product.price = undefined; // Throws error
+
+// Parameter decorator
+function validate(target: any, methodName: string, parameterIndex: number) {
+  // Store validation metadata
+  const validators = Reflect.getMetadata("validators", target) || [];
+  validators.push({
+    methodName,
+    parameterIndex
+  });
+  Reflect.defineMetadata("validators", validators, target);
+}
+
+class UserService {
+  createUser(@validate name: string, @validate email: string): void {
+    console.log(`Creating user: ${name}, ${email}`);
+  }
+}
+
+// Decorator factory
+function cache(seconds: number = 60) {
+  return function(target: any, propertyName: string, descriptor: PropertyDescriptor) {
+    const method = descriptor.value;
+    const cache = new Map();
+
+    descriptor.value = function(...args: any[]) {
+      const key = JSON.stringify(args);
+      
+      if (cache.has(key)) {
+        const cached = cache.get(key);
+        if (Date.now() - cached.timestamp < seconds * 1000) {
+          return cached.value;
+        }
+      }
+
+      const result = method.apply(this, args);
+      cache.set(key, {
+        value: result,
+        timestamp: Date.now()
+      });
+
+      return result;
+    };
+  };
+}
+
+class ApiService {
+  @cache(30) // Cache for 30 seconds
+  async getUser(id: number): Promise&lt;any&gt; {
+    // Simulate API call
+    return { id, name: `User ${id}` };
+  }
+}
+      </div>
+
+      <h3>Advanced Decorator Patterns</h3>
+      <div class="code-block">
+// Authentication decorator
+function authenticate(roles: string[] = []) {
+  return function(target: any, propertyName: string, descriptor: PropertyDescriptor) {
+    const method = descriptor.value;
+
+    descriptor.value = function(...args: any[]) {
+      const currentUser = this.getCurrentUser(); // Assume this method exists
+      
+      if (!currentUser) {
+        throw new Error("Authentication required");
+      }
+
+      if (roles.length > 0 && !roles.includes(currentUser.role)) {
+        throw new Error(`Access denied. Required roles: ${roles.join(", ")}`);
+      }
+
+      return method.apply(this, args);
+    };
+  };
+}
+
+class AdminController {
+  @authenticate(["admin"])
+  deleteUser(userId: number): void {
+    console.log(`Deleting user ${userId}`);
+  }
+
+  @authenticate(["admin", "moderator"])
+  banUser(userId: number): void {
+    console.log(`Banning user ${userId}`);
+  }
+
+  private getCurrentUser() {
+    return { id: 1, role: "admin" };
+  }
+}
+
+// Performance monitoring decorator
+function performanceMonitor(target: any, propertyName: string, descriptor: PropertyDescriptor) {
+  const method = descriptor.value;
+
+  descriptor.value = async function(...args: any[]) {
+    const start = performance.now();
+    try {
+      const result = await method.apply(this, args);
+      const end = performance.now();
+      console.log(`${propertyName} took ${(end - start).toFixed(2)}ms`);
+      return result;
+    } catch (error) {
+      const end = performance.now();
+      console.log(`${propertyName} failed after ${(end - start).toFixed(2)}ms`);
+      throw error;
+    }
+  };
+}
+
+class DatabaseService {
+  @performanceMonitor
+  async query(sql: string): Promise&lt;any[]&gt; {
+    // Simulate database query
+    await new Promise(resolve => setTimeout(resolve, 100));
+    return [{ id: 1, name: "Test" }];
+  }
+}
+
+// Validation decorator
+function validate(schema: any) {
+  return function(target: any, propertyName: string, descriptor: PropertyDescriptor) {
+    const method = descriptor.value;
+
+    descriptor.value = function(...args: any[]) {
+      const [data] = args;
+      const { error } = schema.validate(data);
+      
+      if (error) {
+        throw new Error(`Validation failed: ${error.details[0].message}`);
+      }
+
+      return method.apply(this, args);
+    };
+  };
+}
+
+// Example with Joi validation library
+const userSchema = {
+  validate: (data: any) => {
+    if (!data.name || data.name.length < 2) {
+      return { error: { details: [{ message: "Name is required and must be at least 2 characters" }] } };
+    }
+    return { error: null };
+  }
+};
+
+class UserController {
+  @validate(userSchema)
+  createUser(userData: any): void {
+    console.log("User created:", userData);
+  }
+}
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your Advanced TypeScript knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🏗️ Type-Safe API Framework</h4>
+          <p>Build a complete API framework with end-to-end type safety</p>
+        </div>
+        <div class="feature-card">
+          <h4>🔧 Enterprise Library</h4>
+          <p>Create reusable enterprise libraries with advanced TypeScript patterns</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎯 Domain-Driven Design</h4>
+          <p>Implement DDD patterns with strong typing and validation</p>
+        </div>
+        <div class="feature-card">
+          <h4>⚡ High-Performance App</h4>
+          <p>Build performance-critical applications with optimized TypeScript</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Use strict type checking and enable all strict options</li>
+        <li>✅ Prefer interfaces over types for object shapes</li>
+        <li>✅ Use utility types to avoid code duplication</li>
+        <li>✅ Implement proper error handling with discriminated unions</li>
+        <li>✅ Use generics for reusable components and utilities</li>
+        <li>✅ Leverage type inference to reduce explicit annotations</li>
+        <li>✅ Use const assertions for immutable data</li>
+        <li>✅ Implement proper module boundaries and exports</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Advanced TypeScript and are ready to build sophisticated, type-safe applications. You now understand advanced generics, decorators, type manipulation, and enterprise-level patterns.</p>
+      
+      <p>TypeScript continues to evolve with new features and improvements. Keep exploring advanced patterns, contribute to the TypeScript ecosystem, and stay current with the latest language developments.</p>
+
+      <div style="background: linear-gradient(135deg, #3178c6, #235a97); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become a TypeScript Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering advanced JavaScript and modern web development!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-14-react-hooks-deep-dive.html" class="btn btn-outline" style="background: white; color: #3178c6;">React Hooks →</a>
+          <a href="blog-15-nextjs-14-full-course.html" class="btn btn-outline" style="background: white; color: #3178c6;">Next.js →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #3178c6;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Web3 & Blockchain with comprehensive guide. Learn Solidity, smart contracts, DeFi, NFTs, DApps, Ethereum development and build decentralized applications. Premium course.">
+  <meta name="keywords" content="Web3 tutorial, blockchain development, Solidity, smart contracts, DeFi, NFTs, DApps, Ethereum, learn Web3">
+  <meta name="author" content="TutorialsHub">
+  <meta property="og:title" content="Web3 & Blockchain Development - Build DApps">
+  <meta property="og:description" content="Premium Web3 & Blockchain course covering Solidity, smart contracts, DeFi, NFTs, DApps, Ethereum development and building decentralized applications.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tutorialshub.com/blog-24-web3-blockchain.html">
+  <meta property="og:image" content="https://tutorialshub.com/images/web3-blockchain-course.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Web3 & Blockchain Development - Build DApps">
+  <meta name="twitter:description" content="Premium Web3 & Blockchain course covering Solidity, smart contracts, DeFi, NFTs, DApps, Ethereum development and building decentralized applications.">
+  <meta name="twitter:image" content="https://tutorialshub.com/images/web3-blockchain-course.jpg">
+  <title>Web3 & Blockchain Development - Build DApps | TutorialsHub</title>
+  <link rel="canonical" href="https://tutorialshub.com/blog-24-web3-blockchain.html">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Web3 & Blockchain Development",
+    "description": "Solidity, smart contracts, DeFi, NFTs, DApps, Ethereum development and building decentralized applications.",
+    "provider": {
+      "@type": "Organization",
+      "name": "TutorialsHub",
+      "url": "https://tutorialshub.com"
+    },
+    "educationalLevel": "Advanced",
+    "about": "Web3 & Blockchain Development",
+    "teaches": ["Web3", "Blockchain", "Solidity", "Smart Contracts", "DeFi", "NFTs", "DApps", "Ethereum", "Decentralized Applications"],
+    "timeRequired": "PT16H",
+    "coursePrerequisites": "JavaScript programming and basic blockchain concepts",
+    "learningResourceType": "Course",
+    "author": {
+      "@type": "Person",
+      "name": "Rahul Verma"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "ratingCount": "7000"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "1199",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  }
+  </script>
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #627eea, #3c3c3d);
+      padding: 80px 80px 60px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    .blog-section {
+      margin-bottom: 50px;
+    }
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+    .blog-section h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: var(--text);
+    }
+    .blog-section p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .toc a:hover {
+      color: var(--primary);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #627eea;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .web3-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-content { padding: 40px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Tutorials<span class="logo-dot">Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blogs.html" class="active">Blogs</a>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Search..." id="globalSearch">
+  </div>
+  <div class="nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="login.html#signup" class="btn btn-primary">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ══ BLOG HERO ══ -->
+<section class="blog-hero">
+  <div style="position: relative; z-index: 1;">
+    <p class="section-label" style="color: rgba(255,255,255,0.9);">Premium Course</p>
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Web3 & Blockchain Development</h1>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
+      Master Web3 & Blockchain with Solidity, smart contracts, DeFi, NFTs, DApps, Ethereum development and build decentralized applications.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">📖 58 Chapters</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⏱ 16h</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">⭐ 4.7 Rating</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">👨‍🎓 7K Students</span>
+      <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">🔥 HOT</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG CONTENT ══ -->
+<main class="blog-content">
+  <article>
+    <!-- Blog Meta -->
+    <div class="blog-meta">
+      <div class="author-info">
+        <div class="author-avatar">RV</div>
+        <div>
+          <div style="font-weight: 700;">Rahul Verma</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Blockchain Expert & Web3 Developer</div>
+        </div>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>📅 Updated: Jan 2025</span>
+        <span>🏷️ Advanced</span>
+        <span>💰 ₹1199</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>📚 Course Contents</h3>
+      <ul>
+        <li><a href="#introduction">1. Introduction to Web3 & Blockchain</a></li>
+        <li><a href="#solidity">2. Solidity Programming</a></li>
+        <li><a href="#smart-contracts">3. Smart Contracts Development</a></li>
+        <li><a href="#ethereum">4. Ethereum & EVM</a></li>
+        <li><a href="#defi">5. DeFi Protocols</a></li>
+        <li><a href="#nfts">6. NFTs & Digital Assets</a></li>
+        <li><a href="#dapps">7. DApp Development</a></li>
+        <li><a href="#web3js">8. Web3.js & Frontend Integration</a></li>
+        <li><a href="#security">9. Smart Contract Security</a></li>
+        <li><a href="#projects">10. Real-World Projects</a></li>
+      </ul>
+    </div>
+
+    <!-- Introduction -->
+    <section class="blog-section" id="introduction">
+      <h2>⛓️ Introduction to Web3 & Blockchain</h2>
+      <p>Web3 represents the next evolution of the internet, built on blockchain technology and decentralized principles. It enables trustless interactions, user ownership, and programmable money through smart contracts.</p>
+      
+      <p>This comprehensive course teaches you to master Web3 development, from blockchain fundamentals to building sophisticated decentralized applications. Learn to create smart contracts, DeFi protocols, NFTs, and full-stack DApps.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⛓️</div>
+          <h4>Blockchain</h4>
+          <p>Understand distributed ledger technology and consensus mechanisms</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h4>Smart Contracts</h4>
+          <p>Build self-executing contracts with Solidity</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏦</div>
+          <h4>DeFi</h4>
+          <p>Create decentralized financial protocols and applications</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h4>NFTs</h4>
+          <p>Develop non-fungible tokens and digital collectibles</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solidity -->
+    <section class="blog-section" id="solidity">
+      <h2>📝 Solidity Programming</h2>
+      <p>Master Solidity, the primary programming language for Ethereum smart contracts. Learn about data types, functions, modifiers, inheritance, and advanced Solidity features.</p>
+
+      <h3>Solidity Fundamentals</h3>
+      <div class="code-block">
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+// Basic contract structure
+contract HelloWorld {
+    // State variables
+    string public message = "Hello, World!";
+    uint public counter = 0;
+    address public owner;
+    
+    // Events
+    event MessageUpdated(string newMessage, address updatedBy);
+    event CounterIncremented(uint newCounter);
+    
+    // Constructor
+    constructor() {
+        owner = msg.sender;
+    }
+    
+    // Basic functions
+    function setMessage(string memory _message) public {
+        require(msg.sender == owner, "Only owner can change message");
+        message = _message;
+        emit MessageUpdated(_message, msg.sender);
+    }
+    
+    function incrementCounter() public {
+        counter++;
+        emit CounterIncremented(counter);
+    }
+    
+    // View and pure functions
+    function getMessage() public view returns (string memory) {
+        return message;
+    }
+    
+    function add(uint a, uint b) public pure returns (uint) {
+        return a + b;
+    }
+}
+
+// Advanced data types and structures
+contract AdvancedTypes {
+    // Arrays
+    uint[] public numbers;
+    string[] public names;
+    
+    // Fixed-size arrays
+    uint[5] public fixedNumbers;
+    
+    // Mappings
+    mapping(address => uint) public balances;
+    mapping(string => address) public addressesByName;
+    
+    // Structs
+    struct User {
+        string name;
+        uint age;
+        bool isActive;
+    }
+    
+    mapping(address => User) public users;
+    User[] public userList;
+    
+    // Enums
+    enum Status { Pending, Active, Inactive, Suspended }
+    Status public currentStatus;
+    
+    // Functions with complex types
+    function addUser(string memory _name, uint _age) public {
+        User memory newUser = User({
+            name: _name,
+            age: _age,
+            isActive: true
+        });
+        
+        users[msg.sender] = newUser;
+        userList.push(newUser);
+    }
+    
+    function updateBalance(uint _amount) public {
+        balances[msg.sender] += _amount;
+    }
+    
+    function getBalance(address _user) public view returns (uint) {
+        return balances[_user];
+    }
+}
+
+// Inheritance and modifiers
+contract AccessControl {
+    address public owner;
+    mapping(address => bool) public authorized;
+    
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    event AuthorizationChanged(address indexed user, bool authorized);
+    
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner can call this function");
+        _;
+    }
+    
+    modifier onlyAuthorized() {
+        require(authorized[msg.sender] || msg.sender == owner, "Not authorized");
+        _;
+    }
+    
+    constructor() {
+        owner = msg.sender;
+        authorized[msg.sender] = true;
+    }
+    
+    function transferOwnership(address _newOwner) public onlyOwner {
+        require(_newOwner != address(0), "Invalid address");
+        emit OwnershipTransferred(owner, _newOwner);
+        owner = _newOwner;
+    }
+    
+    function setAuthorized(address _user, bool _authorized) public onlyOwner {
+        authorized[_user] = _authorized;
+        emit AuthorizationChanged(_user, _authorized);
+    }
+}
+
+contract Bank is AccessControl {
+    mapping(address => uint) public deposits;
+    
+    event Deposited(address indexed user, uint amount);
+    event Withdrawn(address indexed user, uint amount);
+    
+    function deposit() public payable {
+        require(msg.value > 0, "Must send ETH");
+        deposits[msg.sender] += msg.value;
+        emit Deposited(msg.sender, msg.value);
+    }
+    
+    function withdraw(uint _amount) public onlyAuthorized {
+        require(_amount <= deposits[msg.sender], "Insufficient balance");
+        deposits[msg.sender] -= _amount;
+        payable(msg.sender).transfer(_amount);
+        emit Withdrawn(msg.sender, _amount);
+    }
+    
+    function getBalance() public view returns (uint) {
+        return deposits[msg.sender];
+    }
+}
+      </div>
+
+      <h3>Advanced Solidity Features</h3>
+      <div class="code-block">
+// Libraries and using for
+library SafeMath {
+    function add(uint a, uint b) internal pure returns (uint) {
+        uint c = a + b;
+        require(c >= a, "SafeMath: addition overflow");
+        return c;
+    }
+    
+    function sub(uint a, uint b) internal pure returns (uint) {
+        require(b <= a, "SafeMath: subtraction overflow");
+        return a - b;
+    }
+    
+    function mul(uint a, uint b) internal pure returns (uint) {
+        if (a == 0) return 0;
+        uint c = a * b;
+        require(c / a == b, "SafeMath: multiplication overflow");
+        return c;
+    }
+}
+
+contract MathContract {
+    using SafeMath for uint;
+    
+    function calculate(uint a, uint b) public pure returns (uint) {
+        return a.add(b).mul(2);
+    }
+}
+
+// Interfaces
+interface IERC20 {
+    function totalSupply() external view returns (uint);
+    function balanceOf(address account) external view returns (uint);
+    function transfer(address to, uint amount) external returns (bool);
+    function allowance(address owner, address spender) external view returns (uint);
+    function approve(address spender, uint amount) external returns (bool);
+    function transferFrom(address from, address to, uint amount) external returns (bool);
+    
+    event Transfer(address indexed from, address indexed to, uint value);
+    event Approval(address indexed owner, address indexed spender, uint value);
+}
+
+contract TokenExchange {
+    IERC20 public token;
+    uint public rate;
+    
+    event TokensPurchased(address indexed buyer, uint ethAmount, uint tokenAmount);
+    event TokensSold(address indexed seller, uint tokenAmount, uint ethAmount);
+    
+    constructor(address _tokenAddress, uint _rate) {
+        token = IERC20(_tokenAddress);
+        rate = _rate;
+    }
+    
+    function buyTokens() public payable {
+        uint tokenAmount = msg.value.mul(rate);
+        uint tokenBalance = token.balanceOf(address(this));
+        require(tokenAmount <= tokenBalance, "Not enough tokens available");
+        
+        token.transfer(msg.sender, tokenAmount);
+        emit TokensPurchased(msg.sender, msg.value, tokenAmount);
+    }
+    
+    function sellTokens(uint _tokenAmount) public {
+        uint ethAmount = _tokenAmount.div(rate);
+        require(address(this).balance >= ethAmount, "Not enough ETH available");
+        
+        token.transferFrom(msg.sender, address(this), _tokenAmount);
+        payable(msg.sender).transfer(ethAmount);
+        emit TokensSold(msg.sender, _tokenAmount, ethAmount);
+    }
+}
+
+// Error handling and custom errors
+contract ErrorHandling {
+    error InsufficientBalance(uint requested, uint available);
+    error InvalidAddress(address provided);
+    error UnauthorizedAccess(address caller);
+    
+    mapping(address => uint) public balances;
+    
+    function withdraw(uint _amount) public {
+        uint balance = balances[msg.sender];
+        if (_amount > balance) {
+            revert InsufficientBalance(_amount, balance);
+        }
+        
+        balances[msg.sender] = balance - _amount;
+        payable(msg.sender).transfer(_amount);
+    }
+    
+    function transfer(address _to, uint _amount) public {
+        if (_to == address(0)) {
+            revert InvalidAddress(_to);
+        }
+        
+        if (balances[msg.sender] < _amount) {
+            revert InsufficientBalance(_amount, balances[msg.sender]);
+        }
+        
+        balances[msg.sender] -= _amount;
+        balances[_to] += _amount;
+    }
+}
+
+// Gas optimization techniques
+contract GasOptimized {
+    // Use packed structs
+    struct PackedUser {
+        uint128 balance;  // Less than 2^128
+        uint64 lastUpdate; // Timestamp fits in 64 bits
+        uint32 id;         // User ID fits in 32 bits
+        bool isActive;     // 1 byte
+    }
+    
+    // Use immutable variables
+    address public immutable CREATOR;
+    uint public immutable CREATION_TIME;
+    
+    // Use custom errors instead of strings
+    error ZeroAddress();
+    error InsufficientFunds();
+    
+    constructor() {
+        CREATOR = msg.sender;
+        CREATION_TIME = block.timestamp;
+    }
+    
+    // Batch operations
+    function batchTransfer(address[] calldata _recipients, uint256[] calldata _amounts) 
+        external payable {
+        require(_recipients.length == _amounts.length, "Array length mismatch");
+        
+        uint256 totalAmount = 0;
+        for (uint256 i = 0; i < _amounts.length; i++) {
+            totalAmount += _amounts[i];
+        }
+        
+        require(msg.value >= totalAmount, "Insufficient ETH sent");
+        
+        for (uint256 i = 0; i < _recipients.length; i++) {
+            payable(_recipients[i]).transfer(_amounts[i]);
+        }
+    }
+}
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="blog-section" id="projects">
+      <h2>🚀 Real-World Projects</h2>
+      <p>Apply your Web3 & Blockchain knowledge with these comprehensive projects that demonstrate advanced concepts and build your professional portfolio:</p>
+
+      <h3>Project Portfolio</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>🏦 DeFi Lending Protocol</h4>
+          <p>Build a complete decentralized lending and borrowing platform</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎨 NFT Marketplace</h4>
+          <p>Create a full-featured NFT marketplace with auctions and royalties</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎮 Blockchain Game</h4>
+          <p>Develop a play-to-earn game with on-chain assets</p>
+        </div>
+        <div class="feature-card">
+          <h4>🏛️ DAO Governance Platform</h4>
+          <p>Build a decentralized autonomous organization with voting mechanisms</p>
+        </div>
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li>✅ Always follow the Checks-Effects-Interactions pattern</li>
+        <li>✅ Use proper access control and authorization mechanisms</li>
+        <li>✅ Implement comprehensive error handling with custom errors</li>
+        <li>✅ Optimize gas usage with efficient data structures</li>
+        <li>✅ Thoroughly test smart contracts before deployment</li>
+        <li>✅ Use established libraries and standards like OpenZeppelin</li>
+        <li>✅ Implement proper event logging for off-chain monitoring</li>
+        <li>✅ Consider upgradeability patterns for long-term contracts</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="blog-section">
+      <h2>🎯 Conclusion</h2>
+      <p>Congratulations! You've mastered Web3 & Blockchain development and are ready to build decentralized applications. You now understand Solidity, smart contracts, DeFi protocols, NFTs, and full-stack DApp development.</p>
+      
+      <p>Web3 is a rapidly evolving field with endless possibilities. Keep exploring new blockchain platforms, stay current with DeFi innovations, and continue building the decentralized future.</p>
+
+      <div style="background: linear-gradient(135deg, #627eea, #3c3c3d); color: white; padding: 30px; border-radius: var(--radius); text-align: center; margin-top: 40px;">
+        <h3 style="color: white; margin-bottom: 15px;">🚀 Become a Web3 Expert!</h3>
+        <p style="margin-bottom: 20px;">Continue mastering blockchain technologies and decentralized systems!</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="blog-13-nodejs-express-api.html" class="btn btn-outline" style="background: white; color: #627eea;">Node.js API →</a>
+          <a href="blog-14-react-hooks-deep-dive.html" class="btn btn-outline" style="background: white; color: #627eea;">React Hooks →</a>
+          <a href="blogs.html" class="btn btn-outline" style="background: white; color: #627eea;">All Courses →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.5rem;margin-bottom:14px">Tutorials<span class="logo-dot">Hub</span></a>
+      <p>Simple and easy-to-follow tutorials for everyone. Learn programming, web development, data science, AI and much more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">▶</a>
+        <a href="#" class="social-btn">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="tutorials.html">HTML Tutorial</a></li>
+        <li><a href="tutorials.html">CSS Tutorial</a></li>
+        <li><a href="tutorials.html">JavaScript</a></li>
+        <li><a href="tutorials.html">Python</a></li>
+        <li><a href="tutorials.html">React.js</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="blogs.html">Frontend Development</a></li>
+        <li><a href="blogs.html">Backend Development</a></li>
+        <li><a href="blogs.html">Full Stack</a></li>
+        <li><a href="blogs.html">Data Science</a></li>
+        <li><a href="blogs.html">Machine Learning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TutorialsHub. All rights reserved. Built with ❤️ for learners worldwide.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // Toast notification
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; 
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Global search functionality
+  document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = this.value.trim();
+      if (query) {
+        window.location.href = `blogs.html?q=${encodeURIComponent(query)}`;
+      } else {
+        showToast('Please enter a search term 🔍');
+      }
+    }
+  });
+</script>
+</body>
+</html>
